@@ -1,0 +1,26 @@
+
+<h1>MIDI input management</h1>
+
+<p>
+Since version 0.8.0 Giada is able to read MIDI messages from the external world. A physical device can be attached to control channels, volumes, properties and so on. Actually any "thing" that sends out MIDI messages can be used to drive Giada, so the choice can be expanded to softwares and scripts as well.
+</p>
+
+<h2>What can you control with MIDI</h2>
+
+<p>There are two main classes of elements that can be controlled via MIDI:</p>
+
+<ul>
+	<li><strong>Global elements</strong> — sequencer, metronome, main volumes and so on. They are stored inside the configuration file and you set them once;</li>
+	<li><strong>Per-channel elements</strong> — channel on/off, mute, volume, solo and so on. They are stored inside the patch and you set them whenever you create a new song.</li>
+</ul>
+
+<h2>How to assign MIDI messages to elements</h2>
+
+<p>First of all make sure you have properly configured your sound card to receive MIDI messages: you can do that in the <a href="{{ url('documentation/show/configuration') }}">configuration</a> panel. To configure <strong>global elements</strong>, open <em>edit -&gt; setup global MIDI input...</em> and a new window will appear, containing all assignable elements.
+</p>
+<p><img src="{{ url('img/docs/midi-input-window.png') }}" alt="Edit menu" title="Edit menu" class="first" /> From left to right, the first box cointains the name of the parameter. The button ("(not set)" in the picture) shows the hexadecimal value assigned to the parameter: click on it with the right button to reset it to none. Finally the "learn" button enables the so-called <strong>MIDI learn</strong>: click on it, then move a knob or press any key and Giada will assign it to the parameter you have chosen.
+</p>
+
+<p>To configure <strong>per-channel elements</strong>, click on a channel's button and select <em>setup MIDI input...</em> from the popup menu. The window with assignable elements is similar to the previous one but with different parameters, of course.
+</p>
+<div class="clearfix"></div>

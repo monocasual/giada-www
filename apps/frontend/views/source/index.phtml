@@ -1,0 +1,29 @@
+<div class="container">
+	
+	<div class="row margin-top-xl">
+		<div class="col-md-12">
+			<h1 class="text-center">Return to the source of it all.</h1>
+			<h2 class="margin-top-xl description">We are very proud of our source code! Giada is written in a mixture of C and C++ and is made up of ~100 files, ~30,000 lines, plus several other external libraries.</h2>
+		</div>
+	</div>
+
+	<div class="row margin-top-xl">
+		<div class="col-md-12">
+			<table class="table">
+				<tr>
+					<th>name</th>
+					<th>size (kB)</th>
+					<th>sha</th>
+				</tr>
+				{% for d in dir %}
+				<tr>
+					<td><a href="source/show/{{ d['name'] }}">{{ d['name'] }}</a></td>
+					<td>{{ d['size'] }}</td>
+					<td>{{ d['sha'] }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,9 @@
+*.phtml.php
+giada.php.tags
+public/forum
+public/admin-angular
+public/phpliteadmin
+data/db/giada.sqlite
+data/cache/*
+data/dist/*
+

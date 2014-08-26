@@ -1,0 +1,29 @@
+<div class="container">
+	
+	<div class="row margin-top-xl">
+		<div class="col-md-12">
+			<h1>{{ file }} - source code</h1>
+			<pre class="code margin-top-l"><code>{{ content }}</code></pre>
+			
+			<h2>Informations</h2>
+			<p>total size: {{ size }} kB - <a href="{{ html_url }}" title="{{ file }} on GitHub/Giada">see it on GitHub</a></p>
+			
+			<h3>Commits</h3>
+			<table class="table">
+				<tr>
+					<th>date</th>
+					<th>author</th>
+					<th>message</th>
+				</tr>
+				{% for c in commits %}
+				<tr>
+					<td>{{ c['commit']['committer']['date'] }}</td>
+					<td>{{ c['commit']['committer']['name'] }}</td>
+					<td>{{ c['commit']['message'] }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+	
+</div>

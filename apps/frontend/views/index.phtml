@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ meta_title }}</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Monocasual laboratories">
+		<meta name="description" content="{{ meta_description }}">
+		<meta name="keywords" content="{{ meta_keywords }}">
+		<meta name="author" content="{{ config.metas.author }}" />
+		<meta name="copyright" content="{{ config.metas.copyright }}" />
+		<meta name="application-name" content="{{ meta_title }}" />
+
+		<!-- Facebook -->          
+		<meta property="og:title" content="{{ meta_title }}" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="{{ config.urls.base }}{{ url(config.metas.image) }}" />
+		<meta property="og:url" content="{{ config.urls.base }}" />
+		<meta property="og:description" content="{{ meta_description }}" />
+		<meta property="fb:admins" content="100001854661538" />
+
+		<!-- Twitter -->          
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:url" content="{{ config.urls.base }}" />
+		<meta name="twitter:title" content="{{ meta_title }}" />
+		<meta name="twitter:description" content="{{ meta_description }}" />
+		<meta name="twitter:image" content="{{ config.metas.image }}" />
+		
+		<link rel="shortcut icon" href="{{ url('public/img/favicon.ico') }}" type="image/x-icon" />
+		
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat" type="text/css">
+		<link rel="stylesheet" href="{{ url('public/css/giada.css') }}" type="text/css">
+
+	  {{ assets.outputCss() }}
+		{{ assets.outputJs() }}
+		
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		{% if config.assets.analytics %}
+		<script>
+		var _gaq = _gaq || []; 			_gaq.push(['_setAccount', 'UA-23296419-18']); 			_gaq.push(['_trackPageview']);
+		(function() { 				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; 				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; 				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); 			})();
+		</script>
+		{% endif %}
+		
+	</head>
+	<body>
+		{{ partial('partials/header') }}
+		{{ content() }}
+		{{ partial('partials/footer') }}
+	</body>
+</html>

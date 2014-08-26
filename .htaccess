@@ -1,0 +1,24 @@
+
+# ----------------------------------------------------------------------
+# enable rewrite engine with RewriteBase. Change this if needed!
+# ----------------------------------------------------------------------
+RewriteEngine on
+RewriteBase /giada/
+
+
+# ----------------------------------------------------------------------
+# pages that don't exist anymore
+# ----------------------------------------------------------------------
+RewriteRule ^documentation-(.+)/?$ documentation [R=301,NC,L]
+RewriteRule ^screenshot-[0-9]+/?$  screenshots   [R=301,NC,L]
+
+
+# ----------------------------------------------------------------------
+# phalcon main redirect
+# ----------------------------------------------------------------------
+RewriteRule  ^$ public/     [L]
+RewriteRule  (.*) public/$1 [L]
+
+
+
+

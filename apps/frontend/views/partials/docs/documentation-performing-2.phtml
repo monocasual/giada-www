@@ -1,0 +1,64 @@
+
+<h1>Performing part 2</h1>
+
+<p>In Giada, things usually happen because you have clicked on a channel or pressed its corresponding key (both from keyboard or MIDI device). For example, if you click a <strong>sample channel</strong>'s <strong>key box</strong> <img src="{{ url('img/key-box.png') }}" alt="Key box" title="Key box" class="inline" />, the sample starts to play. However the final behavior might vary, depending on various other factors such as the <strong>play mode</strong> or the internal status of the channel.
+</p>
+
+<p>This section is focused on general interactions; more information on each type of channel can be found in <a href="{{ url('documentation/show/channels-and-samples') }}">Channels and samples</a> and <a href="{{ url('documentation/show/channels-and-midi') }}">Channels and MIDI</a> chapters.</p>
+
+<h2>The role of the main sequencer</h2>
+
+<p><img src="{{ url('img/gui_beat.png') }}" alt="The sequencer (or beat bar)" title="The sequencer (or beat bar)" class="first" /> The sequencer is the tool that basically handles the performance informations. Each cell is a beat and beats are grouped in bars. The number of beat/bars, the speed and the size of the main pattern can be adjusted through the <strong>beat tools</strong> <img src="{{ url('img/beats-tools.png') }}" alt="Beats tools" title="Beats tools" class="inline" />, while <strong>play/stop</strong> and <strong>rewind</strong> buttons <img src="{{ url('img/gui_playstop.png') }}" alt="Play and stop buttons" title="Play and stop buttons" class="inline" /> control the sequencer and its position.</p>
+
+<p>When the sequencer is on you are able to play your song, handle some kind of channels, record actions and much more. In particular, it affects:</p>
+<ul>
+<li><strong>sample channels</strong> in <strong>loop</strong> mode;</li>
+<li><strong>sample channels</strong> in <strong>one shot</strong> mode with actions recorded;</li>
+<li><strong>MIDI channels</strong>.</li>
+</ul>
+
+<p>With the sequencer running you can also benefit from the power of the <strong>live quantizer</strong>, which helps you to align your keystrokes to each beat. On the other hand, when the sequencer is off the channels listed above don't play immediately: they <em>wait</em> (the buttons start to blink) until the sequencer starts over from the first beat. You still can operate with:</p>
+
+<ul>
+<li><strong>sample channels</strong> in <strong>one shot</strong> mode, with or without actions recorded;</li>
+</ul>
+
+<p>and they will play as soon as the corresponding key is pressed. We saw this style of playing in <a href="{{ url('documentation/show/performing-1') }}">Performing 1</a>, and we called it <strong>Giada as a sample player</strong>.</p>
+
+
+
+<h2>Global interactions</h2>
+
+<p>The following table shows how can you interact with the various tools of the sequencer.</p>
+
+<table class="table">
+	<tr>
+		<th>action</th>
+		<th>alternate action</th>
+		<th>effect 1</th>
+	</tr>
+
+	<tr>
+	<tr>
+		<td><span class="code">backspace</span></td>
+		<td>click on <strong>rewind</strong> button <img src="{{ url('img/gui-rewind.png') }}" alt="Rewind button" title="Rewind button" class="inline" /></td>
+		<td>sequencer rewind to beat 1</td>
+	</tr>
+	<tr>
+		<td><span class="code">spacebar</span></td>
+		<td>click on <strong>play</strong> button <img src="{{ url('img/gui-play.png') }}" alt="Play button" title="Play button" class="inline" /></td>
+		<td>sequencer start/stop</td>
+	</tr>
+	<tr>
+		<td><span class="code">enter</span></td>
+		<td>click on <strong>action recorder</strong> button <img src="{{ url('img/action-recorder-button.png') }}" alt="Action recorder button" title="Action recorder button" class="inline" /></td>
+		<td>action recorder start/stop</td>
+	</tr>
+	<tr>
+		<td><span class="code">end</span></td>
+		<td>click on <strong>input recorder</strong> button <img src="{{ url('img/input-recording-button.png') }}" alt="Input recorder button" title="Input recorder button" class="inline" /></td>
+		<td>live sampler start/stop</td>
+	</tr>
+</table>
+
+

@@ -1,0 +1,107 @@
+<div class="container">
+
+	<div class="row margin-top-xl">
+		<div class="col-md-12 text-center">
+			<h1>Grab the unbelievable Giada {{ config.changelog.version }}.</h1>
+			<p>Or try a <a href="https://sourceforge.net/projects/giada-looper/files/old%20binaries/">previous version</a>.</p>
+		</div>
+	</div>
+
+	<div class="row margin-top-xl">
+		
+		<div class="col-md-5 col-md-offset-1">
+			<div class="download-box">
+				<div>
+					<img class="margin-btm-m" src="{{ url('img/ubuntu-logo.png') }}" alt="ubuntu logo" title="Giada for Linux (.deb)">
+				</div>
+				<div>
+					<p class="skinfont">
+						Giada {{ config.changelog.version }} for Linux, deb 
+						<a href="{{ url('download/grab/linux-32') }}" title="Download Giada for Linux, i386">(i386)</a> 
+						<a href="{{ url('download/grab/linux-64') }}" title="Download Giada for Linux, amd64">(amd64)</a>
+					</p>
+					<p>
+						Troubles? Try the binaries: <a href="{{ url('download/grab/linux-binary-32') }}" title="Download Giada binaries (i386 Linux)">i386</a> or <a href="{{ url('download/grab/linux-binary-64') }}" title="Download Giada binaries (amd64 Linux)">amd64</a>.</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-5">
+			<div class="download-box">
+				<div>
+					<img class="margin-btm-m" src="{{ url('img/osx-logo.png') }}" alt="osx logo" title="Giada for Mac OS X">
+				</div>
+				<div>
+				<p class="skinfont">
+					<a href="{{ url('download/grab/osx-32') }}" title="Download Giada {{ config.changelog.version }} for Mac OSX">Giada {{ config.changelog.version }} for Mac OS X</a>
+				</p>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	<div class="row">
+		
+		<div class="col-md-5 col-md-offset-1">
+			<div class="download-box">
+				<div>
+					<img class="margin-btm-m" src="{{ url('img/windows-logo.png') }}" alt="windows logo" title="Giada for Windows">
+				</div>
+				<div>
+					<p class="skinfont">
+						<a href="{{ url('download/grab/windows-32') }}" title="Download Giada {{ config.changelog.version }} for Windows">Giada {{ config.changelog.version }} for Windows</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-5">
+			<div class="download-box">
+				<div>
+					<img class="margin-btm-m" src="{{ url('img/source-logo.png') }}" alt="source logo" title="Giada Source Code">
+				</div>
+				<div>
+					<p class="skinfont">
+						<a href="{{ url('download/grab/source') }}" title="Download Giada {{ config.changelog.version }} Source Code">Giada {{ config.changelog.version }} Source Code</a> 
+					</p>
+					<p>
+						Learn how to compile it <a title="Giada Documentation - Compiling from Source" href="{{ url('documentation/show/compiling-from-source') }}">here</a>.
+					</p>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+
+	<div class="row margin-top-xl">
+		<div class="col-md-8 col-md-offset-2 text-center">
+			<div>If you're in love with Giada, support her and consider a donation!</div>
+			<div class="margin-top-s">{{ partial('partials/socials/paypal') }}</div>
+		</div>
+	</div>
+
+
+	<div class="row margin-top-l">
+		
+		<div class="col-md-6">
+			<h2>Changes in version {{ config.changelog.version }}</h2>
+			<ul>
+				{% for c in config.changelog.change %}
+					<li>{{ c }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		
+		<div class="col-md-6">
+			<h2>About these binaries</h2>
+			<p>We provide experimental 64-bit packages for Linux: will they work? Try them out and <a href="http://www.giadamusic.com/forum/index.php" title="Giada forum">tell us</a> your experience!</p>
+
+			<h2>Plans for the future</h2>
+			<p>Giada is in constant stage of growth; take a look at our <a href="http://www.giadamusic.com/forum/viewforum.php?f=4" title="Giada development roadmap">roadmap</a> to understand the direction of the development or join the <a href="http://www.giadamusic.com/forum/index.php" title="Giada forum">forum</a> to submit feature requests and bugs found. </p>
+		</div>
+		
+	</div>
+
+</div><!-- container -->
