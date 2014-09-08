@@ -253,8 +253,58 @@ a:hover     { text-decoration: none; }
 	height: 350px;
 }
 
-
 .fb_iframe_widget {
 	top: -8px;
 }
+
+@font-face {
+  font-family: 'fontello';
+  src: url('../font/fontello.svg?95680981#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.carousel {
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.carousel-control {
+	text-shadow: none;
+	color: #d0451b;
+	width: 40px; /* should match font-size below */
+}
+
+.carousel-control.right, 
+.carousel-control.left {
+  background-image:none;
+  border-bottom: none;
+}
+
+.carousel-control.left {  
+    margin-left: -25px;
+}
+
+.carousel-control.right {
+    margin-right: -25px;
+}
+
+.carousel-control .glyphicon {
+	font-family: "fontello";
+	font-size: 40px;  /* should match width above */
+	width: auto;
+	height: auto;
+	margin: auto;
+}
+
+.carousel-control .glyphicon-chevron-right:before {
+  content: '\e803';
+}
+
+.carousel-control .glyphicon-chevron-left:before {
+  content: '\e802';
+}
+
+.carousel-indicators li { visibility: hidden; }
+
 

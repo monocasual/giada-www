@@ -24,16 +24,16 @@
 	<div class="row margin-top-l">
 		<div class="col-md-12 text-center">
 			{% if config.assets.adsense %}
-			<script type="text/javascript"><!--
-			google_ad_client = "ca-pub-1778432007040046";
-			/* main header */
-			google_ad_slot = "1738616980";
-			google_ad_width = 728;
-			google_ad_height = 90;
-			//-->
-			</script>
-			<script type="text/javascript"
-			src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- giada responsive -->
+			<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1778432007040046"
+				data-ad-slot="9025673290"
+				data-ad-format="auto">
+			</ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
 			{% else %}
 			<img src="{{ url('public/img/ads-placeholder-728x90.png') }}" />

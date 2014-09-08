@@ -72,6 +72,8 @@ class SourceController extends BaseController
 		if (!$this->view->getCache()->exists($key))	
 		{
 			$source = $this->getSource('src/'.$file);
+			if ($source == 0)
+				$this->response->redirect('404');
 			$this->view->file     = $file;
 			$this->view->size     = number_format($source['size']);
 			$this->view->html_url = $source['html_url'];
