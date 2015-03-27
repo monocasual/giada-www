@@ -11,10 +11,10 @@ class IndexController extends BaseController
 		parent::initialize();
 		$this->assets->addJs('http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', true);
 		$this->assets->addJs('public/js/vendor/jquery.githubRepoWidget.min.js');
-		$this->assets->addJs('http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/transition.min.js', true);
-		$this->assets->addJs('http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/carousel.min.js', true);
+		$this->assets->addJs('http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/transition.min.js', true);
+		$this->assets->addJs('http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/carousel.min.js', true);
 	}
-	
+
 	public function indexAction()
 	{
 		if (!$this->view->getCache()->exists('index-cache'))
@@ -23,11 +23,11 @@ class IndexController extends BaseController
 				'order' => 'date DESC',
 				'limit' => 4
 			));
-			$this->view->news = $news;		
+			$this->view->news = $news;
 		}
 		$this->view->cache(array('key' => 'index-cache'));
 	}
-	
+
 	public function show404Action()
 	{
 		$this->view->cache(true);

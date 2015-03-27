@@ -12,7 +12,7 @@
 		<meta name="copyright" content="{{ config.metas.copyright }}" />
 		<meta name="application-name" content="{{ meta_title }}" />
 
-		<!-- Facebook -->          
+		<!-- Facebook -->
 		<meta property="og:title" content="{{ meta_title }}" />
 		<meta property="og:type" content="website" />
 		<meta property="og:image" content="{{ config.urls.base }}{{ url(config.metas.image) }}" />
@@ -20,22 +20,22 @@
 		<meta property="og:description" content="{{ meta_description }}" />
 		<meta property="fb:admins" content="100001854661538" />
 
-		<!-- Twitter -->          
+		<!-- Twitter -->
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:url" content="{{ config.urls.base }}" />
 		<meta name="twitter:title" content="{{ meta_title }}" />
 		<meta name="twitter:description" content="{{ meta_description }}" />
 		<meta name="twitter:image" content="{{ config.metas.image }}" />
-		
+
 		<link rel="shortcut icon" href="{{ url('public/img/favicon.ico') }}" type="image/x-icon" />
-		
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat" type="text/css">
 		<link rel="stylesheet" href="{{ url('public/css/giada.css') }}" type="text/css">
 
 	  {{ assets.outputCss() }}
 		{{ assets.outputJs() }}
-		
+
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -54,7 +54,7 @@
 			ga('send', 'pageview');
 		</script>
 		{% endif %}
-		
+
 	</head>
 	<body>
 		{{ partial('partials/header') }}
