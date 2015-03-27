@@ -39,21 +39,15 @@ to copy the binary file into /usr/local/bin path.
 
 <h2>Dependencies</h2>
 <p>
-Giada is based upon <a href="http://www.fltk.org/" title="FLTK GUI Toolkit">FLTK</a> (GUI), <a href="http://www.mega-nerd.com/libsndfile/" title="libsndfile">libsndfile</a>, <a href="http://www.mega-nerd.com/SRC/" title="libsamplerate">libsamplerate</a>, <a href="http://www.music.mcgill.ca/~gary/rtmidi/" title="RtMidi">RtMidi</a> and <a href="http://www.music.mcgill.ca/~gary/rtaudio/" title="rtAudio">RtAudio</a>. At the present moment <sup>August 2014, version 0.9.0</sup> we suggest you to use the following versions:
+Giada is based upon <a href="http://www.fltk.org/" title="FLTK GUI Toolkit">FLTK</a> (GUI), <a href="http://www.mega-nerd.com/libsndfile/" title="libsndfile">libsndfile</a>, <a href="http://www.mega-nerd.com/SRC/" title="libsamplerate">libsamplerate</a>, <a href="http://www.music.mcgill.ca/~gary/rtmidi/" title="RtMidi">RtMidi</a> and a custom version of <a href="http://www.music.mcgill.ca/~gary/rtaudio/" title="rtAudio">RtAudio</a>, shipped with the source package. Our hacked RtAudio provides Jack Transport support on Linux, a feature that you wouldn't find in the vanilla release. At the present moment <sup>September 2014, version 0.9.1</sup> we suggest you to use the following versions:
 </p>
 
 <ul>
 <li>FLTK — 1.3.[0 or greater];</li>
 <li>libsndfile — 1.0.25 or greater;</li>
 <li>libsamplerate — 0.1.8 or greater;</li>
-<li>RtMidi — 2.1.0 or greater;</li>
-<li>RtAudio — 4.1.1 or greater.</li>
+<li>RtMidi — 2.1.0 or greater.</li>
 </ul>
-
-<p>We also hacked RtAudio library to provide full Jack Transport support for Linux, so if you wish to compile Giada under that OS you have to apply a little patch to your vanilla RtAudio. Don't worry, it's easy!</p>
-
-<p>Unzip the Giada's source package, browse to <span class="code">src/rtaudio</span> and apply the patch you may find inside to your local copy of RtAudio. Then, install it as usual. The modifications we made are minimal and won't affect the main functionalities of the library: we just added a couple of lines of code in order to expose some class properties. You <em>don't</em> have to patch RtAudio if you compile Giada under Windows or OS X.</p>
-
 
 <h2>How to enable VST support</h2>
 <p>
