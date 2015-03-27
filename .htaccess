@@ -1,9 +1,9 @@
 
 # ----------------------------------------------------------------------
-# enable rewrite engine with RewriteBase. Change this if needed!
+# enable rewrite engine with RewriteBase. Change this in production!
 # ----------------------------------------------------------------------
 RewriteEngine on
-RewriteBase /giada/
+RewriteBase /giada
 
 
 # ----------------------------------------------------------------------
@@ -14,11 +14,7 @@ RewriteRule ^screenshot-[0-9]+/?$  screenshots   [R=301,NC,L]
 
 
 # ----------------------------------------------------------------------
-# phalcon main redirect
+# phalcon main redirect (only if != 'admin)
 # ----------------------------------------------------------------------
-RewriteRule  ^$ public/     [L]
-RewriteRule  (.*) public/$1 [L]
-
-
-
-
+RewriteCond %{REQUEST_URI} !^/admin  [NC]
+RewriteRule  (.*) public/$1     [L]

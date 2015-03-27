@@ -19,17 +19,6 @@ $di->set('router', function()
 
 	$router->setDefaultModule('frontend');
 
-	$router->add('/admin/', array(
-			'module'     => 'admin',
-			'controller' => 'index'
-	));
-
-	$router->add('/admin/app/', array(
-			'module'     => 'admin',
-			'controller' => 'admin',
-			'action'     => 'index'
-	));
-
 	$router->add('/api', array(
 			'module'     => 'api',
 			'controller' => 'index'
@@ -40,12 +29,6 @@ $di->set('router', function()
 			'controller' => 1,
 			'action'     => 2
 	));
-/*
-	$router->notFound(array(
-			'controller' => 'index',
-			'action'     => 'route404'
-	));
-*/
 	return $router;
 });
 
@@ -134,17 +117,13 @@ try
 	$application = new Phalcon\Mvc\Application($di);
 
 	/* register the installed modules, i.e. instruct Phalcon that we have 
-	 * three different modules: Frontend, Admin and Api */
+	 * twoo different modules: Frontend, and Api */
 
 	$application->registerModules(
 		array(
 			'frontend' => array(
 				'className' => 'Giada\Frontend\Module',
 				'path'      => '../apps/frontend/Module.php',
-			),
-			'admin' => array(
-				'className' => 'Giada\Admin\Module',
-				'path'      => '../apps/admin/Module.php',
 			),
 			'api'  => array(
 				'className' => 'Giada\Api\Module',

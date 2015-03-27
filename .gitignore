@@ -1,7 +1,8 @@
+*.swp
 *.phtml.php
 giada.php.tags
-public/forum
-public/admin-angular
+forum
+admin
 public/phpliteadmin
 data/db/giada.sqlite
 data/cache/*
