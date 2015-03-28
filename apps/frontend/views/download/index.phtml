@@ -8,7 +8,7 @@
 	</div>
 
 	<div class="row margin-top-xl">
-		
+
 		<div class="col-md-5 col-md-offset-1">
 			<div class="download-box">
 				<div>
@@ -16,8 +16,8 @@
 				</div>
 				<div>
 					<p class="skinfont">
-						Giada {{ config.changelog.version }} for Linux, deb 
-						<a href="{{ url('download/grab/linux-32') }}" title="Download Giada for Linux, i386">(i386)</a> 
+						Giada {{ config.changelog.version }} for Linux, deb
+						<a href="{{ url('download/grab/linux-32') }}" title="Download Giada for Linux, i386">(i386)</a>
 						<a href="{{ url('download/grab/linux-64') }}" title="Download Giada for Linux, amd64">(amd64)</a>
 					</p>
 					<p>
@@ -25,7 +25,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="col-md-5">
 			<div class="download-box">
 				<div>
@@ -38,11 +38,11 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 
 	<div class="row">
-		
+
 		<div class="col-md-5 col-md-offset-1">
 			<div class="download-box">
 				<div>
@@ -55,7 +55,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="col-md-5">
 			<div class="download-box">
 				<div>
@@ -63,7 +63,7 @@
 				</div>
 				<div>
 					<p class="skinfont">
-						<a href="{{ url('download/grab/source') }}" title="Download Giada {{ config.changelog.version }} Source Code">Giada {{ config.changelog.version }} Source Code</a> 
+						<a href="{{ url('download/grab/source') }}" title="Download Giada {{ config.changelog.version }} Source Code">Giada {{ config.changelog.version }} Source Code</a>
 					</p>
 					<p>
 						Learn how to compile it <a title="Giada Documentation - Compiling from Source" href="{{ url('documentation/show/compiling-from-source') }}">here</a>.
@@ -71,7 +71,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 
 
@@ -84,7 +84,7 @@
 
 
 	<div class="row margin-top-l">
-		
+
 		<div class="col-md-6">
 			<h2>Changes in version {{ config.changelog.version }}</h2>
 			<ul>
@@ -92,16 +92,26 @@
 					<li>{{ c }}</li>
 				{% endfor %}
 			</ul>
-		</div>
-		
-		<div class="col-md-6">
+
 			<h2>About these binaries</h2>
 			<p>We provide experimental 64-bit packages for Linux: will they work? Try them out and <a href="http://www.giadamusic.com/forum/index.php" title="Giada forum">tell us</a> your experience!</p>
+		</div>
+
+		<div class="col-md-6">
+			<h2>MD5 checksums</h2>
+			<p>Beware of imitations! This is the only place where to pickup the official Giada's packages.</p>
+			<table class="table">
+				<tr><td>Giada for Linux, i386</td><td><code class="code">{{ md5lin32 }}</code></td></tr>
+				<tr><td>Giada for Linux, amd64</td><td><code class="code">{{ md5lin64 }}</code></td></tr>
+				<tr><td>Giada for Windows, i386</td><td><code class="code">{{ md5win32 }}</code></td></tr>
+				<tr><td>Giada for OS X, i386</td><td><code class="code">{{ md5osx32 }}</code></td></tr>
+				<tr><td>Giada source code</td><td><code class="code">{{ md5src }}</code></td></tr>
+			</table>
 
 			<h2>Plans for the future</h2>
 			<p>Giada is in constant stage of growth; take a look at our <a href="http://www.giadamusic.com/forum/viewforum.php?f=4" title="Giada development roadmap">roadmap</a> to understand the direction of the development or join the <a href="http://www.giadamusic.com/forum/index.php" title="Giada forum">forum</a> to submit feature requests and bugs found. </p>
 		</div>
-		
+
 	</div>
 
 </div><!-- container -->

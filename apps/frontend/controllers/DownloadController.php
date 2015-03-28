@@ -5,25 +5,31 @@ namespace Giada\Frontend\Controllers;
 
 
 class DownloadController extends BaseController
-{	
+{
 	public function indexAction()
 	{
 		$this->prependMeta('meta_title', 'Download - ');
 		$this->appendMeta('meta_description', ', download');
 		$this->appendMeta('meta_keywords', ', download');
+
+		$this->view->md5win32 = md5('../data/dist/'.'giada-'.$this->config->changelog->version.'-win-i386.zip');
+		$this->view->md5lin32 = md5('../data/dist/'.'giada-'.$this->config->changelog->version.'-lin-i386.tar.gz');
+		$this->view->md5lin64 = md5('../data/dist/'.'giada-'.$this->config->changelog->version.'-lin-amd64.tar.gz');
+		$this->view->md5osx32 = md5('../data/dist/'.'giada-'.$this->config->changelog->version.'-osx-i386.zip');
+		$this->view->md5src   = md5('../data/dist/'.'giada-'.$this->config->changelog->version.'-src.tar.gz');
 	}
-	
+
 	public function grabAction($os, $version=NULL)
 	{
 		$this->view->disable();
-		
+
 		/* if 'version' != NULL an old version is being requested */
-		
+
 		if (!$version)
 			$version = $this->config->changelog->version;
-		
+
 		$filepath = '';
-			
+
 		/* input parsing */
 
 		if ($os == 'windows-32')
@@ -63,7 +69,7 @@ class DownloadController extends BaseController
 			$this->logger->error('[DownloadController::grabAction] wrong version chosen! was $filepath='.$filepath.', $os='.$os);
 			$this->response->redirect('404');
 		}
-		
+
 		/* update download stats, only if not in debug mode */
 
 		if (!$this->config->mode->debug)
@@ -77,13 +83,13 @@ class DownloadController extends BaseController
 					$this->logger->error('[DownloadController::grabAction] ... '.$m);
 			}
 		}
-		
+
 		$filepath = '../data/dist/' . $filepath;
 		if (!file_exists($filepath))
-			$this->logger->error('[DownloadController::grabAction] file "'.$filepath.'" not found!');	
+			$this->logger->error('[DownloadController::grabAction] file "'.$filepath.'" not found!');
 		if (!is_readable($filepath))
-			$this->logger->error('[DownloadController::grabAction] file "'.$filepath.'" is unreadable!');	
-		
+			$this->logger->error('[DownloadController::grabAction] file "'.$filepath.'" is unreadable!');
+
 		/* prepare header */
 
 		$this->response->setHeader('Content-Type', 'application/x-gzip');
