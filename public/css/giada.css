@@ -20,7 +20,7 @@ a {
 a.imagelink { border-bottom: none; }
 a:hover     { text-decoration: none; }
 
-/* ------------------------------------------------------------------ */
+/* -------------------------------------------------------------------------- */
 
 .margin-top-s   { margin-top: 10px; }
 .margin-top-m   { margin-top: 20px; }
@@ -142,14 +142,14 @@ a:hover     { text-decoration: none; }
 	border-radius: 6px;
 	-moz-border-radius: 6px;
 	-khtml-border-radius: 6px;
-	-webkit-border-radius: 6px;	
+	-webkit-border-radius: 6px;
 }
 
-.table>thead>tr>th, 
-.table>tbody>tr>th, 
-.table>tfoot>tr>th, 
-.table>thead>tr>td, 
-.table>tbody>tr>td, 
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td,
 .table>tfoot>tr>td {
 	border-top: 1px solid #C7C2B1;
 	vertical-align: inherit;
@@ -162,7 +162,7 @@ a:hover     { text-decoration: none; }
 }
 
 
-/* ------------------------------------------------------------------ */
+/* -------------------------------------------------------------------------- */
 
 #header nav li a {
 	text-transform: uppercase;
@@ -181,10 +181,10 @@ a:hover     { text-decoration: none; }
 	margin-top: 50px;
 }
 
-/* ------------------------------------------------------------------ */
+/* -------------------------------------------------------------------------- */
 
-#documentation h1, 
-#documentation h2, 
+#documentation h1,
+#documentation h2,
 #documentation h3 {
 	margin: 40px 0 40px 0;
 }
@@ -223,13 +223,13 @@ a:hover     { text-decoration: none; }
 	margin-bottom: 40px;
 }
 
-/* ------------------------------------------------------------------ */
+/* -------------------------------------------------------------------------- */
 
 #twitter-tweets-box iframe {
 	width: 100% !important;
 }
 
-@media (max-width: 992px) { 
+@media (max-width: 992px) {
 	.social-box {
 		margin-top: 20px;
 	}
@@ -249,7 +249,7 @@ a:hover     { text-decoration: none; }
 }
 
 #github-widget {
-	width: 100%; 
+	width: 100%;
 	height: 350px;
 }
 
@@ -279,13 +279,13 @@ a:hover     { text-decoration: none; }
 	width: 40px; /* should match font-size below */
 }
 
-.carousel-control.right, 
+.carousel-control.right,
 .carousel-control.left {
   background-image:none;
   border-bottom: none;
 }
 
-.carousel-control.left {  
+.carousel-control.left {
     margin-left: -25px;
 }
 
@@ -310,5 +310,3 @@ a:hover     { text-decoration: none; }
 }
 
 .carousel-indicators li { visibility: hidden; }
-
-
