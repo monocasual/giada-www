@@ -2,16 +2,15 @@
 <h1>Channels and Samples</h1>
 
 <p>
-A <strong>Sample channel</strong> contains one sample. By clicking on its <strong>main button</strong> <img src="{{ url('img/sample-button.png') }}" alt="Main button" title="Main button" class="inline" /> you will be able to load a new sound as well as doing further operations.
-</p>
-
+A <strong>Sample channel</strong> contains one sample. By clicking on its <strong>main button</strong> <img src="{{ url('img/sample-button.png') }}" alt="Main button" title="Main button" class="inline" /> you will be able to load a new sound as well as doing further operations. You can add a new channel by clicking on the "Add new channel" button on top of each column, or by drag-and-dropping a file over the empty space of any column.</p>
 
 <h2>Case 1: the channel is empty</h2>
-<p>
-A file browser lets you choose the new sample. Thanks to <a href="http://www.mega-nerd.com/libsndfile/" title="libsndfile">libsndfile</a> Giada is able to load a large number of uncompressed file formats, most especially WAV, AIFF and RAW. If the loading procedure is successful the sample is ready to play.</p>
+
+<p>A file browser lets you choose the new sample. Thanks to <a href="http://www.mega-nerd.com/libsndfile/" title="libsndfile">libsndfile</a> Giada is able to load a large number of uncompressed file formats, most especially WAV, AIFF and RAW. If the loading procedure is successful the sample is ready to play. You may also load a new sample by dragging and dropping a file into any existing channel.</p>
 
 
 <h2>Case 2: the channel is not empty</h2>
+
 <p>A popup menu appears with several options.</p>
 <p><img src="{{ url('img/docs/channel-button-menu.png') }}" alt="Channel button's menu" title="Channel button's menu" /></p>
 <ul>
@@ -47,6 +46,7 @@ A file browser lets you choose the new sample. Thanks to <a href="http://www.meg
 
 
 <h2>Channel statuses</h2>
+
 <p>The <strong>status box</strong> <img src="{{ url('img/status-box.png') }}" alt="Status box" title="Status box" class="inline" /> gives you informations about the sample:
 </p>
 
@@ -155,8 +155,8 @@ A file browser lets you choose the new sample. Thanks to <a href="http://www.meg
 
 
 <h2>Keyboard interactions</h2>
-<p>
-<strong>Sample channels</strong> are playable either by pressing the key associated or clicking with the mouse on the channel's <strong>key box</strong> <img src="{{ url('img/key-box.png') }}" alt="Key box" title="Key box" class="inline" />. The following table shows what happens with channels in <strong>loop</strong> mode:</p>
+
+<p><strong>Sample channels</strong> are playable either by pressing the key associated or clicking with the mouse on the channel's <strong>key box</strong> <img src="{{ url('img/key-box.png') }}" alt="Key box" title="Key box" class="inline" />. The following table shows what happens with channels in <strong>loop</strong> mode:</p>
 
 <table class="table">
 	<tr>
@@ -223,6 +223,7 @@ A file browser lets you choose the new sample. Thanks to <a href="http://www.meg
 </table>
 
 <h2>Sample channels with actions</h2>
+
 <p>As soon as the channel in <strong>one shot</strong> mode has some actions recorded into it, the <strong>read actions</strong> button <img src="{{ url('img/read-recs-button.png') }}" alt="Read recordings button" title="Read recordings button" class="inline" /> appears on the right. If you disable it, Giada no longer reads the actions for that channel. That's slightly different from the <strong>mute button</strong>, because you can still play the sample manually and hear it.</p>
 
 <p>By default when you disable the "R" button the actions stop immediately. By checking the <em>treat recorded channels as loops</em> flag in the <a href="{{ url('documentation/show/configuration') }}">configuration</a> panel the actions will stop at the next first beat, as a channel in <strong>loop</strong> mode would do.</p>
