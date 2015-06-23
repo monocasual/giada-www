@@ -3,7 +3,7 @@
 # enable rewrite engine with RewriteBase. Change this in production!
 # ----------------------------------------------------------------------
 RewriteEngine on
-RewriteBase /giada
+RewriteBase /
 
 
 # ----------------------------------------------------------------------
