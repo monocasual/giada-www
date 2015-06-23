@@ -1,5 +1,9 @@
 <?php
 
+ /* consts */
+
+define('G_PROFILE', 'prod');
+
 
 /* create a DI */
 	
@@ -8,7 +12,7 @@ $di = new Phalcon\DI\FactoryDefault();
 
 /* setup global config */
 	
-$di->setShared('config', new \Phalcon\Config\Adapter\Ini('../common/config/config.ini'));
+$di->setShared('config', new \Phalcon\Config\Adapter\Ini('../common/config/' . G_PROFILE . '.ini'));
 
 
 /* specify routes for modules */
@@ -139,7 +143,11 @@ try
 } 
 catch(\Exception $e)
 {
-	echo 'Exception thrown: '.$e->getMessage();
+	if (G_PROFILE === 'dev') {
+		echo '<pre>';
+		print_r($e);
+		echo '</pre>';
+	}
 }
 
 
