@@ -31,7 +31,7 @@ module.exports = function(grunt)
       },
       css: {
         src: [
-          'src/css/bootstrap.min.js',
+          'src/css/deps/bootstrap.min.js',
           'src/css/**'
         ],
         dest: 'css/main-<%= pkg.version %>.css'
