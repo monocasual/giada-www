@@ -85,12 +85,13 @@ module.exports = function(grunt)
   grunt.registerTask('dev', [
     'concat',
     //'preprocess'
-    'uglify'
+    'uglify',
   ]);
 
   grunt.registerTask('dist', [
     'concat',
     //'preprocess',
+    'uglify',
     'cssmin'
   ]);
 };
