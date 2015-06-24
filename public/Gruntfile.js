@@ -19,11 +19,12 @@ module.exports = function(grunt)
       }
     },
 
-   /* concat - warning: css order matters */
+   /* concat - warning: order matters */
 
     concat: {
       js: {
         src: [
+          'src/js/deps/jquery-1.11.1.js',
           'src/js/deps/**',
         ],
         dest: 'js/main-<%= pkg.version %>.js'
@@ -50,6 +51,21 @@ module.exports = function(grunt)
         }]
       }
     },
+
+    /* minify js */
+
+    uglify: {
+      options: {
+        compress: {
+          drop_console: true, // remove console output
+        }
+      },
+      all: {
+        files: {
+          'js/main-<%= pkg.version %>.js': ['js/main-<%= pkg.version %>.js']
+        }
+      }
+    }
   });
 
   /* custom config vars */
@@ -61,6 +77,7 @@ module.exports = function(grunt)
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-preprocess');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
   /* register tasks */
@@ -68,6 +85,7 @@ module.exports = function(grunt)
   grunt.registerTask('dev', [
     'concat',
     //'preprocess'
+    'uglify'
   ]);
 
   grunt.registerTask('dist', [
