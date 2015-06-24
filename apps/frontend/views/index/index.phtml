@@ -1,4 +1,34 @@
+{% extends 'base.phtml' %}
 
+{% block title %}{% endblock %}
+
+{% block description %}{{ config.metas.description }}{% endblock %}
+
+{% block keywords %}{{ config.metas.keywords }}{% endblock %}
+
+{% block metas %}
+{# fb opengraph #}
+<meta property="og:title" content="{{ config.metas.title }}" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="{{ config.urls.base }}{{ url(config.metas.image) }}" />
+<meta property="og:url" content="{{ config.urls.base }}" />
+<meta property="og:description" content="{{ config.metas.description }}" />
+<meta property="fb:admins" content="100001854661538" />
+{# twitter #}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content="{{ config.urls.base }}" />
+<meta name="twitter:title" content="{{ config.metas.title }}" />
+<meta name="twitter:description" content="{{ config.metas.description }}" />
+<meta name="twitter:image" content="{{ config.metas.image }}" />
+{% endblock %}
+
+{% block styles %}{% endblock %}
+
+{% block scripts %}
+<script href="{{ url('js/main-' ~ config.assets.version ~ '.js') }}"></script>
+{% endblock %}
+
+{% block content %}
 <div class="container">
 
 	<div class="row margin-top-xl">
@@ -22,17 +52,17 @@
 				<div class="carousel-inner">
 					<div class="item active">
 						<a href="{{ url('screenshots') }}" title="More screenshots!">
-							<img src="{{ url('public/img/screenshots/giada-loop-machine-screenshot-14-carousel.jpg') }}" alt="Giada Loop Machine 0.9.0">
+							<img src="{{ url('img/screenshots/giada-loop-machine-screenshot-14-carousel.jpg') }}" alt="Giada Loop Machine 0.9.0">
 						</a>
 					</div>
 					<div class="item">
 						<a href="{{ url('screenshots') }}" title="More screenshots!">
-							<img src="{{ url('public/img/screenshots/giada-loop-machine-screenshot-15-carousel.jpg') }}" alt="Giada Loop Machine 0.9.0">
+							<img src="{{ url('img/screenshots/giada-loop-machine-screenshot-15-carousel.jpg') }}" alt="Giada Loop Machine 0.9.0">
 						</a>
 					</div>
 					<div class="item">
 						<a href="{{ url('screenshots') }}" title="More screenshots!">
-							<img src="{{ url('public/img/screenshots/giada-loop-machine-screenshot-16-carousel.jpg') }}" alt="Giada Loop Machine 0.9.0 full screen">
+							<img src="{{ url('img/screenshots/giada-loop-machine-screenshot-16-carousel.jpg') }}" alt="Giada Loop Machine 0.9.0 full screen">
 						</a>
 					</div>
 				</div>
@@ -52,43 +82,43 @@
 	<div class="row margin-top-xl">
 		<div class="col-md-8 col-md-offset-2 text-center social-links">
 			<a href="https://www.facebook.com/GiadaYourHardcoreLoopmachine" title="Giada @ Facebook" class="imagelink">
-				<img src="{{ url('public/img/social-icons-facebook.png') }}" alt="Facebook" title="Giada @ Facebook">
+				<img src="{{ url('img/social-icons-facebook.png') }}" alt="Facebook" title="Giada @ Facebook">
 			</a>
 			<a href="{{ url('feed') }}" title="Giada RSS feed" class="imagelink">
-				<img src="{{ url('public/img/social-icons-rss.png') }}" alt="RSS" title="Giada RSS feed">
+				<img src="{{ url('img/social-icons-rss.png') }}" alt="RSS" title="Giada RSS feed">
 			</a>
 			<a href="http://giadaloopmachine.tumblr.com" title="Giada @ Tumblr" class="imagelink">
-				<img src="{{ url('public/img/social-icons-tumblr.png') }}" alt="tumblr" title="Giada @ Tumblr">
+				<img src="{{ url('img/social-icons-tumblr.png') }}" alt="tumblr" title="Giada @ Tumblr">
 			</a>
 			<a href="https://twitter.com/GiadaLooper" title="Giada @ Twitter" class="imagelink">
-				<img src="{{ url('public/img/social-icons-twitter.png') }}" alt="twitter" title="Giada @ Twitter">
+				<img src="{{ url('img/social-icons-twitter.png') }}" alt="twitter" title="Giada @ Twitter">
 			</a>
 			<a href="https://github.com/monocasual/giada" title="Giada @ Git Hub" class="imagelink">
-				<img src="{{ url('public/img/social-icons-github.png') }}" alt="git hub" title="Giada @ Git Hub">
+				<img src="{{ url('img/social-icons-github.png') }}" alt="git hub" title="Giada @ Git Hub">
 			</a>
 			<a href="http://www.youtube.com/user/GiadaLoopMachine" title="Giada @ Youtube" class="imagelink">
-				<img src="{{ url('public/img/social-icons-youtube.png') }}" alt="youtube" title="Giada @ Youtube">
+				<img src="{{ url('img/social-icons-youtube.png') }}" alt="youtube" title="Giada @ Youtube">
 			</a>
 			<a href="https://plus.google.com/103544024553691934077/posts" title="Giada @ Google+" class="imagelink">
-				<img src="{{ url('public/img/social-icons-google.png') }}" alt="Google+" title="Giada @ Google+">
+				<img src="{{ url('img/social-icons-google.png') }}" alt="Google+" title="Giada @ Google+">
 			</a>
 			<a href="http://www.kvraudio.com/product/giada-by-monocasual" title="Giada @ KVR Audio" class="imagelink">
-				<img src="{{ url('public/img/social-icons-kvr.png') }}" alt="kvr audio" title="Giada @ KVR Audio">
+				<img src="{{ url('img/social-icons-kvr.png') }}" alt="kvr audio" title="Giada @ KVR Audio">
 			</a>
 			<a href="http://sourceforge.net/projects/giada-looper" title="Giada @ Source Forge" class="imagelink">
-				<img src="{{ url('public/img/social-icons-sourceforge.png') }}" alt="source forge" title="Giada @ Source Forge">
+				<img src="{{ url('img/social-icons-sourceforge.png') }}" alt="source forge" title="Giada @ Source Forge">
 			</a>
 		</div>
 	</div>
 
 	<div class="row center-block margin-top-xl">
 		<div class="col-md-6">
-			<h3><img alt="*" src="{{ url('public/img/icon-box.png') }}"> Lightweight and powerful</h3>
+			<h3><img alt="*" src="{{ url('img/icon-box.png') }}"> Lightweight and powerful</h3>
 			<p>32 bit floating point audio engine, sample-accurate looping system, multithread support. 100% exotic dependencies free.</p>
 		</div>
 
 		<div class="col-md-6">
-			<h3><img alt="*" src="{{ url('public/img/icon-knob.png') }}"> Lots of useful tools</h3>
+			<h3><img alt="*" src="{{ url('img/icon-knob.png') }}"> Lots of useful tools</h3>
 			<p>Tweak your sounds with the live sampler from external sources, the live quantizer, a built-in wave editor, the action recorder and the action editor.</p>
 		</div>
 	</div>
@@ -96,12 +126,12 @@
 
 	<div class="row center-block">
 		<div class="col-md-6">
-			<h3><img alt="*" src="{{ url('public/img/icon-sin.png') }}"> VST and MIDI support</h3>
+			<h3><img alt="*" src="{{ url('img/icon-sin.png') }}"> VST and MIDI support</h3>
 			<p>Giada can load VST and VST instruments, as well as read/write MIDI messages from/to any device out there, both hardware and software.</p>
 		</div>
 
 		<div class="col-md-6">
-			<h3><img alt="*" src="{{ url('public/img/icon-heart.png') }}"> 100% open-source GPL</h3>
+			<h3><img alt="*" src="{{ url('img/icon-heart.png') }}"> 100% open-source GPL</h3>
 			<p>Giada is constantly under development, free for use and distribution: you can use it without any limitations. Help us to improve it more!</p>
 		</div>
 	</div>
@@ -159,3 +189,4 @@
 	</div>
 
 </div><!-- container -->
+{% endblock %}
