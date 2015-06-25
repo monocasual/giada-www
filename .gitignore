@@ -1,10 +1,12 @@
 *.swp
 *.phtml.php
 giada.php.tags
+node_modules
 /forum
 /admin
+/public/js/main-*
+/public/css/main-*
 /public/phpliteadmin
 /data/db/giada.sqlite
 /data/cache/*
 /data/dist/*
-
