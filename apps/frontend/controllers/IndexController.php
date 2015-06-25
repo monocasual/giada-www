@@ -12,7 +12,8 @@ class IndexController extends BaseController
 
 	public function indexAction()
 	{
-		if (!$this->view->getCache()->exists('index-cache'))
+		$cacheKey = 'index';
+		if (!$this->view->getCache()->exists($cacheKey))
 		{
 			$news = \Giada\Models\News::find(array(
 				'order' => 'date DESC',
@@ -20,7 +21,7 @@ class IndexController extends BaseController
 			));
 			$this->view->news = $news;
 		}
-		$this->view->cache(array('key' => 'index-cache'));
+		$this->view->cache(array('key' => $cacheKey));
 	}
 
 	public function show404Action()

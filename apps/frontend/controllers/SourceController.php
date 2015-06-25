@@ -42,7 +42,6 @@ class SourceController extends BaseController
 
 	public function initialize()
 	{
-		parent::initialize();
 		$this->jsonService = $this->di->getShared('jsonService');
 	}
 
@@ -50,21 +49,22 @@ class SourceController extends BaseController
 
 	public function indexAction()
 	{
-		if (!$this->view->getCache()->exists('source-index-cache'))
+		$cacheKey = 'source-index';
+		if (!$this->view->getCache()->exists($cacheKey))
 			$this->view->dir = $this->getDir('src');
-		$this->view->cache(array('key' => 'source-index-cache'));
+		$this->view->cache(array('key' => $cacheKey));
 	}
 
 	/* ------------------------------------------------------------------------ */
 
 	public function showAction($file)
 	{
-		$this->view->cache(true);
-		$this->view->setVar('file', $file);
+		/* avoid dots in cache filename */
+		$cacheKey = 'source-show-'.str_replace('.', '-', $file);
 
-		$key = 'source-show-'.$file.'-cache';
-		if (!$this->view->getCache()->exists($key))
+		if (!$this->view->getCache()->exists($cacheKey))
 		{
+			$this->view->setVar('file', $file);
 			$source = $this->getSource('src/'.$file);
 			if ($source == 0)
 				$this->response->redirect('404');
@@ -74,7 +74,7 @@ class SourceController extends BaseController
 			$this->view->content  = htmlentities(base64_decode($source['content']));
 			$this->view->commits  = $this->getCommits('src/'.$file);
 		}
-		$this->view->cache(array('key' => $key));
+		$this->view->cache(array('key' => $cacheKey));
 	}
 }
 

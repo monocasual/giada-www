@@ -8,14 +8,15 @@ class NewsArchiveController extends BaseController
 {
 	public function indexAction()
 	{
-		if (!$this->view->getCache()->exists('news-archive-cache'))
+		$cacheKey = 'news-archive';
+		if (!$this->view->getCache()->exists($cacheKey))
 		{
 			$news = \Giada\Models\News::find(array(
 				'order' => 'date DESC'
 			));
 			$this->view->news = $news;
 		}
-		$this->view->cache(array('key' => 'news-archive-cache'));
+		$this->view->cache(array('key' => $cacheKey));
 	}
 }
 
