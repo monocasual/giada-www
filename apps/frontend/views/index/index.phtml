@@ -173,8 +173,7 @@
 		<div class="col-md-4">
 			<div class="social-box" id="twitter-tweets-box">
 				{% if config.assets.socials %}
-				<a class="twitter-timeline" href="https://twitter.com/GiadaLooper" data-widget-id="344749513166168064" height="350">Tweets by @GiadaLooper</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					{{ partial('partials/socials/twitter-tweetbox') }}
 				{% endif %}
 			</div>
 		</div>
@@ -182,7 +181,7 @@
 		<div class="col-md-4">
 			<div class="social-box" id="facebook-like-box">
 				{% if config.assets.socials %}
-				<iframe src="//www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/GiadaYourHardcoreLoopmachine&amp;width=300&amp;height=350&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;show_border=false&amp;header=false&amp;appId=156270814501973" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+					{{ partial('partials/socials/facebook-likebox') }}
 				{% endif %}
 			</div>
 		</div>
