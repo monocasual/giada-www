@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head lang="{% block lang %}en{% endblock %}">
-		<title>{% block title %}{% endblock %}{{ meta_title }}</title>
+		<title>{% block title %}{% endblock %}{{ config.metas.title }}</title>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="{{ config.metas.author }}">
-		<meta name="description" content="{% block description %}{% endblock %}">
-		<meta name="keywords" content="{% block keywords %}{% endblock %}">
+		<meta name="description" content="{{ config.metas.description }}{% block description %}{% endblock %}">
+		<meta name="keywords" content="{{ config.metas.keywords }}{% block keywords %}{% endblock %}">
 		<meta name="copyright" content="{{ config.metas.copyright }}">
 		<meta name="application-name" content="{{ config.metas.title }}">
 		{% block metas %}{% endblock %}

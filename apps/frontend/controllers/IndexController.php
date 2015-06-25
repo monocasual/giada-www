@@ -31,9 +31,6 @@ class IndexController extends BaseController
 	public function show404Action()
 	{
 		$this->view->cache(true);
-		$this->prependMeta('meta_title', 'Page not found - ');
-		$this->appendMeta('meta_description', ', page not found');
-		$this->appendMeta('meta_keywords', ', page not found');
 		$this->response->setStatusCode(404, 'Not Found');
 	}
 }

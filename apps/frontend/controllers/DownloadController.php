@@ -8,15 +8,11 @@ class DownloadController extends BaseController
 {
 	public function indexAction()
 	{
-		$this->prependMeta('meta_title', 'Download - ');
-		$this->appendMeta('meta_description', ', download');
-		$this->appendMeta('meta_keywords', ', download');
-
-		$this->view->md5win32 = md5('../data/dist/'.'giada-'.$this->config->changelog->version.'-win-i386.zip');
-		$this->view->md5lin32 = md5('../data/dist/'.'giada-'.$this->config->changelog->version.'-lin-i386.tar.gz');
-		$this->view->md5lin64 = md5('../data/dist/'.'giada-'.$this->config->changelog->version.'-lin-amd64.tar.gz');
-		$this->view->md5osx32 = md5('../data/dist/'.'giada-'.$this->config->changelog->version.'-osx-i386.zip');
-		$this->view->md5src   = md5('../data/dist/'.'giada-'.$this->config->changelog->version.'-src.tar.gz');
+		$this->view->md5win32 = md5_file('../data/dist/'.'giada-'.$this->config->changelog->version.'-win-i386.zip');
+		$this->view->md5lin32 = md5_file('../data/dist/'.'giada-'.$this->config->changelog->version.'-lin-i386.tar.gz');
+		$this->view->md5lin64 = md5_file('../data/dist/'.'giada-'.$this->config->changelog->version.'-lin-amd64.tar.gz');
+		$this->view->md5osx32 = md5_file('../data/dist/'.'giada-'.$this->config->changelog->version.'-osx-i386.zip');
+		$this->view->md5src   = md5_file('../data/dist/'.'giada-'.$this->config->changelog->version.'-src.tar.gz');
 	}
 
 	public function grabAction($os, $version=NULL)
