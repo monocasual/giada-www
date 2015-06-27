@@ -136,12 +136,23 @@
 		</div>
 	</div>
 
+	<div class="quotes row margin-top-xl">
+    <div class="col-md-6 col-md-offset-3">
+      <i>“This software is f*cking awesome.”</i> ― Cinderskull27
+    </div>
+  </div>
+
 	<div class="row margin-top-xl">
 		<div class="col-md-12">
 			<a href="{{ url('download') }}">
 			<input type="button" class="download-btn btn btn-default center-block" value="Download it!">
 			</a>
-			<div class="text-center margin-top-s">latest version: {{ config.changelog.version }} | <a href="{{ url('documentation') }}">docs</a> | <a href="https://github.com/monocasual/giada" title="Giada @ Git Hub">fork it on GitHub</a></div>
+			<div class="text-center margin-top-s">
+        latest version: {{ config.changelog.version }} | 
+        <a href="{{ url('documentation') }}">docs</a> | 
+        <a href="https://github.com/monocasual/giada" title="Giada @ Git Hub">fork it on GitHub</a> |
+        <div class="paypal-inline">{{ partial('partials/socials/paypal') }}</div>
+      </div>
 		</div>
 	</div>
 

@@ -74,9 +74,9 @@ a:hover     { text-decoration: none; }
 	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0451b', endColorstr='#bc3315',GradientType=0);
 	background-color:#d0451b;
-	-moz-border-radius:7px;
-	-webkit-border-radius:7px;
-	border-radius:7px;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
 	border:1px solid #942911;
 	cursor:pointer;
 	color:#ffffff;
@@ -225,6 +225,15 @@ a:hover     { text-decoration: none; }
 
 /* -------------------------------------------------------------------------- */
 
+.paypal-inline {
+  display: inline-block;
+}
+.paypal-inline input[type="image"] {
+  vertical-align: middle;
+}
+
+/* -------------------------------------------------------------------------- */
+
 #twitter-tweets-box iframe {
 	width: 100% !important;
 }
@@ -310,3 +319,7 @@ a:hover     { text-decoration: none; }
 }
 
 .carousel-indicators li { visibility: hidden; }
+
+.quotes {
+  text-align: center
+}
