@@ -323,3 +323,18 @@ a:hover     { text-decoration: none; }
 .quotes {
   text-align: center
 }
+
+.feature.left {
+  text-align: left;
+}
+.feature.left img {
+  float: left;
+  margin-right: 20px;
+}
+.feature.right {
+  text-align: right;
+}
+.feature.right img {
+  float: right;
+  margin-left: 20px;
+}
