@@ -1,0 +1,33 @@
+
+<h1>Development: GIT setup</h1>
+
+<p>
+Our development version is hosted and mantained on <a href="https://github.com">GitHub</a>. The official page can be found at
+</p>
+<p class="code">
+	<a href="https://github.com/monocasual/giada">https://github.com/monocasual/giada</a>
+</p>
+<p>
+and the repository with the master branch at
+</p>
+<p class="code">
+	https://github.com/monocasual/giada.git<br />
+	git://github.com/monocasual/giada.git
+</p>
+<p>
+Please refer to the <a href="https://help.github.com/">GitHub documentation</a> on how to <em>fork</em>, <em>pull</em>, <em>push</em> and so on. If you're new to GitHub, we would suggest a very nice <a href="http://net.tutsplus.com/tutorials/other/getting-the-hang-of-github/">tutorial</a> for beginners.
+</p>
+
+
+<h2>Compiling the source in the local repository</h2>
+<p>
+The source in the repository follows the same rules of the <em>.tar</em> package you download from this website. In the chapter <a href="{{ url('documentation/show/compiling-from-source') }}">Compiling from source</a> you will find all the informations needed.
+</p>
+<p>
+The <span class="code">configure</span> and/or the <span class="code">make</span> scripts may complain about something, especially if you alter, add or remove the files in the repository. In that case use the included <span class="code">autogen.sh</span> script (available only in the repository):
+</p>
+<p class="code">
+./autogen.sh<br />
+configure [...]<br />
+make
+</p>
