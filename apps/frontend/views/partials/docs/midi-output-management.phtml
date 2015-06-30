@@ -1,2 +1,35 @@
-
 <h1>MIDI output management</h1>
+
+<p>Giada is able to output MIDI messages to the external world, both from <strong>sample channels</strong> and, of course, <strong>MIDI channels</strong>, with some notable differences. More precisely, there are two kinds of messages: <strong>regular MIDI messages</strong> and <strong>MIDI lightning messages</strong>.</p>
+
+<h2>Regular messages vs lightning message</h2>
+
+<p><strong>Regular MIDI messages</strong> correspond to MIDI events, namely all those events you record with your physical devices, or edit some actions in the Action Editor. Obviously this kind of events can be sent only from <strong>MIDI channels</strong>. On the other hand <strong>MIDI lightning messages</strong> are special codes used to light up parts of external devices, such as buttons, keys, knobs and many other shimmering things. The latter type of messages can be outputted from <strong>sample channels</strong> as well.</p>
+
+<p>The following table shows what you can and cannot output from channels:</p>
+
+<table class="table">
+<tr>
+  <td></td>
+  <td>regular MIDI messages</td>
+  <td>MIDI lightning messages</td>
+</tr>
+<tr>
+  <td>Sample channel</td>
+  <td>✘</td>
+  <td>✔</td>
+</tr>
+<tr>
+  <td>MIDI channel</td>
+  <td>✔</td>
+  <td>✔</td>
+</tr>
+</table>
+
+<h3>MIDI output from MIDI channels</h3>
+
+<p>Click on the <strong>main button</strong> of a MIDI channel <img src="/giada/img/midi-button.png" alt="Main button" title="Main button" class="inline"> and select <em>Setup MIDI output</em> from the popup.
+</p>
+
+
+<h3>MIDI output from Sample channels</h3>
