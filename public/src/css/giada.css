@@ -185,11 +185,9 @@ a:hover     { text-decoration: none; }
 
 #documentation h1,
 #documentation h2,
-#documentation h3 {
-	margin: 40px 0;
-}
+#documentation h3,
 #documentation h4 {
-	margin: 25px 0;
+	margin: 40px 0;
 }
 
 #documentation li {
