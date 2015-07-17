@@ -8,7 +8,7 @@ class Module implements \Phalcon\Mvc\ModuleDefinitionInterface
 {
 	/* register a specific autoloader for the module */
 	
-	public function registerAutoloaders()
+	public function registerAutoloaders(\Phalcon\DiInterface $di=null)
 	{
 		$loader = new \Phalcon\Loader();
 		$loader->registerNamespaces(
@@ -23,7 +23,7 @@ class Module implements \Phalcon\Mvc\ModuleDefinitionInterface
 	/**
 	 * Register specific services for the module
 	 */
-	public function registerServices($di)
+	public function registerServices(\Phalcon\DiInterface $di=null)
 	{
 		//Registering a dispatcher
 		
