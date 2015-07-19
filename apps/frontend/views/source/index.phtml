@@ -31,11 +31,18 @@
 					<th>sha</th>
 				</tr>
 				{% for d in dir %}
-				<tr>
-					<td><a href="source/show/{{ d['name'] }}">{{ d['name'] }}</a></td>
-					<td>{{ d['size'] }}</td>
-					<td>{{ d['sha'] }}</td>
-				</tr>
+					{% if d['path'] in blacklist %}
+						{% continue %}
+					{% endif %}
+					<tr>
+						<td><a href="{{ url('source/show/' ~ d['path']) }}">{{ d['name'] }}</a></td>
+						{% if d['type'] == 'file' %}
+							<td>{{ d['size'] }}</td>
+						{% else %}
+							<td>directory</td>
+						{% endif %}
+						<td>{{ d['sha'] }}</td>
+					</tr>
 				{% endfor %}
 			</table>
 		</div>

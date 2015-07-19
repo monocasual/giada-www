@@ -17,6 +17,31 @@
 
 	<div class="row margin-top-xl">
 		<div class="col-md-12">
+
+			{% if type == 'dir' %}
+
+			<h1>{{ path }}</h1>
+			<table class="table margin-top-l">
+				<tr>
+					<th>name</th>
+					<th>size (kB)</th>
+					<th>sha</th>
+				</tr>
+				{% for d in dir %}
+				<tr>
+					<td><a href="{{ url('source/show/' ~ d['path']) }}">{{ d['name'] }}</a></td>
+					{% if d['type'] == 'file' %}
+						<td>{{ d['size'] }}</td>
+					{% else %}
+						<td>directory</td>
+					{% endif %}
+					<td>{{ d['sha'] }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+
+			{% else %}
+
 			<h1>{{ file }} - source code</h1>
 			<pre class="code margin-top-l"><code>{{ content }}</code></pre>
 
@@ -38,6 +63,9 @@
 				</tr>
 				{% endfor %}
 			</table>
+
+			{% endif %}
+
 		</div>
 	</div>
 
