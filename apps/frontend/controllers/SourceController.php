@@ -57,7 +57,7 @@ class SourceController extends BaseController
 			$this->view->setVar('file', $file);
 			$source = $this->getNode($file);
 			if ($source == 0)
-				$this->response->redirect('404');
+				$this->response->redirect('show404');
 			$this->view->setVar('type', 'file');
 			$this->view->setVar('file', $file);
 			$this->view->setVar('size', number_format($source['size']));
@@ -76,7 +76,7 @@ class SourceController extends BaseController
 		if (!$this->view->getCache()->exists($cacheKey))
 			$source = $this->getNode($d);
 			if ($source == 0)
-				$this->response->redirect('404');
+				$this->response->redirect('show404');
 			$this->view->setVar('type', 'dir');
 			$this->view->setVar('blacklist', $this->blacklist);
 			$this->view->setVar('path', $d);
