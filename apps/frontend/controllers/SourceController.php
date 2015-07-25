@@ -29,8 +29,11 @@ class SourceController extends BaseController
 	{
 		$this->jsonService->init('https://api.github.com/repos/monocasual/giada/contents/'.$n, $this->token);
 		$data = $this->jsonService->get(true);
+		$this->logger->debug('[SourceController::getNode]' . json_encode($data, JSON_PRETTY_PRINT));
 		if (!array_key_exists('message', $data))
 			return $data;
+		$this->logger->error('[SourceController::getNode] wrong data returned from GitHub!');
+		$this->logger->debug('[SourceController::getNode]' . json_encode($data, JSON_PRETTY_PRINT));
 		return 0;
 	}
 
