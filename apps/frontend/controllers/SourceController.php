@@ -77,6 +77,7 @@ class SourceController extends BaseController
 	{
 		$cacheKey = 'source-'.str_replace(array('.', '/'), '-', $d);
 		if (!$this->view->getCache()->exists($cacheKey))
+		{
 			$source = $this->getNode($d);
 			if ($source == 0)
 				$this->response->redirect('show404');
@@ -84,6 +85,7 @@ class SourceController extends BaseController
 			$this->view->setVar('blacklist', $this->blacklist);
 			$this->view->setVar('path', $d);
 			$this->view->setVar('dir', $source);
+		}
 		$this->view->cache(array('key' => $cacheKey));
 	}
 

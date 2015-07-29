@@ -1,6 +1,6 @@
 {
 	"name"         : "giada-www",
-	"version"      : "0.0.0",
+	"version"      : "0.0.1",
   "description"  : "giada www",
   "dependencies" : {
 		"grunt"                : "0.4.5",

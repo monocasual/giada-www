@@ -38,9 +38,13 @@
 
 	</head>
 	<body>
+    <div class="cookie-banner">
+      <p>We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners.<br><a href="{{ url('privacy') }}">See details</a> | <a href="#" class="cookie-banner__close">ok, got it</a></p>
+    </div>
 		{% include 'partials/header.phtml' %}
 		{% block content %}{% endblock %}
 		{% include 'partials/footer.phtml' %}
+    <script src="{{ url('js/main-' ~ config.assets.version ~ '.js') }}"></script>
 		{% block scripts %}{% endblock %}
 	</body>
 </html>

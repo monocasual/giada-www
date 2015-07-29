@@ -26,6 +26,7 @@ module.exports = function(grunt)
         src: [
           'src/js/deps/jquery-1.11.1.js',
           'src/js/deps/**',
+          'src/js/**',
         ],
         dest: 'js/main-<%= pkg.version %>.js'
       },

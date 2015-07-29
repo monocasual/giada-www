@@ -161,6 +161,17 @@ a:hover     { text-decoration: none; }
 	filter: alpha(opacity=40); /* For IE8 and earlier */
 }
 
+.cookie-banner {
+  background-color: #333333;
+  color: #FFFFFF;
+  font-size: 0.9em;
+  padding: 0.5em;
+  text-align: center;
+}
+
+.cookie-banner p {
+  margin: 0;
+}
 
 /* -------------------------------------------------------------------------- */
 
