@@ -173,6 +173,12 @@ a:hover     { text-decoration: none; }
   margin: 0;
 }
 
+.cookie-banner p a {
+  color: #AFAFAF;
+	border-bottom: 1px dotted #AFAFAF;
+	text-decoration: none;
+}
+
 /* -------------------------------------------------------------------------- */
 
 #header nav li a {
