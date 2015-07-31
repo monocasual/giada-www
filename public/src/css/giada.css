@@ -162,6 +162,7 @@ a:hover     { text-decoration: none; }
 }
 
 .cookie-banner {
+  display: none;
   background-color: #333333;
   color: #FFFFFF;
   font-size: 0.9em;
