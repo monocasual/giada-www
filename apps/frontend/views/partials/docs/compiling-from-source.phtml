@@ -15,12 +15,7 @@ e.g. if you want to compile for Linux, do:
 ./configure --target=linux
 </p>
 <p>
-When the script is done without errors, change directory to <span class="code">src</span>	then type</p>
-<p class="code">
-make libs
-</p>
-<p>
-in order to compile the included libraries, and finally
+When the script is done without errors, do:
 </p>
 <p class="code">
 make
@@ -39,7 +34,7 @@ to copy the binary file into /usr/local/bin path.
 
 <h2>Dependencies</h2>
 <p>
-Giada is based upon <a href="http://www.fltk.org/" title="FLTK GUI Toolkit">FLTK</a> (GUI), <a href="http://www.mega-nerd.com/libsndfile/" title="libsndfile">libsndfile</a>, <a href="http://www.mega-nerd.com/SRC/" title="libsamplerate">libsamplerate</a>, <a href="http://www.music.mcgill.ca/~gary/rtmidi/" title="RtMidi">RtMidi</a> and a custom version of <a href="http://www.music.mcgill.ca/~gary/rtaudio/" title="rtAudio">RtAudio</a>, shipped with the source package. Our hacked RtAudio provides Jack Transport support on Linux, a feature that you wouldn't find in the vanilla release. At the present moment <sup>September 2014, version 0.9.1</sup> we suggest you to use the following versions:
+Giada is based upon <a href="http://www.fltk.org/" title="FLTK GUI Toolkit">FLTK</a> (GUI), <a href="http://www.mega-nerd.com/libsndfile/" title="libsndfile">libsndfile</a>, <a href="http://www.mega-nerd.com/SRC/" title="libsamplerate">libsamplerate</a>, <a href="http://www.music.mcgill.ca/~gary/rtmidi/" title="RtMidi">RtMidi</a> and a custom version of <a href="http://www.music.mcgill.ca/~gary/rtaudio/" title="rtAudio">RtAudio</a>, shipped with the source package. Our hacked RtAudio provides Jack Transport support on Linux, a feature that you wouldn't find in the vanilla release. At the present moment <sup>August 2015, version 0.10.1</sup> we suggest you to use the following versions:
 </p>
 
 <ul>
@@ -78,11 +73,11 @@ To solve this issue:
 	</li>
 
 	<li>
-		create a new folder called <span class="code">vst</span> inside <span class="code">Giada/src</span>;
+		create a new folder (if it does not exist yet) called <span class="code">vst</span> inside <span class="code">giada-[version]-src/src/deps</span>;
 	</li>
 
 	<li>
-		extract all files from the VST SDK package, browse to <span class="code">pluginterfaces/vst2.x</span>, grab <span class="code">aeffect.h</span>, <span class="code">aeffectx.h</span> and <span class="code">vstfxstore.h</span> and put	them inside the new <span class="code">vst</span> folder;
+		extract all files from the VST SDK package, browse to <span class="code">pluginterfaces/vst2.x</span>, grab <span class="code">aeffect.h</span>, <span class="code">aeffectx.h</span> and <span class="code">vstfxstore.h</span> and put them inside the new <span class="code">vst</span> folder;
 	</li>
 
 	<li>
