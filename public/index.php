@@ -63,7 +63,7 @@ $di->set('db', function()
 $di->set('logger', function()
 {
 	$l = new \Phalcon\Logger\Adapter\File('../var/logs/output.log');
-	$l->setLogLevel(\Phalcon\Logger::DEBUG);
+	$l->setLogLevel(\Phalcon\Logger::INFO);
 	return $l;
 });
 
