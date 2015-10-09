@@ -6,9 +6,8 @@ namespace Giada\Frontend\Controllers;
 
 class SourceController extends BaseController
 {
-
 	private $jsonService;
-	private $token = 'a97c99cd5b97f6d4675f84e5c72efbd94b909eff:x-oauth-basic';
+	private $token;
 	private $blacklist = array(
 		'src/vst',
 		'src/rtaudio-mod'
@@ -94,6 +93,7 @@ class SourceController extends BaseController
 	public function initialize()
 	{
 		$this->jsonService = $this->di->getShared('jsonService');
+		$this->token = $this->config->services->github_token.':x-oauth-basic';
 	}
 
 	/* ------------------------------------------------------------------------ */
