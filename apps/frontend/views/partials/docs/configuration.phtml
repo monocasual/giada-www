@@ -2,7 +2,7 @@
 <h1>Configuration</h1>
 
 <p>
-This panel gives you the ability to tweak hardware parameters as well as operational modes, through	three different tabs: <strong>Sound System</strong>, <strong>MIDI</strong> and <strong>Behaviors</strong>.
+This panel gives you the ability to tweak hardware parameters as well as operational modes, through	four different tabs: <strong>Sound System</strong>, <strong>MIDI</strong>, <strong>Behaviors</strong> and <strong>Misc</strong>.
 </p>
 
 <h2>Sound System</h2>
@@ -32,6 +32,7 @@ This panel gives you the ability to tweak hardware parameters as well as operati
 		<li><strong>Sinc medium quality</strong> — not fast, good quality;</li>
 		<li><strong>Sinc best quality</strong> — slow, super quality.</li>
 	</ol>
+	Warning: this is <em>not</em> the algorithm used for pitch manipulation, which is currently <sup>December 2015</sup> hardcoded to Linear quality for speed purposes.
 </li>
 </ul>
 
@@ -66,7 +67,6 @@ This panel gives you the ability to tweak hardware parameters as well as operati
 <li><strong>Treat recorded channels as loops</strong> — By default a click on the "R" button <img src="{{ url('img/read-recs-button.png') }}" alt="Read recordings button" title="Read recordings button" class="inline" /> (or the <span class="code">shift + [key]</span>	combination) stops immediately any recorded action. When this option is enabled any channel whose actions	are suspended puts itself in ending mode, as the loop mode would do, and stops at the next first beat.
 </li>
 
-<li><strong>Bring channels to full volume on sample load</strong> — a useful time saver.</li>
 </ul>
 
 <h2>Misc</h2>
@@ -79,7 +79,6 @@ This panel gives you the ability to tweak hardware parameters as well as operati
 		<li><strong>(disabled)</strong> — don't print anything anywhere;</li>
 		<li><strong>To standard output</strong> — print messages on the command line, only if you run Giada from the terminal. This mode doesn't work on Windows;</li>
 		<li><strong>To file</strong> — save messages to <span class="code">giada.log</span>, located in the same place of the configuration file as described in the <a href="{{ url('documentation/show/introduction') }}">introduction</a> chapter.</li>
-
 	</ol>
 </li>
 </ul>
