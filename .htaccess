@@ -1,3 +1,8 @@
+# ------------------------------------------------------------------------------
+# Clickjacking protection: nobody can put the site inside an iframe.
+# ------------------------------------------------------------------------------
+Header set X-Frame-Options DENY
+
 
 # ------------------------------------------------------------------------------
 # enable rewrite engine with RewriteBase.
