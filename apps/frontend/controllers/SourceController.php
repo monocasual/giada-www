@@ -43,7 +43,7 @@ class SourceController extends BaseController
 		$this->logJson('SourceController::getNode', $data);
 		if (!array_key_exists('message', $data))
 			return $data;
-		$this->logger->error('[SourceController::getNode] wrong data returned from GitHub!');
+		$this->logger->error('[SourceController::getNode] wrong data returned from GitHub! Requested node: '.$n);
 		$this->logJson('SourceController::getNode', $data);
 		return 0;
 	}
