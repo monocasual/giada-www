@@ -1,3 +1,6 @@
-<a href="https://www.facebook.com/sharer/sharer.php?u={{ config.urls.base }}">
-	[FACEBOOK - {{ socialStats['facebook'] }}]
-</a>
+<div class="share-button facebook">
+	<a href="https://www.facebook.com/sharer/sharer.php?u={{ config.urls.base }}">
+		<img src="{{ url('img/social-icons-facebook.png') }}" alt="Facebook" title="Giada @ Facebook">
+		<span>{{ socialStats['facebook'] }}</span>
+	</a>
+</div>

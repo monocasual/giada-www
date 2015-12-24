@@ -78,6 +78,7 @@
 		</div>
 	</div>
 
+	{#
 	<div class="row margin-top-xl">
 		<div class="col-md-8 col-md-offset-2 text-center social-links">
 			<a href="{{ url('feed') }}" title="Giada RSS feed" class="imagelink">
@@ -109,6 +110,7 @@
 			</a>
 		</div>
 	</div>
+	#}
 
 	<div class="row center-block margin-top-xl">
 		<div class="col-md-6">
@@ -180,7 +182,7 @@
 							{% for n in news %}
 							<div class="margin-top-l padding-top-s {% if !loop.first %} line-top {% endif %}">
 								<h3 class="description">{{ n.getTitle() }}</h3>
-								<span class="pull-left margin-right-s red">{{ n.getDate() }} ― </span> {{ n.getText() }}	
+								<span class="pull-left margin-right-s red">{{ n.getDate() }} ― </span> {{ n.getText() }}
 							</div>
 							{% endfor %}
 						</div>

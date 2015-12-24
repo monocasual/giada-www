@@ -1,3 +1,5 @@
 <a href="http://www.reddit.com/submit?url={{ config.urls.base | url_encode}}&title={{ config.metas.title | url_encode}}">
-  [REDDIT - {{ socialStats['reddit'] }}]
+
+  <img src="{{ url('img/social-icons-reddit.png') }}" alt="reddit" title="Giada @ Reddit">
+  <span>{{ socialStats['reddit'] }}</span>
 </a>
