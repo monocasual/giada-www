@@ -108,7 +108,7 @@ $loader->registerNamespaces(array(
 $loader->register();
 
 
-/* add custom services */
+/* inject jsonService as a shared (i.e. a singleton) service. */
 
 $di->setShared('jsonService', function()
 {

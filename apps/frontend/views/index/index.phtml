@@ -157,46 +157,37 @@
 
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-			<h2 class="margin-top-xl text-center">Latest news from our laboratories.</h2>
-			{% for n in news %}
-			<div class="margin-top-l padding-top-s {% if !loop.first %} line-top {% endif %}">
-				<h3 class="description">{{ n.getTitle() }}</h3>
-				<span class="pull-left margin-right-s"><span class="red">{{ n.getDate() }}</span> ― </span> {{ n.getText() }}
-			</div>
-			{% endfor %}
-		</div>
-	</div>
-
-	<div class="row margin-top-xl">
-		<div class="col-md-4">
-			{% if config.assets.socials %}
+			<h2 class="margin-top-xl text-center">Sharing is caring!</h2>
 			<div class="list-inline text-center">
 				{{ partial('partials/socials/facebook-like') }}
 				{{ partial('partials/socials/twitter-like') }}
 				{{ partial('partials/socials/reddit') }}
 				{{ partial('partials/socials/flattr') }}
 				{{ partial('partials/socials/google-plus') }}
-			</div>
-			<div class="github-widget margin-top-s" data-repo="monocasual/giada"></div>
-			{% endif %}
-		</div>
-
-		<div class="col-md-4">
-			<div class="social-box" id="twitter-tweets-box">
-				{% if config.assets.socials %}
-					{{ partial('partials/socials/twitter-tweetbox') }}
-				{% endif %}
-			</div>
-		</div>
-
-		<div class="col-md-4">
-			<div class="social-box" id="facebook-like-box">
-				{% if config.assets.socials %}
-					{{ partial('partials/socials/facebook-likebox') }}
-				{% endif %}
+				{{ partial('partials/socials/github') }}
 			</div>
 		</div>
 	</div>
-
 </div><!-- container -->
+
+<div class="container-fluid news-list">
+  <div class="row">
+      <div class="col-sm-12">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1">
+							<h2 class="margin-top-xl text-center">Latest news from our laboratories.</h2>
+							{% for n in news %}
+							<div class="margin-top-l padding-top-s {% if !loop.first %} line-top {% endif %}">
+								<h3 class="description">{{ n.getTitle() }}</h3>
+								<span class="pull-left margin-right-s red">{{ n.getDate() }} ― </span> {{ n.getText() }}	
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

@@ -357,3 +357,21 @@ a:hover     { text-decoration: none; }
   float: right;
   margin-left: 20px;
 }
+
+.news-list {
+	margin-top: 50px;
+	padding-bottom: 50px;
+	background-color: #333333;
+}
+
+.news-list p,
+.news-list h2,
+.news-list span,
+.news-list li {
+	color: #F7F7F7;
+}
+
+.news-list p a,
+.news-list span.red {
+	color: #E56138;
+}

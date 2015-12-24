@@ -1,1 +1,3 @@
-<script id="fb5d0s9">(function(i){var f,s=document.getElementById(i);f=document.createElement("iframe");f.src="//api.flattr.com/button/view/?uid=giadamusic&url=http%3A%2F%2Fwww.giadamusic.com%2F";f.title="Flattr";f.height=62;f.width=55;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})("fb5d0s9");</script>
+<a href="https://flattr.com/submit/auto?user_id={{ config.services.flattr_id }}&url={{ config.urls.base | url_encode }}&title={{ config.metas.title | url_encode }}&description={{ config.metas.description | url_encode }}&language=en_GB&tags={{ config.metas.keywords | url_encode }}&category=software">
+  [FLATTR - {{ socialStats['flattr'] }}]
+</a>
