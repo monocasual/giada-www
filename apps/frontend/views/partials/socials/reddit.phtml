@@ -1,5 +1,6 @@
-<a href="http://www.reddit.com/submit?url={{ config.urls.base | url_encode}}&title={{ config.metas.title | url_encode}}">
-
-  <img src="{{ url('img/social-icons-reddit.png') }}" alt="reddit" title="Giada @ Reddit">
-  <span>{{ socialStats['reddit'] }}</span>
-</a>
+<div class="share-button reddit">
+  <a target="_blank" href="http://www.reddit.com/submit?url={{ config.urls.base | url_encode}}&title={{ config.metas.title | url_encode}}">
+    <img src="{{ url('img/social-icons-reddit.png') }}" alt="reddit" title="Share Giada on Reddit">
+    <span>{{ socialStats['reddit'] }}</span>
+  </a>
+</div>

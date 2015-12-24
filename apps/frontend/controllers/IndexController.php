@@ -89,6 +89,7 @@ class IndexController extends BaseController
 			$socialStats['reddit'] = $this->countRedditShares();
 			$socialStats['flattr'] = $this->countFlattrShares();
 			$socialStats['github'] = $this->countGithubShares();
+			$socialStats['google'] = 140; // !!!
 
 			$this->view->setVar('news', $news);
 			$this->view->setVar('socialStats', $socialStats);

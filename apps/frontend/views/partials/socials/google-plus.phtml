@@ -1,6 +1,6 @@
 <div class="share-button google">
-  <a href="https://plus.google.com/share?url={{ config.urls.base | url_encode }}">
-    <img src="{{ url('img/social-icons-google.png') }}" alt="Google+" title="Giada @ Google+">
-    <span>-</span>
+  <a target="_blank" href="https://plus.google.com/share?url={{ config.urls.base | url_encode }}">
+    <img src="{{ url('img/social-icons-google.png') }}" alt="Google+" title="Share Giada on Google+">
+    <span>{{ socialStats['google'] }}</span>
   </a>
 </div>
