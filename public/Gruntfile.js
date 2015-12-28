@@ -74,7 +74,7 @@ module.exports = function(grunt)
   /* custom config vars */
 
   grunt.config.set('basePath', grunt.config.get('pkg.vars.' + grunt.cli.tasks[0] + '.base_path'));
-  grunt.config.set('environment', grunt.config.get('pkg.vars.' + grunt.cli.tasks[0]));
+  grunt.config.set('environment', grunt.cli.tasks[0]);
 
   /* tell grunt the plugins we use */
 
