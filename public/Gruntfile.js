@@ -9,12 +9,14 @@ module.exports = function(grunt)
     preprocess: {
       options: {
         context: {
-          'BASE_PATH': '<%= basePath %>'
+          'BASE_PATH': '<%= basePath %>',
+          'ENVIRONMENT': '<%= environment %>',
         }
       },
       all: {
         files: {
-        'css/main-<%= pkg.version %>.css' : 'css/main-<%= pkg.version %>.css'
+          //'css/main-<%= pkg.version %>.css' : 'css/main-<%= pkg.version %>.css'
+          'js/main-<%= pkg.version %>.js' : 'js/main-<%= pkg.version %>.js'
         }
       }
     },
@@ -72,6 +74,7 @@ module.exports = function(grunt)
   /* custom config vars */
 
   grunt.config.set('basePath', grunt.config.get('pkg.vars.' + grunt.cli.tasks[0] + '.base_path'));
+  grunt.config.set('environment', grunt.config.get('pkg.vars.' + grunt.cli.tasks[0]));
 
   /* tell grunt the plugins we use */
 
@@ -85,13 +88,12 @@ module.exports = function(grunt)
 
   grunt.registerTask('dev', [
     'concat',
-    //'preprocess'
-    'uglify',
+    'preprocess'
   ]);
 
-  grunt.registerTask('dist', [
+  grunt.registerTask('prod', [
     'concat',
-    //'preprocess',
+    'preprocess',
     'uglify',
     'cssmin'
   ]);

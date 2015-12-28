@@ -14,7 +14,7 @@
 		"dev": {
 			"base_path" : "/giada"
 		},
-		"dist": {
+		"prod": {
 			"base_path" : ""
 		}
 	}
