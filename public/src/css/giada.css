@@ -273,6 +273,7 @@ a:hover     { text-decoration: none; }
 .carousel {
 	padding-left: 50px;
 	padding-right: 50px;
+	overflow: hidden;
 }
 
 .carousel-control {
@@ -288,11 +289,11 @@ a:hover     { text-decoration: none; }
 }
 
 .carousel-control.left {
-    margin-left: -25px;
+    margin-left: -20px;
 }
 
 .carousel-control.right {
-    margin-right: -25px;
+    margin-right: -20px;
 }
 
 .carousel-control .glyphicon {
