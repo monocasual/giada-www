@@ -13,7 +13,14 @@ class DocumentationController extends BaseController
 
 	public function showAction($page)
 	{
-		$this->view->partial('partials/docs/'.$page);
+		try {
+			$this->view->partial('partials/docs/'.$page);
+		}
+		catch(\Exception $e)
+		{
+			$this->logger->error('[DocumentationController::index] unable to find page "'.$page.'"');
+			$this->response->redirect('show404');
+		}
 		$this->view->setVar('title', str_replace('-', ' ', ucfirst($page)));
 		$this->view->setVar('page', $page);
 	}

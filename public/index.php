@@ -24,14 +24,14 @@ $di->set('router', function()
 	$router->setDefaultModule('frontend');
 
 	$router->add('/api', array(
-			'module'     => 'api',
-			'controller' => 'index'
+		'module'     => 'api',
+		'controller' => 'index'
 	));
 
 	$router->add('/api/:controller/:action', array(
-			'module'     => 'api',
-			'controller' => 1,
-			'action'     => 2
+		'module'     => 'api',
+		'controller' => 1,
+		'action'     => 2
 	));
 	return $router;
 });
