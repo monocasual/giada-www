@@ -81,7 +81,7 @@ class IndexController extends BaseController
 		{
 			$news = \Giada\Models\News::find(array(
 				'order' => 'date DESC',
-				'limit' => 4
+				'limit' => 5
 			));
 
 			$socialStats = array();
