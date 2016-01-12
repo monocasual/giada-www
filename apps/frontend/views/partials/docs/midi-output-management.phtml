@@ -40,7 +40,7 @@
 
 <p>You bind controller elements to the events through the MIDI learning tool shown on the left, which works in the same way of the MIDI input learning tool described in <a href="{{ url('documentation/show/midi-input-management') }}">MIDI input management</a>.</p>
 
-<p>Currently <sup>July 2015</sup> you can light up your device for the following events:</p>
+<p>Currently <sup>January 2016</sup> you can light up your device for the following events:</p>
 
 <ul>
   <li><strong>playing</strong> events, including <em>start</em>, <em>stop</em>, <em>wait</em>, <em>ending</em> statuses;
@@ -50,7 +50,7 @@
 
 <h3>How MIDI lightning works</h3>
 
-<p>Giada needs to know what data to send when MIDI lightning occurs. Each hardware producer defines its own set of messages, so we introduce the concept of <strong>midimap files</strong>. A midimap is a plain text file where you define what kind of messages you want Giada to send. They reside in your configuration directory, or more precisely:</p>
+<p>Giada needs to know what data to send when MIDI lightning occurs. Each hardware producer defines its own set of messages, so we introduce the concept of <strong>midimap files</strong>. A midimap is a JSON-formatted text file where you define what kind of messages you want Giada to send. They reside in your configuration directory, or more precisely:</p>
 
 <ul>
 	<li>Linux — <span class="code">/home/[your_user]/.giada/midimaps/</span>;</li>
@@ -64,34 +64,79 @@
 
 <p>A midimap file follows this naming convention: <span class="code">[brand]-[device].giadamap</span>, lower-case text. For example if you own the <a href="http://www.akaipro.com/product/apc20">Akai APC20</a>, the corresponding midimap file would be <span class="code">akai-apc20.giadamap</span>.</p>
 
-<p>On the inside you will find a map made of <em>[key]=[value]</em> elements. The following is a complete midimap file, with placeholders:</p>
+<p>On the inside you will find a collection of JSON objects. Every midimap command is made of two things: a <em>key</em> and a <em>message</em>. The following is a complete midimap file, with placeholders:</p>
 
-<p class="code">
-brand=[text]<br />
-device=[text]<br />
-init_commands=[lightning-message-1];[lightning-message-1];[...][lightning-message-32]<br />
-mute_on=[lightning-message]<br />
-mute_off=[lightning-message]<br />
-solo_on=[lightning-message]<br />
-solo_off=[lightning-message]<br />
-waiting=[lightning-message]<br />
-playing=[lightning-message]<br />
-stopping=[lightning-message]<br />
-stopped=[lightning-message]
-</p>
+<pre class="code">
+{
+  "brand": "[text]",
+  "device": "[text]",
+  "init_commands": [
+    {
+      "channel": [MIDI-channel],
+      "message": "[hex-message]"
+    },
+    {
+      "channel": [MIDI-channel],
+      "message": "[hex-message]"
+    },
+    ...
+  ],
+  "mute_on": {
+    "channel": [MIDI-channel],
+    "message": "[hex-message]"
+  },
+  "mute_off": {
+    "channel": [MIDI-channel],
+    "message": "[hex-message]"
+  },
+  "solo_on": {
+    "channel": [MIDI-channel],
+    "message": "[hex-message]"
+  },
+  "solo_off": {
+    "channel": [MIDI-channel],
+    "message": "[hex-message]"
+  },
+  "waiting": {
+    "channel": [MIDI-channel],
+    "message": "[hex-message]"
+  },
+  "playing": {
+    "channel": [MIDI-channel],
+    "message": "[hex-message]"
+  },
+  "stopping": {
+    "channel": [MIDI-channel],
+    "message": "[hex-message]"
+  },
+  "stopped": {
+    "channel": [MIDI-channel],
+    "message": "[hex-message]"
+  }
+}
+</pre>
 
-<p>The first three lines are the <em>initializers</em>:</p>
+<p>The first three elements are the <em>initializers</em>:</p>
 <ul>
 <li><strong>brand</strong> — the producer name;</li>
 <li><strong>device</strong> — the device name;</li>
-<li><strong>init_commands</strong> — a set of lightning messages (up to 32) sent on startup.</li>
+<li><strong>init_commands</strong> — a set of lightning messages sent on startup.</li>
 </ul>
 
-<p>The remaining lines are the <em>events</em>, defining what MIDI lighting message to send when each of them occur.</p>
+<p>The remaining elements are the <em>events</em>, defining what MIDI lighting message to send when each of them occur.</p>
 
 <h4>Writing a MIDI lightning message</h4>
 
-<p>A MIDI lightning message follows this structure: <span class="code">[MIDI-channel]:[hex-message]</span>. In details:</p>
+<p>A MIDI lightning message follows this structure:</p>
+
+<pre class="code">
+{
+  "channel": [MIDI-channel],
+  "message": "[hex-message]"
+}
+</pre>
+
+<p>In details:</p>
 
 <ul>
 <li><strong>MIDI-channel</strong> — the MIDI channel where to output to, in a numeric range of 0-15;</li>
@@ -100,28 +145,69 @@ stopped=[lightning-message]
 
 <p>The hexadecimal message contains a special placeholder for the note. Since each message is customized by the vendor, you have to specify where the byte for the note resides. The placeholder is defined as <span class="code">nn</span>; Giada will replace it on the fly once the key has been configured and grabbed with the MIDI learning tool seen before. Below a couple of illustrative lightning messages:</p>
 
-<p class="code">
-0:0x90nn3B00 --- MIDI channel 0, note on byte 2<br />
-7:0x803Bnn00 --- MIDI channel 7, note on byte 3
-</p>
+<pre class="code">
+{
+  "channel": 0,               // MIDI channel 0
+  "message": "0x90nn3B00"     // note on byte 2
+},
+{
+  "channel": 7,               // MIDI channel 7
+  "message": "0x803Bnn00"     // note on byte 3
+},
+</pre>
 
 <h4>A complete example of a midimap file</h4>
 
 <p>The following is a midimap file prepared for the <a href="http://global.novationmusic.com/launch/launchpad-s">Novation Launchpad S</a> MIDI controller:</p>
 
-<p class="code">
-brand=Novation<br />
-device=Launchpad S<br />
-init_commands=0:0xB0000000;0:0xB0002800<br />
-mute_on=0:0x90nn3F00<br />
-mute_off=0:0x90nn0C00<br />
-solo_on=0:0x90nn0F00<br />
-solo_off=0:0x90nn0C00<br />
-waiting=0:0x90nn3800<br />
-playing=0:0x90nn3C00<br />
-stopping=0:0x90nn3B00<br />
-stopped=0:0x90nn0C00
-</p>
+<pre class="code">
+{
+  "brand": "AKAI",
+  "device": "LPD8",
+  "init_commands": [
+    {
+      "channel": 0,
+      "message": "0xB0000000"
+    },
+    {
+      "channel": 0,
+      "message": "0xB0002800"
+    }
+  ],
+  "mute_on": {
+    "channel": 0,
+    "message": "0x90nn3F00"
+  },
+  "mute_off": {
+    "channel": 0,
+    "message": "0x90nn0C00"
+  },
+  "solo_on": {
+    "channel": 0,
+    "message": "0x90nn0F00"
+  },
+  "solo_off": {
+    "channel": 0,
+    "message": "0x90nn0C00"
+  },
+  "waiting": {
+    "channel": 0,
+    "message": "0x90nn7f00"
+  },
+  "playing": {
+    "channel": 0,
+    "message": "0x90nn7f00"
+  },
+  "stopping": {
+    "channel": 0,
+    "message": "0x90nn7f00"
+  },
+  "stopped": {
+    "channel": 0,
+    "message": "0x80nn7f00"
+  }
+}
+</pre>
 
 <h3>Where do I find midimaps?</h3>
 
