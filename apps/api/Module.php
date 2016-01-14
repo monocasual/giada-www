@@ -7,7 +7,7 @@ namespace Giada\Api;
 class Module implements \Phalcon\Mvc\ModuleDefinitionInterface
 {
 	/* register a specific autoloader for the module */
-	
+
 	public function registerAutoloaders(\Phalcon\DiInterface $di=null)
 	{
 		$loader = new \Phalcon\Loader();
@@ -26,7 +26,7 @@ class Module implements \Phalcon\Mvc\ModuleDefinitionInterface
 	public function registerServices(\Phalcon\DiInterface $di=null)
 	{
 		//Registering a dispatcher
-		
+
 		$di->set('dispatcher', function()
 		{
 			$dispatcher = new \Phalcon\Mvc\Dispatcher();
@@ -35,7 +35,8 @@ class Module implements \Phalcon\Mvc\ModuleDefinitionInterface
 		});
 
 		//Registering the view component
-		
+		// TODO - is this really needed?
+
 		$di->set('view', function()
 		{
 			$view = new \Phalcon\Mvc\View();
