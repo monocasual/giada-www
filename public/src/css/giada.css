@@ -362,3 +362,21 @@ a:hover     { text-decoration: none; }
 	color: #333333;
 	font-weight: bold;
 }
+
+.media-thumb:before {
+	content: '';
+  position: absolute;
+	top: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+	transition: all 0.5s;
+  background: url('../img/play-icon.svg');
+	background-size: 20%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.media-thumb:hover:before {
+  opacity: 0.9;
+}
