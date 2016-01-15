@@ -363,7 +363,11 @@ a:hover     { text-decoration: none; }
 	font-weight: bold;
 }
 
-.media-thumb:before {
+.media-thumb {
+	position: relative;
+}
+
+.media-thumb a:before {
 	content: '';
   position: absolute;
 	top: 0;
@@ -377,6 +381,6 @@ a:hover     { text-decoration: none; }
 	background-position: center;
 }
 
-.media-thumb:hover:before {
+.media-thumb a:hover:before {
   opacity: 0.9;
 }
