@@ -2,13 +2,7 @@
 <h1>Development: GIT setup</h1>
 
 <p>
-Our development version is hosted and mantained on <a href="https://github.com">GitHub</a>. The official page can be found at
-</p>
-<p class="code">
-	<a href="https://github.com/monocasual/giada">https://github.com/monocasual/giada</a>
-</p>
-<p>
-and the repository with the master branch at
+Our development version is hosted and mantained on GitHub. The official page can be found at <a href="https://github.com/monocasual/giada">github.com/monocasual/giada</a> and the repository with the master branch at
 </p>
 <p class="code">
 	https://github.com/monocasual/giada.git<br />
@@ -18,6 +12,39 @@ and the repository with the master branch at
 Please refer to the <a href="https://help.github.com/">GitHub documentation</a> on how to <em>fork</em>, <em>pull</em>, <em>push</em> and so on. If you're new to GitHub, we would suggest a very nice <a href="http://net.tutsplus.com/tutorials/other/getting-the-hang-of-github/">tutorial</a> for beginners.
 </p>
 
+<h2>Branching model</h2>
+
+<p>We put the most experimental code in a <em>feature</em> branch. When the new feature is completed, we merge/rebase the feature branch into <em>master</em> and we drop the feature branch. However the master branch does not necessarily point to the latest release. For that, we use tags, whenever a new release is ready. For example, if you do <span class="code">git tag --list</span> you will see the full tag list:</p>
+
+<p class="code">
+v0.10.0
+v0.10.1
+v0.10.2
+v0.11.0
+v0.11.1
+v0.11.2
+...
+</p>
+
+<p>Do you want the release v0.11.2? Just <span class="code">git checkout v0.11.2</span> and you're done.</p>
+
+<h2>TDD and continuous integration</h2>
+
+<p>Our development style strives to be test-driven as best it can. There is a daily growing test suite under <span class="code">src/tests</span> that you can compile and run as described in chapter <a href="{{ url('documentation/show/compiling-from-source') }}">Compiling from source</a>. A subset of those tests 
+are crafted for <a href="https://travis-ci.org/">Travis CI</a> and they rely upon travis.yml script, which takes care of some dependencies "dependencies" (wave files, midimaps, VST plugins and so on). The script basically downloads the needed files, for example:</p>
+
+<p class="code">
+# Download midimaps package for testing purposes
+
+- wget https://github.com/monocasual/giada-midimaps/archive/master.zip -O giada-midimaps-master.zip
+- unzip giada-midimaps-master.zip
+- mkdir -p $HOME/.giada/midimaps
+- cp giada-midimaps-master/midimaps/* $HOME/.giada/midimaps
+</p>
+
+<p>
+You can however run the tests locally thanks to our smart configure script: it's instructed to guess whether those dependencies are present. If not, all test cases that require external files will adjust themselves accordingly.
+</p>
 
 <h2>Compiling the source in the local repository</h2>
 <p>
