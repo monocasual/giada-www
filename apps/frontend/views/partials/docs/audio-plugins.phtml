@@ -1,0 +1,38 @@
+
+<h1>Audio plugins</h1>
+
+<p>
+Giada is able to host plugins (VST effects and VST instruments) thanks to the <a href="https://www.juce.com/">JUCE</a> framework, since version 0.12.0. You just have to follow three basic steps:
+</p>
+<ol>
+<li><p>scan the plugin directory, that is a folder where your plugins reside. You have to do that once, or whenever you add/install new plugins. How to do that is described in the <a href="{{ url('documentation/show/configuration') }}">Configuration</a> chapter;</p></li>
+<li><p>browse the available plugins by clicking the FX button <img src="{{ url('img/fx-button.png') }}" alt="FX button" title="FX button" class="inline" /> on each channel or next to input/output controllers;</p></li>
+<li><p>select the desired plugin and add it to the stack.</p></li>
+</ol>
+
+<h2>The plugin stack</h2>
+<p>The magic FX button <img src="{{ url('img/fx-button.png') }}" alt="FX button" title="FX button" class="inline" /> opens the list of the plugins currently in use. This is the window that lets you add or remove plugins to channels and master input/output. Wherever it is placed, when clicked it opens the plugin stack window.</p>
+<p><img src="{{ url('img/vst-window.png') }}" alt="The plugin stack window" title="The plugin stack window" class="first" /></p>
+
+<p>Each line corresponds to a plugin. Click on the <strong>name of the effect</strong> to open the plugin editor. By default Giada will try to display the graphical interface; in case the plugin doesn't provide one, another window will show a list of the available parameters tweakable through horizontal sliders.</p>
+
+<p>The drop-down menu on the right lists the <strong>presets</strong> (also known as <em>programs</em>). The <strong>check button</strong> <img src="{{ url('img/vst-window-check-button.png') }}" alt="Check button" title="Check button" class="inline" /> enables or disables the plugin while the <strong>up/down buttons</strong> <img src="{{ url('img/vst-window-up-down-buttons.png') }}" alt="Up/down buttons" title="Up/down buttons" class="inline" /> shift the plugin inside the stack. Finally the <strong>remove button</strong> <img src="{{ url('img/vst-window-remove-button.png') }}" alt="Remove button" title="Remove button" class="inline" /> takes away the plugin from the stack.
+Add a new plugin by clicking on the button at the end of the stack (<strong>add new plugin</strong>).
+</p>
+
+<h2>List the available plugins</h2>
+<p><img src="{{ url('img/docs/plugin-list.png') }}" alt="The plugin list window" title="The plugin list window" class="first" /></p>
+<p>
+This window shows up when you need to add a new plugin to a stack, by clicking on the <strong>add new plugin</strong> button seen above.
+</p>
+<p>It's a sorted list of all your plugins found in the system after the scan, with some useful information like the type, the manufacturer, the category and so on.</p>
+<p>How to add a plugin to the stack: select a plugin from the list and press <span class="code">enter</span> or click on <strong>add</strong> button.</p>
+
+<div class="clearfix"></div>
+
+<h2>Performances and plugin compatibility</h2>
+<p>You can load an unlimited number of plugins inside Giada; just be aware that they can stress your CPU, compromising the live performance.
+</p>
+<p>
+Plugins must be hosted in compatible environments which means, for example, that an OS X plugin cannot be loaded in the Windows version	of Giada and vice versa. Plugins also require binary compatibility with the host: you can't load a 32 bit plugins inside a 64 bit version of Giada and vice versa.
+</p>
