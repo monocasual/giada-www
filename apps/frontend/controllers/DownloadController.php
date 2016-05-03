@@ -9,12 +9,17 @@ class DownloadController extends BaseController
 	private function updateStats($os)
 	{
 		$stats = \Giada\Models\Stats::findFirst('version="'.$os.'"');
+		if (!$stats)
+		{
+			$this->logger->error('[DownloadController::updateStats] stats not found for os='.$os);
+			return;
+		}
 		$stats->increment();
 		if (!$stats->save())
 		{
-			$this->logger->error('[DownloadController::grabAction] unable to increment stats!');
+			$this->logger->error('[DownloadController::updateStats] unable to increment stats!');
 			foreach ($stats->getMessages() as $m)
-				$this->logger->error('[DownloadController::grabAction] ... '.$m);
+				$this->logger->error('[DownloadController::updateStats] ... '.$m);
 		}
 	}
 
@@ -46,7 +51,7 @@ class DownloadController extends BaseController
 		$this->view->md5win32 = md5_file($this->getPath('win-i386.zip'));
 		$this->view->md5lin32 = md5_file($this->getPath('lin-i386.tar.gz'));
 		$this->view->md5lin64 = md5_file($this->getPath('lin-amd64.tar.gz'));
-		$this->view->md5osx32 = md5_file($this->getPath('osx-i386.zip'));
+		$this->view->md5osx64 = md5_file($this->getPath('osx-amd64.zip'));
 		$this->view->md5src   = md5_file($this->getPath('src.tar.gz'));
 	}
 
