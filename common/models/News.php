@@ -26,6 +26,11 @@ class News extends \Phalcon\Mvc\Model
 	{
 		return $this->text;
 	}
+  
+  public function setDate($d)
+  {
+    $this->date = $d;
+  }
 	
 	public function setTitle($t)
 	{
