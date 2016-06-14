@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  if (typeof $.cookie.get('cookie-policy') !== 'undefined') {
+  if (typeof Cookies.get('cookie-policy') !== 'undefined') {
     $('.cookie-banner').hide();
   }
   else {
@@ -7,7 +7,7 @@ $(document).ready(function() {
   }
 
   $('.cookie-banner__close').click(function() {
-    $.cookie.set('cookie-policy', true, { expires: 365 }); // one year
+    Cookies.set('cookie-policy', true, { expires: 365 }); // one year
     $('.cookie-banner').hide();
   });
 });

@@ -47,6 +47,9 @@
 		{% include 'partials/header.phtml' %}
 		{% block content %}{% endblock %}
 		{% include 'partials/footer.phtml' %}
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.2/js.cookie.min.js"></script>		
     <script src="{{ url('js/main-' ~ config.assets.version ~ '.js') }}"></script>
 		{% block scripts %}{% endblock %}
 	</body>
