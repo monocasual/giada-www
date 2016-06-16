@@ -41,6 +41,21 @@
 
 	</head>
 	<body>
+		
+		{% if config.assets.social_plugins %}
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.6&appId=253917014775306";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+		</script>
+		
+		{% include 'partials/socials/facebook-follow-us-popup.phtml' %}
+		{% endif %}
+
     <div class="cookie-banner">
       <p>We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners.<br><a href="{{ url('privacy') }}">See details</a> | <a href="#" class="cookie-banner__close">ok, got it</a></p>
     </div>

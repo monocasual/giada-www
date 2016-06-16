@@ -384,3 +384,31 @@ a:hover     { text-decoration: none; }
 .media-thumb a:hover:before {
   opacity: 0.9;
 }
+
+/* -------------------------------------------------------------------------- */
+
+/* follow us popup */
+
+.glm-follow-us-popup {
+	position: fixed;
+	z-index: 1;
+	width: 500px;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center; /* align inner fb's div, which is inline-block */
+	background-color: #FFFFFF;
+	-webkit-box-shadow: 0px 6px 32px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow:    0px 6px 32px 0px rgba(0,0,0,0.75);
+	box-shadow:         0px 6px 32px 0px rgba(0,0,0,0.75);
+}
+
+.glm-follow-us-popup__header {
+	font-size: 1.8em;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.glm-follow-us-popup__footer {
+	padding: 13px;
+}
