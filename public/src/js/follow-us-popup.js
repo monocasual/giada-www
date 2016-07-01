@@ -1,13 +1,18 @@
-var PopUp = {
+var glm_PopUp = {
 
-	'el_popup':      $('.glm-follow-us-popup'),
-	'el_popupNope':  $('.glm-follow-us-popup__footer__nope'),
-	'el_popupClose': $('.glm-follow-us-popup__header__close'),
-	'el_iframe':     $('.glm-follow-us-popup iframe'),
-	'cookie':        'glm-facebook-like',
+	'elems': {
+		'popup':      $('.glm-follow-us-popup'),
+		'popupOk':    $('.glm-follow-us-popup__body__ok'),
+		'popupNope':  $('.glm-follow-us-popup__footer__nope'),
+		'popupClose': $('.glm-follow-us-popup__header__close'),
+	},
 
-	'toggle': function() {
-		 this.el_popup.fadeToggle(200);
+	'vars': {
+		'cookieName':   'glm-facebook-like',
+		'cookieTimeOk':  30,    // days
+		'cookieTimeKo':  7,     // days
+		'fadeoutTime':   200,   // ms
+		'showupTime':    1,     // ms
 	},
 
 	/* init */
@@ -15,46 +20,29 @@ var PopUp = {
 	'init': function() {
 
 		if (!this.hasCookieExpired()) {
-			//console.log('cookie not expired, nothing to do');
-			this.el_popup.hide();
+			this.elems.popup.hide();
 			return;
 		}
 
 		var self = this;
-		$.getScript('//connect.facebook.net/en_US/sdk.js', function() {
-			FB.init({
-				version    : 'v2.6',
-				appId      : glm_consts.FACEBOOK_APP_ID,
-				xfbml      : true,
-			});
-
-			self.isPageAlreadyLiked(
-				function() { // yes
-					//console.log('page already liked');
-					self.el_popup.hide();
-				},
-				function() { // no
-					//console.log('page not yet liked');
-					self.bindSubscribeEvent();
-					self.injectIframe();
-					window.setTimeout(function() { self.toggle(); }, 1000); // 15 secs
-				}
-			);
+		this.elems.popupNope.click(function(e) {
+			self.close(e, self.vars.cookieTimeKo, 'no facebook like, thanks');
+		});
+		this.elems.popupClose.click(function(e) {
+			self.close(e, self.vars.cookieTimeKo, 'close facebook popup (x)');
+		});
+		this.elems.popupOk.click(function(e) {
+			self.bindSubscribeEvent();
 		});
 
-		this.el_popupNope.click(function(e) {
-			self.close(e, 1, 'no facebook like, thanks');
-		});
-		this.el_popupClose.click(function(e) {
-			self.close(e, 7, 'close facebook popup (x)');
-		});
+		window.setTimeout(function() { self.toggle(); }, self.vars.showupTime);
 	},
 
 	/* close */
 
 	'close': function(event, cookieTime, eventMessage) {
 		event.preventDefault();
-		Cookies.set(this.cookie, true, { expires: cookieTime }); // one year
+		Cookies.set(this.vars.cookieName, true, { expires: cookieTime });
 // @if ENVIRONMENT='prod'
 		ga('send', {
 			hitType: 'event',
@@ -65,67 +53,31 @@ var PopUp = {
 		this.toggle();
 	},
 
+	/* toggle */
+
+	'toggle': function() {
+		 this.elems.popup.fadeToggle(this.vars.fadeoutTime);
+	},
+
 	/* hasCookieExpired */
 
 	'hasCookieExpired': function() {
-		return typeof Cookies.get(this.cookie) === 'undefined';
-	},
-
-	/* isPageAlreadyLiked */
-
-	'isPageAlreadyLiked': function(cbYes, cbNo) {
-		FB.getLoginStatus(function(response) {
-			if (response.status === 'connected') {
-				var userAccessToken = response.authResponse.accessToken;
-				FB.api(
-					'/me/likes/' + glm_consts.FACEBOOK_PAGE_ID,
-					{
-						'access_token': userAccessToken
-					},
-					function(response) {
-		  			if (response.data.length > 0) {  // liked!
-							cbYes();
-						}
-						else {
-							cbNo();
-						}
-					}
-				);
-			}
-			else {
-				cbNo();
-			}
-		});
+		return typeof Cookies.get(this.vars.cookieName) === 'undefined';
 	},
 
 	/* bindSubscribeEvent */
 
 	'bindSubscribeEvent': function() {
-		var self = this;
-		FB.Event.subscribe('edge.create', function() {  // like action
-			Cookies.set(self.cookie, true, { expires: 365 }); // one year
+		Cookies.set(this.vars.cookieName, true, { expires: this.vars.cookieTimeOK });
 // @if ENVIRONMENT='prod'
-			ga('send', {
-				hitType: 'event',
-				eventCategory: 'clicks - facebook like',
-				eventAction: 'click'
-			});
-// @endif
-			self.toggle();
+		ga('send', {
+			hitType: 'event',
+			eventCategory: 'clicks - facebook like',
+			eventAction: 'click'
 		});
+// @endif
+		this.toggle();
 	},
-
-	/* injectIframe */
-
-	'injectIframe': function() {
-		(function(d, s, id){
-			 var js, fjs = d.getElementsByTagName(s)[0];
-			 if (d.getElementById(id)) {return;}
-			 js = d.createElement(s); js.id = id;
-			 js.src = "//connect.facebook.net/en_US/sdk.js";
-			 fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	}
 };
 
 
@@ -133,7 +85,5 @@ var PopUp = {
 
 
 $(document).ready(function() {
-
-	PopUp.init();
-
+	glm_PopUp.init();
 });

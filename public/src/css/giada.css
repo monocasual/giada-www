@@ -416,10 +416,6 @@ a:hover     { text-decoration: none; }
   }
 }
 
-.glm-follow-us-popup__body {
-	height: 214px;
-}
-
 .glm-follow-us-popup__header {
 	font-size: 1.8em;
 	font-family: 'Montserrat', sans-serif;
@@ -451,6 +447,22 @@ a:hover     { text-decoration: none; }
 
 .glm-follow-us-popup__header p {
 	margin: 1em 0;
+}
+
+.glm-follow-us-popup__body {
+}
+
+.glm-follow-us-popup__body__ok {
+	width: 90%;
+	height: 30px;
+	margin: 0 auto;
+	background-color: #3B5998;
+	color: #FFFFFF;
+}
+
+.glm-follow-us-popup__body__ok:hover {
+	cursor: pointer;
+	cursor: hand;
 }
 
 .glm-follow-us-popup__footer {
