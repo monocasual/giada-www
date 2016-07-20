@@ -1,4 +1,7 @@
-var glm_PopUp = {
+var GLM = GLM || {};
+
+
+GLM.FollowUsPopup = {
 
 	'elems': {
 		'popup':      $('.glm-follow-us-popup'),
@@ -44,11 +47,7 @@ var glm_PopUp = {
 		event.preventDefault();
 		Cookies.set(this.vars.cookieName, true, { expires: cookieTime });
 // @if ENVIRONMENT='prod'
-		ga('send', {
-			hitType: 'event',
-			eventCategory: 'clicks - ' + eventMessage,
-			eventAction: 'click'
-		});
+		GLM.utils.sendAnalytics('clicks - ' + eventMessage, 'click');
 // @endif
 		this.toggle();
 	},
@@ -70,11 +69,7 @@ var glm_PopUp = {
 	'bindSubscribeEvent': function() {
 		Cookies.set(this.vars.cookieName, true, { expires: this.vars.cookieTimeOK });
 // @if ENVIRONMENT='prod'
-		ga('send', {
-			hitType: 'event',
-			eventCategory: 'clicks - facebook like',
-			eventAction: 'click'
-		});
+		GLM.utils.sendAnalytics('clicks - facebook like', 'click');
 // @endif
 		this.toggle();
 	},
@@ -85,5 +80,5 @@ var glm_PopUp = {
 
 
 $(document).ready(function() {
-	glm_PopUp.init();
+	GLM.FollowUsPopup.init();
 });
