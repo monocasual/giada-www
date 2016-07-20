@@ -6,16 +6,17 @@ GLM.FollowUsPopup = {
 	'elems': {
 		'popup':      $('.glm-follow-us-popup'),
 		'popupOk':    $('.glm-follow-us-popup__body__ok'),
-		'popupNope':  $('.glm-follow-us-popup__footer__nope'),
 		'popupClose': $('.glm-follow-us-popup__header__close'),
+		'popupNope':  $('.glm-follow-us-popup__footer__nope'),
+		'popupLiked': $('.glm-follow-us-popup__footer__liked'),
 	},
 
 	'vars': {
-		'cookieName':   'glm-facebook-like',
-		'cookieTimeOk':  30,    // days
-		'cookieTimeKo':  7,     // days
-		'fadeoutTime':   200,   // ms
-		'showupTime':    1,     // ms
+		'cookieName':  'glm-facebook-like',
+		'cookieTimeOk': 30,    // days
+		'cookieTimeKo': 7,     // days
+		'fadeoutTime':  200,   // ms
+		'showupTime':   1,     // ms
 	},
 
 	/* init */
@@ -27,9 +28,14 @@ GLM.FollowUsPopup = {
 			return;
 		}
 
+		GLM.FacebookApi.init();
+
 		var self = this;
 		this.elems.popupNope.click(function(e) {
 			self.close(e, self.vars.cookieTimeKo, 'no facebook like, thanks');
+		});
+		this.elems.popupLiked.click(function(e) {
+			self.close(e, self.vars.cookieTimeOk, 'facebook page already liked');
 		});
 		this.elems.popupClose.click(function(e) {
 			self.close(e, self.vars.cookieTimeKo, 'close facebook popup (x)');
@@ -37,6 +43,14 @@ GLM.FollowUsPopup = {
 		this.elems.popupOk.click(function(e) {
 			self.bindSubscribeEvent();
 		});
+
+		/* TODO
+
+		https://developers.facebook.com/docs/reference/javascript/FB.Event.subscribe/v2.7
+
+		FB.Event.subscribe('edge.create', function() { console.log('like!'); });
+		FB.Event.subscribe('edge.remove', function() { console.log('unlike!'); });
+		*/
 
 		window.setTimeout(function() { self.toggle(); }, self.vars.showupTime);
 	},

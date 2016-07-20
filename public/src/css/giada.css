@@ -454,10 +454,7 @@ a:hover     { text-decoration: none; }
 
 .glm-follow-us-popup__body__ok {
 	width: 90%;
-	height: 30px;
 	margin: 0 auto;
-	background-color: #3B5998;
-	color: #FFFFFF;
 }
 
 .glm-follow-us-popup__body__ok:hover {
@@ -467,4 +464,9 @@ a:hover     { text-decoration: none; }
 
 .glm-follow-us-popup__footer {
 	padding: 13px;
+}
+
+.glm-follow-us-popup__footer div {
+	display: inline-block;
+	margin: 10px 20px;
 }

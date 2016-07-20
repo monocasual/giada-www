@@ -10,6 +10,12 @@ GLM.FacebookApi = {
 				appId      : GLM.CONSTS.FACEBOOK.APP_ID,
 				xfbml      : true,
 			});
+      FB.getLoginStatus(function(response) {
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', response);
+      });
+      FB.Event.subscribe('xfbml.render', function() {
+        console.log('>>>>>>>>>>>>>>>>>>>> plugins ready!');
+      });
       callback();
     });
   }
