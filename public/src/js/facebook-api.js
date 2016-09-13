@@ -4,7 +4,7 @@ var GLM = GLM || {};
 GLM.FacebookApi = {
 
   'init': function(callback) {
-    $.getScript('//connect.facebook.net/en_US/sdk.js', function() {
+    $.getScript(GLM.CONSTS.FACEBOOK.SDK_URL, function() {
 			FB.init({
 				version    : GLM.CONSTS.FACEBOOK.API_VERSION,
 				appId      : GLM.CONSTS.FACEBOOK.APP_ID,

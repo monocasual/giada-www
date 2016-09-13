@@ -26,9 +26,14 @@ module.exports = function(grunt)
     concat: {
       js: {
         src: [
-          'src/js/deps/jquery-1.11.1.js',
+          /* facebook API and follow us popup temporarily disabled because
+          under development */
           'src/js/deps/**',
           'src/js/**',
+          '!src/js/consts.js',
+          '!src/js/facebook-api.js',
+          '!src/js/follow-us-popup.js',
+          '!src/js/utils.js',
         ],
         dest: 'js/main-<%= pkg.version %>.js'
       },
