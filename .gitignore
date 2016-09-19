@@ -2,6 +2,7 @@
 *.phtml.php
 giada.php.tags
 node_modules
+/.htaccess
 /forum
 /admin
 /public/js/main-*
