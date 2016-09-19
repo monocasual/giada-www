@@ -31,9 +31,7 @@
 				</div>
 				<div>
 					<p class="skinfont">
-						Giada {{ config.changelog.version }} for Linux, deb
-						<a href="{{ url('download/grab/linux-32') }}" title="Download Giada for Linux, 32 bit">(32 bit)</a>
-						<a href="{{ url('download/grab/linux-64') }}" title="Download Giada for Linux, 64 bit">(64 bit)</a>
+						<a href="{{ url('download/grab/linux-64') }}" title="Download Giada for Linux, 64 bit">Giada {{ config.changelog.version }} for Linux (.deb, 64 bit)</a>
 					</p>
 				</div>
 			</div>
@@ -46,7 +44,7 @@
 				</div>
 				<div>
 				<p class="skinfont">
-					<a href="{{ url('download/grab/osx-64') }}" title="Download Giada {{ config.changelog.version }} for Mac OSX">Giada {{ config.changelog.version }} for Mac OS X (64 bit)</a>
+					<a href="{{ url('download/grab/osx-64') }}" title="Download Giada {{ config.changelog.version }} for Mac OS X">Giada {{ config.changelog.version }} for Mac OS X (64 bit)</a>
 				</p>
 				</div>
 			</div>
@@ -63,7 +61,7 @@
 				</div>
 				<div>
 					<p class="skinfont">
-						<a href="{{ url('download/grab/windows-32') }}" title="Download Giada {{ config.changelog.version }} for Windows">Giada {{ config.changelog.version }} for Windows (32 bit)</a>
+						<a href="{{ url('download/grab/windows-64') }}" title="Download Giada {{ config.changelog.version }} for Windows">Giada {{ config.changelog.version }} for Windows (64 bit)</a>
 					</p>
 				</div>
 			</div>
@@ -107,16 +105,15 @@
 			</ul>
 
 			<h2>Problems with the Linux version?</h2>
-			<p>We provide packages for Debian/Ubuntu, both 32 and 64 bit architectures. However for the absolute, best, top-notch experience you should also try binaries provided by the package manager of your favorite distribution. Giada is already available on <a href="https://packages.debian.org/testing/sound/giada">Debian</a>, <a href="http://packages.ubuntu.com/wily/sound/giada">Ubuntu</a>, <a href="https://aur.archlinux.org/packages/giada/">Arch Linux</a> and many more.</p>
+			<p>We provide packages for Debian/Ubuntu on 64 bit architectures. However for the absolute, best, top-notch experience you should also try binaries shipped by the package manager of your favorite distribution. Giada is already available on <a href="https://packages.debian.org/testing/sound/giada">Debian</a>, <a href="http://packages.ubuntu.com/wily/sound/giada">Ubuntu</a>, <a href="https://aur.archlinux.org/packages/giada/">Arch Linux</a> and many more.</p>
 		</div>
 
 		<div class="col-md-6">
 			<h2>MD5 checksums</h2>
 			<p>Beware of imitations! This is the only place where to pick up the official Giada's packages.</p>
 			<table class="table">
-				<tr><td>Giada for Linux, 32 bit</td><td><code class="code">{{ md5lin32 }}</code></td></tr>
 				<tr><td>Giada for Linux, 64 bit</td><td><code class="code">{{ md5lin64 }}</code></td></tr>
-				<tr><td>Giada for Windows, 32 bit</td><td><code class="code">{{ md5win32 }}</code></td></tr>
+				<tr><td>Giada for Windows, 64 bit</td><td><code class="code">{{ md5win64 }}</code></td></tr>
 				<tr><td>Giada for OS X, 64 bit</td><td><code class="code">{{ md5osx64 }}</code></td></tr>
 				<tr><td>Giada source code</td><td><code class="code">{{ md5src }}</code></td></tr>
 			</table>

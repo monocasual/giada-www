@@ -48,8 +48,7 @@ class DownloadController extends BaseController
 
 	public function indexAction()
 	{
-		$this->view->md5win32 = md5_file($this->getPath('win-i386.zip'));
-		$this->view->md5lin32 = md5_file($this->getPath('lin-i386.tar.gz'));
+		$this->view->md5win64 = md5_file($this->getPath('win-amd64.zip'));
 		$this->view->md5lin64 = md5_file($this->getPath('lin-amd64.tar.gz'));
 		$this->view->md5osx64 = md5_file($this->getPath('osx-amd64.zip'));
 		$this->view->md5src   = md5_file($this->getPath('src.tar.gz'));
@@ -63,11 +62,8 @@ class DownloadController extends BaseController
 
 		switch($os)
 		{
-			case 'windows-32':
-				$filepath = $this->getPath('win-i386.zip');
-				break;
-			case 'linux-32':
-				$filepath = $this->getPath('lin-i386.tar.gz');
+			case 'windows-64':
+				$filepath = $this->getPath('win-amd64.zip');
 				break;
 			case 'linux-64':
 				$filepath = $this->getPath('lin-amd64.tar.gz');
