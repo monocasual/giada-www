@@ -11,12 +11,13 @@ GLM.FacebookApi = {
 				xfbml      : true,
 			});
       FB.getLoginStatus(function(response) {
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', response);
+        //console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', response);
       });
       FB.Event.subscribe('xfbml.render', function() {
-        console.log('>>>>>>>>>>>>>>>>>>>> plugins ready!');
+        //console.log('>>>>>>>>>>>>>>>>>>>> plugins ready!');
       });
-      callback();
+      if (callback)
+        callback();
     });
   }
 };

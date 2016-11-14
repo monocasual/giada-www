@@ -394,79 +394,76 @@ a:hover     { text-decoration: none; }
 	position: fixed;
 	z-index: 1;
 	width: 100%;  /* mobile first */
-	top: 50%;
-	text-align: center; /* align inner fb's div, which is inline-block */
+  height: 80px;
+	top: 0;
+	text-align: center;
 	background-color: #FFFFFF;
-	-webkit-box-shadow: 0px 6px 32px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow:    0px 6px 32px 0px rgba(0,0,0,0.75);
-	box-shadow:         0px 6px 32px 0px rgba(0,0,0,0.75);
-	-webkit-transform: translateY(-50%);
-	-ms-transform:     translateY(-50%);
-	transform:         translateY(-50%);
+	-webkit-box-shadow: 0px 6px 32px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow:    0px 6px 32px 0px rgba(0,0,0,0.5);
+	box-shadow:         0px 6px 32px 0px rgba(0,0,0,0.5);
 }
 
-@media (min-width: 501px) {
-  .glm-follow-us-popup {
-		width: 500px;
-		left: 0;
-		right: 0;
-		top: 50%;
-		margin-left: auto;
-		margin-right: auto;
-  }
+.glm-follow-us-popup__side {
+  float: left;
+  width: 90px;
+  padding: 10px;
+  cursor: pointer;
+  cursor: hand;
 }
 
 .glm-follow-us-popup__header {
-	font-size: 1.8em;
+	font-size: 1.4em;
 	font-family: 'Montserrat', sans-serif;
 }
 
-.glm-follow-us-popup__header__close {
-	position: absolute;
-	width: 40px;
-	height: 40px;
-  top: 10px;
-  left: 450px;
-  border: 1px solid black;
-  padding: 0;
-  margin: 0;
-  line-height: 40px;
-	-moz-border-radius:    20px;
-	-webkit-border-radius: 20px;
-	border-radius:         20px;
-}
-
-.glm-follow-us-popup__header__close:hover {
-	cursor: pointer;
-	cursor: hand;
-}
-
-.glm-follow-us-popup__header__close:before {
-	content: 'X'
-}
-
 .glm-follow-us-popup__header p {
-	margin: 1em 0;
+  margin: 0;
 }
 
 .glm-follow-us-popup__body {
-}
-
-.glm-follow-us-popup__body__ok {
-	width: 90%;
-	margin: 0 auto;
-}
-
-.glm-follow-us-popup__body__ok:hover {
-	cursor: pointer;
-	cursor: hand;
-}
-
-.glm-follow-us-popup__footer {
-	padding: 13px;
+  display: none;
 }
 
 .glm-follow-us-popup__footer div {
 	display: inline-block;
 	margin: 10px 20px;
+}
+
+@media (min-width: 501px) {
+  .glm-follow-us-popup {
+		width: 300px;
+    height: 250px;
+		left: 20px;
+		top: 100%;
+    margin-top: -270px;
+    -moz-border-radius:    4px;
+    -webkit-border-radius: 4px;
+    border-radius:         4px;
+  }
+
+  .glm-follow-us-popup__side {
+    display: none;
+  }
+
+  .glm-follow-us-popup__header p {
+  	margin: 1em 0;
+  }
+
+  .glm-follow-us-popup__body {
+    display: block;
+  }
+
+  .glm-follow-us-popup__body__ok {
+  	width: 40%;
+  	margin: 0 auto;
+  }
+
+  .glm-follow-us-popup__body__ok:hover {
+  	cursor: pointer;
+  	cursor: hand;
+  }
+
+  .glm-follow-us-popup__footer {
+  	padding: 13px;
+  }
 }
