@@ -182,16 +182,21 @@ a:hover     { text-decoration: none; }
 
 /* -------------------------------------------------------------------------- */
 
-#header nav li a {
+.glm-header nav li a {
 	text-transform: uppercase;
 	font-weight: 600;
-	font-size: 14px;
+	font-size: 1em;
 	border: none;
 }
 
-#header nav li a:hover {
+.glm-header nav li a:hover {
 	background-color: #ffffff;
 	color: inherit;
+}
+
+.glm-header nav li.sub a {
+  text-transform: none;
+  font-weight: normal;
 }
 
 #footer {
