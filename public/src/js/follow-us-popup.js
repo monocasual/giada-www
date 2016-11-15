@@ -5,14 +5,15 @@ GLM.FollowUsPopup = {
 
 	'elems': {
 		'popup':      $('.glm-follow-us-popup'),
-		'popupOk':    $('.glm-follow-us-popup__body__ok, .glm-follow-us-popup__side'),
+		'popupOk':    $('.glm-follow-us-popup__body__ok, \
+      .glm-follow-us-popup__side, .glm-follow-us-popup__header'),
 		'popupNope':  $('.glm-follow-us-popup__footer__nope')
 	},
 
 	'vars': {
 		'cookieName':  'glm-facebook-like',
-		'cookieTimeOk': 30,    // days
-		'cookieTimeKo': 7,     // days
+		'cookieTimeOk': 60,    // days
+		'cookieTimeKo': 14,    // days
 		'fadeTime':     400,   // ms
 // @if ENVIRONMENT='prod'
 		'showupTime':   15000, // ms
