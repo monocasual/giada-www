@@ -182,6 +182,10 @@ a:hover     { text-decoration: none; }
 
 /* -------------------------------------------------------------------------- */
 
+.glm-header nav li {
+  float: right;
+}
+
 .glm-header nav li a {
 	text-transform: uppercase;
 	font-weight: 600;
