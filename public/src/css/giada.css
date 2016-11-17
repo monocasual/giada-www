@@ -182,7 +182,11 @@ a:hover     { text-decoration: none; }
 
 /* -------------------------------------------------------------------------- */
 
-.glm-header nav li {
+.glm-header .logo img {
+  height: 40px;
+}
+
+.glm-header nav {
   float: right;
 }
 
