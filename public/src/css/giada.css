@@ -186,8 +186,54 @@ a:hover     { text-decoration: none; }
   height: 40px;
 }
 
-.glm-header nav {
-  float: right;
+.glm-header nav li {
+  float: none;
+  text-align: right;
+}
+
+/* Mobile first: hide all elements except burger button */
+.glm-header nav.main-menu li:not(.burger-button) {
+  display: none;
+}
+
+.glm-header nav.burger-menu {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .glm-header nav li {
+    float: right;
+  }
+  .glm-header nav.main-menu li:nth-child(1),
+  .glm-header nav.main-menu li:nth-child(2),
+  .glm-header nav.main-menu li:nth-child(3),
+  .glm-header nav.main-menu li:nth-child(4),
+  .glm-header nav.main-menu li:nth-child(5),
+  .glm-header nav.main-menu li:nth-child(6)
+  {
+    display: inline;
+  }
+  .glm-header nav.burger-menu li:nth-child(0),
+  .glm-header nav.burger-menu li:nth-child(1),
+  .glm-header nav.burger-menu li:nth-child(2),
+  .glm-header nav.burger-menu li:nth-child(3),
+  .glm-header nav.burger-menu li:nth-child(4),
+  .glm-header nav.burger-menu li:nth-child(5)
+  {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .glm-header nav.main-menu li:nth-child(7),
+  .glm-header nav.main-menu li:nth-child(8) {
+    display: inline;
+  }
+  .glm-header nav.burger-menu li:nth-child(6),
+  .glm-header nav.burger-menu li:nth-child(7)
+  {
+    display: none;
+  }
 }
 
 .glm-header nav li a {
@@ -202,8 +248,9 @@ a:hover     { text-decoration: none; }
 	color: inherit;
 }
 
-.glm-header nav li.sub a {
+.glm-header nav.sub li a {
   text-transform: none;
+  font-size: 0.8em;
   font-weight: normal;
 }
 

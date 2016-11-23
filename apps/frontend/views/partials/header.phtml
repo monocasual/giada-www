@@ -1,15 +1,16 @@
 <div class="glm-header container">
 
-	<div class="row border-btm padding-btm-s">
-    <div class="col-md-3 logo margin-top-s">
+	<div class="row margin-top-s">
+    <div class="col-xs-3 logo">
 			<a href="{{ url('') }}" title="Giada - Your Hardcore Loopmachine" class="imagelink">
 				<img class="space-none" src="{{ url('public/img/giada-logo.svg') }}" alt="Giada - Your Hardcore Loopmachine">
 			</a>
 		</div>
 
-		<div class="col-md-9 margin-top-s">
-			<nav>
-				<ol class="nav nav-pills txt-bold">
+		<div class="col-xs-9">
+			<nav class="main-menu">
+				<ol class="nav nav-pills">
+          <li class="burger-button"><a href="#">&#9776;</a></li>
 					<li><a href="{{ url('features') }}" title="Feature list">features</a></li>
 					<li><a href="{{ url('screenshots') }}" title="Screenshots">screenshots</a></li>
 					<li><a href="{{ url('media') }}" title="Media">media</a></li>
@@ -17,15 +18,30 @@
 					<li><a href="{{ url('documentation') }}" title="Giada documentation area">docs</a></li>
 					<li><a href="https://github.com/monocasual/giada" title="Giada @ GitHub">Fork us @ GitHub!</a></li>
 					<li><a href="{{ url('forum/') }}" title="Giada forum for end users">forum</a></li>
-          <!--<li class="sub"><a href="#">Sub item 1</a></li>
-          <li class="sub"><a href="#">Sub item 2</a></li>
-          <li class="sub"><a href="#">Sub item 3</a></li>-->
 				</ol>
 			</nav>
 		</div>
 	</div>
 
-	<div class="row margin-top-l">
+  <div class="row">
+    <div class="col-xs-12">
+      <nav class="burger-menu">
+        <ol class="nav nav-pills">
+          <li><a href="{{ url('features') }}" title="Feature list">features</a></li>
+					<li><a href="{{ url('screenshots') }}" title="Screenshots">screenshots</a></li>
+					<li><a href="{{ url('media') }}" title="Media">media</a></li>
+					<li><a href="{{ url('download') }}" title="Download Giada, latest version">download</a></li>
+					<li><a href="{{ url('documentation') }}" title="Giada documentation area">docs</a></li>
+					<li><a href="https://github.com/monocasual/giada" title="Giada @ GitHub">Fork us @ GitHub!</a></li>
+					<li><a href="{{ url('forum/') }}" title="Giada forum for end users">forum</a></li>
+          <li><a href="{{ url('press') }}" title="Press area">press</a></li>
+          <li><a href="{{ url('news-archive') }}" title="News archive">news archive</a></li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+	<div class="row border-top margin-top-s padding-top-l">
 		<div class="col-md-12 text-center">
 			{% if config.assets.adsense %}
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
