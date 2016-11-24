@@ -191,6 +191,10 @@ a:hover     { text-decoration: none; }
   text-align: right;
 }
 
+.glm-header nav.main-menu .burger-button a:focus {
+  background-color: transparent;
+}
+
 /* Mobile first: hide all elements except burger button */
 .glm-header nav.main-menu li:not(.burger-button) {
   display: none;
