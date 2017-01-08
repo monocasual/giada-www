@@ -264,7 +264,7 @@ a:hover     { text-decoration: none; }
 }
 
 #footer .social-links a img {
-	width: 60px;
+	width: 65px;
 	padding: 0 15px;
 }
 
@@ -418,6 +418,7 @@ a:hover     { text-decoration: none; }
 .share-button {
 	width: 50px;
 	display: inline-block;
+  margin: 0 5px;
 }
 
 .share-button a {
