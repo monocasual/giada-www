@@ -10,11 +10,12 @@ class IndexController extends BaseController
 	{
 		$this->json->init('http://graph.facebook.com/?id=' . $this->config->urls->base);
 		$res = $this->json->get(true);
-		if (array_key_exists('shares', $res)) {
-			return (int) $res['shares'];
+		if (array_key_exists('share', $res)) {
+			return (int) $res['share']['share_count'];
 		}
 		else {
 			$this->logger->error('[IndexController::countFacebookShares] invalid API data!');
+			$this->logger->error('[IndexController::countFacebookShares] ' . print_r($res, true));
 			return 0;
 		}
 	}
@@ -22,7 +23,7 @@ class IndexController extends BaseController
 
 	private function countRedditShares()
 	{
-		$this->json->init('http://www.reddit.com/api/info.json?url=' . $this->config->urls->base);
+		$this->json->init('https://www.reddit.com/api/info.json?url=' . $this->config->urls->base);
 		$res = $this->json->get(true);
 		if (array_key_exists('data', $res)) {
 			$score = 0;
@@ -32,6 +33,7 @@ class IndexController extends BaseController
 		}
 		else {
 			$this->logger->error('[IndexController::countRedditShares] invalid API data!');
+			$this->logger->error('[IndexController::countRedditShares] ' . print_r($res, true));
 			return 0;
 		}
 	}
