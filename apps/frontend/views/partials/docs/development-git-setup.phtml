@@ -60,3 +60,12 @@ The <span class="code">configure</span> and/or the <span class="code">make</span
 configure [...]
 make
 </pre>
+
+<p>
+The first time you clone the git repository you have to initialize it, because Giada contains a couple of external dependencies configured as Git submodules. Go into the project folder, root level and do:
+</p>
+
+<pre class="code">
+git submodule init
+git submodule update
+</pre>
