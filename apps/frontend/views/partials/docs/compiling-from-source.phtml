@@ -36,6 +36,9 @@ make check
 </p>
 <p>All unit tests are based on <a href="https://github.com/philsquared/Catch/">Catch automated test framework</a>, which supports several command-line options. Please take a look at the <a href="https://github.com/philsquared/Catch/blob/master/docs/command-line.md">official documentation</a> to understand the gritty details. The command above will just run the entire test suite.</p>
 
+<h3>Debug mode</h3>
+<p>You may wish to compile Giada in debug mode, which enables asserts. It is disabled by default. To do that, pass the additional flag <span class="code">--enable-debug</span> to the configuration script.</p>
+
 <h2>Dependencies</h2>
 <p>
 Giada is based upon several libraries, as listed in <a href="{{ url('documentation/show/requirements') }}">Requirements</a> chapter, with a custom version of RtAudio shipped with the source package. Our hacked RtAudio provides Jack Transport support on Linux, a feature that you wouldn't find in the vanilla release. At the present moment <sup>November 2016, version 0.13.1</sup> we suggest you to use the following versions:
@@ -46,7 +49,7 @@ Giada is based upon several libraries, as listed in <a href="{{ url('documentati
 <li>Libsndfile — 1.0.25 or greater;</li>
 <li>Libsamplerate — 0.1.8 or greater;</li>
 <li>Jansson — 2.7 or greater;</li>
-<li>RtMidi — 2.1.0 or greater.</li>
+<li>RtMidi — 2.1.1 or greater.</li>
 </ul>
 
 <h2>How to enable VST support</h2>
@@ -66,7 +69,7 @@ e.g. if you want to compile for Linux with VST support, do:
 
 
 
-<h2>Missing headers!</h2>
+<h3>Missing VST headers!</h3>
 <p>
 You won't find any VST header into our source package, since we cannot distribute the SDK from Steinberg.
 To solve this issue:
@@ -82,7 +85,7 @@ To solve this issue:
 	</li>
 
 	<li>
-		extract all files from the VST SDK package, browse to <span class="code">pluginterfaces/vst2.x</span>, grab <span class="code">aeffect.h</span>, <span class="code">aeffectx.h</span> and <span class="code">vstfxstore.h</span> and put them inside the new <span class="code">vst</span> folder;
+		extract all files from the VST SDK package, browse to <span class="code">pluginterfaces/</span> (it's a directory), grab it and put it inside the new <span class="code">vst</span> folder;
 	</li>
 
 	<li>
