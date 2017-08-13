@@ -2,20 +2,18 @@
 <h1>The Sample Editor</h1>
 
 <p>
-<img src="{{ url('img/docs/giada-sample-editor.png') }}" alt="The sample editor" title="The sample editor" class="first" /> Giada 0.3.0 introduced this useful tool for fine manipulations of your samples. While the main window provides a fast and basic interaction, inside the editor you may tweak several parameters such as start points, end points, fine volume, boost and more.
+<img src="{{ url('img/docs/giada-sample-editor.png') }}" alt="The sample editor" title="The sample editor" class="first" /> Giada is shipped with a powerful sample editor for fine manipulations of your samples. While the main window provides a fast and basic interaction, inside the editor you may tweak several parameters such as start/end points, volume, pitch, boost and much more.
 </p>
 
 
-<p>The editor also provides some basic tools for cutting, trimming or silencing your sample. Those are destructive actions; if you damage the sample you have to reload it from disk. Don't worry, the damage will occur only in memory; the original file won't be touched!</p>
+<p>The Sample Editor also provides some basic tools for cutting, trimming or silencing your sample. Those are destructive actions; if you damage the sample you have to reload it from disk. Don't worry, the damage will occur only in memory; the original file won't be touched!</p>
 
 <div class="clearfix"></div>
 
 <h2>Start/end points</h2>
 <p>
 Start/end points are used to set the play range of the sample and are represented by two
-vertical lines labeled "S" (<em>start</em>) <img src="{{ url('img/docs/start-point.png') }}" alt="Start point" title="Start point" class="inline" /> and "E" (<em>end</em>) <img src="{{ url('img/docs/end-point.png') }}" alt="End point" title="End point" class="inline" />: click on each label and drag it around to
-set the points quickly, or use the boxes below for a precise, numeric setup. The <strong>Reset</strong> button
-restore the default configuration.
+vertical lines with a square handle: click on that handle and drag it around to set the points quickly, or use the boxes below the waveform for a precise, numeric setup. The <strong>Reset</strong> button restores the default configuration.
 </p>
 
 
@@ -30,7 +28,7 @@ slider <img src="{{ url('img/docs/boost-knob.png') }}" alt="Boost knob" title="B
 
 <h2>Normalize</h2>
 <p>
-The <strong>Normalize</strong> button <img src="{{ url('img/docs/normalize.png') }}" alt="Normalize" title="Normalize" class="inline" /> parses the entire sample and brings its highest peak to 0.0 dB, setting the boost level
+The <strong>Normalize</strong> button <img src="{{ url('img/docs/normalize.png') }}" alt="Normalize" title="Normalize" class="inline" /> parses the entire sample and raises its highest peak to 0.0 dB, setting the boost level
 accordingly. If the highest peak is greater than 0.0 dB (it could happen with a floating point sample), the function brings it down to 0.0 dB. If the sample is silent, it does nothing.
 </p>
 
@@ -38,7 +36,7 @@ accordingly. If the highest peak is greater than 0.0 dB (it could happen with a 
 
 <h2>Panning</h2>
 <p>
-The <strong>Pan</strong> knob <img src="{{ url('img/docs/panning-knob.png') }}" alt="Panning knob" title="Panning knob" class="inline" /> sets the position of the sampled sound into the stereo field. "L" stands for Left, "R" for Right
+The <strong>Pan</strong> knob <img src="{{ url('img/docs/panning-knob.png') }}" alt="Panning knob" title="Panning knob" class="inline" /> sets the position of the sample into the stereo field. "L" stands for Left, "R" for Right
 and "C" for center.
 </p>
 
@@ -46,9 +44,11 @@ and "C" for center.
 
 <h2>Pitch</h2>
 <p>
-The <strong>Pitch</strong> knob <img src="{{ url('img/docs/pitch-knob.png') }}" alt="Pitch knob" title="Pitch knob" class="inline" /> streches or compresses the sample, making it sound faster or slower. It works exactly as a turntable pitch control slider. It's powered by the Linear algorithm from Libsamplerate (very fast, low quality).
+The <strong>Pitch</strong> knob <img src="{{ url('img/docs/pitch-knob.png') }}" alt="Pitch knob" title="Pitch knob" class="inline" /> streches or compresses the sample, making it sound faster or slower. It works exactly as a turntable pitch control slider. It's currently powered by the Linear algorithm from Libsamplerate (very fast, low quality).
 </p>
-
+<p>
+You can spread the sample accross the whole song or the current bar by pressing <strong>To song</strong> and <strong>To bar</strong> buttons. Two additional operators, <strong>×</strong> and <strong>÷</strong> will double or halve the sample's duration, while the <strong>Reset</strong> button restores the pitch to 1.0.
+</p>
 
 
 <h2>Cut, trim, silence, ...</h2>
@@ -59,7 +59,7 @@ Select a portion of the waveform with the mouse and click on it with the <em>rig
 <ul>
 <li><strong>Cut</strong> — removes a portion from the sample;</li>
 <li><strong>Trim</strong> — removes all but the selected portion;</li>
-<li><strong>Silence</strong> — mutes the selected portion (set the amplitude to 0);</li>
+<li><strong>Silence</strong> — mutes the selected portion (sets the amplitude to 0);</li>
 <li><strong>Fade in/Fade out</strong> — applies a linear fade in/out;</li>
 <li><strong>Smooth edges</strong> — shapes gracefully the edges of a selection;</li>
 <li><strong>Set start/end here</strong> — sets the <em>start</em> / <em>end</em> points to the selection boundaries.</li>
