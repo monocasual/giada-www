@@ -532,3 +532,14 @@ a:hover     { text-decoration: none; }
   	padding: 13px;
   }
 }
+
+/* -------------------------------------------------------------------------- */
+
+/* Screenshot page */
+/*
+.screenshot img {
+	-webkit-box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow:    6px 6px 8px rgba(0, 0, 0, 0.3);
+	box-shadow:         6px 6px 8px rgba(0, 0, 0, 0.3);
+}
+*/

@@ -8,7 +8,7 @@ Header set X-Frame-Options DENY
 # enable rewrite engine with RewriteBase.
 # ------------------------------------------------------------------------------
 RewriteEngine on
-RewriteBase /
+RewriteBase /giada
 
 
 # ------------------------------------------------------------------------------
@@ -19,7 +19,16 @@ RewriteRule ^screenshot-[0-9]+/?$  screenshots   [R=301,NC,L]
 
 
 # ------------------------------------------------------------------------------
-# phalcon main redirect (only if != 'admin)
+# New PHPBB forum has no fancy urls. Redirect old static urls to dynamic ones.
+# It requires to bypass phpBB's forum/.htaccess completely (just remove it). 
 # ------------------------------------------------------------------------------
-RewriteCond %{REQUEST_URI} !^/admin  [NC]
-RewriteRule  (.*) public/$1          [L]
+RewriteRule ^forum/(.*?)\-t([0-9]+)\.html/?$ /giada/forum/viewtopic.php?t=$2 [R=301,NC,L]
+RewriteRule ^forum/(.*?)\-f([0-9]+)\.html/?$ /giada/forum/viewforum.php?f=$2 [R=301,NC,L]
+
+
+# ------------------------------------------------------------------------------
+# phalcon main redirect (only if != 'admin' and 'forum')
+# ------------------------------------------------------------------------------
+RewriteCond %{REQUEST_URI} !^/giada/admin  [NC]
+RewriteCond %{REQUEST_URI} !^/giada/forum  [NC]
+RewriteRule (.*) public/$1               [L]
