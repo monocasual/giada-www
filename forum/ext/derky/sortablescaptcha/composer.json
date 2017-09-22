@@ -1,0 +1,34 @@
+{
+    "name": "derky/sortablescaptcha",
+    "type": "phpbb-extension",
+    "description": "Sortables Captcha Extension for phpBB 3.1. This captcha plugin allows you to add questions and provide answers in two seperate columns. An user will see all the answers in one column and has to drag some answers to the other column to successfully complete the captcha.",
+    "homepage": "https://github.com/Derky/Sortables-CAPTCHA-Plugin",
+    "version": "2.0.0",
+    "time": "2015-03-29",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Derky",
+            "homepage": "http://www.derky.nl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "composer/installers": "~1.0"
+    },
+    "require-dev": {
+        "phpbb/epv": "dev-master"
+    },
+    "extra": {
+        "display-name": "Sortables Captcha",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.1.3,<3.2.*@dev"
+        },
+        "version-check": {
+            "host": "www.phpbb.com",
+            "directory": "/customise/db/extension/sortables_captcha",
+            "filename": "version_check"
+        }
+    }
+}

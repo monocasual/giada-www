@@ -1,0 +1,21 @@
+imports:
+    - { resource: tables.yml }
+
+services:
+    derky.sortablescaptcha.captcha.sortables:
+        class: derky\sortablescaptcha\captcha\sortables
+        calls:
+            - [set_name, [derky.sortablescaptcha.captcha.sortables]]
+        arguments:
+            - @dbal.conn
+            - @cache.driver
+            - @config
+            - @log
+            - @request
+            - @template
+            - @user
+            - %derky.sortables.tables.questions%
+            - %derky.sortables.tables.answers%
+            - %derky.sortables.tables.confirm%
+        tags:
+            - { name: captcha.plugins }

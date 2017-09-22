@@ -1,0 +1,20 @@
+--- pluginHost.cpp	2012-11-07 17:29:33.549658006 +0100
++++ pluginHost_fix.cpp	2012-11-07 17:29:49.945739317 +0100
+@@ -95,7 +95,7 @@ int PluginHost::allocBuffers() {
+ 
+ 
+ 
+-VstIntPtr VSTCALLBACK PluginHost::HostCallback(AEffect *effect, VstInt32 opcode, VstInt32 index, VstInt32 value, void *ptr, float opt) {
++VstIntPtr VSTCALLBACK PluginHost::HostCallback(AEffect *effect, VstInt32 opcode, VstInt32 index, VstIntPtr value, void *ptr, float opt) {
+ 	return G_PluginHost.gHostCallback(effect, opcode, index, value, ptr, opt);
+ }
+ 
+@@ -103,7 +103,7 @@ VstIntPtr VSTCALLBACK PluginHost::HostCa
+ 
+ 
+ 
+-VstIntPtr PluginHost::gHostCallback(AEffect *effect, VstInt32 opcode, VstInt32 index, VstInt32 value, void *ptr, float opt) {
++VstIntPtr PluginHost::gHostCallback(AEffect *effect, VstInt32 opcode, VstInt32 index, VstIntPtr value, void *ptr, float opt) {
+ 
+ 
+ 

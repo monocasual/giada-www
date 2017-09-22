@@ -1,0 +1,4 @@
+parameters:
+    derky.sortables.tables.questions: %core.table_prefix%sortables_questions
+    derky.sortables.tables.answers: %core.table_prefix%sortables_answers
+    derky.sortables.tables.confirm: %core.table_prefix%sortables_confirm

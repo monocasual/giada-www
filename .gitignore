@@ -3,10 +3,6 @@
 giada.php.tags
 node_modules
 /.htaccess
-/forum/*
-/forum/styles/prosilver
-!/forum/styles/
-!/forum/styles/giada
 /admin
 /public/js/main-*
 /public/css/main-*

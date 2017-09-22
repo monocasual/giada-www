@@ -1,0 +1,79 @@
+<!-- IF not $INCLUDED_JQUERYUIJS -->
+	<!-- INCLUDEJS @derky_sortablescaptcha/js/jquery-ui-1.11.1.custom.min.js -->
+	<!-- DEFINE $INCLUDED_JQUERYUIJS = true -->
+<!-- ENDIF -->
+<!-- IF not $INCLUDED_JQUERYUITOUCHPUNCHJS -->
+	<!-- INCLUDEJS @derky_sortablescaptcha/js/jquery-ui-touch-punch.min.js -->
+	<!-- DEFINE $INCLUDED_JQUERYUITOUCHPUNCHJS = true -->
+<!-- ENDIF -->
+<!-- INCLUDEJS @derky_sortablescaptcha/js/sortablescaptcha.js -->
+<!-- DEFINE $INCLUDEDED_JQUERY_SORTABLES_CAPTCHA = true -->
+
+<!-- IF S_TYPE == 1 -->
+<div class="panel">
+	<div class="inner"><span class="corners-top"><span></span></span>
+
+	<h3>{L_CONFIRMATION}</h3>
+	<fieldset class="fields2">
+<!-- ENDIF -->
+
+	<!-- Very simple version for javascript off with no dragging support -->
+	<noscript>
+	<dl>
+		<dt><label>{SORTABLES_CONFIRM_QUESTION}</label><br /><span>{L_CONFIRM_QUESTION_EXPLAIN_NOJS}</span></dt>
+		<dd>
+			<div class="sortables_nojs">
+				<div class="sortables_nojs_row">
+					<strong class="sortables_nojs_left"><!-- IF SORTABLES_NAME_LEFT != "" -->{SORTABLES_NAME_LEFT}<!-- ELSE -->{L_COLUMN_LEFT}<!-- ENDIF --></strong>
+					<strong class="sortables_nojs_right"><!-- IF SORTABLES_NAME_RIGHT != "" -->{SORTABLES_NAME_RIGHT}<!-- ELSE -->{L_COLUMN_RIGHT}<!-- ENDIF --></strong>
+				</div>
+				<!-- BEGIN options -->
+				<div class="sortables_nojs_row">
+					<input class="sortables_nojs_left" type="checkbox" name="sortables_options_left[]" value="{options.ID}" />
+					<input class="sortables_nojs_right" type="checkbox" name="sortables_options_right[]" value="{options.ID}" />
+					<div>{options.TEXT}</div>
+				</div>
+				<!-- END options -->
+			</div>
+		</dd>
+	</dl>
+	</noscript>
+
+	<!-- The normal version -->
+	<dl id="enable_js" style="display:none;">
+		<dt><label>{SORTABLES_CONFIRM_QUESTION}</label><br /><span>{L_CONFIRM_QUESTION_EXPLAIN}</span></dt>
+		<dd>
+
+			<div class="attachbox sortables_captcha_box">
+				<strong><!-- IF SORTABLES_NAME_LEFT != "" -->{SORTABLES_NAME_LEFT}<!-- ELSE -->{L_COLUMN_LEFT}<!-- ENDIF --></strong><hr />
+				<ul id="sortable1" class="sortables_captcha_list">
+				<!-- IF SORTABLES_DEFAULT_SORT == 'LEFT' -->
+					<!-- BEGIN options -->
+					<li class="bg2" id="answer_{options.ID}">{options.TEXT}</li>
+					<!-- END options -->
+				<!-- ENDIF -->
+				</ul>
+			</div>
+
+			<div class="attachbox sortables_captcha_box">
+				<strong><!-- IF SORTABLES_NAME_RIGHT != "" -->{SORTABLES_NAME_RIGHT}<!-- ELSE -->{L_COLUMN_RIGHT}<!-- ENDIF --></strong><hr />
+				<ul id="sortable2" class="sortables_captcha_list">
+				<!-- IF SORTABLES_DEFAULT_SORT == 'RIGHT' -->
+					<!-- BEGIN options -->
+					<li class="bg2" id="answer_{options.ID}">{options.TEXT}</li>
+					<!-- END options -->
+				<!-- ENDIF -->
+				</ul>
+			</div>
+
+			<input type="hidden" name="sortables_confirm_id" id="confirm_id" value="{SORTABLES_CONFIRM_ID}" />
+			<div id="sortables_options_left"></div>
+			<div id="sortables_options_right"></div>
+		</dd>
+	</dl>
+
+<!-- IF S_TYPE == 1 -->
+	</fieldset>
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+<!-- ENDIF -->
