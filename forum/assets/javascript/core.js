@@ -27,24 +27,34 @@ phpbb.isTouch = (window && typeof window.ontouchstart !== 'undefined');
  */
 phpbb.loadingIndicator = function() {
 	if (!$loadingIndicator) {
-		$loadingIndicator = $('<div />', { id: 'loading_indicator' });
+		$loadingIndicator = $('<div />', { 
+			id: 'loading_indicator', 
+			class: 'loading_indicator', 
+		});
 		$loadingIndicator.appendTo('#page-footer');
 	}
 
 	if (!$loadingIndicator.is(':visible')) {
 		$loadingIndicator.fadeIn(phpbb.alertTime);
-		// Wait fifteen seconds and display an error if nothing has been returned by then.
+		// Wait 60 seconds and display an error if nothing has been returned by then.
 		phpbb.clearLoadingTimeout();
 		phpbbAlertTimer = setTimeout(function() {
-			var $alert = $('#phpbb_alert');
-
-			if ($loadingIndicator.is(':visible')) {
-				phpbb.alert($alert.attr('data-l-err'), $alert.attr('data-l-timeout-processing-req'));
-			}
-		}, 15000);
+			phpbb.showTimeoutMessage();
+		}, 60000);
 	}
 
 	return $loadingIndicator;
+};
+
+/**
+ * Show timeout message
+ */
+phpbb.showTimeoutMessage = function () {
+	var $alert = $('#phpbb_alert');
+
+	if ($loadingIndicator.is(':visible')) {
+		phpbb.alert($alert.attr('data-l-err'), $alert.attr('data-l-timeout-processing-req'));
+	}
 };
 
 /**
@@ -958,12 +968,6 @@ phpbb.addAjaxCallback('toggle_link', function() {
 	$anchor.each(function() {
 		var $this = $(this);
 
-		// Toggle link text
-		toggleText = $this.attr('data-toggle-text');
-		$this.attr('data-toggle-text', $this.text());
-		$this.attr('title', $.trim(toggleText));
-		$this.text(toggleText);
-
 		// Toggle link url
 		toggleUrl = $this.attr('data-toggle-url');
 		$this.attr('data-toggle-url', $this.attr('href'));
@@ -971,8 +975,14 @@ phpbb.addAjaxCallback('toggle_link', function() {
 
 		// Toggle class of link parent
 		toggleClass = $this.attr('data-toggle-class');
-		$this.attr('data-toggle-class', $this.parent().attr('class'));
-		$this.parent().attr('class', toggleClass);
+		$this.attr('data-toggle-class', $this.children().attr('class'));
+		$this.children('.icon').attr('class', toggleClass);
+
+		// Toggle link text
+		toggleText = $this.attr('data-toggle-text');
+		$this.attr('data-toggle-text', $this.children('span').text());
+		$this.attr('title', $.trim(toggleText));
+		$this.children('span').text(toggleText);
 	});
 });
 

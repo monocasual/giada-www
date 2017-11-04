@@ -1,0 +1,187 @@
+/* Additional style rules for Flat Style */
+
+
+/* Fonts */
+
+@font-face {
+    font-family: 'bebasregular';
+    src: url('fonts/bebaskai-regular-webfont.eot');
+    src: url('fonts/bebaskai-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/bebaskai-regular-webfont.woff2') format('woff2'),
+         url('fonts/bebaskai-regular-webfont.woff') format('woff'),
+         url('fonts/bebaskai-regular-webfont.ttf') format('truetype'),
+         url('fonts/bebaskai-regular-webfont.svg#bebasregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/poppins-v3-latin-ext_latin-regular.eot');
+  src: local('Poppins Regular'), local('Poppins-Regular'),
+       url('fonts/poppins-v3-latin-ext_latin-regular.eot?#iefix') format('embedded-opentype'),
+       url('fonts/poppins-v3-latin-ext_latin-regular.woff2') format('woff2'),
+       url('fonts/poppins-v3-latin-ext_latin-regular.woff') format('woff'),
+       url('fonts/poppins-v3-latin-ext_latin-regular.ttf') format('truetype'),
+       url('fonts/poppins-v3-latin-ext_latin-regular.svg#Poppins') format('svg');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  src: url('fonts/poppins-v3-latin-ext_latin-600.eot'); /* IE9 Compat Modes */
+  src: local('Poppins SemiBold'), local('Poppins-SemiBold'),
+       url('fonts/poppins-v3-latin-ext_latin-600.eot?#iefix') format('embedded-opentype'),
+       url('fonts/poppins-v3-latin-ext_latin-600.woff2') format('woff2'),
+       url('fonts/poppins-v3-latin-ext_latin-600.woff') format('woff'),
+       url('fonts/poppins-v3-latin-ext_latin-600.ttf') format('truetype'),
+       url('fonts/poppins-v3-latin-ext_latin-600.svg#Poppins') format('svg');
+}
+
+/* remove annoying yellow background in auto fill fields in Chrome */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+}
+
+.site-description h1 {
+	color:#333;
+}
+
+.site-description p {
+	font-size:1.5em;
+	color:#d60;
+}
+
+.icon {
+	color:#d60;
+}
+
+.button .icon {
+	position:relative;
+	bottom:1px;
+}
+
+.navbar-top, .navbar-bottom {
+    background-color: #333;
+	font-weight:bold;
+}
+
+.navbar-top a, .navbar-bottom a {
+	color:#fff;
+}
+
+.navbar-top .dropdown a, .navbar-bottom .dropdown a {
+	color:#333;
+	font-weight:normal;
+}
+
+.navbar-top a:hover, .navbar-bottom a:hover {
+	color:#d60;
+}
+
+.header-avatar span {
+	color:#fff !important;
+}
+
+.header-avatar span::after {
+	color:#d60;
+}
+
+.stat-block {
+	padding:7px 10px;
+}
+
+.stat-block h3 {
+	color:#333;
+	margin-top:0;
+	text-transform:none;
+	border-bottom:0;
+	font-size:1.4em;
+}
+
+p.post-notice a, p.post-notice .icon, p.post-notice .icon:hover {
+	color:#fff !important;
+}
+
+p.post-notice a:hover {
+	text-decoration:underline;
+}
+
+.copyright span a {
+	text-decoration:underline;
+}
+
+/* phpBB official extension compatibility... */
+
+/* Board announcement */
+#phpbb_announcement {
+	-moz-border-radius:0 !important;
+	-webkit-border-radius:0 !important;
+	border-radius:0 !important;
+}
+
+/* Board rules */
+#rules .highlight {
+	color:#d60;
+	background-color:#fec;
+}
+
+#boardrules-categories .mini-panel {
+	-moz-border-radius:0;
+	-webkit-border-radius:0;
+	border-radius:0;
+}
+
+#boardrules-categories .mini-panel h3 {
+	font-family: Poppins, Verdana, Helvetica, Arial, sans-serif;
+}
+
+#boardrules-categories ul.menu {
+	border-top:none;
+}
+
+/* Collapsible categories */
+a.collapse-hide, a.collapse-show {
+	-moz-border-radius:0 !important;
+	-webkit-border-radius:0 !important;
+	border-radius:0 !important;
+	top:-3px;
+	left:-5px;
+}
+
+a.collapse-btn {
+	border-color:#fff !important;
+	background-color:#fff !important;
+}
+
+a.collapse-btn:hover {
+	border-color:#fec !important;
+	background-color:#fec !important
+}
+
+a.collapse-btn::after, a.collapse-btn::before {
+	border-color:#333 !important;
+}
+
+/* Other extensions compatibility... */
+
+/* Board3 Portal font awesome link icon */
+.portal-navigation ul li a:before {
+	font-weight:normal;
+	font-family:FontAwesome;
+	content:'\f061  ';
+	color:#d60;
+}
+
+.portal-navigation ul li a {
+	background-image:none !important;
+	padding-left:0px !important;
+}
+
+/* mChat seperate panels */
+#mchat-panel {
+	border-top:2px solid #fff;
+}

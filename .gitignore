@@ -10,3 +10,4 @@ node_modules
 /data/db/giada.sqlite
 /data/cache/*
 /data/dist/*
+/forum/config.php

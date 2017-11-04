@@ -25,16 +25,15 @@ class acp_reasons
 
 	function main($id, $mode)
 	{
-		global $db, $user, $auth, $template, $cache;
-		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
-		global $request;
+		global $db, $user, $template;
+		global $request, $phpbb_log;
 
 		$user->add_lang(array('mcp', 'acp/posting'));
 
 		// Set up general vars
-		$action = request_var('action', '');
+		$action = $request->variable('action', '');
 		$submit = (isset($_POST['submit'])) ? true : false;
-		$reason_id = request_var('id', 0);
+		$reason_id = $request->variable('id', 0);
 
 		$this->tpl_name = 'acp_reasons';
 		$this->page_title = 'ACP_REASONS';
@@ -50,8 +49,8 @@ class acp_reasons
 			case 'edit':
 
 				$reason_row = array(
-					'reason_title'			=> utf8_normalize_nfc(request_var('reason_title', '', true)),
-					'reason_description'	=> utf8_normalize_nfc(request_var('reason_description', '', true)),
+					'reason_title'			=> $request->variable('reason_title', '', true),
+					'reason_description'	=> $request->variable('reason_description', '', true),
 				);
 
 				if ($submit)
@@ -139,7 +138,7 @@ class acp_reasons
 							$log = 'UPDATED';
 						}
 
-						add_log('admin', 'LOG_REASON_' . $log, $reason_row['reason_title']);
+						$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'LOG_REASON_' . $log, false, array($reason_row['reason_title']));
 						trigger_error($user->lang['REASON_' . $log] . adm_back_link($this->u_action));
 					}
 				}
@@ -232,7 +231,6 @@ class acp_reasons
 						break;
 
 						// Standard? What's that?
-						case 'mssql':
 						case 'mssql_odbc':
 						case 'mssqlnative':
 							// Change the reports using this reason to 'other'
@@ -252,7 +250,6 @@ class acp_reasons
 						// Teh standard
 						case 'postgres':
 						case 'oracle':
-						case 'sqlite':
 						case 'sqlite3':
 							// Change the reports using this reason to 'other'
 							$sql = 'UPDATE ' . REPORTS_TABLE . '
@@ -264,7 +261,7 @@ class acp_reasons
 
 					$db->sql_query('DELETE FROM ' . REPORTS_REASONS_TABLE . ' WHERE reason_id = ' . $reason_id);
 
-					add_log('admin', 'LOG_REASON_REMOVED', $reason_row['reason_title']);
+					$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'LOG_REASON_REMOVED', false, array($reason_row['reason_title']));
 					trigger_error($user->lang['REASON_REMOVED'] . adm_back_link($this->u_action));
 				}
 				else
@@ -281,6 +278,11 @@ class acp_reasons
 
 			case 'move_up':
 			case 'move_down':
+
+				if (!check_link_hash($request->variable('hash', ''), 'acp_reasons'))
+				{
+					trigger_error($user->lang['FORM_INVALID'] . adm_back_link($this->u_action), E_USER_WARNING);
+				}
 
 				$sql = 'SELECT reason_order
 					FROM ' . REPORTS_REASONS_TABLE . "
@@ -383,8 +385,8 @@ class acp_reasons
 
 				'U_EDIT'		=> $this->u_action . '&amp;action=edit&amp;id=' . $row['reason_id'],
 				'U_DELETE'		=> (!$other_reason) ? $this->u_action . '&amp;action=delete&amp;id=' . $row['reason_id'] : '',
-				'U_MOVE_UP'		=> $this->u_action . '&amp;action=move_up&amp;id=' . $row['reason_id'],
-				'U_MOVE_DOWN'	=> $this->u_action . '&amp;action=move_down&amp;id=' . $row['reason_id'])
+				'U_MOVE_UP'		=> $this->u_action . '&amp;action=move_up&amp;id=' . $row['reason_id'] . '&amp;hash=' . generate_link_hash('acp_reasons'),
+				'U_MOVE_DOWN'	=> $this->u_action . '&amp;action=move_down&amp;id=' . $row['reason_id'] . '&amp;hash=' . generate_link_hash('acp_reasons'))
 			);
 		}
 		$db->sql_freeresult($result);

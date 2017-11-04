@@ -42,19 +42,33 @@ function output_image()
 //
 // Attempt to alleviate the problem by doing setup outside of the lock as much as possible.
 
-$cron_type = request_var('cron_type', '');
+$cron_type = $request->variable('cron_type', '');
 
 // Comment this line out for debugging so the page does not return an image.
 output_image();
 
+/* @var $cron_lock \phpbb\lock\db */
 $cron_lock = $phpbb_container->get('cron.lock_db');
 if ($cron_lock->acquire())
 {
+	/* @var $cron \phpbb\cron\manager */
 	$cron = $phpbb_container->get('cron.manager');
 
 	$task = $cron->find_task($cron_type);
 	if ($task)
 	{
+		/**
+		 * This event enables you to catch the task before it runs
+		 *
+		 * @event core.cron_run_before
+		 * @var	\phpbb\cron\task\wrapper	task	Current Cron task
+		 * @since 3.1.8-RC1
+		 */
+		$vars = array(
+			'task',
+		);
+		extract($phpbb_dispatcher->trigger_event('core.cron_run_before', compact($vars)));
+
 		if ($task->is_parametrized())
 		{
 			$task->parse_parameters($request);

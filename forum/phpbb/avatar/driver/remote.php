@@ -36,8 +36,8 @@ class remote extends \phpbb\avatar\driver\driver
 	public function prepare_form($request, $template, $user, $row, &$error)
 	{
 		$template->assign_vars(array(
-			'AVATAR_REMOTE_WIDTH' => ((in_array($row['avatar_type'], array(AVATAR_REMOTE, $this->get_name(), 'remote'))) && $row['avatar_width']) ? $row['avatar_width'] : $request->variable('avatar_remote_width', 0),
-			'AVATAR_REMOTE_HEIGHT' => ((in_array($row['avatar_type'], array(AVATAR_REMOTE, $this->get_name(), 'remote'))) && $row['avatar_height']) ? $row['avatar_height'] : $request->variable('avatar_remote_width', 0),
+			'AVATAR_REMOTE_WIDTH' => ((in_array($row['avatar_type'], array(AVATAR_REMOTE, $this->get_name(), 'remote'))) && $row['avatar_width']) ? $row['avatar_width'] : $request->variable('avatar_remote_width', ''),
+			'AVATAR_REMOTE_HEIGHT' => ((in_array($row['avatar_type'], array(AVATAR_REMOTE, $this->get_name(), 'remote'))) && $row['avatar_height']) ? $row['avatar_height'] : $request->variable('avatar_remote_width', ''),
 			'AVATAR_REMOTE_URL' => ((in_array($row['avatar_type'], array(AVATAR_REMOTE, $this->get_name(), 'remote'))) && $row['avatar']) ? $row['avatar'] : '',
 		));
 
@@ -85,31 +85,31 @@ class remote extends \phpbb\avatar\driver\driver
 		}
 
 		// Check if this url looks alright
-		// This isn't perfect, but it's what phpBB 3.0 did, and might as well make sure everything is compatible
-		if (!preg_match('#^(http|https|ftp)://(?:(.*?\.)*?[a-z0-9\-]+?\.[a-z]{2,4}|(?:\d{1,3}\.){3,5}\d{1,3}):?([0-9]*?).*?\.('. implode('|', $this->allowed_extensions) . ')$#i', $url))
+		// Do not allow specifying the port (see RFC 3986) or IP addresses
+		if (!preg_match('#^(http|https|ftp)://(?:(.*?\.)*?[a-z0-9\-]+?\.[a-z]{2,4}|(?:\d{1,3}\.){3,5}\d{1,3}):?([0-9]*?).*?\.('. implode('|', $this->allowed_extensions) . ')$#i', $url) ||
+			preg_match('@^(http|https|ftp)://[^/:?#]+:[0-9]+[/:?#]@i', $url) ||
+			preg_match('#^(http|https|ftp)://(?:(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])#i', $url) ||
+			preg_match('#^(http|https|ftp)://(?:(?:(?:[\dA-F]{1,4}:){6}(?:[\dA-F]{1,4}:[\dA-F]{1,4}|(?:(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])))|(?:::(?:[\dA-F]{1,4}:){0,5}(?:[\dA-F]{1,4}(?::[\dA-F]{1,4})?|(?:(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])))|(?:(?:[\dA-F]{1,4}:):(?:[\dA-F]{1,4}:){4}(?:[\dA-F]{1,4}:[\dA-F]{1,4}|(?:(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])))|(?:(?:[\dA-F]{1,4}:){1,2}:(?:[\dA-F]{1,4}:){3}(?:[\dA-F]{1,4}:[\dA-F]{1,4}|(?:(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])))|(?:(?:[\dA-F]{1,4}:){1,3}:(?:[\dA-F]{1,4}:){2}(?:[\dA-F]{1,4}:[\dA-F]{1,4}|(?:(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])))|(?:(?:[\dA-F]{1,4}:){1,4}:(?:[\dA-F]{1,4}:)(?:[\dA-F]{1,4}:[\dA-F]{1,4}|(?:(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])))|(?:(?:[\dA-F]{1,4}:){1,5}:(?:[\dA-F]{1,4}:[\dA-F]{1,4}|(?:(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])))|(?:(?:[\dA-F]{1,4}:){1,6}:[\dA-F]{1,4})|(?:(?:[\dA-F]{1,4}:){1,7}:)|(?:::))#i', $url))
 		{
 			$error[] = 'AVATAR_URL_INVALID';
 			return false;
 		}
 
-		// Make sure getimagesize works...
-		if (function_exists('getimagesize'))
+		// Get image dimensions
+		if (($width <= 0 || $height <= 0) && (($image_data = $this->imagesize->getImageSize($url)) === false))
 		{
-			if (($width <= 0 || $height <= 0) && (($image_data = @getimagesize($url)) === false))
-			{
-				$error[] = 'UNABLE_GET_IMAGE_SIZE';
-				return false;
-			}
-
-			if (!empty($image_data) && ($image_data[0] <= 0 || $image_data[1] <= 0))
-			{
-				$error[] = 'AVATAR_NO_SIZE';
-				return false;
-			}
-
-			$width = ($width && $height) ? $width : $image_data[0];
-			$height = ($width && $height) ? $height : $image_data[1];
+			$error[] = 'UNABLE_GET_IMAGE_SIZE';
+			return false;
 		}
+
+		if (!empty($image_data) && ($image_data['width'] <= 0 || $image_data['height'] <= 0))
+		{
+			$error[] = 'AVATAR_NO_SIZE';
+			return false;
+		}
+
+		$width = ($width && $height) ? $width : $image_data['width'];
+		$height = ($width && $height) ? $height : $image_data['height'];
 
 		if ($width <= 0 || $height <= 0)
 		{
@@ -117,13 +117,8 @@ class remote extends \phpbb\avatar\driver\driver
 			return false;
 		}
 
-		if (!class_exists('fileupload'))
-		{
-			include($this->phpbb_root_path . 'includes/functions_upload.' . $this->php_ext);
-		}
-
-		$types = \fileupload::image_types();
-		$extension = strtolower(\filespec::get_extension($url));
+		$types = \phpbb\files\upload::image_types();
+		$extension = strtolower(\phpbb\files\filespec::get_extension($url));
 
 		// Check if this is actually an image
 		if ($file_stream = @fopen($url, 'r'))
@@ -172,15 +167,15 @@ class remote extends \phpbb\avatar\driver\driver
 			return false;
 		}
 
-		if (!empty($image_data) && (!isset($types[$image_data[2]]) || !in_array($extension, $types[$image_data[2]])))
+		if (!empty($image_data) && (!isset($types[$image_data['type']]) || !in_array($extension, $types[$image_data['type']])))
 		{
-			if (!isset($types[$image_data[2]]))
+			if (!isset($types[$image_data['type']]))
 			{
 				$error[] = 'UNABLE_GET_IMAGE_SIZE';
 			}
 			else
 			{
-				$error[] = array('IMAGE_FILETYPE_MISMATCH', $types[$image_data[2]][0], $extension);
+				$error[] = array('IMAGE_FILETYPE_MISMATCH', $types[$image_data['type']][0], $extension);
 			}
 
 			return false;

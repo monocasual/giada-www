@@ -58,14 +58,14 @@ class qa
 	*/
 	function init($type)
 	{
-		global $config, $db, $user;
+		global $config, $db, $user, $request;
 
 		// load our language file
 		$user->add_lang('captcha_qa');
 
 		// read input
-		$this->confirm_id = request_var('qa_confirm_id', '');
-		$this->answer = utf8_normalize_nfc(request_var('qa_answer', '', true));
+		$this->confirm_id = $request->variable('qa_confirm_id', '');
+		$this->answer = $request->variable('qa_answer', '', true);
 
 		$this->type = (int) $type;
 		$this->question_lang = $user->lang_name;
@@ -135,9 +135,9 @@ class qa
 	*/
 	public function is_installed()
 	{
-		global $db;
+		global $phpbb_container;
 
-		$db_tool = new \phpbb\db\tools($db);
+		$db_tool = $phpbb_container->get('dbal.tools');
 
 		return $db_tool->sql_table_exists($this->table_captcha_questions);
 	}
@@ -222,7 +222,11 @@ class qa
 	{
 		global $phpbb_log, $template, $user;
 
-		if ($this->is_solved() || empty($this->question_text) || !count($this->question_ids))
+		if ($this->is_solved())
+		{
+			return false;
+		}
+		else if (empty($this->question_text) || !count($this->question_ids))
 		{
 			/** @var \phpbb\log\log_interface $phpbb_log */
 			$phpbb_log->add('critical', $user->data['user_id'], $user->ip, 'LOG_ERROR_CAPTCHA', time(), array($user->lang('CONFIRM_QUESTION_MISSING')));
@@ -231,10 +235,10 @@ class qa
 		else
 		{
 			$template->assign_vars(array(
-				'QA_CONFIRM_QUESTION'		=> $this->question_text,
-				'QA_CONFIRM_ID'				=> $this->confirm_id,
-				'S_CONFIRM_CODE'			=> true,
-				'S_TYPE'					=> $this->type,
+				'QA_CONFIRM_QUESTION'	=> $this->question_text,
+				'QA_CONFIRM_ID'			=> $this->confirm_id,
+				'S_CONFIRM_CODE'		=> true,
+				'S_TYPE'				=> $this->type,
 			));
 
 			return 'captcha_qa.html';
@@ -330,10 +334,9 @@ class qa
 	*/
 	function install()
 	{
-		global $db;
+		global $phpbb_container;
 
-		$db_tool = new \phpbb\db\tools($db);
-
+		$db_tool = $phpbb_container->get('dbal.tools');
 		$schemas = array(
 				$this->table_captcha_questions		=> array (
 					'COLUMNS' => array(
@@ -568,9 +571,9 @@ class qa
 	*/
 	function check_answer()
 	{
-		global $db;
+		global $db, $request;
 
-		$answer = ($this->question_strict) ? utf8_normalize_nfc(request_var('qa_answer', '', true)) : utf8_clean_string(utf8_normalize_nfc(request_var('qa_answer', '', true)));
+		$answer = ($this->question_strict) ? $request->variable('qa_answer', '', true) : utf8_clean_string($request->variable('qa_answer', '', true));
 
 		$sql = 'SELECT answer_text
 			FROM ' . $this->table_captcha_answers . '
@@ -622,7 +625,9 @@ class qa
 	*/
 	function is_solved()
 	{
-		if (request_var('qa_answer', false) && $this->solved === 0)
+		global $request;
+
+		if ($request->variable('qa_answer', false) && $this->solved === 0)
 		{
 			$this->validate();
 		}
@@ -635,8 +640,7 @@ class qa
 	*/
 	function acp_page($id, &$module)
 	{
-		global $user, $template;
-		global $config;
+		global $config, $request, $phpbb_log, $template, $user;
 
 		$user->add_lang('acp/board');
 		$user->add_lang('captcha_qa');
@@ -651,9 +655,9 @@ class qa
 		$form_key = 'acp_captcha';
 		add_form_key($form_key);
 
-		$submit = request_var('submit', false);
-		$question_id = request_var('question_id', 0);
-		$action = request_var('action', '');
+		$submit = $request->variable('submit', false);
+		$question_id = $request->variable('question_id', 0);
+		$action = $request->variable('action', '');
 
 		// we have two pages, so users might want to navigate from one to the other
 		$list_url = $module->u_action . "&amp;configure=1&amp;select_captcha=" . $this->get_service_name();
@@ -758,7 +762,7 @@ class qa
 						$this->acp_add_question($question_input);
 					}
 
-					add_log('admin', 'LOG_CONFIG_VISUAL');
+					$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'LOG_CONFIG_VISUAL');
 					trigger_error($user->lang['CONFIG_UPDATED'] . adm_back_link($list_url));
 				}
 			}
@@ -844,7 +848,9 @@ class qa
 	*/
 	function acp_get_question_input()
 	{
-		$answers = utf8_normalize_nfc(request_var('answers', '', true));
+		global $request;
+
+		$answers = $request->variable('answers', '', true);
 
 		// Convert answers into array and filter if answers are set
 		if (strlen($answers))
@@ -855,9 +861,9 @@ class qa
 		}
 
 		$question = array(
-			'question_text'	=> request_var('question_text', '', true),
-			'strict'		=> request_var('strict', false),
-			'lang_iso'		=> request_var('lang_iso', ''),
+			'question_text'	=> $request->variable('question_text', '', true),
+			'strict'		=> $request->variable('strict', false),
+			'lang_iso'		=> $request->variable('lang_iso', ''),
 			'answers'		=> $answers,
 		);
 		return $question;

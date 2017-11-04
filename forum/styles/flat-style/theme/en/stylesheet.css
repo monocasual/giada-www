@@ -1,0 +1,9 @@
+/* Online image */
+.online {
+	background-image: url("./icon_user_online.png");
+}
+
+/* Offline image */
+.offline {
+	background-image: url("./icon_user_offline.png");
+}

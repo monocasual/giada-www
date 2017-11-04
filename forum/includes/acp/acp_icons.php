@@ -28,18 +28,22 @@ class acp_icons
 
 	function main($id, $mode)
 	{
-		global $db, $user, $auth, $template, $cache;
-		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
+		global $db, $user, $template, $cache;
+		global $config, $phpbb_root_path;
 		global $request, $phpbb_container;
 
 		$user->add_lang('acp/posting');
 
 		// Set up general vars
-		$action = request_var('action', '');
+		$action = $request->variable('action', '');
 		$action = (isset($_POST['add'])) ? 'add' : $action;
 		$action = (isset($_POST['edit'])) ? 'edit' : $action;
 		$action = (isset($_POST['import'])) ? 'import' : $action;
-		$icon_id = request_var('id', 0);
+		$icon_id = $request->variable('id', 0);
+		$submit = $request->is_set_post('submit', false);
+
+		$form_key = 'acp_icons';
+		add_form_key($form_key);
 
 		$mode = ($mode == 'smilies') ? 'smilies' : 'icons';
 
@@ -194,7 +198,6 @@ class acp_icons
 
 				$data = array();
 				$after = false;
-				$display = 0;
 				$order_lists = array('', '');
 				$add_order_lists = array('', '');
 				$display_count = 0;
@@ -209,7 +212,6 @@ class acp_icons
 					if ($row[$fields . '_id'] == $icon_id)
 					{
 						$after = true;
-						$display = $row['display_on_posting'];
 						$data[$row[$fields . '_url']] = $row;
 					}
 					else
@@ -248,7 +250,7 @@ class acp_icons
 					$data = $_images;
 				}
 
-				$colspan = (($mode == 'smilies') ? 7 : 5);
+				$colspan = (($mode == 'smilies') ? 7 : 6);
 				$colspan += ($icon_id) ? 1 : 0;
 				$colspan += ($action == 'add') ? 2 : 0;
 
@@ -292,6 +294,8 @@ class acp_icons
 						'ID'				=> (isset($img_row[$fields . '_id'])) ? $img_row[$fields . '_id'] : 0,
 						'WIDTH'				=> (!empty($img_row[$fields .'_width'])) ? $img_row[$fields .'_width'] : $img_row['width'],
 						'HEIGHT'			=> (!empty($img_row[$fields .'_height'])) ? $img_row[$fields .'_height'] : $img_row['height'],
+						'TEXT_ALT'		    => ($mode == 'icons' && !empty($img_row['icons_alt'])) ? $img_row['icons_alt'] : $img,
+						'ALT'			    => ($mode == 'icons' && !empty($img_row['icons_alt'])) ? $img_row['icons_alt'] : '',
 						'POSTING_CHECKED'	=> (!empty($img_row['display_on_posting']) || $action == 'add') ? ' checked="checked"' : '',
 					));
 				}
@@ -325,25 +329,31 @@ class acp_icons
 			case 'create':
 			case 'modify':
 
+				if (!check_form_key($form_key))
+				{
+					trigger_error($user->lang['FORM_INVALID'] . adm_back_link($this->u_action), E_USER_WARNING);
+				}
+
 				// Get items to create/modify
-				$images = (isset($_POST['image'])) ? array_keys(request_var('image', array('' => 0))) : array();
+				$images = (isset($_POST['image'])) ? array_keys($request->variable('image', array('' => 0))) : array();
 
 				// Now really get the items
-				$image_id		= (isset($_POST['id'])) ? request_var('id', array('' => 0)) : array();
-				$image_order	= (isset($_POST['order'])) ? request_var('order', array('' => 0)) : array();
-				$image_width	= (isset($_POST['width'])) ? request_var('width', array('' => 0)) : array();
-				$image_height	= (isset($_POST['height'])) ? request_var('height', array('' => 0)) : array();
-				$image_add		= (isset($_POST['add_img'])) ? request_var('add_img', array('' => 0)) : array();
-				$image_emotion	= utf8_normalize_nfc(request_var('emotion', array('' => ''), true));
-				$image_code		= utf8_normalize_nfc(request_var('code', array('' => ''), true));
-				$image_display_on_posting = (isset($_POST['display_on_posting'])) ? request_var('display_on_posting', array('' => 0)) : array();
+				$image_id		= (isset($_POST['id'])) ? $request->variable('id', array('' => 0)) : array();
+				$image_order	= (isset($_POST['order'])) ? $request->variable('order', array('' => 0)) : array();
+				$image_width	= (isset($_POST['width'])) ? $request->variable('width', array('' => 0)) : array();
+				$image_height	= (isset($_POST['height'])) ? $request->variable('height', array('' => 0)) : array();
+				$image_add		= (isset($_POST['add_img'])) ? $request->variable('add_img', array('' => 0)) : array();
+				$image_emotion	= $request->variable('emotion', array('' => ''), true);
+				$image_code		= $request->variable('code', array('' => ''), true);
+				$image_alt		= ($request->is_set_post('alt')) ? $request->variable('alt', array('' => ''), true) : array();
+				$image_display_on_posting = (isset($_POST['display_on_posting'])) ? $request->variable('display_on_posting', array('' => 0)) : array();
 
 				// Ok, add the relevant bits if we are adding new codes to existing emoticons...
 				if ($request->variable('add_additional_code', false, false, \phpbb\request\request_interface::POST))
 				{
-					$add_image			= request_var('add_image', '');
-					$add_code			= utf8_normalize_nfc(request_var('add_code', '', true));
-					$add_emotion		= utf8_normalize_nfc(request_var('add_emotion', '', true));
+					$add_image			= $request->variable('add_image', '');
+					$add_code			= $request->variable('add_code', '', true);
+					$add_emotion		= $request->variable('add_emotion', '', true);
 
 					if ($add_image && $add_emotion && $add_code)
 					{
@@ -352,15 +362,15 @@ class acp_icons
 
 						$image_code[$add_image] = $add_code;
 						$image_emotion[$add_image] = $add_emotion;
-						$image_width[$add_image] = request_var('add_width', 0);
-						$image_height[$add_image] = request_var('add_height', 0);
+						$image_width[$add_image] = $request->variable('add_width', 0);
+						$image_height[$add_image] = $request->variable('add_height', 0);
 
 						if ($request->variable('add_display_on_posting', false, false, \phpbb\request\request_interface::POST))
 						{
 							$image_display_on_posting[$add_image] = 1;
 						}
 
-						$image_order[$add_image] = request_var('add_order', 0);
+						$image_order[$add_image] = $request->variable('add_order', 0);
 					}
 				}
 
@@ -438,6 +448,13 @@ class acp_icons
 							);
 						}
 
+						if ($mode == 'icons')
+						{
+							$img_sql = array_merge($img_sql, array(
+								'icons_alt'	=> $image_alt[$image])
+							);
+						}
+
 						// Image_order holds the 'new' order value
 						if (!empty($image_order[$image]))
 						{
@@ -486,6 +503,7 @@ class acp_icons
 
 				$cache->destroy('_icons');
 				$cache->destroy('sql', $table);
+				$phpbb_container->get('text_formatter.cache')->invalidate();
 
 				$level = ($icons_updated) ? E_USER_NOTICE : E_USER_WARNING;
 				$errormsgs = '';
@@ -506,12 +524,17 @@ class acp_icons
 
 			case 'import':
 
-				$pak = request_var('pak', '');
-				$current = request_var('current', '');
+				$pak = $request->variable('pak', '');
+				$current = $request->variable('current', '');
 
 				if ($pak != '')
 				{
 					$order = 0;
+
+					if (!check_form_key($form_key))
+					{
+						trigger_error($user->lang['FORM_INVALID'] . adm_back_link($this->u_action), E_USER_WARNING);
+					}
 
 					if (!($pak_ary = @file($phpbb_root_path . $img_path . '/' . $pak)))
 					{
@@ -540,7 +563,6 @@ class acp_icons
 					{
 						switch ($db->get_sql_layer())
 						{
-							case 'sqlite':
 							case 'sqlite3':
 								$db->sql_query('DELETE FROM ' . $table);
 							break;
@@ -661,6 +683,7 @@ class acp_icons
 
 					$cache->destroy('_icons');
 					$cache->destroy('sql', $table);
+					$phpbb_container->get('text_formatter.cache')->invalidate();
 
 					trigger_error($user->lang[$lang . '_IMPORT_SUCCESS'] . adm_back_link($this->u_action));
 				}
@@ -698,7 +721,7 @@ class acp_icons
 
 				$template->assign_vars(array(
 					'MESSAGE_TITLE'		=> $user->lang['EXPORT_' . $lang],
-					'MESSAGE_TEXT'		=> sprintf($user->lang['EXPORT_' . $lang . '_EXPLAIN'], '<a href="' . $this->u_action . '&amp;action=send">', '</a>'),
+					'MESSAGE_TEXT'		=> sprintf($user->lang['EXPORT_' . $lang . '_EXPLAIN'], '<a href="' . $this->u_action . '&amp;action=send&amp;hash=' . generate_link_hash('acp_icons') . '">', '</a>'),
 
 					'S_USER_NOTICE'		=> true,
 					)
@@ -709,6 +732,11 @@ class acp_icons
 			break;
 
 			case 'send':
+
+				if (!check_link_hash($request->variable('hash', ''), 'acp_icons'))
+				{
+					trigger_error($user->lang['FORM_INVALID'] . adm_back_link($this->u_action), E_USER_WARNING);
+				}
 
 				$sql = "SELECT *
 					FROM $table
@@ -783,6 +811,7 @@ class acp_icons
 
 					$cache->destroy('_icons');
 					$cache->destroy('sql', $table);
+					$phpbb_container->get('text_formatter.cache')->invalidate();
 
 					if ($request->is_ajax())
 					{
@@ -810,6 +839,11 @@ class acp_icons
 
 			case 'move_up':
 			case 'move_down':
+
+				if (!check_link_hash($request->variable('hash', ''), 'acp_icons'))
+				{
+					trigger_error($user->lang['FORM_INVALID'] . adm_back_link($this->u_action), E_USER_WARNING);
+				}
 
 				// Get current order id...
 				$sql = "SELECT {$fields}_order as current_order
@@ -848,6 +882,7 @@ class acp_icons
 
 				$cache->destroy('_icons');
 				$cache->destroy('sql', $table);
+				$phpbb_container->get('text_formatter.cache')->invalidate();
 
 				if ($request->is_ajax())
 				{
@@ -903,9 +938,10 @@ class acp_icons
 			)
 		);
 
-		$spacer = false;
+		/* @var $pagination \phpbb\pagination */
 		$pagination = $phpbb_container->get('pagination');
-		$pagination_start = request_var('start', 0);
+		$pagination_start = $request->variable('start', 0);
+		$spacer = false;
 
 		$item_count = $this->item_count($table);
 
@@ -916,7 +952,7 @@ class acp_icons
 
 		while ($row = $db->sql_fetchrow($result))
 		{
-			$alt_text = ($mode == 'smilies') ? $row['code'] : '';
+			$alt_text = ($mode == 'smilies') ? $row['code'] : (($mode == 'icons' && !empty($row['icons_alt'])) ? $row['icons_alt'] : $row['icons_url']);
 
 			$template->assign_block_vars('items', array(
 				'S_SPACER'		=> (!$spacer && !$row['display_on_posting']) ? true : false,
@@ -928,8 +964,8 @@ class acp_icons
 				'EMOTION'		=> (isset($row['emotion'])) ? $row['emotion'] : '',
 				'U_EDIT'		=> $this->u_action . '&amp;action=edit&amp;id=' . $row[$fields . '_id'],
 				'U_DELETE'		=> $this->u_action . '&amp;action=delete&amp;id=' . $row[$fields . '_id'],
-				'U_MOVE_UP'		=> $this->u_action . '&amp;action=move_up&amp;id=' . $row[$fields . '_id'] . '&amp;start=' . $pagination_start,
-				'U_MOVE_DOWN'	=> $this->u_action . '&amp;action=move_down&amp;id=' . $row[$fields . '_id'] . '&amp;start=' . $pagination_start,
+				'U_MOVE_UP'		=> $this->u_action . '&amp;action=move_up&amp;id=' . $row[$fields . '_id'] . '&amp;start=' . $pagination_start . '&amp;hash=' . generate_link_hash('acp_icons'),
+				'U_MOVE_DOWN'	=> $this->u_action . '&amp;action=move_down&amp;id=' . $row[$fields . '_id'] . '&amp;start=' . $pagination_start . '&amp;hash=' . generate_link_hash('acp_icons'),
 			));
 
 			if (!$spacer && !$row['display_on_posting'])

@@ -22,8 +22,8 @@ require($phpbb_root_path . 'includes/functions_user.' . $phpEx);
 require($phpbb_root_path . 'includes/functions_module.' . $phpEx);
 
 // Basic parameter data
-$id 	= request_var('i', '');
-$mode	= request_var('mode', '');
+$id 	= $request->variable('i', '');
+$mode	= $request->variable('mode', '');
 
 if (in_array($mode, array('login', 'login_link', 'logout', 'confirm', 'sendpassword', 'activate')))
 {
@@ -81,7 +81,7 @@ switch ($mode)
 			redirect(append_sid("{$phpbb_root_path}index.$phpEx"));
 		}
 
-		login_box(request_var('redirect', "index.$phpEx"));
+		login_box($request->variable('redirect', "index.$phpEx"));
 	break;
 
 	case 'login_link':
@@ -212,7 +212,7 @@ switch ($mode)
 
 	case 'switch_perm':
 
-		$user_id = request_var('u', 0);
+		$user_id = $request->variable('u', 0);
 
 		$sql = 'SELECT *
 			FROM ' . USERS_TABLE . '
@@ -221,7 +221,7 @@ switch ($mode)
 		$user_row = $db->sql_fetchrow($result);
 		$db->sql_freeresult($result);
 
-		if (!$auth->acl_get('a_switchperm') || !$user_row || $user_id == $user->data['user_id'] || !check_link_hash(request_var('hash', ''), 'switchperm'))
+		if (!$auth->acl_get('a_switchperm') || !$user_row || $user_id == $user->data['user_id'] || !check_link_hash($request->variable('hash', ''), 'switchperm'))
 		{
 			redirect(append_sid("{$phpbb_root_path}index.$phpEx"));
 		}
@@ -234,9 +234,22 @@ switch ($mode)
 			redirect(append_sid("{$phpbb_root_path}index.$phpEx"));
 		}
 
-		add_log('admin', 'LOG_ACL_TRANSFER_PERMISSIONS', $user_row['username']);
+		$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'LOG_ACL_TRANSFER_PERMISSIONS', false, array($user_row['username']));
 
 		$message = sprintf($user->lang['PERMISSIONS_TRANSFERRED'], $user_row['username']) . '<br /><br />' . sprintf($user->lang['RETURN_INDEX'], '<a href="' . append_sid("{$phpbb_root_path}index.$phpEx") . '">', '</a>');
+
+		/**
+		* Event to run code after permissions are switched
+		*
+		* @event core.ucp_switch_permissions
+		* @var	int		user_id		User ID to switch permission to
+		* @var	array	user_row	User data
+		* @var	string	message		Success message
+		* @since 3.1.11-RC1
+		*/
+		$vars = array('user_id', 'user_row', 'message');
+		extract($phpbb_dispatcher->trigger_event('core.ucp_switch_permissions', compact($vars)));
+
 		trigger_error($message);
 
 	break;
@@ -257,9 +270,21 @@ switch ($mode)
 		$username = $db->sql_fetchfield('username');
 		$db->sql_freeresult($result);
 
-		add_log('admin', 'LOG_ACL_RESTORE_PERMISSIONS', $username);
+		$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'LOG_ACL_RESTORE_PERMISSIONS', false, array($username));
 
 		$message = $user->lang['PERMISSIONS_RESTORED'] . '<br /><br />' . sprintf($user->lang['RETURN_INDEX'], '<a href="' . append_sid("{$phpbb_root_path}index.$phpEx") . '">', '</a>');
+
+		/**
+		* Event to run code after permissions are restored
+		*
+		* @event core.ucp_restore_permissions
+		* @var	string	username	User name
+		* @var	string	message		Success message
+		* @since 3.1.11-RC1
+		*/
+		$vars = array('username', 'message');
+		extract($phpbb_dispatcher->trigger_event('core.ucp_restore_permissions', compact($vars)));
+
 		trigger_error($message);
 
 	break;
@@ -285,7 +310,7 @@ if (!$user->data['is_registered'])
 
 	if ($id == 'pm' && $mode == 'view' && isset($_GET['p']))
 	{
-		$redirect_url = append_sid("{$phpbb_root_path}ucp.$phpEx?i=pm&p=" . request_var('p', 0));
+		$redirect_url = append_sid("{$phpbb_root_path}ucp.$phpEx?i=pm&p=" . $request->variable('p', 0));
 		login_box($redirect_url, $user->lang['LOGIN_EXPLAIN_UCP']);
 	}
 

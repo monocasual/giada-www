@@ -14,7 +14,7 @@
 			<h3>{L_REPORT_REASON}{L_COLON} {REPORT_REASON_TITLE}</h3>
 			<p class="author">{L_REPORTED} {L_POST_BY_AUTHOR} {REPORTER_FULL} &laquo; {REPORT_DATE}</p>
 		<!-- IF S_REPORT_CLOSED -->
-			<p class="post-notice reported">{L_REPORT_CLOSED}</p>
+			<p class="post-notice reported"><i class="icon fa-exclamation fa-fw icon-red" aria-hidden="true"></i>{L_REPORT_CLOSED}</p>
 		<!-- ENDIF -->
 			<div class="content">
 			<!-- IF REPORT_TEXT -->
@@ -58,8 +58,8 @@
 			</li>
 			<!-- IF U_EDIT -->
 				<li>
-					<a href="{U_EDIT}" title="{L_EDIT_POST}" class="button icon-button edit-icon">
-						<span>{L_EDIT_POST}</span>
+					<a href="{U_EDIT}" title="{L_EDIT_POST}" class="button">
+						<i class="icon fa-pencil fa-fw" aria-hidden="true"></i><span class="sr-only">{L_EDIT_POST}</span>
 					</a>
 				</li>
 			<!-- ENDIF -->
@@ -73,7 +73,7 @@
 			<!-- IF S_BCC_RECIPIENT --><br /><strong>{L_BCC}{L_COLON}</strong> <!-- BEGIN bcc_recipient --><!-- IF bcc_recipient.NAME_FULL -->{bcc_recipient.NAME_FULL}<!-- ELSE --><a href="{bcc_recipient.U_VIEW}" style="color:<!-- IF bcc_recipient.COLOUR -->{bcc_recipient.COLOUR}<!-- ELSEIF bcc_recipient.IS_GROUP -->#0000FF<!-- ENDIF -->;">{bcc_recipient.NAME}</a><!-- ENDIF -->&nbsp;<!-- END bcc_recipient --><!-- ENDIF -->
 		</p>
 		<!-- ELSE -->
-		<p class="author">{MINI_POST_IMG} {L_POSTED} {L_POST_BY_AUTHOR} {POST_AUTHOR_FULL} &raquo; {POST_DATE}</p>
+		<p class="author"><span><i class="icon fa-file fa-fw icon-lightgray icon-md" aria-hidden="true"></i><span class="sr-only">{MINI_POST_IMG}</span></span> {L_POSTED} {L_POST_BY_AUTHOR} {POST_AUTHOR_FULL} &raquo; {POST_DATE}</p>
 		<!-- ENDIF -->
 
 		<!-- IF S_POST_UNAPPROVED -->
@@ -102,11 +102,11 @@
 
 		<!-- IF S_MESSAGE_REPORTED -->
 			<p class="post-notice reported">
-				{REPORTED_IMG} <a href="{U_MCP_REPORT}"><strong>{L_MESSAGE_REPORTED}</strong></a>
+				<i class="icon fa-exclamation fa-fw icon-red" aria-hidden="true"></i><span class="sr-only">{L_TOPIC_REPORTED}</span> <a href="{U_MCP_REPORT}"><strong>{L_MESSAGE_REPORTED}</strong></a>
 			</p>
 		<!-- ENDIF -->
 
-		<div class="content" id="post_details">
+		<div id="post_details" class="content post_details">
 			{POST_PREVIEW}
 		</div>
 
@@ -294,6 +294,14 @@
 			</tbody>
 			</table>
 
+			<div class="pagination">
+				<!-- INCLUDE pagination.html -->
+			</div>
+			</div>
+		</div>
+
+		<div class="panel">
+			<div class="inner">
 			<table class="table1">
 			<thead>
 			<tr>
@@ -315,7 +323,27 @@
 			</tbody>
 			</table>
 
-			<p><a href="{U_LOOKUP_ALL}#ip">{L_LOOKUP_ALL}</a></p>
+			<div class="buttons">
+				<p><a href="{U_LOOKUP_ALL}#ip">{L_LOOKUP_ALL}</a></p>
+			</div>
+
+			<div class="pagination">
+				<ul>
+				<!-- BEGIN pagination_ips -->
+					<!-- IF pagination_ips.S_IS_PREV -->
+					<li class="arrow previous"><a class="button button-icon-only" href="{pagination_ips.PAGE_URL}" rel="prev" role="button"><i class="icon fa-chevron-{S_CONTENT_FLOW_BEGIN} fa-fw" aria-hidden="true"></i><span class="sr-only">{L_PREVIOUS}</span></a></li>
+					<!-- ELSEIF pagination_ips.S_IS_CURRENT -->
+					<li class="active"><span>{pagination_ips.PAGE_NUMBER}</span></li>
+					<!-- ELSEIF pagination_ips.S_IS_ELLIPSIS -->
+					<li class="ellipsis" role="separator"><span>{L_ELLIPSIS}</span></li>
+					<!-- ELSEIF pagination_ips.S_IS_NEXT -->
+					<li class="arrow next"><a class="button button-icon-only" href="{pagination_ips.PAGE_URL}" rel="next" role="button"><i class="icon fa-chevron-{S_CONTENT_FLOW_END} fa-fw" aria-hidden="true"></i><span class="sr-only">{L_NEXT}</span></a></li>
+					<!-- ELSE -->
+					<li><a class="button" href="{pagination_ips.PAGE_URL}" role="button">{pagination_ips.PAGE_NUMBER}</a></li>
+					<!-- ENDIF -->
+				<!-- END pagination_ips -->
+				</ul>
+			</div>
 
 			</div>
 		</div>
