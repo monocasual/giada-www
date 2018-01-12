@@ -2,8 +2,11 @@
 
 <h1>Compiling from source</h1>
 
+<p>This chapter is about compiling the code inside the tar.gz you download from this site. If you are trying to compile the code downloaded/cloned from GitHub, take a look <a href="{{ url('documentation/show/development-git-setup') }}">here</a>.</p>
+
 <p>Compiling Giada from source requires a C++11-compatible compiler. The configure script inside the package, designed for Unix systems and MinGW (Windows) will help you to guess correct values for various system-dependent variables used during compilation. You have to pass it the <span class="code">--target</span> parameter depending on your operating system:
 </p>
+
 <p class="code">
 ./configure --target=[linux | osx | windows]
 </p>

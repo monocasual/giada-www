@@ -12,7 +12,7 @@ Our development version is hosted and mantained on GitHub. The official page can
 Please refer to the <a href="https://help.github.com/">GitHub documentation</a> on how to <em>fork</em>, <em>pull</em>, <em>push</em> and so on. If you're new to GitHub, we would suggest a very nice <a href="http://net.tutsplus.com/tutorials/other/getting-the-hang-of-github/">tutorial</a> for beginners.
 </p>
 
-<h2>Branching model</h2>
+<h2>Our branching model</h2>
 
 <p>We put the most experimental code in a <em>feature</em> branch. When the new feature is completed, we merge/rebase the feature branch into <em>master</em> and we drop the feature branch. However the master branch does not necessarily point to the latest release. For that, we use tags, whenever a new release is ready. For example, if you do <span class="code">git tag --list</span> you will see the full tag list:</p>
 
@@ -52,7 +52,7 @@ The source in the repository follows the same rules of the <em>.tar</em> package
 </p>
 
 <p>
-The <span class="code">configure</span> and/or the <span class="code">make</span> scripts may complain about something, especially if you alter, add or remove the files in the repository. In that case use the included <span class="code">autogen.sh</span> script (available only in the repository):
+In addition to that, you may need to run the included <span class="code">autogen.sh</span> script (available only in the repository) in order to prepare the build environment:
 </p>
 
 <pre class="code">
