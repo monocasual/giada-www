@@ -2,35 +2,30 @@
 <h1>Requirements</h1>
 
 <p>
-Giada is based upon the following libraries:</p>
-<ul>
-<li><a href="http://www.music.mcgill.ca/~gary/rtaudio/" title="RtAudio">RtAudio</a>;</li>
-<li><a href="http://www.music.mcgill.ca/~gary/rtmidi/" title="RtMidi">RtMidi</a>;</li>
-<li><a href="http://www.fltk.org/" title="FLTK GUI Toolkit">FLTK</a> (GUI);</li>
-<li><a href="http://www.digip.org/jansson/" title="Jansson">Jansson</a>;</li>
-<li><a href="http://www.mega-nerd.com/libsndfile/" title="Libsndfile">Libsndfile</a>;</li>
-<li><a href="http://www.mega-nerd.com/SRC/" title="Libsamplerate">Libsamplerate</a>.</li>
-</ul>
+The binaries you may find in the <a href="{{ url('download') }}">Download</a> area are meant for 64-bit operating systems. Even if Giada is based upon several external dependencies, everything you need is inside the binary you will download from there.
+</p>
+<p>
+Take a look at the <a href="{{ url('compiling-from-source') }}">Compiling from source</a> page if you want to know more about the additional libraries in use.
+</p>
 
-<p>These libraries are statically linked: everything you need is inside the binary you have downloaded. Nevertheless things get little different whether you are using Windows or Linux version of Giada.
+<h2>Giada on Windows</h2>
+<p>
+Supported version: Windows XP or greater.
 </p>
 
 
 
-<h2>Windows</h2>
+<h2>Giada on Mac</h2>
 <p>
-You should be able to run Giada without troubles if you keep <span class="code">pthreadGC2.dll</span> in the same directory where <span class="code">giada_win.exe</span> is located. That dll is shipped with the zip package. Supported version: Windows XP or greater.
+Supported version: macOS Sierra 10.12 or greater.
 </p>
 
 
 
-<h2>OS X</h2>
+<h2>Giada on Linux</h2>
 <p>
-Don't worry about a thing. Supported version: Mac OS X 10.5 or greater.
+Giada is packaged as an <a href="https://appimage.org/">AppImage</a> and can run on many distributions (including Ubuntu, Fedora, openSUSE, CentOS, elementaryOS, Linux Mint, and others). Supported version: any distribution with Glibc >= 2.23.
 </p>
-
-
-
-<h2>Linux</h2>
 <p>
-Well, we lied: on Linux <strong>Libsndfile</strong>, <strong>Libsamplerate</strong> and <strong>Jansson</strong> are not statically linked. Moreover Giada relies on <a href="http://www.jackaudio.org" title="Jack Audio">Jack</a> to benefit of its advanced streaming functionalities.	Those should not be a problem thanks to the comfortable <em>deb package</em> for Debian distros, which should take care of the missing dependencies. If you experience any troubles with our package you should also try binaries provided by the package manager of your favorite distribution. Giada is already available on Debian, Ubuntu, Arch Linux and many more.</p>
+If you experience any troubles with our package you should also try binaries provided by the package manager of your favorite distribution. Giada is already available on Debian, Ubuntu, Arch Linux and many more.
+</p>
