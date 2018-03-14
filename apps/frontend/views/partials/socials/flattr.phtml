@@ -1,6 +1,5 @@
 <div class="share-button flattr">
   <a target="_blank" href="https://flattr.com/submit/auto?user_id={{ config.services.flattr_user }}&url={{ config.urls.base | url_encode }}&title={{ config.metas.title | url_encode }}&description={{ config.metas.description | url_encode }}&language=en_GB&tags={{ config.metas.keywords | url_encode }}&category=software">
     <img src="{{ url('img/social-icon-flattr.svg') }}" alt="flattr" title="Flattr Giada">
-    <span>{{ socialStats['flattr'] }}</span>
   </a>
 </div>
