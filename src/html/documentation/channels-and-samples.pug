@@ -1,0 +1,297 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Docs - Channels and Samples - '
+	- var description = ', documentation, Channels and Samples'
+	- var keywords    = ', documentation, Channels and Samples'
+
+block content
+	.container
+		#documentation.row
+			.col-md-9
+				h1 Channels and Samples
+				p
+					| A 
+					strong Sample channel
+					|  contains one sample. By clicking on its 
+					strong main button
+					img.inline(src='images/docs/sample-button.png' alt='Main button' title='Main button')
+					|  you will be able to load a new sound as well as doing further operations. You can add a new channel by clicking on the "Add new channel" button on top of each column, or by drag-and-dropping a file over the empty space of any column.
+
+				h2 Case 1: the channel is empty
+				p
+					| A file browser lets you choose the new sample. Giada is able to load a large number of uncompressed file formats, most especially WAV, AIFF and RAW. If the loading procedure is successful the sample is ready to play. You may also load a new sample by dragging and dropping a file into any existing channel.
+
+				h2 Case 2: the channel is not empty
+				p A popup menu appears with several options.
+				p
+					img(src='images/docs/channel-button-menu.png' alt="Channel button's menu" title="Channel button's menu")
+				ul
+					li
+						strong Input monitor
+						|  &mdash; when enabled, it allows you to monitor (i.e. listen to) the audio input to an armed channel. This option can be set to on or off by default in the 
+						a(href='documentation-configuration') configuration window
+						| , "Behaviors" tab;
+					li
+						strong Load new sample
+						|  &mdash; replaces the current sample with a new one. Volume, actions, mode will be preserved;
+					li
+						strong Export sample to file
+						|  &mdash; writes the loaded sample to disk. This option is useful to export a single take without saving the entire project (more information in section 
+						a(href='documentation-save-load-export') Save, load, export
+						| );
+					li
+						strong Set keyboard input
+						|  &mdash; binds keys to channel;
+					li
+						strong Setup MIDI input
+						|  &mdash; binds MIDI events to channel, see 
+						a(href='documentation-midi-input-management') MIDI input management
+						| ;					
+					li
+						strong Setup MIDI output
+						|  &mdash; enables MIDI output from this channel, see 
+						a(href='documentation-midi-output-management') MIDI output management
+						| ;
+					li
+						strong Edit sample
+						|  &mdash; opens the 
+						a(href='documentation-sample-editor') Sample Editor
+						| ;
+					li
+						strong Edit actions
+						|  &mdash; opens the 
+						a(href='documentation-action-editor') Action Editor
+						| ;
+					li
+						strong Clear actions
+						|  &mdash; deletes recorded actions from the channel: key press/key release, mute, volume or everything. The option is grayed out if there are no actions to delete;
+					li
+						strong Resize
+						|  &mdash; changes the channel height in pixel;
+					li
+						strong Rename channel
+						|  &mdash; changes the channel name;
+					li
+						strong Clone channel
+						|  &mdash; adds a new channel by making a full copy of the current one;
+					li
+						strong Free channel
+						|  &mdash; discharges the sample and the recorded actions, if any. Volume and mode will be preserved.
+					li
+						strong Delete channel
+						|  &mdash; removes the channel from the stack. Actions and samples will be deleted as well.
+				.clear
+				
+				h2 Channel statuses
+				p
+					| The 
+					strong status box
+					img.inline(src='images/docs/status-box.png' alt='Status box' title='Status box')
+					|  gives you informations about the sample:
+				ul
+					li
+						img.inline(src='images/docs/chanstatus_off.png' alt='Chan status off' title='Chan status off')
+						strong Off
+						|  &mdash; the channel is stopped;
+					li
+						img.inline(src='images/docs/chanstatus_wait.png' alt='Chan status wait' title='Chan status wait')
+						strong Wait/ending
+						|  (blinking) &mdash; the channel is waiting for the first beat or is about to stop;
+					li
+						img.inline(src='images/docs/chanstatus_play.png' alt='Chan status play' title='Chan status play')
+						strong Play
+						|  &mdash; the channel is active and playing;
+					li
+						img.inline(src='images/docs/chanstatus_actionrec_on.png' alt='Chan status action recs on' title='Chan status action recs on')
+						strong Action recs on
+						|   &mdash; the channel is ready to record actions;
+					li
+						img.inline(src='images/docs/chanstatus_inputrec_on.png' alt='Chan status input recs on' title='Chan status input recs on')
+						strong Input recs on
+						|  &mdash; the channel is recording something from the soundcard.
+				
+				h2 Play modes
+				p
+					| Play modes define the behavior of a 
+					strong sample channel
+					| . As said before, they are divided into two families: 
+					strong loop
+					|  and 
+					strong one shot
+					| . Main features of 
+					strong loop modes
+					| :
+				ul
+					li work only when the sequencer is running;
+					li constrained to the sequencer boundaries;
+					li triggered manually: you can't record keypress/keyrelease actions on them.
+				p
+					| Main features of 
+					strong one shot modes
+					| :
+				ul
+					li independent from the sequencer;
+					li you can record actions on them.
+				table.table
+					tr
+						th icon
+						th type
+						th name
+						th effect
+					tr
+						td
+							img(src='images/docs/mode_loopa.png' alt='Loop basic' title='Loop basic')
+						td loop
+						td loop basic
+						td the sample starts at beat 1 and will play continuously until its key is pressed
+					tr
+						td
+							img(src='images/docs/mode_loopb.png' alt='Loop once' title='Loop once')
+						td loop
+						td loop once
+						td
+							| the sample starts at beat 1 and will play until finished. Then, at the next first beat it starts again
+					tr
+						td
+							img(src='images/docs/loop-once-bar.png' alt='Loop once bar' title='Loop once bar')
+						td loop
+						td loop once bar
+						td
+							| similar to the previous mode, but the sample starts again also on the next first bar
+					tr
+						td
+							img(src='images/docs/mode_loopf.png' alt='Loop repeat' title='Loop repeat')
+						td loop
+						td loop repeat
+						td
+							| the sample starts at beat 1 and will play continuously, rewinding itself at every bar
+					tr
+						td
+							img(src='images/docs/mode_loopc.png' title='Oneshot basic' alt='Oneshot basic')
+						td one shot
+						td one shot basic
+						td the sample starts on key press and stops on a second keypress
+					tr
+						td
+							img(src='images/docs/mode_loopd.png' tile='Oneshot press' alt='Oneshot press')
+						td one shot
+						td one shot press
+						td the sample plays as long as its key is pressed
+					tr
+						td
+							img(src='images/docs/mode_loope.png' title='Oneshot retrig' alt='Oneshot retrig')
+						td one shot
+						td one shot retrig
+						td the sample plays until the end; pressing its key rewinds it
+					tr
+						td
+							img(src='images/docs/mode_loopg.png' title='Oneshot endless' alt='Oneshot endless')
+						td one shot
+						td one shot endless
+						td the sample plays in loop forever; pressing its key stops it
+				
+				h2 Keyboard interactions
+				p
+					strong Sample channels
+					|  are playable either by pressing the key associated or clicking on the channel 
+					strong play button
+					img.inline(src='images/docs/play-button.png' alt='Play button' title='Play button')
+					| . The following table shows what happens with channels in 
+					strong loop
+					|  mode:
+				table.table
+					tr
+						th mode
+						th(style='width:150px') event
+						th alt. event
+						th result
+					tr
+						td(rowspan='4') loop
+					tr
+						td
+							span.code [key]
+						td click on play button
+						td wait, then start/stop on next beat 1
+					tr
+						td
+							span.code shift + [key]
+						td
+							span.code shift
+							|  + click on play button
+						td immediate stop
+					tr
+						td
+							span.code control + [key]
+						td
+							| click on 
+							strong mute
+							|  button 
+							img.inline(src='images/docs/mute-button.png' alt='Mute button' title='Mute button')
+						td mute
+				p
+					| The following table shows what happens with channels in 
+					strong one shot
+					|  mode:
+				p
+				table.table
+					tr
+						th mode
+						th(style='width:150px') event
+						th alt. event 1
+						th alt. event 2
+						th result
+					tr
+						td(rowspan='4') one shot
+					tr
+						td
+							span.code [key]
+						td click on play button
+						td -
+						td start
+					tr
+						td
+							span.code shift + [key]
+						td
+							span.code shift
+							|  + click on play button
+						td
+							| click on 
+							strong read actions
+							|  button 
+							img.inline(src='images/docs/read-recs-button.png' alt='Read recordings button' title='Read recordings button')
+						td
+							| immediate stop if channel has no actions, else start/stop reading actions (see below)
+					tr
+						td
+							span.code control + [key]
+						td
+							| click on 
+							strong mute
+							|  button 
+							img.inline(src='images/docs/mute-button.png' alt='Mute button' title='Mute button')
+						td -
+						td mute
+				
+				h2 Sample channels with actions
+				p
+					| As soon as the channel in 
+					strong one shot
+					|  mode has some actions recorded into it, the 
+					strong read actions
+					|  button 
+					img.inline(src='images/docs/read-recs-button.png' alt='Read recordings button' title='Read recordings button')
+					|  appears on the right. If you disable it, Giada no longer reads the actions for that channel. That's slightly different from the 
+					strong mute button
+					| , because you can still play the sample manually and hear it.
+				p
+					| By default when you disable the "R" button the actions stop immediately. By checking the 
+					em treat recorded channels as loops
+					|  flag in the 
+					a(href='documentation-configuration') configuration
+					|  panel the actions will stop at the next first beat, as a channel in 
+					strong loop
+					|  mode would do.
+
+			#side-menu.col-md-3.margin-top-xl
+				include side-menu

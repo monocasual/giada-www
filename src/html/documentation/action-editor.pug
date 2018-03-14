@@ -1,0 +1,167 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Docs - The Action Editor - '
+	- var description = ', documentation, The Action Editor'
+	- var keywords    = ', documentation, The Action Editor'
+
+block content
+	.container
+		#documentation.row
+			.col-md-9
+				h1 The Action Editor
+				p(style='display: inline-block;')
+					img.first(src='images/docs/action-editor-window.png' alt='The action editor' title='The action editor')
+					|  The 
+					strong action editor
+					|  is a tool to operate on actions. Here you can alter and modify the existing ones, as well as add new actions from scratch. It represents the actions of a channel and it's composed of several horizontal widgets, each of them containing a specific action type.
+				.clear
+				h2 General interactions
+				p
+					| All the widgets work the same way: you manage them with the mouse and you add, remove or shift the actions by clicking on them.
+					table.table
+						tr
+							th action
+							th effect
+						tr
+							td
+								span.code left click
+								|  on empty area
+							td add an action
+						tr
+							td
+								span.code right click
+								|  on action
+							td remove an action
+						tr
+							td
+								span.code left click
+								|  + drag on action
+							td move the action or resize it
+						tr
+							td
+								span.code right click
+								|  + drag on empty area
+							td vertical scroll, if the widget has scrollable content
+				p
+					| The 
+					strong zoom buttons
+					img.inline(src='images/docs/zoom-buttons.png' alt='Zoom buttons' title='Zoom buttons')
+					|  in the upper right corner of the window allow to magnify or reduce the view of all the widgets. The 
+					strong grid tool
+					img.inline(src='images/docs/giada-action-editor-snap-grid.png' alt='Grid tool' title='Grid tool')
+					|  shows a visual grid over the beat cells; the small check button on the right enables snapping.
+				h2 Available actions
+				p At the moment the action editor allows to manage the following action types:
+				ul
+					li
+						| key press, key release, sample kill &mdash; through the 
+						strong start/stop
+						|  widget;
+					li
+						| mute &mdash; through the 
+						strong mute
+						|  widget;
+					li
+						| volume &mdash; through the 
+						strong volume envelope
+						|  widget.
+					li
+						| MIDI events &mdash; through the 
+						strong piano roll
+						|  widget.
+				h2 Start/stop widget
+				p
+					| The 
+					strong start/stop
+					|  widget 
+					img.first(src='images/docs/action-widget.png' title='Action widget' alt='Action widget')
+					| works only for those channels set in 
+					strong oneshot mode
+					|  (
+					img.inline(src='images/docs/mode_loopc.png' title='Oneshot basic' alt='Oneshot basic')
+					img.inline(src='images/docs/mode_loopd.png' tile='Oneshot press' alt='Oneshot press')
+					img.inline(src='images/docs/mode_loope.png' title='Oneshot retrig' alt='Oneshot retrig')
+					img.inline(src='images/docs/mode_loopg.png' title='Oneshot endless' alt='Oneshot endless')
+					| ); if you open the editor for a channel set in 
+					strong loop mode
+					| , the widget will be disabled. Actions are represented in different ways:
+				ul
+					li
+						strong Key press
+						img.inline(src='images/docs/action-keypress.png' title='Action keypress' alt='Action keypress')
+						|  &mdash; a single key pressure, usually recorded live with 
+						span.code [key]
+						| ;
+					li
+						strong Key release
+						img.inline(src='images/docs/action-keyrel.png' title='Action keyrel' alt='Action keyrel')
+						|  &mdash; a single key release;
+					li
+						strong Kill chan
+						img.inline(src='images/docs/action-killchan.png' title='Action kill chan' alt='Action kill chan')
+						|  &mdash; a sample break, usually recorded live with 
+						span.code shift+[key]
+						| ;
+					li
+						strong Composite action
+						img.inline(src='images/docs/action-composite.png' title='Composite action' alt='Composite action')
+						|  &mdash; it represents the combination of a 
+						em key press
+						|  + 
+						em key release
+						|  and it's available only for channels set to 
+						strong oneshot press
+						|  mode 
+						img.inline(src='images/docs/mode_loopd.png' tile='Oneshot press' alt='Oneshot press')
+						| . It shows the 
+						em duration
+						|  of the key pressure and you can resize it by dragging the edges.
+				p
+					| The 
+					strong action type selector
+					img.inline(src='images/docs/action-type.png' alt='Action type selector' title='Action type selector')
+					|  changes the action type you would add by left-clicking on an empty area.
+				.clearfix
+				h2 Mute widget
+				p
+					| The 
+					strong mute
+					|  widget 
+					img.first(src='images/docs/mute-widget.png' title='Mute widget' alt='Mute widget')
+					| works for any mode set for channels. The squared dots can be dragged around and they represent a change of status. Mute is active when the line is at the top.
+				.clearfix
+				h2 Volume Envelope widget
+				p
+					| The 
+					strong volume envelope
+					|  widget 
+					img.first(src='images/docs/volume-envelope-widget.png' title='Volume Envelope widget' alt='Volume Envelope widget')
+					|  handles volume changes. It ranges from 0 (bottom, silence) to 1 (top, full amplitude). Click on the first or last point to erase the envelope completely.
+				.clearfix
+				h2 Piano roll widget
+				p
+					| Available only for 
+					strong MIDI channels
+					| , the 
+					strong piano roll
+					|  widget 
+					img.first(src='images/docs/piano-roll-widget.png' title='Piano Roll widget' alt='Piano Roll widget')
+					|  handles MIDI notes. It represents the full set of 128 notes (0-127) with 11 octaves ranging from C-1 (or C0) to G9 (or G10).
+				p
+					| It can be vertically resized by dragging the lower edge up and down. 
+					em Left-click
+					|  on an empty space and drag it to move the grid up and down.
+				p
+					| Starting from version 0.13.4 the piano roll editor is able to cope with wrong MIDI events, such as two Note On next to each other. We call them 
+					strong orphaned MIDI events
+					|  and they look like an empty rectangle 
+					img.inline(src='images/docs/action-orphaned.png' alt='Orphaned MIDI event' title='Orphaned MIDI event')
+					|  with fixed width.
+				p
+					| You can't do much with an orphaned MIDI event, except for deleting it by right clicking on it. Useful to clean up a MIDI mess.
+				.clearfix
+
+
+			#side-menu.col-md-3.margin-top-xl
+				include side-menu

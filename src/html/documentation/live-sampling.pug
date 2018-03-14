@@ -1,0 +1,57 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Docs - Live sampling - '
+	- var description = ', documentation, Live sampling'
+	- var keywords    = ', documentation, Live sampling'
+
+block content
+	.container
+		#documentation.row
+			.col-md-9
+				h1 Live sampling
+				p
+					| Giada gives you the ability to record anything coming in from your soundcard thanks to its live sampler and the master input channel. Configure your device in the 
+					a(href='documentation-configuration') Configuration panel
+					|  first, then turn up the knob of the 
+					strong input volume
+					img.inline(src='images/docs/gui_inputmeter.png' alt='The input peakmeter' title='The input peakmeter')
+					|  in the main window.
+				h2 How to use the live sampler
+				p
+					| First of all you need to add at least one 
+					strong sample channel
+					| , then arm it with the channel 
+					strong arm button
+					img.inline(src='images/docs/arm-button.png' alt='Arm button' title='Arm button')
+					| . You can of course arm multiple channels. When you are ready, click on the 
+					strong input rec
+					|  button 
+					img.inline(src='images/docs/input-recording-button.png' alt='Input rec button' title='Input rec button')
+					|  on the main transport or press 
+					span.code end
+					|  to enable the sampler: channels with active input will turn blue.
+				p
+					| The sequencer will start automatically, since recording a sound with the sequencer turned off doesn't make sense. The sampler works in 
+					em overdub mode
+					|  by default: the messages coming from the soundcard are being continuously summed to the existing data until the sampler is halted.
+				h2 Live FX processor
+				p
+					| Arm the channel and check the 
+					strong input monitor 
+					| flag in channel menu. This way you will hear what you're actually playing, previously processed by the plugins stack (if any). If you don't enable the sampler (
+					strong input rec
+					|  button 
+					img.inline(src='images/docs/input-recording-button.png' alt='Input rec button' title='Input rec button')
+					|  or 
+					span.code end
+					| ), Giada won't record anything and turns itself into a live FX processor.
+				p
+					| You can accomplish the same result by using the 
+					strong stream linker
+					| , the button between the input and the output meter 
+					img.inline(src='images/docs/input-output-linker.png' alt='Input to output linker' title='Input to output linker')
+					| . Enable it and you will be able to hear what you're playing.
+
+			#side-menu.col-md-3.margin-top-xl
+				include side-menu

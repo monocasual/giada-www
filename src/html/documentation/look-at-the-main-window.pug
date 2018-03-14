@@ -1,0 +1,183 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Docs - A look at the main window - '
+	- var description = ', documentation, A look at the main window'
+	- var keywords    = ', documentation, A look at the main window'
+
+block content
+	.container
+		#documentation.row
+			.col-md-9
+				h1 A look at the main window
+				p
+					| After the startup, you should see the main window where all buttons and levers are grouped. Horizontal lines are channels which contain samples or MIDI events, stacked up in columns. Don't worry if you don't understand the behavior of these tools right now; they will be covered more clearly in the 
+					a(href='documentation-performing-1') Performing 1
+					| , 
+					a(href='documentation-performing-2') Performing 2
+					| , 
+					a(href='documentation-channels-and-samples') Channels and samples
+					|  and 
+					a(href='documentation-channels-and-midi') Channels and MIDI
+					|  sections.
+
+				h2 Input and output stuff
+				p
+					img.first(src='images/docs/gui_peakmeter.png' alt='The output peakmeter' title='The output peakmeter')
+					|  This is the 
+					strong output peak meter
+					| . It goes from -60 to 0 dBFS; when the bar is completely full it means that your program is playing at the maximum range available. If you exceed this limit your sound starts to clip and the meter turns to red. The circular knob controls the master volume.
+				p
+					img.first(src='images/docs/gui_inputmeter.png' alt='The input peakmeter' title='The input peakmeter')
+					|  This is the 
+					strong input peak meter
+					| . It works exactly as the input meter but it manages the sound level coming from the soundcard. Turn the knob to zero in order to mute the recorder.
+				p
+					img.first(src='images/docs/input-output-linker.png' alt='Input to output linker' title='Input to output linker')
+					|  The button between the input and the output meter is a 
+					strong stream linker
+					| . If enabled, it takes the processed input and it copies it straight onto the output channel, in order to obtain a "hear what you're playing" functionality.
+
+				h2 The sequencer
+				p
+					img.first(src='images/docs/gui_beat.png' alt='The sequencer (or beat bar)' title='The sequencer (or beat bar)')
+					img.first(src='images/docs/gui_playstop.png' alt='Play and stop buttons' title='Play and stop buttons')
+					|  The 
+					strong sequencer
+					|  shows the current running beat and the total bars of your program. This tool is managed by the two side buttons: 
+					strong play/stop
+					|  and 
+					strong rewind
+					| . The former simply starts/stops the beat counting, the latter is used to quickly rewind to the first beat, useful for synching with other audio sources.
+
+				h2 Recording tools
+				p
+					img.first(src='images/docs/gui_recs.png' alt='Recording buttons' title='Recording buttons')
+					| These buttons manage the 
+					strong recordings
+					| . The first one sets Giada to 
+					a(href='documentation-recording-actions') record mode
+					| : if switched on, every action (key press, key release, mute on/off, ...) is being stored in memory, then applied to the corresponding channel. The second one starts the 
+					a(href='documentation-live-sampling') live sampler
+					| : it records any sound from the sound card input(s) and puts it in the first available channel. Finally the 
+					strong metronome
+					img.inline(src='images/docs/metronome.png' alt='Metronome' title='Metronome')
+					|  might help you during a recording session.
+				h2 Beats, bars, quantizer and BPM
+				p
+					img.first(src='images/docs/beats-tools.png' alt='Beats tools' title='Beats tools')
+					|  A set of tools dedicated to the beat management. You can find them grouped in the top right area of the main window.
+				ul
+					li
+						strong Quantizer
+						img.inline(src='images/docs/quantizer.png' alt='Quantizer' title='Quantizer')
+						|  — a useful feature which aligns the samples on beats and on exact fractions of beats (for a detailed explanation look at 
+						a(href='http://en.wikipedia.org/wiki/Quantization_%28music%29' target='_blank') Wikipedia - Quantization
+						| ). The quantizer provides seven operating methods: off (disabled), 1b, 2b, 3b, 4b, 6b, 8b. It operates only when the main program is running and affects those channels which are in a 
+						a(href='documentation-performing') oneshot mode
+						| ;
+					li
+						strong BPM
+						img.inline(src='images/docs/bpm.png' alt='BPM' title='BPM')
+						|  — Changes the BPM (i.e. the speed) of the performance;
+					li
+						strong Beats/bars
+						img.inline(src='images/docs/beats-bars.png' alt='Beats/bars' title='Beats/bars')
+						|  — Changes the number of beats and bars; the feature was designed to provide a graphical hint for your performance and to activate the 
+						a(href='documentation-performing') loop repeat mode
+						| . This tool allows to shrink or expand the recorded actions on the timeline through the checkbox 
+						strong resize recordings
+						|  in the small popup window, as well as manage the sub-beats division;
+					li
+						strong Beat operators
+						img.inline(src='images/docs/beat-bar-operators.png' alt='Beat operators' title='Beat operators')
+						|  — Dynamically shrink or expand the range of the sequencer (i.e. the total number of beats of your performance).
+
+				h2 Sample Channels
+				p
+					img(src='images/docs/sample-channel.png' alt='Channels' title='Channels')
+				p
+					| The first type of channel is the  
+					strong sample channel
+					| . Each element is composed, from left to right by the following elements:
+				ul
+					li
+						img.inline(src='images/docs/play-button.png' alt='Play button' title='Play button')
+						strong Play button
+						|  — Starts and stops the channel (if loaded);
+					li
+						img.inline(src='images/docs/arm-button.png' alt='Arm button' title='Arm button')
+						strong Arm button
+						|  — Arms the channel for recording;
+					li
+						img.inline(src='images/docs/status-box.png' alt='Status box' title='Status box')
+						strong Status box
+						|  — Reports the playback position of the running sample;
+					li
+						img.inline(src='images/docs/sample-button.png' alt='Main button' title='Main button')
+						strong Main button
+						|  — Shows the name of the loaded sample and allows many operations on it;
+					li
+						img.inline(src='images/docs/mute-button.png' alt='Mute button' title='Mute button')
+						strong Mute button
+						|  — Mutes the sample;
+					li
+						img.inline(src='images/docs/solo-button.png' alt='Mute button' title='Mute button')
+						strong Solo button
+						|  — Puts channel in solo mode;
+					li
+						img.inline(src='images/docs/fx-button.png' alt='FX button' title='FX button')
+						strong FX button
+						|  — Opens up the 
+						a(href='documentation-fx-stack') FX stack
+						| ;
+					li
+						img.inline(src='images/docs/volume-dial.png' alt='Volume dial' title='Volume dial')
+						strong Volume dial
+						|  — Controls the channel volume;
+					li
+						img.inline(src='images/docs/mode_loopa.png' alt='Mode box' title='Mode box')
+						strong Mode box
+						|  — Sets the play mode of the channel.
+
+				h2 MIDI Channels
+				p
+					img(src='images/docs/midi-channel.png' alt='MIDI channel' title='MIDI channel')
+				p
+					| The second type of channel is the  
+					strong MIDI channel
+					| . Each element is composed, from left to right by the following elements:
+				ul
+					li
+						img.inline(src='images/docs/play-button.png' alt='Play button' title='Play button')
+						strong Play button
+						|  — Starts and stops the channel;
+					li
+						img.inline(src='images/docs/arm-button.png' alt='Arm button' title='Arm button')
+						strong Arm button
+						|  — Arms the channel for recording;
+					li
+						img.inline(src='images/docs/midi-button.png' alt='Main button' title='Main button')
+						strong Main button
+						|  — If clicked, opens up a menu with options;
+					li
+						img.inline(src='images/docs/mute-button.png' alt='Mute button' title='Mute button')
+						strong Mute button
+						|  — Mutes the channel;
+					li
+						img.inline(src='images/docs/solo-button.png' alt='Mute button' title='Mute button')
+						strong Solo button
+						|  — Puts channel in solo mode;
+					li
+						img.inline(src='images/docs/fx-button.png' alt='FX button' title='FX button')
+						strong FX button
+						|  — Opens up the 
+						a(href='documentation-fx-stack') FX stack
+						| ;
+					li
+						img.inline(src='images/docs/volume-dial.png' alt='Volume dial' title='Volume dial')
+						strong Volume dial
+						|  — Controls the channel volume;
+
+			#side-menu.col-md-3.margin-top-xl
+				include side-menu

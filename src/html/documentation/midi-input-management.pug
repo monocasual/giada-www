@@ -1,0 +1,66 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Docs - MIDI input management - '
+	- var description = ', documentation, MIDI input management'
+	- var keywords    = ', documentation, MIDI input management'
+
+block content
+	.container
+		#documentation.row
+			.col-md-9
+				h1 MIDI input management
+				p
+					| Giada is able to read MIDI messages from the external world. A physical device can be attached to control channels, volumes, properties and so on. Actually any "thing" that sends out MIDI messages can be used to drive Giada, so the choice can be expanded to softwares and scripts as well.
+				
+				h2 What can you control with MIDI
+				p There are two main classes of elements that can be controlled via MIDI:
+				ul
+					li
+						strong Global elements
+						|  &mdash; sequencer, metronome, main volumes and so on. They are stored inside the configuration file and you set them once;
+					li
+						strong Per-channel elements
+						|  &mdash; channel on/off, mute, volume, solo, plug-in parameters (if any) and so on. They are stored inside the patch and you set them whenever you create a new song.
+				
+				h2 How to assign MIDI messages to elements
+				p
+					| First of all make sure you have properly configured your sound card to receive MIDI messages: you can do that in the 
+					a(href='documentation-configuration') configuration
+					|  panel. To configure 
+					strong global elements
+					| , open 
+					em edit -&gt; setup global MIDI input...
+					|  and a new window will appear, containing all assignable elements.
+				p
+					img.first(src='images/docs/midi-input-window.png' alt='Edit menu' title='Edit menu')
+					|  From left to right, the first box cointains the name of the parameter. The button ("(not set)" in the picture) shows the hexadecimal value assigned to the parameter: click on it with the right button to reset it to none. Finally the "learn" button enables the so-called 
+					strong MIDI learn
+					| : click on it, then move a knob or press any key and Giada will assign it to the parameter you have chosen.
+				p
+					| To configure 
+					strong per-channel elements
+					| , click on a channel&apos;s button and select 
+					em setup MIDI input...
+					|  from the popup menu. The window with assignable elements is similar to the previous one but with different parameters, of course.
+
+				h2 Filtering and processing incoming events
+				p
+					| Giada accepts all messages from any MIDI channel by default. However, sometimes you want to grab MIDI messages coming from a specific MIDI channel, especially when you are working with many MIDI instruments. Select a different channel from the 
+					strong MIDI channel selector 
+					img.inline(src='images/docs/midi-channel-filtering.png' alt='MIDI channel selector') 
+					| to make Giada process MIDI messages only if they come from the selected channel. 
+
+				p
+					| You can let velocity drive volume of 
+					strong sample channels 
+					| by checking the 
+					em Velocity drives volume 
+					| flag. Giada will adjust the sample volume according to how forcefully the key on your MIDI device is struck. This feature is available only for sample channels in 
+					strong one-shot 
+					| mode. 
+
+				.clearfix
+
+			#side-menu.col-md-3.margin-top-xl
+				include side-menu

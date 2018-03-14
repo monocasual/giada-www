@@ -1,0 +1,104 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Docs - Channels and MIDI - '
+	- var description = ', documentation, Channels and MIDI'
+	- var keywords    = ', documentation, Channels and MIDI'
+
+block content
+	.container
+		#documentation.row
+			.col-md-9
+				h1 Channels and MIDI
+				p
+					| A 
+					strong MIDI channel
+					|  contains MIDI events. By clicking on the 
+					strong main button
+					img.inline(src='images/docs/midi-button.png' alt='Main button' title='Main button')
+					|  a popup menu will appear, with several options available:
+				p
+					img(src='images/docs/channel-midi-button-menu.png' alt='MIDI Channel button menu' title='MIDI Channel button menu')
+				ul
+					li
+						strong Edit actions
+						|  &mdash; opens the 
+						a(href='documentation-action-editor') Action Editor
+						| ;
+					li
+						strong Clear actions
+						|  &mdash; deletes recorded actions from the channel: 
+						em all
+						|  is the only option by now;
+					li
+						strong Set keyboard input
+						|  &mdash; binds keys to channel;
+					li
+						strong Setup MIDI input
+						|  &mdash; binds MIDI events to channel, see 
+						a(href='documentation-midi-input-management') MIDI input management
+						| ;
+					li
+						strong Setup MIDI output
+						|  &mdash; enables MIDI output from this channel, see 
+						a(href='documentation-midi-output-management') MIDI output management
+						| ;
+					li
+						strong Resize
+						|  &mdash; changes the channel height in pixel;
+					li
+						strong Rename channel
+						|  &mdash; changes the channel name;
+					li
+						strong Clone channel
+						|  &mdash; adds a new channel by making a full copy of the current one;
+					li
+						strong Delete channel
+						|  &mdash; removes the channel from the stack. All MIDI actions will be deleted as well.
+				.clear
+				
+				h2 Channel statuses
+				ul
+					li
+						img.inline(src='images/docs/chanstatus_off.png' alt='Chan status off' title='Chan status off')
+						strong Off
+						|  &mdash; the channel is stopped;
+					li
+						img.inline(src='images/docs/chanstatus_wait.png' alt='Chan status wait' title='Chan status wait')
+						strong Wait/ending
+						|  (blinking) &mdash; the channel is waiting for the first beat or is about to stop;
+					li
+						img.inline(src='images/docs/chanstatus_wait.png' alt='Chan status wait' title='Chan status wait')
+						strong Play
+						|  (fixed) &mdash; the channel is active and playing;
+				
+				h2 Keyboard interactions
+				p
+					| These channels are somewhat simpler: they just behave like 
+					strong sample channels
+					|  in 
+					strong loop basic
+					|  mode (quiz: can you figure out why?).
+				table.table
+					tr
+						th event
+						th result
+					tr
+						td click on play button
+						td wait, then start/stop on next beat 1
+					tr
+						td
+							span.code shift
+							|  + click on play button
+						td immediate stop
+					tr
+						td
+							| click on 
+							strong mute
+							|  button 
+							img.inline(src='images/docs/mute-button.png' alt='Mute button' title='Mute button')
+						td mute
+
+
+			#side-menu.col-md-3.margin-top-xl
+				include side-menu

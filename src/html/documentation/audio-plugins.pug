@@ -1,0 +1,84 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Docs - Audio plug-ins - '
+	- var description = ', documentation, Audio plug-ins'
+	- var keywords    = ', documentation, Audio plug-ins'
+
+block content
+	.container
+		#documentation.row
+			.col-md-9
+				h1 Audio plug-ins
+				p
+					| Giada is able to host plug-ins (VST effects and VST instruments) thanks to the 
+					a(href='https://www.juce.com/') JUCE
+					|  framework. You just have to follow three basic steps:
+				ol
+					li
+						p
+							| scan the plug-in directory, that is a folder where your plug-ins reside. You have to do that once, or whenever you add/install new plug-ins. How to do that is described in the 
+							a(href='documentation-configuration') Configuration
+							|  chapter;
+					li
+						p
+							| browse the available plug-ins by clicking the FX button 
+							img.inline(src='images/docs/fx-button.png' alt='FX button' title='FX button')
+							|  on each channel or next to input/output controllers;
+					li
+						p select the desired plug-in and add it to the stack.
+				h2 The plug-in stack
+				p
+					| The magic FX button 
+					img.inline(src='images/docs/fx-button.png' alt='FX button' title='FX button')
+					|  opens the list of the plug-ins currently in use. This is the place where you add or remove plug-ins to channels and master input/output. Wherever it is placed, when clicked it opens the plug-in stack window.
+				p
+					img.first(src='images/docs/vst-window.png' alt='The plug-in stack window' title='The plug-in stack window')
+				p
+					| Each line corresponds to a plug-in. Click on the 
+					strong name of the effect
+					|  to open the plug-in editor. By default Giada will try to display the graphical interface; in case the plug-in doesn&apos;t provide one, another window will show a list of the available parameters tweakable through horizontal sliders.
+				p
+					| The drop-down menu on the right lists the 
+					strong presets
+					|  (also known as 
+					em programs
+					| ). The 
+					strong check button
+					img.inline(src='images/docs/vst-window-check-button.png' alt='Check button' title='Check button')
+					|  enables or disables the plug-in while the 
+					strong up/down buttons
+					img.inline(src='images/docs/vst-window-up-down-buttons.png' alt='Up/down buttons' title='Up/down buttons')
+					|  shift the plug-in inside the stack. Finally the 
+					strong remove button
+					img.inline(src='images/docs/vst-window-remove-button.png' alt='Remove button' title='Remove button')
+					|  takes away the plug-in from the stack.
+					| Add a new plug-in by clicking on the button at the end of the stack (
+					strong add new plug-in
+					| ).
+				h2 List the available plug-ins
+				p
+					img.first(src='images/docs/plugin-list.png' alt='The plug-in list window' title='The plug-in list window')
+				p
+					| This window shows up when you need to add a new plug-in to a stack, by clicking on the 
+					strong add new plug-in
+					|  button seen above.
+				p
+					| It&apos;s a sorted list of all your plug-ins found in the system after the scan, with some useful information like the type, the manufacturer, the category and so on.
+				p
+					| How to add a plug-in to the stack: select a plug-in from the list and press 
+					span.code enter
+					|  or click on 
+					strong add
+					|  button.
+				p
+					| This window also reports when missing or unknown plug-in are present. If a previously scanned plug-in is missing or unloadable from your system, its name will be striked out. If a patch contains unknown plug-ins, they will be listed at the bottom of the plug-in list window, surrounded by several question marks (?).
+				.clearfix
+				h2 Performances and plug-in compatibility
+				p
+					| You can load an unlimited number of plug-ins inside Giada; just be aware that they can stress your CPU, compromising the live performance.
+				p
+					| Plugins must be hosted in compatible environments which means, for example, that a Mac plug-in cannot be loaded in the Windows version&#x9;of Giada and vice versa. Plugins also require binary compatibility with the host: you can&apos;t load a 32 bit plug-ins inside a 64 bit version of Giada and vice versa.
+
+			#side-menu.col-md-3.margin-top-xl
+				include side-menu

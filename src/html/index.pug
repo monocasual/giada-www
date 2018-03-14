@@ -1,0 +1,139 @@
+extends base
+
+include mixins/news
+
+block metas-vars
+	- var title = 'Home - '
+
+block metas
+	meta(property='og:title' content=`${CONSTANTS.title}`)
+	meta(property='og:type' content='website')
+	meta(property='og:image' content=`${CONSTANTS.url}/images/${CONSTANTS.social_image}`)
+	meta(property='og:url' content=`${CONSTANTS.url}`)
+	meta(property='og:description' content=`${CONSTANTS.description}`)
+	meta(property='fb:app_id' content=`${CONSTANTS.facebook_app_id}`)
+	meta(name='twitter:card' content='summary')
+	meta(name='twitter:url' content=`${CONSTANTS.url}`)
+	meta(name='twitter:title' content=`${CONSTANTS.title}`)
+	meta(name='twitter:description' content=`${CONSTANTS.description}`)
+	meta(name='twitter:image' content=`images/${CONSTANTS.social_image}`)
+
+block content
+	.container
+
+		//- Intro
+
+		.row.margin-top-xl
+			.col-md-12
+				h1.text-center Your hardcore loop machine.
+				h2.margin-top-xl.description #{CONSTANTS.description}
+				h4.text-center
+					a.see-it-in-action(href='http://www.youtube.com/user/GiadaLoopMachine' target='_blank') see it in action!
+
+		//- Carousel
+
+		.row.margin-top-xl
+			.col-md-10.col-md-offset-1
+				#index-carousel.carousel.slide(data-ride='carousel')
+					//- Indicators
+					ol.carousel-indicators
+						li.active(data-target='#index-carousel' data-slide-to='0')
+						li(data-target='#index-carousel' data-slide-to='1')
+					//- Wrapper for slides
+					.carousel-inner
+						.item.active
+							a(href='screenshots' title='More screenshots!')
+								img(src='images/screenshots/giada-loop-machine-screenshot-14-carousel.jpg' alt='Giada Loop Machine 0.9.0')
+						.item
+							a(href='screenshots' title='More screenshots!')
+								img(src='images/screenshots/giada-loop-machine-screenshot-15-carousel.jpg' alt='Giada Loop Machine 0.9.0')
+						.item
+							a(href='screenshots' title='More screenshots!')
+								img(src='images/screenshots/giada-loop-machine-screenshot-16-carousel.jpg' alt='Giada Loop Machine 0.9.0 full screen')
+					//- Controls
+					a.left.carousel-control(href='#index-carousel' role='button' data-slide='prev')
+						span.glyphicon.glyphicon-chevron-left
+					a.right.carousel-control(href='#index-carousel' role='button' data-slide='next')
+						span.glyphicon.glyphicon-chevron-right
+
+		//- Features
+
+		.row.center-block.margin-top-xl
+			.col-md-6
+				h3
+					img.margin-right-s(alt='*' src='images/icon-box.svg')
+					| Lightweight and powerful
+				p
+					| 32 bit floating point audio engine, sample-accurate looping system, multithread support, super-sleek interface. 100% exotic dependencies free.
+			.col-md-6
+				h3
+					img.margin-right-s(alt='*' src='images/icon-knob.svg')
+					| Lots of useful tools
+				p
+					| Tweak your sounds with the live sampler from external sources, the live quantizer, a built-in wave editor, the action recorder and the action editor.
+		.row.center-block
+			.col-md-6
+				h3
+					img.margin-right-s(alt='*' src='images/icon-sine.svg')
+					| VST and MIDI support
+				p
+					| Giada can load VST and VST instruments, as well as read/write MIDI messages from/to any device out there, both hardware and software.
+			.col-md-6
+				h3
+					img.margin-right-s(alt='*' src='images/icon-heart.svg')
+					| 100% open-source GPL
+				p
+					| Giada is constantly under development, free for use and distribution: you can use it without any limitations. Help us to improve it more!
+		
+		//- Quotes
+
+		.quotes.row.margin-top-xl
+			.col-md-6.col-md-offset-3
+				p
+					i “This software is f*cking awesome.”
+					| ― Cinderskull27
+				p
+					i “Giada is one of the best open platform audio tool out there.”
+					| ― blinkworth1
+				p
+					i “Discovering Giada has completely changed my life.”
+					| ― D1RTY J0E
+		
+		//- Download button
+
+		.row.margin-top-xl
+			.col-md-12
+				a(href='download')
+					input.download-btn.btn.btn-default.center-block(type='button' value='Download it!')
+				.text-center.margin-top-s
+					| latest version: #{RELEASE.version} | 
+					a(href='documentation') docs 
+					|  | 
+					a(href='https://github.com/monocasual/giada' title='Giada @ Git Hub') fork it on GitHub
+					|  | 
+					include includes/socials/paypal
+		
+		//- Sharing area
+
+		.row
+			.col-md-10.col-md-offset-1
+				h2.margin-top-xl.text-center Sharing is caring!
+				.list-inline.text-center.margin-top-xl 
+					include includes/socials/facebook-like
+					include includes/socials/twitter-like
+					include includes/socials/reddit
+					include includes/socials/flattr
+					include includes/socials/google-plus
+					include includes/socials/github
+
+	//- News list
+
+	.container-fluid.news-list
+		.row
+			.col-sm-12
+				.container
+					.row
+						.col-md-10.col-md-offset-1
+							h2.margin-top-xl.text-center Latest news from our laboratories.
+							each news in NEWS.slice(0, 5)
+								+news(news.date, news.title, news.body)

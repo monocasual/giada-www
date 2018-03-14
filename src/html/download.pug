@@ -1,0 +1,105 @@
+extends base
+
+block metas-vars
+	- var title       = 'Download - '
+	- var description = ' Download'
+	- var keywords    = ', download'
+
+block content
+	.container
+		.row.margin-top-xl
+			.col-md-12.text-center
+				h1 Grab the unbelievable Giada #{RELEASE.version}.
+				p
+					| Or try a 
+					a(href='https://github.com/monocasual/giada/releases/') previous version
+					| .
+		.row.margin-top-xl
+			.col-md-5.col-md-offset-1
+				.download-box
+					div
+						img.margin-btm-m(src='images/logo-linux.svg' alt='ubuntu logo' title='Giada for Linux (.deb)')
+					div
+						p.skinfont
+							a(href=`${RELEASE.linux.path}` title='Download Giada for Linux, 64 bit') Giada #{RELEASE.version} for Linux (.AppImage, 64 bit)
+			.col-md-5
+				.download-box
+					div
+						img.margin-btm-m(src='images/logo-apple.svg' alt='osx logo' title='Giada for macOS')
+					div
+						p.skinfont
+							a(href=`${RELEASE.macos.path}` title='Download Giada for macOS') Giada #{RELEASE.version} for macOS (64 bit)
+		.row
+			.col-md-5.col-md-offset-1
+				.download-box
+					div
+						img.margin-btm-m(src='images/logo-windows.svg' alt='windows logo' title='Giada for Windows')
+					div
+						p.skinfont
+							a(href=`${RELEASE.windows.path}` title='Download Giada for Windows') Giada #{RELEASE.version} for Windows (64 bit)
+			.col-md-5
+				.download-box
+					div
+						img.margin-btm-m(src='images/logo-source.svg' alt='source logo' title='Giada Source Code')
+					div
+						p.skinfont
+							a(href=`${RELEASE.source.path}` title='Download Giada Source Code') Giada #{RELEASE.version} Source Code
+						p
+							| Learn how to compile it 
+							a(title='Giada Documentation - Compiling from Source' href='documentation/show/compiling-from-source') here
+							| .
+
+		.row.margin-top-xl
+			.col-md-8.col-md-offset-2.text-center
+				div If you're in love with Giada, support her and consider a donation!
+				.margin-top-s
+					include includes/socials/paypal
+
+		.row.margin-top-l
+			.col-md-6
+				h2 Changes in version #{RELEASE.version}
+				ul
+					each change in RELEASE.changes
+						li= change
+
+				h2 Problems with the Linux version?
+				p
+					| We provide 
+					a(href='https://appimage.org/') AppImage
+					|  packages for Linux on 64 bit architectures. However for the absolute, best, top-notch experience you should also try binaries shipped by the package manager of your favorite distribution. Giada is already available on 
+					a(href='https://packages.debian.org/search?keywords=giada&searchon=names&section=all') Debian
+					| , 
+					a(href='https://packages.ubuntu.com/search?section=all&arch=any&keywords=giada&searchon=names') Ubuntu
+					| , 
+					a(href='https://aur.archlinux.org/packages/giada/') Arch Linux
+					|  and many more.
+			.col-md-6
+				h2 MD5 checksums
+				p
+					| Beware of imitations! This is the only place where to pick up the official Giada packages.
+				table.table
+					tr
+						td Giada for Linux, 64 bit
+						td
+							code.code #{RELEASE.linux.md5}
+					tr
+						td Giada for Windows, 64 bit
+						td
+							code.code #{RELEASE.windows.md5}
+					tr
+						td Giada for macOS, 64 bit
+						td
+							code.code #{RELEASE.macos.md5}
+					tr
+						td Giada source code
+						td
+							code.code #{RELEASE.source.md5}
+							
+				h2 Plans for the future
+				p
+					| Giada is in constant stage of growth; take a look at our 
+					a(href='forum/viewforum.php?f=4') roadmap
+					|  to understand the direction of the development or join the 
+					a(href='forum') forum
+					|  to submit feature requests and bugs found.
+

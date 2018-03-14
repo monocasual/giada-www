@@ -1,0 +1,68 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Docs - Save, load, export - '
+	- var description = ', documentation, Save, load, export'
+	- var keywords    = ', documentation, Save, load, export'
+
+block content
+	.container
+		#documentation.row
+			.col-md-9
+				h1 Save, Load, Export
+				p
+					| Giada is able to produce three kinds of files: 
+					strong patches
+					| , 
+					strong projects
+					|  and 
+					strong samples
+					| .
+				h2 Patch
+				p
+					| A 
+					strong patch
+					|  is a JSON-based 
+					em .gptc
+					|  file in which volumes, samples, statuses and configurations are stored. Use this one if you are using samples from your collection (i.e. no takes or any destructive editing done) and you are sure of opening the patch in the same system you saved it. Path: 
+					em file -&gt; save patch...
+				h2 Project
+				p
+					| Any take from the outside world and/or any destructive editing on the samples must be stored somewhere in order to be used the next time you load your patch. This function creates a 
+					em .gprj
+					|  folder in your filesystem, then copies all of your samples inside the folder and creates the 
+					em .gptc
+					|  fil in which all sample paths are made relative to that folder. Path: 
+					em file -&gt; save project...
+				h2 Samples
+				p
+					| This function exports the sample to file. At the moment only WAV format is supported. Path: 
+					em [sample button] -&gt; export sample to file...
+				h2 Other interesting options
+				p
+					img.first(src='images/docs/edit-menu-popup.png' alt='Edit menu' title='Edit menu')
+					| The 
+					strong edit button
+					img.inline(src='images/docs/edit-button.png' alt='Edit button' title='Edit button')
+					|  in the main window offers some other useful options for your work:
+				ul
+					li
+						strong Clear all samples
+						|  &mdash; unloads all channels. Modes, volumes and FXs remain untouched;
+					li
+						strong Clear all actions
+						|  &mdash; removes any type of action from all the channels;
+					li
+						strong Remove empty columns
+						|  &mdash; removes all columns containing no samples;
+					li
+						strong Reset to init state
+						|  &mdash; resets Giada to the default blank patch;
+					li
+						strong Setup global MIDI input
+						|  &mdash; binds MIDI events to global parameters, see 
+						a(href='documentation-midi-input-management') MIDI input management
+						| .
+
+			#side-menu.col-md-3.margin-top-xl
+				include side-menu

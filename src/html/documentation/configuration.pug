@@ -1,0 +1,189 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Docs - Configuration - '
+	- var description = ', documentation, Configuration'
+	- var keywords    = ', documentation, Configuration'
+
+block content
+	.container
+		#documentation.row
+			.col-md-9
+				h1 Configuration
+				p
+					| This panel gives you the ability to tweak hardware parameters as well as operational modes, through four different tabs: 
+					strong Sound System
+					| , 
+					strong MIDI
+					| , 
+					strong Behaviors
+					| , 
+					strong Misc
+					|  and 
+					strong Plugins
+					| .
+				
+				h2 Sound System
+				p Configure your sound system, input/output channels and the buffer size.
+				p
+					img.first(src='images/docs/giada-configuration-panel.png' alt='Giada configuration panel - sound system tab' title='Giada configuration panel - sound system tab')
+				ul
+					li
+						strong System
+						|  &mdash; This is the audio framework to choose from. It may vary from OS to OS.
+					li
+						strong Buffer size
+						|  &mdash; (in frames): a low value means low latency but high cpu work, while an high value means high latency with low cpu work  (useful if you have a slow machine or you don't need to play channels in live mode).
+					li
+						strong Sample rate
+						|  &mdash; (in Hz): the sample rate at which your soundcard works. If you load a set of samples recorded at different sample rates, they will be converted to that rate (see 
+						em resampling
+						|  below).
+					li
+						strong Output device
+						|  &mdash; The device used for playing. The question mark on the right pops up some information about it.
+					li
+						strong Limit output
+						|  &mdash; If enabled, the output signal will be truncated if greater than &pm; 1.0 (floating point values).
+					li
+						strong Input device
+						|  &mdash; The device used for recording. Disabled by default. The question mark on the right pops up some information about it.
+					li
+						strong Rec delay comp
+						|  &mdash; Too much latency can make it difficult to record a live performance: the record delay compensation (in frames) helps you to align the incoming audio to the rest of your existing beats.
+					li
+						strong Resampling
+						|  &mdash; The algorithm used for resampling, i.e. when you load a sample whose sample rate differs from the system's rate. You can choose between five algorithms:
+						ol
+							li
+								strong Linear
+								|  &mdash; very fast, low quality;
+							li
+								strong Zero Order Hold
+								|  &mdash; fast, low quality;
+							li
+								strong Sinc basic quality
+								|  &mdash; not so fast, medium quality;
+							li
+								strong Sinc medium quality
+								|  &mdash; not fast, good quality;
+							li
+								strong Sinc best quality
+								|  &mdash; slow, super quality.
+						|  Warning: this is 
+						em not
+						|  the algorithm used for pitch manipulation, which is currently hardcoded to Linear quality for speed purposes.
+				
+				h2 MIDI
+				p Configure here the global MIDI parameters.
+				ul
+					li
+						strong System
+						|  &mdash; This is the MIDI framework to choose from. It may vary from OS to OS;
+					li
+						strong Output port
+						|  &mdash; The MIDI output connection;
+					li
+						strong Input port
+						|  &mdash; The MIDI input connection;
+					li
+						strong Device does not send NoteOff
+						|  &mdash; Many controllers do not send Note Off message on key release, but a Note On message with velocity 0 or 127. Enable this option if you are using such devices;
+					li
+						strong Output midimap
+						|  &mdash; midimap file in use. Please refer to 
+						a(href='documentation-midi-output-management') MIDI output management
+						|  for more information about the MIDI lightning feature;
+					li
+						strong Sync
+						|  &mdash; How to sync with another device. Giada can act only as a 
+						em master
+						|  controller:
+						ol
+							li
+								strong (disabled)
+								|  &mdash; don't sync anything;
+							li
+								strong MIDI Clock
+								|  &mdash; send 
+								a(href='http://en.wikipedia.org/wiki/MIDI_beat_clock') MIDI clock events
+								| , aka MIDI beat clock or MIDI clock;
+							li
+								strong MTC
+								|  &mdash; send 
+								a(href='http://en.wikipedia.org/wiki/MIDI_timecode') MIDI timecode events
+								| . This is quite experimental: the rate is temporarily hardcoded to 25 frame/s (standard rate for PAL video).
+				
+				h2 Behaviors
+				p Define how Giada should handle loops, timing and channels.
+				p
+					img.first(src='images/docs/giada-behaviors-panel.png' alt='Giada behaviors panel' title='Giada behaviors panel')
+				ul
+					li
+						strong When a channel with recorded action is halted
+						|  &mdash; This options defines the behavior  when you stop of a channel with some actions recorded with by cliking on the &quot;R&quot; button 
+						img.inline(src='images/docs/read-recs-button.png' alt='Read recordings button' title='Read recordings button')
+						|  (or the 
+						span.code shift + [key]
+						|  combination). If you check 
+						em stop it immediately
+						| , the sample will stop abruptly; otherwise with 
+						em play it until finished
+						|  the sample will play until it reaches its end.
+					li
+						strong When the sequencer is halted
+						|  &mdash; What should happen when you pull up the performance (by pressing the 
+						span.code spacebar
+						|  or the stop button)? If you choose 
+						em stop immediately all dynamic channels
+						|  any sample in loop mode and any sample with recorded actions will stop abruptly; otherwise with 
+						em play all dynamic channels until finished
+						| , those samples will play until the end.
+					li
+						strong Treat recorded channels as loops
+						|  &mdash; By default a click on the &quot;R&quot; button 
+						img.inline(src='images/docs/read-recs-button.png' alt='Read recordings button' title='Read recordings button')
+						|  (or the 
+						span.code shift + [key]
+						|  combination) stops immediately any recorded action. When this option is enabled any channel whose actions are suspended puts itself in ending mode, as the loop mode would do, and stops at the next first beat.
+					li
+						strong New samples channels have input monitor on by default
+						|  &mdash; Say you are adding new sample channel: should its input monitor be on or off by default?
+				
+				h2 Misc
+				p This tab contains miscellaneous options.
+				ul
+					li
+						strong Debug messages
+						|  &mdash; How Giada prints information on its internal state:
+						ol
+							li
+								strong (disabled)
+								|  &mdash; don't print anything anywhere;
+							li
+								strong To standard output
+								|  &mdash; print messages on the command line, only if you run Giada from the terminal. This mode doesn't work on Windows;
+							li
+								strong To file
+								|  &mdash; save messages to 
+								span.code giada.log
+								| , located in the same place of the configuration file as described in the 
+								a(href='documentation-introduction') introduction
+								|  chapter.
+				
+				h2 Plugins
+				p
+					img.first(src='images/docs/plugin-scanner.png' alt='Plugin scanner panel' title='Plugin scanner panel')
+				p
+					| This tab contains the plugin scanner. It's used to search for available audio plugins in your system. Insert the path to your plugin folder in the input field and press the 
+					strong scan
+					|  button. More than one path can be added, both manually or by clicking the "+" button (a directory browser will pop up). Paths are separated by the 
+					span.code ;
+					|  character.
+				p
+					| Once finished, the 
+					strong scan
+					|  button will report the number of available plugins found. You should do a complete scan every time you add/install a new plugin, to make it available for use.
+
+			#side-menu.col-md-3.margin-top-xl
+				include side-menu

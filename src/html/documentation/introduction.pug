@@ -1,0 +1,52 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Docs - Introduction - '
+	- var description = ', documentation, introduction'
+	- var keywords    = ', documentation, introduction'
+
+block content
+	.container
+		#documentation.row
+			.col-md-9
+				h1 Introduction, installation and first run
+				p #{CONSTANTS.description}
+				h2 Warnings
+				p
+					| Giada is in a constant stage of development and may lack of some functionalities which could make it hard to use. Please see the changelog file inside the package to understand the direction of development. Giada is obviously full of bugs, too. So please join our 
+					a(href='forum') forum
+					|  and submit any malfunction or suggestion.
+				p
+					| If you are a coder / programmer / developer / hacker and you want to collaborate with the project, join us on 
+					a(href='https://github.com/monocasual/giada') GitHub
+					| . More information on the 
+					a(href='documentation-development-git-setup') Git setup
+					|  page.
+				h2 How to run Giada
+				p
+					| Go to the 
+					a(href='download') Download
+					|  area, grab the package for your operating system, unzip/untar it. Now double-click on the program icon to start Giada. No installation or setup needed.
+				p
+					| If you are on Linux and you have installed Giada through your package manager, you should find a shortcut in your main menu.
+				h2 The configuration file
+				p
+					| Giada saves its configuration inside a file called 
+					span.code giada.conf
+					| , generated somewhere in your filesystem:
+				ul
+					li
+						| Linux —
+						span.code /home/[your_user]/.giada/giada.conf
+						| ;
+					li
+						| Mac —
+						span.code [your_home]/Library/Application Support/Giada/giada.conf
+						| ;
+					li Windows — in the same folder of the binary file.
+				p
+					| If you accidentally delete or alter it, the default setup will be used. This file is restored the next
+					| time you quit the program.
+
+			#side-menu.col-md-3.margin-top-xl
+				include side-menu

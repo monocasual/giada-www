@@ -1,0 +1,111 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Docs - Compiling from source - '
+	- var description = ', documentation, Compiling from source'
+	- var keywords    = ', documentation, Compiling from source'
+
+block content
+	.container
+		#documentation.row
+			.col-md-9
+				h1 Compiling from source
+				p
+					| This chapter is about compiling the code inside the tar.gz you download from this site. If you are trying to compile the code downloaded/cloned from GitHub, take a look 
+					a(href='documentation-development-git-setup') here
+					| .
+				p
+					| Compiling Giada from source requires a C++11-compatible compiler. The configure script inside the package, designed for Unix systems and MinGW (Windows) will help you to guess correct values for various system-dependent variables used during compilation. You have to pass it the 
+					span.code --target
+					|  parameter depending on your operating system:
+				p.code
+					| ./configure --target=[linux | osx | windows]
+				p
+					| e.g. if you want to compile for Linux, do:
+				p.code
+					| ./configure --target=linux
+				p
+					| When the script is done without errors, do:
+				p.code
+					| make
+				p
+					| to compile everything. If you wish to install Giada on Linux, become root and type
+				p.code
+					| make install
+				p
+					| to copy the binary file into /usr/local/bin path.
+				p
+					| Optionally, if you want to run the test suite, just do:
+				p.code
+					| make check
+				p
+					| All unit tests are based on 
+					a(href='https://github.com/philsquared/Catch/') Catch automated test framework
+					| , which supports several command-line options. Please take a look at the 
+					a(href='https://github.com/philsquared/Catch/blob/master/docs/command-line.md') official documentation
+					|  to understand the gritty details. The command above will just run the entire test suite.
+				
+				h3 Additional flags
+				p
+					|
+					span.code --enable-debug
+					|  — enable debug mode (mainly asserts). It is disabled by default;
+
+				p
+					|
+					span.code --enable-system-catch
+					|  — by default Giada includes Catch from the local source folder. Pass this flag to use the system provided one instead (useful in most Linux distributions);
+
+				h2 Dependencies
+				p
+					| Giada is based upon several external libraries, plus a custom version of RtAudio shipped with the source package. Our hacked RtAudio provides Jack Transport support on Linux, a feature that you wouldn't find in the vanilla release. At the present moment we suggest you to use the following versions:
+				ul
+					li FLTK — 1.3.[0 or greater];
+					li Libsndfile — 1.0.28 or greater;
+					li Libsamplerate — 0.1.9 or greater;
+					li Jansson — 2.9 or greater;
+					li RtMidi — 3.0.0 or greater.
+				h2 How to enable VST support
+				p
+					| In order to compile Giada with VST support you have to enable the feature via configure script. Add
+					| the following parameter:
+				p.code
+					| --enable-vst
+				p
+					| e.g. if you want to compile for Linux with VST support, do:
+				p.code
+					| ./configure --target=linux --enable-vst
+				h3 Missing VST headers!
+				p
+					| You won&apos;t find any VST header into our source package, since we cannot distribute the SDK from Steinberg.
+					| To solve this issue:
+				ol
+					li
+						| go to the 
+						a(href='http://www.steinberg.net/en/company/developer.html' target='_blank') Steinberg third-party developer support site
+						| ,
+						| login into the developer zone and download VST Audio Plugins SDK (latest version);
+					li
+						| create a new folder (if it does not exist yet) called 
+						span.code vst
+						|  inside 
+						span.code giada-[version]-src/src/deps
+						| ;
+					li
+						| extract all files from the VST SDK package, browse to 
+						span.code pluginterfaces/
+						|  (a directory), grab it and put it inside the new 
+						span.code vst
+						|  folder;
+					li
+						| start compilation and cross your fingers (just kidding, everything will be alright).
+				h2 Use the official Docker image for Giada
+				p
+					| Instead of cluttering up your environment with dependencies, scripts and compilers you may try our 
+					a(href='https://hub.docker.com/u/monocasual/') Docker image
+					| , designed to ease the compilation and testing processes. Take a look at the 
+					a(href='https://github.com/monocasual/giada-docker') GitHub repository
+					|  to know more.
+	
+			#side-menu.col-md-3.margin-top-xl
+				include side-menu

@@ -1,0 +1,39 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Docs - Requirements - '
+	- var description = ', documentation, requirements'
+	- var keywords    = ', documentation, requirements'
+
+block content
+	.container
+		#documentation.row
+			.col-md-9
+				h1 Requirements
+				p
+					| The binaries you may find in the 
+					a(href='download') Download area
+					|  are meant for 64-bit operating systems. Even if Giada is based upon several external dependencies, everything you need is inside the binary you will download from there.
+				p
+					| Take a look at the 
+					a(href='documentation-compiling-from-source') Compiling from source
+					|  page if you want to know more about the additional libraries in use.
+
+				h2 Giada on Windows
+				p
+					| Supported version: Windows XP or greater.
+
+				h2 Giada on macOS
+				p
+					| Supported version: macOS Sierra 10.12 or greater.
+
+				h2 Giada on Linux
+				p
+					| Giada is packaged as an 
+					a(href='https://appimage.org/') AppImage
+					|  and can run on many distributions (including Ubuntu, Fedora, openSUSE, CentOS, elementaryOS, Linux Mint, and others). Supported version: any distribution with Glibc &gt;= 2.23.
+				p
+					| If you experience any troubles with our package you should also try binaries provided by the package manager of your favorite distribution. Giada is already available on Debian, Ubuntu, Arch Linux and many more.
+
+			#side-menu.col-md-3.margin-top-xl
+				include side-menu

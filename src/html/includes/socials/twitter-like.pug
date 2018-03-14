@@ -1,0 +1,6 @@
+- var titleEnc = encodeURI(CONSTANTS.title)
+- var urlEnc   = encodeURI(CONSTANTS.url)
+
+.share-button.twitter
+  a(target='_blank' href=`https://twitter.com/intent/tweet?text=${titleEnc}&url=${urlEnc}`)
+    img(src='images/social-icon-twitter.svg' alt='twitter' title='Tweet Giada')

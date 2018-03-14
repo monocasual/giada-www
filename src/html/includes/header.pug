@@ -1,0 +1,46 @@
+.glm-header.container
+	.row.margin-top-s
+		.col-xs-3.logo
+			a(href='index' title='Giada - Your Hardcore Loopmachine' class='imagelink')
+				img.space-none(src='images/giada-logo.svg' alt='Giada - Your Hardcore Loopmachine')
+
+		.col-xs-9
+			nav.main-menu
+				ol.nav.nav-pills
+					li.burger-button: a(href='#'): img(src='images/burger-menu.svg' alt='menu')
+					li: a(href='https://github.com/monocasual/giada' title='Giada @ GitHub') Fork us @ GitHub!
+					li: a(href='forum' title='Giada forum for end users') forum
+					li: a(href='media' title='Media') media
+					li: a(href='documentation-index' title='Giada documentation area') docs
+					li: a(href='download' title='Download Giada, latest version') download
+					li: a(href='screenshots' title='Screenshots') screenshots
+					li: a(href='features' title='Feature list') features
+
+	.row
+		.col-xs-12
+			nav.burger-menu
+				ol.nav.nav-pills
+					li: a(href='features' title='Feature list') features
+					li: a(href='screenshots' title='Screenshots') screenshots
+					li: a(href='download' title='Download Giada, latest version') download
+					li: a(href='documentation-index' title='Giada documentation area') docs
+					li: a(href='media' title='Media') media
+					li: a(href='forum' title='Giada forum for end users') forum
+					li: a(href='https://github.com/monocasual/giada' title='Giada @ GitHub') Fork us @ GitHub!
+					li: a(href='press' title='Press area') press
+					li: a(href='news-archive' title='News archive') news archive
+
+	.row.border-top.margin-top-s.padding-top-l
+		.col-md-12.text-center
+			if NODE_ENV === 'prod'
+				script(src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' async)
+				ins.adsbygoogle(
+					style='display:block'
+					data-ad-client='ca-pub-1778432007040046'
+					data-ad-slot='9025673290'
+					data-ad-format='auto'
+				)
+				script.
+					(adsbygoogle = window.adsbygoogle || []).push({});
+			else
+				img.img-responsive(src='images/ads-placeholder-728x90.png')

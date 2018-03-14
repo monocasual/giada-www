@@ -1,0 +1,129 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Docs - The Sample Editor - '
+	- var description = ', documentation, The Sample Editor'
+	- var keywords    = ', documentation, The Sample Editor'
+
+block content
+	.container
+		#documentation.row
+			.col-md-9
+				h1 The Sample Editor
+				p
+					img.first(src='images/docs/giada-sample-editor.png' alt='The sample editor' title='The sample editor')
+					|  Giada is shipped with a powerful Sample Editor for fine samples manipulation. While the main window provides a fast and basic interaction, inside the Sample Editor you can tweak several parameters such as start/end points, volume, pitch, boost and much more.
+				p
+					| The Sample Editor also provides some basic tools for cutting, trimming or silencing your sample. Those are destructive actions; if you damage the sample you have to reload it from disk. Don't worry, the damage will occur only in memory; the original file won't be touched!
+				p
+					| On the lower right corner of the Sample Editor you will find some additional information on the sample currently loaded, such as the original file path, the size (in audio frames), the duration (in seconds), the bit depth and the frequency.
+				.clearfix
+				h2 Start/end points
+				p
+					| Start/end points are used to set the play range of the sample and are represented by two
+					| vertical lines with a square handle: click on that handle and drag it around to set the points quickly, or use the boxes below the waveform for a precise, numeric setup. The 
+					strong Reset
+					|  button restores the default configuration.
+				h2 Volume and boost
+				p
+					| The 
+					strong Volume
+					|  knob 
+					img.inline(src='images/docs/volume-knob.png' alt='Volume knob' title='Volume knob')
+					|  reflects the one located on the main window, running from -inf to 0.0 dB. The 
+					strong Boost 
+					| knob 
+					img.inline(src='images/docs/boost-knob.png' alt='Boost knob' title='Boost knob')
+					|  is used to rise the signal level of a quiet sample; its range goes from 0.0 to 20.0 dB.
+				h2 Normalize
+				p
+					| The 
+					strong Normalize
+					|  button 
+					img.inline(src='images/docs/normalize.png' alt='Normalize' title='Normalize')
+					|  parses the entire sample and raises its highest peak to 0.0 dB, setting the boost level
+					| accordingly. If the highest peak is greater than 0.0 dB (it could happen with a floating point sample), the function brings it down to 0.0 dB. If the sample is silent, it does nothing.
+				h2 Panning
+				p
+					| The 
+					strong Pan
+					|  knob 
+					img.inline(src='images/docs/panning-knob.png' alt='Panning knob' title='Panning knob')
+					|  sets the position of the sample into the stereo field. "L" stands for Left, "R" for Right
+					| and "C" for center.
+				h2 Pitch
+				p
+					| The 
+					strong Pitch
+					|  knob 
+					img.inline(src='images/docs/pitch-knob.png' alt='Pitch knob' title='Pitch knob')
+					|  streches or compresses the sample, making it sound faster or slower. It works exactly as a turntable pitch control slider. It's currently powered by the Linear algorithm from Libsamplerate (very fast, low quality).
+				p
+					| You can spread the sample accross the whole song or the current bar by pressing 
+					strong To song
+					|  and 
+					strong To bar
+					|  buttons. Two additional operators, 
+					strong &times;
+					|  and 
+					strong &div;
+					|  will double or halve the sample's duration, while the 
+					strong Reset
+					|  button restores the pitch to 1.0.
+				h2 Editing operations
+				p
+					img.first(src='images/docs/sample-editor-popup-menu.png' alt='The editing menu in the sample editor' title='The editing menu in the sample editor')
+				p
+					| Select a portion of the waveform with the mouse and click on it with the 
+					em right button
+					| : a menu will appear, giving you some editing tools:
+				ul
+					li
+						strong Cut
+						|  &mdash; removes a portion from the sample and store it to memory. It can be pasted later on;
+					li
+						strong Copy
+						|  &mdash; stores the selected range in memory, for later paste;
+					li
+						strong Paste
+						|  &mdash; pastes the data stored in memory. This option is available also when you right-click on the waveform with no selection, in order to paste to a specific frame;
+					li
+						strong Trim
+						|  &mdash; removes all but the selected portion;
+					li
+						strong Silence
+						|  &mdash; mutes the selected portion (sets the amplitude to 0);
+					li
+						strong Reverse
+						|  &mdash; flips the data in the selected range;
+					li
+						strong Normalize
+						|  &mdash; raises the volume of the selected range to 0.0 dB. Note that, unlike the 
+						em normalize
+						|  button described above, this operation modifies the actual data: you have to reload the sample from disk in order to restore it to the original state;
+					li
+						strong Fade in/Fade out
+						|  &mdash; applies a linear fade in/out;
+					li
+						strong Smooth edges
+						|  &mdash; shapes gracefully the edges of a selection;
+					li
+						strong Set start/end here
+						|  &mdash; sets the 
+						em start
+						|  / 
+						em end
+						|  points to the selection boundaries;
+					li
+						strong Copy to new channel
+						|  &mdash; creates a new Sample Channel out of the selection.
+				p
+					| Did you mess with the sample? You can reload it from disk by clicking on the 
+					strong Reload
+					|  button 
+					img.inline(src='images/docs/reload-button.png' alt='Reload button' title='Reload button')
+					| .
+				.clearfix
+
+			#side-menu.col-md-3.margin-top-xl
+				include side-menu

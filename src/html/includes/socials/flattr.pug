@@ -1,0 +1,8 @@
+- var titleEnc    = encodeURI(CONSTANTS.title)
+- var urlEnc      = encodeURI(CONSTANTS.url)
+- var descrEnc    = encodeURI(CONSTANTS.description)
+- var keywordsEnc = encodeURI(CONSTANTS.keywords)
+
+.share-button.flattr
+  a(target='_blank' href=`https://flattr.com/submit/auto?user_id={{ config.services.flattr_user }}&url=${urlEnc}&title=${titleEnc}&description=${descrEnc}&language=en_GB&tags=${keywordsEnc}&category=software`)
+    img(src='images/social-icon-flattr.svg' alt='flattr' title='Flattr Giada')
