@@ -4,7 +4,6 @@ const DATA_DIR  = `${SRC_DIR}/data`;
 
 
 const FSE     = require('fs-extra');
-const EXEC    = require('child_process').EXEC;
 const PP      = require('preprocess');
 const GLOB    = require("glob");
 const SASS    = require('node-sass');
