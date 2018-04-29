@@ -1,5 +1,10 @@
 [
 	{
+		"title": "Giada 0.15.0 <em>French Press</em> released",
+		"date": "April 19, 2018",
+		"body": "<p>Yesterday we released Giada 0.15.0, codename <em>French Press</em>, inspired by a famous type of strength exercise specially designed and most popular for triceps. This release brings on the table some important code refactoring that will pave the road for the upcoming new features planned for branch 0.15.</p><p>In addition to that, a smarter \"solo\" algorithm has been developed, as well as some nasty bugs on live recording fixed. Full changelog is available <a href=\"download\">here</a>. Go grab Giada 0.15.0 and stay strong.</p>"
+	},
+	{
 		"title": "Giada 0.14.6 <em>Backward invention</em> is ready!",
 		"date": "March 14, 2018",
 		"body": "<p>We are happy to present a new juicy version of Giada, inspired by the so-called <em>backward invention</em>: a marketing strategy in which an existing product is dumbed down by the company to be released in less developed countries.</p><p>In Giada 0.14.6 you will find:</p><ul><li>Ability to drive volume of one-shot samples via MIDI velocity;</li><li>FLAC and Ogg support for audio files;</li><li>Build system improvements;</li><li>Several bugs fixed, especially the crash on macOS when opening the Configuration window.</li></ul><p>Also, Giada 0.14.6 marks the end of the 0.14 series. We are getting ready for some exciting new features in the 0.15 branch, such as the free loop length or the ability to record on key press/input signal.</p><p>As always, downloads and changelog are <a href=\"https://www.giadamusic.com/download\">right here</a>. Warm hugs to our supporters, stay tuned!</p>"
