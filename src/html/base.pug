@@ -1,26 +1,25 @@
 doctype html
-html
-	block metas-vars
-	head(lang='en')
-	title #{title}#{CONSTANTS.title}
-	meta(charset='utf-8')
-	meta(http-equiv='X-UA-Compatible' content='IE=edge')
-	meta(name='viewport' content='width=device-width, initial-scale=1')
-	meta(name='author' content='Monocasual Laboratories')
-	meta(name='description' content=`${CONSTANTS.description}${description}`)
-	meta(name='keywords' content=`${CONSTANTS.keywords}${keywords}`)
-	meta(name='copyright' content=`2010-${(new Date()).getFullYear()} Monocasual Laboratories`)
-	meta(name='application-name' content=`${CONSTANTS.title}`)
-	block metas
+html(lang='en')
+	head
+		block metas-vars
+		if NODE_ENV === 'prod'
+			include includes/google-analytics
+		title #{title}#{CONSTANTS.title}
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible' content='IE=edge')
+		meta(name='viewport' content='width=device-width, initial-scale=1')
+		meta(name='author' content='Monocasual Laboratories')
+		meta(name='description' content=`${CONSTANTS.description}${description}`)
+		meta(name='keywords' content=`${CONSTANTS.keywords}${keywords}`)
+		meta(name='copyright' content=`2010-${(new Date()).getFullYear()} Monocasual Laboratories`)
+		meta(name='application-name' content=`${CONSTANTS.title}`)
+		block metas
 
-	link(rel='icon' href='images/favicon.ico?v=2')
-	link(rel='apple-touch-icon-precomposed' href='images/favicon-152.png?v=2')
-	link(rel='stylesheet' href='//fonts.googleapis.com/css?family=Montserrat' type='text/css')
-	link(rel='stylesheet' href=`css/main-${CONSTANTS.version}.css` type='text/css')
-	block styles
-
-	if NODE_ENV === 'prod'
-		include includes/google-analytics
+		link(rel='icon' href='images/favicon.ico?v=2')
+		link(rel='apple-touch-icon-precomposed' href='images/favicon-152.png?v=2')
+		link(rel='stylesheet' href='//fonts.googleapis.com/css?family=Montserrat' type='text/css')
+		link(rel='stylesheet' href=`css/main-${CONSTANTS.version}.css` type='text/css')
+		block styles
 
 	body
 		div#fb-root
