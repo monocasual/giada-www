@@ -2,8 +2,7 @@
 mixin news(date, title, body)
 	.margin-top-l.padding-top-s
 		h3.description!= title
-		p
 		|
 		span.pull-left.margin-right-s.red= `${date} ― `
 		|
-		span!= body
+		!= body
