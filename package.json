@@ -7,7 +7,8 @@
 		"keywords": "loopmachine, loop machine, giada, monocasual, software, opensource, open source, linux, windows, osx, os x, mac, macOS, macintosh, sample, digital, dj, sample editor, djtool, audio, music, drum machine, sequencer, live sampler, sampler, effect, fx, vst, vst host, host, daw",
 		"url": "https://www.giadamusic.com",
 		"social_image": "giada-loopmachine-screencast.jpg",
-		"facebook_app_id": "872336596226280"
+		"facebook_app_id": "872336596226280",
+		"flattr_id": "giadamusic"
 	},
 	"dependencies": {
 		"fs-extra": "5.0.0",
