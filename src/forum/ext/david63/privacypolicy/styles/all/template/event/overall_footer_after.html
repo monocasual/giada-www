@@ -1,0 +1,27 @@
+{% if S_COOKIE_ENABLED and not S_SHOW_COOKIE_ACCEPT %}
+	<!-- Don't want to stop Bots (with permissions) from indexing the board -->
+	{% if S_COOKIE_BLOCK_LINKS and not S_IS_BOT %}
+		<script>
+			var cookieLinks = '{{ lang('COOKIE_BLOCK') | escape('js') }}';
+		</script>
+
+		{% INCLUDEJS '@david63_privacypolicy/remove_url.js' %}
+	{% endif %}
+
+	<script>
+		var acceptText			= '{{ lang('COOKIE_ACCEPT') | escape('js') }}';
+		var cookieBoxBdColour	= '{{ COOKIE_BOX_BD_COLOUR | escape('js') }}';
+		var cookieBoxBdWidth	= '{{ COOKIE_BOX_BD_WIDTH | escape('js') }}';
+		var cookieBoxBgColour	= '{{ COOKIE_BOX_BG_COLOUR | escape('js') }}';
+		var cookieBoxHrefColour	= '{{ COOKIE_BOX_HREF_COLOUR | escape('js') }}';
+		var cookieBoxTxtColour	= '{{ COOKIE_BOX_TXT_COLOUR | escape('js') }}';
+		var cookieExpires		= '{{ COOKIE_EXPIRES | escape('js') }}';
+		var cookieLink			= '{{ lang('COOKIE_POLICY') | escape('js') }}';
+		var cookieText			= '{{ lang('COOKIE_ACCEPT_TEXT') | escape('js') }}';
+		var cookiePage			= '{{ U_COOKIE_PAGE | escape('js') }}';
+		var phpbbCookieName		= '{{ COOKIE_NAME | escape('js') }}';
+	</script>
+
+
+	{% INCLUDEJS '@david63_privacypolicy/cookie_fn.js' %}
+{% endif %}

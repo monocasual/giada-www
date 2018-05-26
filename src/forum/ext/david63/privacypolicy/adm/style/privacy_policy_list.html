@@ -1,0 +1,73 @@
+{% include 'overall_header.html' %}
+{% INCLUDECSS '@david63_privacypolicy/admin_forms.css' %}
+
+<a name="maincontent"></a>
+
+<div class="head-panel">
+	<div class="head-title">{{ lang('PRIVACY_LIST') }}</div>
+	<div class="head-description">{{ lang('PRIVACY_LIST_EXPLAIN') }}</div>
+		<div class="version-wrapper" style="float: {{ S_CONTENT_FLOW_END }};">
+		<div class="version-text">{{ lang('VERSION') }}</div>
+		<div class="version-data">{{ PRIVACY_POLICY_VERSION }}</div>
+	</div>
+	<br />
+</div>
+
+<form id="list" method="post" action="{{ U_ACTION }}">
+
+	<div class="head-panel">
+		<div class="pagination">
+			[ {{ lang('TOTAL_USERS') }}{{ lang('COLON') }}{{ TOTAL_USERS }} ]
+			{% if pagination %}
+				&bull; {% include 'pagination.html' %}
+			{% else %}
+				&bull; {{ PAGE_NUMBER }}
+			{% endif %}
+		</div>
+
+		<div class="select-buttons">
+			<strong>{{ lang('SORT_BY') }}&nbsp;{{ lang('COLON') }}</strong>&nbsp;{{ S_SORT_KEY }}&nbsp;&nbsp;{{ S_SORT_DIR }}
+			&nbsp;&bull;&nbsp;
+			<strong>{{ lang('FILTER_BY') }}&nbsp;{{ lang('COLON') }}</strong>&nbsp;{{ S_FILTER_BY }}&nbsp;{{ S_FILTER_CHAR }}
+			<br /><br />
+			<input class="adm-button" type="submit" value="{{ lang('GO') }}" name="sort" />
+			&nbsp;&nbsp;&nbsp;
+			<input class="adm-button" type="submit" value="{{ lang('CLEAR_FILTER') }}" name="clear_filters" />
+		</div>
+	</div>
+
+	<div class="table">
+		<div class="table-header">
+			<div class="table-header-cell-left">{{ lang('USER_ID') }}</div>
+			<div class="table-header-cell">{{ lang('USERNAME') }}</div>
+			<div class="table-header-cell">{{ lang('ACCEPT_DATE') }}</div>
+			<div class="table-header-cell">{{ lang('REG_DATE') }}</div>
+			<div class="table-header-cell">{{ lang('LAST_VISIT') }}</div>
+			<div class="table-header-cell-right">{{ lang('POSTS') }}</div>
+		</div>
+
+		<div class="table-body">
+			{% for list in privacy_list %}
+				{% if list.S_ROW_COUNT is even %}<div class="table-row1">{% else %}<div class="table-row2">{% endif %}
+				<div class="table-body-cell">{{ list.USER_ID }}</div>
+				<div class="table-body-cell">{{ list.USERNAME }}</div>
+				<div class="table-body-cell">{{ list.ACCEPT_DATE }}</div>
+				<div class="table-body-cell">{{ list.REG_DATE }}</div>
+				<div class="table-body-cell">{{ list.LAST_VISIT }}</div>
+				<div class="table-body-cell">{{ list.POSTS }}</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="pagination">
+		{% if pagination %}
+			&bull; {% include 'pagination.html' %}
+		{% else %}
+			&bull; {{ PAGE_NUMBER }}
+		{% endif %}
+	</div>
+
+</form>
+
+{% include 'overall_footer.html' %}

@@ -1,0 +1,235 @@
+{% include 'overall_header.html' %}
+{% INCLUDECSS '@david63_privacypolicy/admin_forms.css' %}
+
+<a name="maincontent"></a>
+
+<div class="head-panel">
+	<div class="head-title">{{ lang('COOKIE_POLICY') }}</div>
+	<div class="head-description">{{ lang('COOKIE_POLICY_EXPLAIN') }}</div>
+		<div class="version-wrapper" style="float: {{ S_CONTENT_FLOW_END }};">
+		<div class="version-text">{{ lang('VERSION') }}</div>
+		<div class="version-data">{{ PRIVACY_POLICY_VERSION }}</div>
+	</div>
+	<br />
+</div>
+
+<form id="privacypolicy" method="post" action="{{ U_ACTION }}">
+	<fieldset>
+		<legend>{{ lang('POLICIES') }}</legend>
+
+		<dl>
+			<dt><label for="privacy_policy_enable">{{ lang('PRIVACY_POLICY_ENABLE') }}{{ lang('COLON') }}</label><br /><span>{{ lang('PRIVACY_POLICY_ENABLE_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="privacy_policy_enable1" name="privacy_policy_enable" value="1"{% if PRIVACY_POLICY_ENABLED %} checked="checked"{% endif %} />
+				<label class="set" for="privacy_policy_enable1">{{ lang('ENABLE') }}</label>
+				<input type="radio" id="privacy_policy_enable0" name="privacy_policy_enable" value="0"{% if not PRIVACY_POLICY_ENABLED %} checked="checked"{% endif %} />
+				<label class="unset" for="privacy_policy_enable0">{{ lang('DISABLE') }}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="cookie_policy_enable">{{ lang('COOKIE_POLICY_ENABLE') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_POLICY_ENABLE_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="cookie_policy_enable1" name="cookie_policy_enable" value="1"{% if COOKIE_POLICY_ENABLED %} checked="checked"{% endif %} />
+				<label class="set" for="cookie_policy_enable1">{{ lang('ENABLE') }}</label>
+				<input type="radio" id="cookie_policy_enable0" name="cookie_policy_enable" value="0"{% if not COOKIE_POLICY_ENABLED %} checked="checked"{% endif %} />
+				<label class="unset" for="cookie_policy_enable0">{{ lang('DISABLE') }}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="cookie_show_policy">{{ lang('COOKIE_SHOW_POLICY') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_SHOW_POLICY_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="cookie_show_policy1" name="cookie_show_policy" value="1"{% if COOKIE_SHOW_POLICY %} checked="checked"{% endif %} />
+				<label class="set" for="cookie_show_policy1">{{ lang('YES') }}</label>
+				<input type="radio" id="cookie_show_policy0" name="cookie_show_policy" value="0"{% if not COOKIE_SHOW_POLICY %} checked="checked"{% endif %} />
+				<label class="unset" for="cookie_show_policy0">{{ lang('NO') }}</label>
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{ lang('PRIVACY_POLICY_OPTIONS') }}</legend>
+
+		<dl>
+			<dt><label for="cookie_block_links">{{ lang('COOKIE_BLOCK_LINKS') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_BLOCK_LINKS_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="cookie_block_links1" name="cookie_block_links" value="1"{% if COOKIE_BLOCK_LINKS %} checked="checked"{% endif %} />
+				<label class="set" for="cookie_block_links1">{{ lang('YES') }}</label>
+				<input type="radio" id="cookie_block_links0" name="cookie_block_links" value="0"{% if not COOKIE_BLOCK_LINKS %} checked="checked"{% endif %} />
+				<label class="unset" for="cookie_block_links0">{{ lang('NO') }}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="cookie_require_access">{{ lang('COOKIE_REQUIRE') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_REQUIRE_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="cookie_require_access1" name="cookie_require_access" value="1"{% if COOKIE_REQUIRE %} checked="checked"{% endif %} />
+				<label class="set" for="cookie_require_access1">{{ lang('YES') }}</label>
+				<input type="radio" id="cookie_require_access0" name="cookie_require_access" value="0"{% if not COOKIE_REQUIRE %} checked="checked"{% endif %} />
+				<label class="unset" for="cookie_require_access0">{{ lang('NO') }}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="privacy_policy_force">{{ lang('PRIVACY_POLICY_FORCE') }}{{ lang('COLON') }}</label><br /><span>{{ lang('PRIVACY_POLICY_FORCE_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="privacy_policy_force1" name="privacy_policy_force" value="1"{% if PRIVACY_POLICY_FORCE %} checked="checked"{% endif %} />
+				<label class="set" for="privacy_policy_force1">{{ lang('YES') }}</label>
+				<input type="radio" id="privacy_policy_force0" name="privacy_policy_force" value="0"{% if not PRIVACY_POLICY_FORCE %} checked="checked"{% endif %} />
+				<label class="unset" for="privacy_policy_force0">{{ lang('NO') }}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="privacy_policy_reset">{{ lang('PRIVACY_POLICY_RESET') }}{{ lang('COLON') }}</label><br /><span>{{ lang('PRIVACY_POLICY_RESET_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="privacy_policy_reset1" name="privacy_policy_reset" value="1"{% if PRIVACY_POLICY_RESET %} checked="checked"{% endif %} />
+				<label class="set" for="privacy_policy_reset1">{{ lang('YES') }}</label>
+				<input type="radio" id="privacy_policy_reset0" name="privacy_policy_reset" value="0"{% if not PRIVACY_POLICY_RESET %} checked="checked"{% endif %} />
+				<label class="unset" for="privacy_policy_reset0">{{ lang('NO') }}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="privacy_policy_remove">{{ lang('PRIVACY_POLICY_REMOVE') }}{{ lang('COLON') }}</label><br /><span>{{ lang('PRIVACY_POLICY_REMOVE_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="privacy_policy_remove1" name="privacy_policy_remove" value="1"{% if PRIVACY_POLICY_REMOVE %} checked="checked"{% endif %} />
+				<label class="set" for="privacy_policy_remove1">{{ lang('YES') }}</label>
+				<input type="radio" id="privacy_policy_remove0" name="privacy_policy_remove" value="0"{% if not PRIVACY_POLICY_REMOVE %} checked="checked"{% endif %} />
+				<label class="unset" for="privacy_policy_remove0">{{ lang('NO') }}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="privacy_policy_list_lines">{{ lang('PRIVACY_POLICY_LIST_LINES') }}{{ lang('COLON') }}</label><br /><span>{{ lang('PRIVACY_POLICY_LIST_LINES_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox" name="privacy_policy_list_lines" type="number" id="privacy_policy_list_lines" value="{{ PRIVACY_POLICY_LIST_LINES }}" min="0" max="99" />
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{ lang('COOKIE_POLICY_OPTIONS') }}</legend>
+
+		<dl>
+			<dt><label for="cookie_on_index">{{ lang('COOKIE_POLICY_ON_INDEX') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_POLICY_ON_INDEX_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="cookie_on_index1" name="cookie_on_index" value="1"{% if COOKIE_POLICY_ON_INDEX %} checked="checked"{% endif %} />
+				<label class="set" for="cookie_on_index1">{{ lang('INDEX') }}</label>
+				<input type="radio" id="cookie_on_index0" name="cookie_on_index" value="0"{% if not COOKIE_POLICY_ON_INDEX %} checked="checked"{% endif %} />
+				<label class="set" for="cookie_on_index0">{{ lang('ALL') }}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="cookie_expire">{{ lang('COOKIE_EXPIRE') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_EXPIRE_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="cookie_expire1" name="cookie_expire" value="1"{% if COOKIE_POLICY_EXPIRE %} checked="checked"{% endif %} />
+				<label class="set" for="cookie_expire1">{{ lang('YES') }}</label>
+				<input type="radio" id="cookie_expire0" name="cookie_expire" value="0"{% if not COOKIE_POLICY_EXPIRE %} checked="checked"{% endif %} />
+				<label class="unset" for="cookie_expire0">{{ lang('NO') }}</label>
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{ lang('CUSTOM_BOX_COLOURS') }}</legend>
+
+		<p>{{ lang('CUSTOM_BOX_COLOURS_EXPLAIN') }}</p><br />
+
+		<dl>
+			<dt><label for="cookie_box_bg_colour">{{ lang('COOKIE_BOX_BG_COLOUR') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_BOX_BG_COLOUR_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox2 jscolor {hash:true}" name="cookie_box_bg_colour" type="text" id="cookie_box_bg_colour" value="{{ COOKIE_BOX_BG_COLOUR }}" size="8" maxlength="8" />&nbsp;{{ lang('CLICK_TO_SELECT') }}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="cookie_box_txt_colour">{{ lang('COOKIE_BOX_TXT_COLOUR') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_BOX_TXT_COLOUR_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox2 jscolor {hash:true}" name="cookie_box_txt_colour" type="text" id="cookie_box_txt_colour" value="{{ COOKIE_BOX_TXT_COLOUR }}" size="8" maxlength="8" />&nbsp;{{ lang('CLICK_TO_SELECT') }}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="cookie_box_bdr_colour">{{ lang('COOKIE_BOX_BDR_COLOUR') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_BOX_BDR_COLOUR_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox2 jscolor {hash:true}" name="cookie_box_bdr_colour" type="text" id="cookie_box_bdr_colour" value="{{ COOKIE_BOX_BDR_COLOUR }}" size="8" maxlength="8" />&nbsp;{{ lang('CLICK_TO_SELECT') }}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="cookie_box_bdr_width">{{ lang('COOKIE_BOX_BDR_WIDTH') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_BOX_BDR_WIDTH_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox" name="cookie_box_bdr_width" type="number" id="cookie_box_bdr_width" value="{{ COOKIE_BOX_BDR_WIDTH }}" min="0" max="10" /> {{ lang('PIXELS') }}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="cookie_box_href_colour">{{ lang('COOKIE_BOX_HREF_COLOUR') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_BOX_HREF_COLOUR_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox2 jscolor {hash:true}" name="cookie_box_href_colour" type="text" id="cookie_box_href_colour" value="{{ COOKIE_BOX_HREF_COLOUR }}" size="8" maxlength="8" />&nbsp;{{ lang('CLICK_TO_SELECT') }}
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{ lang('CUSTOM_PAGE_COLOURS') }}</legend>
+
+		<p>{{ lang('CUSTOM_PAGE_COLOURS_EXPLAIN') }}</p><br />
+
+		<dl>
+			<dt><label for="cookie_custom_page">{{ lang('COOKIE_CUSTOM_PAGE') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_CUSTOM_PAGE_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="cookie_custom_page1" name="cookie_custom_page" value="1"{% if COOKIE_CUSTOM_PAGE %} checked="checked"{% endif %} />
+				<label class="set" for="cookie_custom_page1">{{ lang('YES') }}</label>
+				<input type="radio" id="cookie_custom_page0" name="cookie_custom_page" value="0"{% if not COOKIE_CUSTOM_PAGE %} checked="checked"{% endif %} />
+				<label class="unset" for="cookie_custom_page0">{{ lang('NO') }}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="cookie_page_bg_colour">{{ lang('COOKIE_PAGE_BG_COLOUR') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_PAGE_BG_COLOUR_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox2 jscolor {hash:true}" name="cookie_page_bg_colour" type="text" id="cookie_page_bg_colour" value="{{ COOKIE_PAGE_BG_COLOUR }}" size="8" maxlength="8" />&nbsp;{{ lang('CLICK_TO_SELECT') }}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="cookie_page_txt_colour">{{ lang('COOKIE_PAGE_TXT_COLOUR') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_PAGE_TXT_COLOUR_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox2 jscolor {hash:true}" name="cookie_page_txt_colour" type="text" id="cookie_page_txt_colour" value="{{ COOKIE_PAGE_TXT_COLOUR }}" size="8" maxlength="8" />&nbsp;{{ lang('CLICK_TO_SELECT') }}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="cookie_custom_page">{{ lang('COOKIE_CUSTOM_PAGE_CORNERS') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_CUSTOM_PAGE_CORNERS_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="cookie_page_corners1" name="cookie_page_corners" value="1"{% if COOKIE_CUSTOM_PAGE_CORNERS %} checked="checked"{% endif %} />
+				<label class="set" for="cookie_page_corners1">{{ lang('YES') }}</label>
+				<input type="radio" id="cookie_page_corners0" name="cookie_page_corners" value="0"{% if not COOKIE_CUSTOM_PAGE_CORNERS %} checked="checked"{% endif %} />
+				<label class="unset" for="cookie_page_corners0">{{ lang('NO') }}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="cookie_custom_page_radius">{{ lang('COOKIE_CUSTOM_PAGE_RADIUS') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_CUSTOM_PAGE_RADIUS_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox" name="cookie_page_radius" type="number" id="cookie_page_radius" value="{{ COOKIE_CUSTOM_PAGE_RADIUS }}" min="0" max="99" /> {{ lang('PIXELS') }}
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{ lang('ACP_SUBMIT_CHANGES') }}</legend>
+		<p class="submit-buttons">
+			<input class="adm-button" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+			<input class="adm-button" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
+		</p>
+		{{ S_FORM_TOKEN }}
+	</fieldset>
+</form>
+
+{% INCLUDEJS '@david63_privacypolicy/jscolor.js' %}
+{% include 'overall_footer.html' %}

@@ -1,0 +1,20 @@
+{% include 'overall_header.html' %}
+
+<form method="post" action="{U_ACTION}" id="agreement">
+
+	<div class="panel bg2">
+		<div class="inner">
+
+			{{ ACCEPT_MESSAGE }}
+
+			<fieldset class="submit-buttons">
+				<input type="submit" name="accept" id="accept" value="{{ lang('ACCEPT') }}" class="button1" />&nbsp;&nbsp;
+				<input type="submit" name="decline" id="decline" value="{{ lang('DECLINE') }}" class="button2" />
+				{S_FORM_TOKEN}
+			</fieldset>
+		</div>
+	</div>
+</form>
+
+{% INCLUDEJS '@david63_privacypolicy/remove_url.js' %}
+{% include 'overall_footer.html' %}

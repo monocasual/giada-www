@@ -7,7 +7,7 @@ $(document).ready(function() {
   }
 
   $('.cookie-banner__close').click(function() {
-    Cookies.set('cookie-policy', true, { expires: 365 }); // one year
+    Cookies.set('cookie-policy-2018', true, { expires: 365 }); // one year
     $('.cookie-banner').hide();
   });
 });

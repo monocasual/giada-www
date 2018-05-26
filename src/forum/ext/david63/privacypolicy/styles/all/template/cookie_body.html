@@ -1,0 +1,14 @@
+{% include 'overall_header.html' %}
+
+<script>
+	var cookieCustomPage	= '{{ S_COOKIE_CUSTOM_PAGE | escape('js') }}';
+	var cookiePageBgColour	= '{{ COOKIE_PAGE_BG_COLOUR | escape('js') }}';
+	var cookiePageCorners	= '{{ COOKIE_PAGE_CORNERS | escape('js') }}';
+	var cookiePageRadius	= '{{ COOKIE_PAGE_RADIUS | escape('js') }}';
+	var cookiePageTxtColour	= '{{ COOKIE_PAGE_TXT_COLOUR | escape('js') }}';
+</script>
+
+{{ COOKIE_MESSAGE }}
+
+{% INCLUDEJS '@david63_privacypolicy/cookie_page.js' %}
+{% include 'overall_footer.html' %}

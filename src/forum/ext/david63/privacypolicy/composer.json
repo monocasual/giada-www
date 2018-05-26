@@ -1,0 +1,38 @@
+{
+	"name": "david63/privacypolicy",
+	"type": "phpbb-extension",
+	"description": "Adds an option for the user to accept the use of cookies under EU Cookie Directive (2012), and the privacy requirements under the GDPR Directive (2018)",
+	"version": "2.1.0-rc5",
+	"time": "2018-05-16",
+	"keywords": [
+		"phpbb",
+		"extension",
+		"cookie",
+		"privacy",
+		"ACP",
+		"EU",
+		"GDPR"
+	],
+	"license": "GPL-2.0",
+	"authors": [
+		{
+			"name": "David Wood",
+			"role": "Developer"
+		},
+        {
+            "name": "Jan Odvarko",
+            "homepage": "http://odvarko.cz",
+            "role": "Creator - jscolor, JavaScript Color Picker"
+        }
+    ],
+	"require": {
+        "php": ">=5.3.3",
+        "composer/installers": "~1.0"
+    },
+	"extra": {
+		"display-name": "Privacy policy",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.2.0"
+		}
+	}
+}

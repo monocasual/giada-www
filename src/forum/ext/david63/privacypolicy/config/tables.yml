@@ -1,0 +1,2 @@
+parameters:
+    david63.privacypolicy.tables.privacy_lang: %core.table_prefix%privacy_lang

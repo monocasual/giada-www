@@ -1,0 +1,106 @@
+{% include 'overall_header.html' %}
+{% INCLUDECSS '@david63_privacypolicy/admin_forms.css' %}
+
+<script>
+	var form_name	= 'privacypolicy';
+	var text_name 	= 'policy_text';
+	var load_draft 	= false;
+	var upload 		= false;
+	var imageTag 	= false;
+</script>
+
+<a name="maincontent"></a>
+
+<div class="head-panel">
+	<div class="head-title">{{ lang('POLICY_EDIT') }}</div>
+	<div class="head-description">{{ lang('POLICY_EDIT_EXPLAIN') }}</div>
+		<div class="version-wrapper" style="float: {{ S_CONTENT_FLOW_END }};">
+		<div class="version-text">{{ lang('VERSION') }}</div>
+		<div class="version-data">{{ PRIVACY_POLICY_VERSION }}</div>
+	</div>
+	<br />
+</div>
+
+{% if S_GET_TEXT %}
+	<form id="privacypolicy_edit" method="post" action="{{ U_ACTION }}">
+		<fieldset>
+			<legend>{{ lang('POLICY_FILE_OPTIONS') }}</legend>
+			<dl>
+				<dt>
+					<label for="privacy_lang_id">{{ lang('POLICY_SELECT_LANGUAGE') }}{{ lang('COLON') }}</label>
+				</dt>
+				<dd>
+					<select name="privacy_lang_id" id="privacy_lang_id">
+						{% for options in loops.langs %}
+							<option value="{{ options.LANG_ID }}"{% if options.S_LANG_DEFAULT %} selected="selected"{% endif %}>{{ options.LANG_LOCAL_NAME }}</option>
+						{% endfor %}
+					</select>
+				</dd>
+			</dl>
+
+			<dl>
+				<dt>
+					<label for="privacy_lang_name">{{ lang('POLICY_SELECT_FILE') }}{{ lang('COLON') }}</label>
+				</dt>
+				<dd>
+					<select name="privacy_lang_name" id="privacy_lang_name">
+						{% for options in loops.texts %}
+							<option value="{{ options.LANG_NAME }}">{{ options.LANG_DESCRIPTION }}</option>
+						{% endfor %}
+					</select>
+				</dd>
+			</dl>
+
+			<p class="submit-buttons">
+				<input class="adm-button" type="submit" id="submit" name="submit_text" value="{{ lang('GO') }}" />
+				{{ S_FORM_TOKEN }}
+			</p>
+		</fieldset>
+	</form>
+{% else %}
+	<form id="privacypolicy" method="post" action="{{ U_ACTION }}">
+
+	{% if S_PREVIEW %}
+		<fieldset>
+			<legend>{{ lang('PREVIEW') }}{{ lang('COLON') }}{{ POLICY_TITLE_PREVIEW }}</legend>
+			{{ POLICY_PREVIEW }}
+		</fieldset>
+	{% endif %}
+
+		<fieldset>
+			{% if S_ADD_NEW %}
+				<p>{{ POLICY_EXPLAIN_NEW }}</p>
+			{% else %}
+				<p>{{ POLICY_EXPLAIN }}</p>
+			{% endif %}
+
+			{% if S_ADD_NEW %}
+				<dl>
+					<dt><label for="privacy_lang_description">{{ lang('POLICY_DESCRIPTION') }}{{ lang('COLON') }}</label><br /><span>{{ lang('POLICY_DESCRIPTION_EXPLAIN') }}</span></dt>
+					<dd><input class="text medium" type="text" id="privacy_lang_description" name="privacy_lang_description" value="{{ POLICY_DESCRIPTION }}" maxlength="40" /></dd>
+				</dl>
+			{% endif %}
+
+			{% INCLUDE 'acp_posting_buttons.html' %}
+			<dl class="responsive-columns">
+				<dt style="width: 90px;" id="color_palette_placeholder" data-orientation="v" data-height="12" data-width="15" data-bbcode="true"></dt>
+				<dd style="margin-{{ S_CONTENT_FLOW_BEGIN }}: 90px;">
+					<textarea name="policy_text" rows="25" cols="60" style="width: 95%;" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onfocus="initInsertions();" data-bbcode="true">{{ POLICY_TEXT }}</textarea>
+				</dd>
+			</dl>
+		</fieldset>
+
+		<fieldset>
+			<legend>{{ lang('ACP_SUBMIT_CHANGES') }}</legend>
+			<p class="submit-buttons">
+				<input class="adm-button" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+				<input class="adm-button" type="submit" id="submit" name="preview" value="{{ lang('PREVIEW') }}" />
+			</p>
+			{{ S_FORM_TOKEN }}
+			{{ S_HIDDEN_FIELDS }}
+		</fieldset>
+	</form>
+{% endif %}
+
+{% INCLUDEJS '@david63_privacypolicy/sitename.js' %}
+{% include 'overall_footer.html' %}

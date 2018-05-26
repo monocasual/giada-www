@@ -1,0 +1,7 @@
+david63_privacypolicy_policyoutput:
+    path: /privacypolicy/{name}
+    defaults: { _controller: david63.privacypolicy.main.controller:policyoutput }
+
+david63_privacypolicy_acceptance:
+    path: /privacypolicy
+    defaults: { _controller: david63.privacypolicy.main.controller:acceptance }

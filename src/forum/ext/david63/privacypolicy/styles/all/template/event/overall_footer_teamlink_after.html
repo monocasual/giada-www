@@ -1,0 +1,7 @@
+{% if S_POLICY_ENABLED or S_COOKIE_ENABLED or S_COOKIE_SHOW_POLICY %}
+	<li class="rightside" data-last-responsive="true">
+		<a href="{{ U_COOKIE_PAGE }}" role="menuitem">
+			<i class="icon fa-cubes fa-fw" aria-hidden="true"></i><span>&nbsp;{{ lang('COOKIE_PRIV_POLICY') }}</span>
+		</a>
+	</li>
+{% endif %}

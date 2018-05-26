@@ -1,0 +1,91 @@
+/**
+* cookie.css
+**/
+
+#cookie-box {
+	height:auto;
+}
+
+.cookie-box {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	text-align:center;
+	display:inline-block;
+	z-index: 10;
+	text-decoration:none;
+	padding:10px 10px 10px 10px;
+	position:fixed;
+	top:0px;
+	left:0;
+	width:100%;
+	box-sizing: border-box;
+}
+
+.cookie-box a {
+	display: block;
+	text-align: center;
+}
+
+.ip-list {
+	height: auto;
+	max-height: 200px;
+	width: 150px;
+	border: 1px solid #ccc;
+	overflow-y: auto;
+	font-size: 11px
+}
+
+/* Style buttons */
+.download-btn {
+	background-color: #CADCEB;
+  	border: none;
+  	color: white;
+  	padding: 12px 30px;
+  	font-size: 16px;
+  	cursor: pointer;
+  	font-size: 20px;
+  	margin-top: 15px;
+  	margin-bottom: 15px;
+}
+
+/* Darker background on mouse-over */
+.download-btn:hover {
+  	background-color: #4169E1;
+}
+
+/* ---------
+Version
+--------- */
+.version-wrapper {
+	width: auto;
+    margin: auto;
+}
+
+.version-text, .version-data {
+	width:auto;
+	height:17px;
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 0.8em;
+	font: / Tahoma, Arial, sans-serif;
+	font-weight: bold;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.version-text {
+	-webkit-border-radius: 4px 0px 0px 4px;
+	-moz-border-radius: 4px 0px 0px 4px;
+	border-radius: 4px 0px 0px 4px;
+	background-color:#2E2E2E;
+	float: left;
+}
+
+.version-data {
+	-webkit-border-radius: 0px 4px 4px 0px;
+	-moz-border-radius: 0px 4px 4px 0px;
+	border-radius: 0px 4px 4px 0px;
+	background-color:#EB3B00;
+	float: right;
+}
