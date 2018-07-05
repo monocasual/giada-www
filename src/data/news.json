@@ -1,5 +1,10 @@
 [
 	{
+		"title": "Giada 0.15.1 <em>Leg Curl</em> is finally out",
+		"date": "July 05, 2018",
+		"body": "<p>Yesterday a new version of Giada, 0.15.1 codename <em>Leg Curl</em> appeared in bodily form, inspired by the fitness exercise that involves flexing the lower leg against resistance towards the buttocks.</p> <p>This version mainly features a huge internal refactoring of how Sample Channels and MIDI Channels get processed by the Audio Engine. This renovation opens up the doors to many new exciting functionalities planned for the 0.15 series - take a look <a href=\"https://github.com/monocasual/giada/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3A%220.15+series%22+\">here</a> for the full list.</p> <p>In addition to that, we have also fixed a couple of bugs regarding plug-ins crashes on Linux and improved BPM changes detection while running Giada as JACK client.</p> <p>Full changelog + downloads available <a href=\"https://giadamusic.com/download\">here</a>. <img src=\"https://assets-cdn.github.com/images/icons/emoji/unicode/1f4aa.png\" style=\"height:2em\" alt=\"Stay strong.\"></a></p>"
+	},	
+	{
 		"title": "Giada 0.15.0 <em>French Press</em> released",
 		"date": "April 19, 2018",
 		"body": "<p>Yesterday we released Giada 0.15.0, codename <em>French Press</em>, inspired by a famous type of strength exercise specially designed and most popular for triceps. This release brings on the table some important code refactoring that will pave the road for the upcoming new features planned for branch 0.15.</p><p>In addition to that, a smarter \"solo\" algorithm has been developed, as well as some nasty bugs on live recording fixed. Full changelog is available <a href=\"download\">here</a>. Go grab Giada 0.15.0 and stay strong.</p>"

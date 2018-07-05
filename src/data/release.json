@@ -1,10 +1,13 @@
 {
-	"version": "0.15.0",
+	"version": "0.15.1",
 	"changes": [
-		"Refactor audio engine into frame-based processing",
-		"Refactor channels readers/writers into channelManager namespace",
-		"Smarter Solo algorithm",
-		"Fix missing .wav extension on recorded audio takes",
-		"Fix wrong Channel status update after 'Clear all actions'"
+		"Deep code refactoring, featuring Channels processors", 
+		"Many new unit tests added", 
+		"Simplify mutex mechanism", 
+		"Fix wrong quantizer value on patch/project load", 
+		"Remove the old, buggy and glitchy internal crossfade algorithm", 
+		"Fix many potential plug-in crashes on Linux", 
+		"Properly close plug-in window on plug-in removal", 
+		"Improve BPM changes while running as JACK client"
 	]
 }
