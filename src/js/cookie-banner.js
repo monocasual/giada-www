@@ -2,7 +2,7 @@ var GLM = GLM || {};
 
 
 $(document).ready(function() {
-  if (typeof Cookies.get(GLM.CONSTS.PRIVACY_COOKIE) !== 'undefined') {
+  if (typeof Cookies.get(GLM.CONSTS.PRIVACY_COOKIE.NAME) !== 'undefined') {
     $('.cookie-banner').hide();
   }
   else {
@@ -10,7 +10,11 @@ $(document).ready(function() {
   }
 
   $('.cookie-banner__close').click(function() {
-    Cookies.set(GLM.CONSTS.PRIVACY_COOKIE, true, { expires: 365 }); // one year
+    Cookies.set(
+      GLM.CONSTS.PRIVACY_COOKIE.NAME, 
+      true, // value
+      { expires: GLM.CONSTS.PRIVACY_COOKIE.DURATION }
+    );
     $('.cookie-banner').hide();
   });
 });

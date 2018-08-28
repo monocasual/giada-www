@@ -9,5 +9,8 @@ GLM.CONSTS = {
     'PAGE_URL':       'https://www.facebook.com/GiadaYourHardcoreLoopmachine',
 		'API_VERSION':    'v2.6'
 	},
-	'PRIVACY_COOKIE': 'cookie-policy-2018'
+	'PRIVACY_COOKIE': {
+		'NAME':     'cookie-policy-2018',
+		'DURATION': 365 // days
+	}
 };

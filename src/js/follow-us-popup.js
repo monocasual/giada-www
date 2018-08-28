@@ -33,8 +33,6 @@ GLM.FollowUsPopup = {
 		}
 // @endif
 
-		GLM.FacebookApi.init();
-
 		var self = this;
 		this.elems.popupNope.click(function(e) {
 			self.close(e, self.vars.cookieTimeKo, 'no facebook like, thanks');
