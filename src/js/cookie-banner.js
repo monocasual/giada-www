@@ -1,5 +1,8 @@
+var GLM = GLM || {};
+
+
 $(document).ready(function() {
-  if (typeof Cookies.get('cookie-policy') !== 'undefined') {
+  if (typeof Cookies.get(GLM.CONSTS.PRIVACY_COOKIE) !== 'undefined') {
     $('.cookie-banner').hide();
   }
   else {
@@ -7,7 +10,7 @@ $(document).ready(function() {
   }
 
   $('.cookie-banner__close').click(function() {
-    Cookies.set('cookie-policy-2018', true, { expires: 365 }); // one year
+    Cookies.set(GLM.CONSTS.PRIVACY_COOKIE, true, { expires: 365 }); // one year
     $('.cookie-banner').hide();
   });
 });
