@@ -54,10 +54,10 @@ function jsHint()
 
 function compileHTML()
 {
-	var constants = PACKAGE.constants;
+	let constants = PACKAGE.constants;
 	constants.version = PACKAGE.version;
 	
-	var release = RELEASE;
+	let release = RELEASE;
 	release.linux   = { 'md5': md5(LINUX_PKG),   'path': LINUX_PKG.replace(DATA_DIR, 'data') };
 	release.windows = { 'md5': md5(WINDOWS_PKG), 'path': WINDOWS_PKG.replace(DATA_DIR, 'data') };
 	release.macos   = { 'md5': md5(MACOS_PKG),   'path': MACOS_PKG.replace(DATA_DIR, 'data') };
