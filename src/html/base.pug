@@ -15,8 +15,8 @@ html(lang='en')
 		meta(name='application-name' content=`${CONSTANTS.title}`)
 		block metas
 
-		link(rel='icon' href='images/favicon.ico?v=2')
-		link(rel='apple-touch-icon-precomposed' href='images/favicon-152.png?v=2')
+		link(rel='icon' href=`images/favicon.ico?v=${CONSTANTS.version}`)
+		link(rel='apple-touch-icon-precomposed' href=`images/favicon-512.png?v=${CONSTANTS.version}`)
 		link(rel='stylesheet' href='//fonts.googleapis.com/css?family=Montserrat' type='text/css')
 		link(rel='stylesheet' href=`css/main-${CONSTANTS.version}.css` type='text/css')
 		block styles

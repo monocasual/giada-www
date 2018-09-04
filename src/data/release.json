@@ -1,13 +1,16 @@
 {
-	"version": "0.15.1",
+	"version": "0.15.2",
 	"changes": [
-		"Deep code refactoring, featuring Channels processors", 
-		"Many new unit tests added", 
-		"Simplify mutex mechanism", 
-		"Fix wrong quantizer value on patch/project load", 
-		"Remove the old, buggy and glitchy internal crossfade algorithm", 
-		"Fix many potential plug-in crashes on Linux", 
-		"Properly close plug-in window on plug-in removal", 
-		"Improve BPM changes while running as JACK client"
+		"New sample-accurate Action Editor",
+		"New MIDI Velocity Editor widget",
+		"Ability to move MIDI events vertically in piano roll (i.e. change note)",
+		"Remove mute action recording",
+		"Better handling of MIDI devices that send NOTEON + velocity 0 as NOTEOFF",
+		"Avoid calls to deprecated JUCE plug-ins methods",
+		"Removed useless pthreadGC2.dll from Windows package",
+		"Can't kill MIDI channels (fix #197)",
+		"Can't record MIDI actions (fix #202)",
+		"Fix missing first beat on metronome rendering",
+		"Fix crash on opening plug-in window on macOS"
 	]
 }

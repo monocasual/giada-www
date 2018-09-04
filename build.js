@@ -8,6 +8,7 @@ const PP      = require('preprocess');
 const GLOB    = require("glob");
 const SASS    = require('node-sass');
 const JSHINT  = require('jshint').JSHINT;
+const UGLYJS  = require('uglify-js');
 const PUG     = require('pug');
 const CONCAT  = require('concat');
 const CRYPTO  = require('crypto');
@@ -26,7 +27,8 @@ const SOURCE_PKG  = `${DATA_DIR}/giada-${RELEASE.version}-src.tar.gz`;
 /* -------------------------------------------------------------------------- */
 
 
-function md5(file) {
+function md5(file) 
+{
 	return CRYPTO.createHash('md5').update(FSE.readFileSync(file), 'utf8').digest('hex');
 }
 
@@ -41,7 +43,8 @@ function setup()
 
 function jsHint()
 {
-	GLOB.sync(`${SRC_DIR}/js/*.js`).forEach(function(file) {
+	GLOB.sync(`${SRC_DIR}/js/*.js`).forEach(function(file) 
+	{
 		console.log(`Lint JS: ${file}`);
 		JSHINT(FSE.readFileSync(file, 'utf8'));
 		if (JSHINT.errors.length > 0) {
@@ -70,14 +73,16 @@ function compileHTML()
 		'NEWS'      : NEWS
 	};
 	
-	GLOB.sync(`${SRC_DIR}/html/*.pug`).forEach(function(file) {
+	GLOB.sync(`${SRC_DIR}/html/*.pug`).forEach(function(file) 
+	{
 		console.log(`Compile HTML: ${file}`);
 		const fnc = PUG.compileFile(file);
 		const out = `${BUILD_DIR}/${PATH.basename(file, '.pug')}.html`; 
 		FSE.writeFileSync(out, fnc(opt));
 	});
 
-	GLOB.sync(`${SRC_DIR}/html/documentation/*.pug`).forEach(function(file) {
+	GLOB.sync(`${SRC_DIR}/html/documentation/*.pug`).forEach(function(file)
+	{
 		console.log(`Compile HTML: ${file}`);
 		const fnc = PUG.compileFile(file);
 		const out = `${BUILD_DIR}/documentation-${PATH.basename(file, '.pug')}.html`; 
@@ -90,18 +95,30 @@ function compileJs() {
 	/* Preprocess js first and put them into temp dir. */
 	FSE.mkdirsSync(`${BUILD_DIR}/js`);
 	FSE.mkdirsSync(`/tmp/js`);
-	GLOB.sync(`${SRC_DIR}/js/*.js`).forEach(function(file) {
+	GLOB.sync(`${SRC_DIR}/js/*.js`).forEach(function(file) 
+	{
 		console.log(`Preprocess Js: ${file}`);
 		PP.preprocessFileSync(file, file.replace(`${SRC_DIR}/js`, `/tmp/js`), process.env);			
 	});
 	FSE.copySync(`${SRC_DIR}/js/deps`, `/tmp/js/deps`);
 
 	/* Then concat it. */
-	CONCAT(GLOB.sync(`/tmp/js/**/*.js`), `${BUILD_DIR}/js/main-${PACKAGE.version}.js`);
+
+	let files = [
+		'/tmp/js/deps/bootstrap-transition-3.2.0.js',
+		'/tmp/js/deps/bootstrap-carousel-3.2.0.js',
+		'/tmp/js/consts.js',
+		'/tmp/js/utils.js',
+		'/tmp/js/cookie-banner.js',
+		'/tmp/js/follow-us-popup.js',
+		'/tmp/js/main-menu.js',
+	];
+	CONCAT(files, `${BUILD_DIR}/js/main-${PACKAGE.version}.js`);
 }
 
 
-function copyStatic() {
+function copyStatic() 
+{
 	console.log(`Copy images`);
 	FSE.mkdirsSync(`${BUILD_DIR}/images`);
 	FSE.copySync(`${SRC_DIR}/images`, `${BUILD_DIR}/images`);
@@ -121,10 +138,12 @@ function copyStatic() {
 }
 
 
-function compileCSS() {
+function compileCSS() 
+{
 	console.log(`Compile CSS`);
 	const env = process.env.NODE_ENV;
-	const res = SASS.renderSync({ 
+	const res = SASS.renderSync(
+	{ 
 		'file':        `${SRC_DIR}/css/main.sass` ,
 		'outputStyle': env === 'prod' ? 'compressed' : 'expanded',
 	});
@@ -132,13 +151,21 @@ function compileCSS() {
 }
 
 
+function uglifyJS()
+{
+
+}
+
+
 /* -------------------------------------------------------------------------- */
 
 
-if (process.argv[2] != 'dev' && process.argv[2] != 'prod') {
+if (process.argv[2] != 'dev' && process.argv[2] != 'prod') 
+{
 	console.log('Usage: nodejs build.js <dev|prod>'); 
 }
-else {
+else 
+{
 	process.env.NODE_ENV = process.argv[2];
 
 	setup();
@@ -148,8 +175,9 @@ else {
 	copyStatic();
 	compileCSS();
 
-	/* if prod:
-		uglifyHtml
-		uglifyJs
-	*/
+	if (process.env.NODE_ENV === 'prod') 
+	{
+		uglifyJs();
+		//uglifyHtml();
+	}
 }

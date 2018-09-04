@@ -1,6 +1,6 @@
 {
 	"name": "giada-www",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"constants": {
 		"title": "Giada - Your Hardcore Loop Machine",
 		"description": "Giada is a free, minimal, hardcore audio tool for DJs, live performers and electronic musicians. How does it work? Just pick up your channel, fill it with samples or MIDI events and start the show by using this tiny piece of software as a loop machine, drum machine, sequencer, live sampler or yet as a plugin/effect host. Giada aims to be a compact and portable virtual device for Linux, Mac and Windows for production use and live sets.",
@@ -12,7 +12,7 @@
 	},
 	"dependencies": {
 		"fs-extra": "5.0.0",
-		"uglify-js": "3.3.15",
+		"uglify-js": "3.4.9",
 		"jshint": "2.9.5",
 		"preprocess": "3.1.0",
 		"html-minifier": "3.5.6",
