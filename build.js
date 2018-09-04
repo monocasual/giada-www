@@ -151,9 +151,9 @@ function compileCSS()
 }
 
 
-function uglifyJS()
+function uglifyJs()
 {
-
+	/* TODO */
 }
 
 
