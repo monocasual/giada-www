@@ -59,17 +59,18 @@ block content
 						strong start/stop
 						|  widget;
 					li
-						| mute &mdash; through the 
-						strong mute
-						|  widget;
-					li
 						| volume &mdash; through the 
 						strong volume envelope
 						|  widget.
 					li
-						| MIDI events &mdash; through the 
+						| MIDI notes &mdash; through the 
 						strong piano roll
+						|  widget.					
+					li
+						| MIDI velocity &mdash; through the 
+						strong velocity
 						|  widget.
+
 				h2 Start/stop widget
 				p
 					| The 
@@ -123,14 +124,7 @@ block content
 					img.inline(src='images/docs/action-type.png' alt='Action type selector' title='Action type selector')
 					|  changes the action type you would add by left-clicking on an empty area.
 				.clearfix
-				h2 Mute widget
-				p
-					| The 
-					strong mute
-					|  widget 
-					img.first(src='images/docs/mute-widget.png' title='Mute widget' alt='Mute widget')
-					| works for any mode set for channels. The squared dots can be dragged around and they represent a change of status. Mute is active when the line is at the top.
-				.clearfix
+
 				h2 Volume Envelope widget
 				p
 					| The 
@@ -139,6 +133,7 @@ block content
 					img.first(src='images/docs/volume-envelope-widget.png' title='Volume Envelope widget' alt='Volume Envelope widget')
 					|  handles volume changes. It ranges from 0 (bottom, silence) to 1 (top, full amplitude). Click on the first or last point to erase the envelope completely.
 				.clearfix
+
 				h2 Piano roll widget
 				p
 					| Available only for 
@@ -161,6 +156,16 @@ block content
 				p
 					| You can't do much with an orphaned MIDI event, except for deleting it by right clicking on it. Useful to clean up a MIDI mess.
 				.clearfix
+
+				h2 Velocity widget
+				p
+					| Available only for 
+					strong MIDI channels
+					| , the 
+					strong velocity
+					|  widget 
+					img.first(src='images/docs/velocity-widget.png' title='Velocity widget' alt='Velocity widget')
+					| lets you change the overall volume of the MIDI note. Values range from 0 (silent) to 127 (maximum loudness). Each point in the velocity widget matches the corresponding note in the piano roll editor.
 
 
 			#side-menu.col-md-3.margin-top-xl
