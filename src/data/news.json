@@ -1,5 +1,10 @@
 [
 	{
+		"title": "New video tutorial #4: The Sample Editor",
+		"date": "September 30, 2018",
+		"body": "<p>Our buddy Bartholomew Davenport is back with another smashing Giada tutorial! This time he will introduce us to the voodoo universe of the Sample Editor: the tool used to edit audio samples, loops and sound effects.</p> <div class=\"embed-responsive embed-responsive-16by9\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/AUdPeWlScLI\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe></div>"
+	},		
+	{
 		"title": "Giada 0.15.2 <em>Smith Machine</em> released today",
 		"date": "September 06, 2018",
 		"body": "<p>Today we are proud to release Giada 0.15.2 <em>Smith Machine</em>, inspired by the so-called weight machine used for weight training. This new version introduces a list of satisfying features:</p><ul><li>a new logo, thanks to our friend <a href=\"https://github.com/k-syusteem\">k-syusteem</a>;<li>a new, sample-accurate and easier to use <strong>Action Editor</strong>, rewritten from scratch;</li><li>ability to edit <strong>MIDI Velocity</strong> in MIDI channels;</li><li>improved compatibility with those MIDI devices that send weird Note Off events (Note On + Velocity = 0);</li><li>many annoying bugs fixed, including a crash while opening plug-in windows on macOS;</li><li>other small improvements and minor fixes.</li></ul><p>The full changelog is available in <a href=\"https://giadamusic.com/download\">the download area</a>. A muscular \"thank you\" to all the contributors who inspired us with Giada 0.15.2!</p>"
