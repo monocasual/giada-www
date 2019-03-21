@@ -1,16 +1,17 @@
 {
-	"version": "0.15.2",
-	"changes": [
-		"New sample-accurate Action Editor",
-		"New MIDI Velocity Editor widget",
-		"Ability to move MIDI events vertically in piano roll (i.e. change note)",
-		"Remove mute action recording",
-		"Better handling of MIDI devices that send NOTEON + velocity 0 as NOTEOFF",
-		"Avoid calls to deprecated JUCE plug-ins methods",
-		"Removed useless pthreadGC2.dll from Windows package",
-		"Can't kill MIDI channels (fix #197)",
-		"Can't record MIDI actions (fix #202)",
-		"Fix missing first beat on metronome rendering",
-		"Fix crash on opening plug-in window on macOS"
-	]
+    "version": "0.15.4",
+    "changes": [
+        "New record-on-signal option for input and action recording",
+        "Initial support for plug-ins with mono I/O buses",
+        "PluginHost refactoring",
+        "Smart pointers for Wave and Plugin objects",
+        "Remove old and deprecated input delay compensation",
+        "Optimized audio IO processing in Mixer callback",
+        "Atomic I/O meters with improved accuracy",
+        "Fix memory leak when replacing samples in a Sample Channel",
+        "Fix plug-ins ordering method when re-opening Giada",
+        "Fix silent Sample Channel when recording actions a second time",
+        "Fix velocity always discarded when sending key-press to Sample Channel",
+        "Fix inability to record actions with quantizer enabled"
+    ]
 }

@@ -1,4 +1,9 @@
 [
+    {
+        "title": "Giada 0.15.3 <em>Medicine Ball</em> released!",
+        "date": "December 24, 2018",
+        "body": "<p>After a long development stage we are happy to present to you Giada 0.15.3, codename <em>Medicine Ball</em>. Inspired by the fitness ball used for rehabilitation and strength training, this release introduces many changes:</p><ul><li>huge refactoring of the <strong>Action Editor</strong> — rewritten from scratch, more reliable and robust during action editing and live recording; </li><li>support for <strong>'inaudible' MIDI lightning events</strong>, along with optional midimap parameters. Thank you Tomek Szczęsny!</li><li>more optimization in the AppImage binary file;</li><li>lots of minor bugs and crashes fixed.</li></ul><p>Full changelog and binaries <a href=\"https://giadamusic.com/download\">in the download area</a>. Thank you all for you help and support, stay fit!</p>"
+    },  
 	{
 		"title": "New video tutorial #4: The Sample Editor",
 		"date": "September 30, 2018",
@@ -7,7 +12,7 @@
 	{
 		"title": "Giada 0.15.2 <em>Smith Machine</em> released today",
 		"date": "September 06, 2018",
-		"body": "<p>Today we are proud to release Giada 0.15.2 <em>Smith Machine</em>, inspired by the so-called weight machine used for weight training. This new version introduces a list of satisfying features:</p><ul><li>a new logo, thanks to our friend <a href=\"https://github.com/k-syusteem\">k-syusteem</a>;<li>a new, sample-accurate and easier to use <strong>Action Editor</strong>, rewritten from scratch;</li><li>ability to edit <strong>MIDI Velocity</strong> in MIDI channels;</li><li>improved compatibility with those MIDI devices that send weird Note Off events (Note On + Velocity = 0);</li><li>many annoying bugs fixed, including a crash while opening plug-in windows on macOS;</li><li>other small improvements and minor fixes.</li></ul><p>The full changelog is available in <a href=\"https://giadamusic.com/download\">the download area</a>. A muscular \"thank you\" to all the contributors who inspired us with Giada 0.15.2!</p>"
+		"body": "<p>Today we are proud to release Giada 0.15.2 <em>Smith Machine</em>, inspired by the so-called weight machine used for weight training. This new version introduces a list of satisfying features:</p><ul><li>a new logo, thanks to our friend <a href=\"https://github.com/foways\">foways</a>;<li>a new, sample-accurate and easier to use <strong>Action Editor</strong>, rewritten from scratch;</li><li>ability to edit <strong>MIDI Velocity</strong> in MIDI channels;</li><li>improved compatibility with those MIDI devices that send weird Note Off events (Note On + Velocity = 0);</li><li>many annoying bugs fixed, including a crash while opening plug-in windows on macOS;</li><li>other small improvements and minor fixes.</li></ul><p>The full changelog is available in <a href=\"https://giadamusic.com/download\">the download area</a>. A muscular \"thank you\" to all the contributors who inspired us with Giada 0.15.2!</p>"
 	},		
 	{
 		"title": "Giada 0.15.1 <em>Leg Curl</em> is finally out",
