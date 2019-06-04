@@ -1,5 +1,10 @@
 [
     {
+        "title": "Giada 0.15.4 <em>Joseph Pilates</em> is out",
+        "date": "March 22, 2019",
+        "body": "<p>Giada 0.15.4, codename <em>Joseph Pilates</em> is out today, inspired by the famous German-American trainer notable for his Pilates method of physical fitness. Giada 0.15.4 contains many new exciting features:</p><ul><li>New <strong>record-on-signal</strong> option for input and action recording;</li><li>Initial support for plug-ins with mono I/O buses;</li>    <li>Optimized audio I/O processing;</li>    <li>Many minor bugs fixed and a huge code clean-up.</li></ul><p>Documentation about the new record-on-signal option will be uploaded soon, as well as more video tutorials. Take a look at the full changelog and grab the binaries <a href=\"https://giadamusic.com/download\">in the download area</a>!</p>"
+    },      
+    {
         "title": "Giada 0.15.3 <em>Medicine Ball</em> released!",
         "date": "December 24, 2018",
         "body": "<p>After a long development stage we are happy to present to you Giada 0.15.3, codename <em>Medicine Ball</em>. Inspired by the fitness ball used for rehabilitation and strength training, this release introduces many changes:</p><ul><li>huge refactoring of the <strong>Action Editor</strong> — rewritten from scratch, more reliable and robust during action editing and live recording; </li><li>support for <strong>'inaudible' MIDI lightning events</strong>, along with optional midimap parameters. Thank you Tomek Szczęsny!</li><li>more optimization in the AppImage binary file;</li><li>lots of minor bugs and crashes fixed.</li></ul><p>Full changelog and binaries <a href=\"https://giadamusic.com/download\">in the download area</a>. Thank you all for you help and support, stay fit!</p>"
