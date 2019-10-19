@@ -1,5 +1,10 @@
 [
     {
+        "title": "Giada 0.16.0 beta 1 released today",
+        "date": "October 19, 2019",
+        "body": "<p>We are very happy to announce that the first experimental version of Giada from the new 0.16 branch is out and ready to be tested. The most important change is how the engine now talks to the UI, thanks to a complete refactoring of the intermediate layer. This improvement lays the foundation for a solid, flexible architecture and paves the way for the long-awaited 1.0.0 version!</p><p>Giada 0.16.0 will also feature a completely overhauled persistence mechanism to save and load your patches/projects, along with many other minor fixes and code beautifications. Unfortunately, patches/projects created with a previous version of Giada are not supported anymore. But don't despair: we are working on a sleek online tool that automatically upgrades your files for you in a click.</p><p>The new experimental Giada version, marked as <em>beta1</em> is available in the <a href=\"https://giadamusic.com/download\">download area</a>, along with the latest stable version 0.15.4. Please share your feedback with us and report any bugs you may find!</p>"
+    },      
+    {
         "title": "Giada 0.15.4 <em>Joseph Pilates</em> is out",
         "date": "March 22, 2019",
         "body": "<p>Giada 0.15.4, codename <em>Joseph Pilates</em> is out today, inspired by the famous German-American trainer notable for his Pilates method of physical fitness. Giada 0.15.4 contains many new exciting features:</p><ul><li>New <strong>record-on-signal</strong> option for input and action recording;</li><li>Initial support for plug-ins with mono I/O buses;</li>    <li>Optimized audio I/O processing;</li>    <li>Many minor bugs fixed and a huge code clean-up.</li></ul><p>Documentation about the new record-on-signal option will be uploaded soon, as well as more video tutorials. Take a look at the full changelog and grab the binaries <a href=\"https://giadamusic.com/download\">in the download area</a>!</p>"

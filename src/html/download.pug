@@ -50,6 +50,17 @@ block content
 							| .
 
 		.row.margin-top-xl
+			.col-md-12
+				h2.text-center Try the new experimental version #{BETA.version}.
+				ul.beta-version-list
+					li
+						p #[a(href=`${BETA.linux.path}`) Giada #{BETA.version} for Linux] AppImage, 64 bit
+					li
+						p #[a(href=`${BETA.windows.path}`) Giada #{BETA.version} for Windows], 64 bit
+					li
+						p #[a(href=`${BETA.macos.path}`) Giada #{BETA.version} for macOS], 64 bit
+						
+		.row.margin-top-xl
 			.col-md-8.col-md-offset-2.text-center
 				div If you're in love with Giada, support her and consider a donation!
 				.margin-top-s
@@ -64,16 +75,9 @@ block content
 
 				h2 Problems with the Linux version?
 				p
-					| We provide 
-					a(href='https://appimage.org/') AppImage
-					|  packages for Linux on 64 bit architectures. However for the absolute, best, top-notch experience you should also try binaries shipped by the package manager of your favorite distribution. Giada is already available on 
-					a(href='https://packages.debian.org/search?keywords=giada&searchon=names&section=all') Debian
-					| , 
-					a(href='https://packages.ubuntu.com/search?section=all&arch=any&keywords=giada&searchon=names') Ubuntu
-					| , 
-					a(href='https://aur.archlinux.org/packages/giada/') Arch Linux
-					|  and many more.
+					| We provide #[a(href='https://appimage.org/') AppImage] packages for Linux on 64 bit architectures. However for the absolute, best, top-notch experience you should also try binaries shipped by the package manager of your favorite distribution. Giada is already available on #[a(href='https://packages.debian.org/search?keywords=giada&searchon=names&section=all') Debian], #[a(href='https://packages.ubuntu.com/search?section=all&arch=any&keywords=giada&searchon=names') Ubuntu], #[a(href='https://aur.archlinux.org/packages/giada/') Arch Linux] and many more.
 			.col-md-6
+
 				h2 MD5 checksums
 				p
 					| Beware of imitations! This is the only place where to pick up the latest official Giada packages.
@@ -97,9 +101,5 @@ block content
 							
 				h2 Plans for the future
 				p
-					| Giada is in constant stage of growth; take a look at our 
-					a(href='forum/viewforum.php?f=4') roadmap
-					|  to understand the direction of the development or join the 
-					a(href='forum') forum
-					|  to submit feature requests and bugs found.
+					| Giada is in constant stage of growth; take a look at our #[a(href='forum/viewforum.php?f=4') roadmap] to understand the direction of the development or join the #[a(href='forum') forum] to submit feature requests and bugs found.
 

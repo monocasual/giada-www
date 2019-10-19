@@ -6,7 +6,6 @@ const DATA_DIR  = `${SRC_DIR}/data`;
 const FSE     = require('fs-extra');
 const PP      = require('preprocess');
 const GLOB    = require("glob");
-const SASS    = require('node-sass');
 const JSHINT  = require('jshint').JSHINT;
 const UGLYJS  = require('uglify-js');
 const PUG     = require('pug');
@@ -18,11 +17,14 @@ const NEWS    = require(`${DATA_DIR}/news.json`);
 const RELEASE = require(`${DATA_DIR}/release.json`);
 
 
-const LINUX_PKG   = `${DATA_DIR}/Giada-${RELEASE.version}-x86_64.AppImage`;
-const WINDOWS_PKG = `${DATA_DIR}/giada-${RELEASE.version}-win-amd64.zip`;
-const MACOS_PKG   = `${DATA_DIR}/giada-${RELEASE.version}-osx-amd64.zip`;
-const SOURCE_PKG  = `${DATA_DIR}/giada-${RELEASE.version}-src.tar.gz`;
-
+const HAS_BETA     = RELEASE.version_beta !== null;
+const LINUX_PKG    = `${DATA_DIR}/Giada-${RELEASE.version}-x86_64.AppImage`;
+const WINDOWS_PKG  = `${DATA_DIR}/giada-${RELEASE.version}-win-amd64.zip`;
+const MACOS_PKG    = `${DATA_DIR}/giada-${RELEASE.version}-osx-amd64.zip`;
+const SOURCE_PKG   = `${DATA_DIR}/giada-${RELEASE.version}-src.tar.gz`;
+const LINUX_BETA   = `${DATA_DIR}/Giada-${RELEASE.version_beta}-x86_64.AppImage`;
+const WINDOWS_BETA = `${DATA_DIR}/giada-${RELEASE.version_beta}-win-amd64.zip`;
+const MACOS_BETA   = `${DATA_DIR}/giada-${RELEASE.version_beta}-osx-amd64.zip`;
 
 /* -------------------------------------------------------------------------- */
 
@@ -65,11 +67,20 @@ function compileHTML()
 	release.windows = { 'md5': md5(WINDOWS_PKG), 'path': WINDOWS_PKG.replace(DATA_DIR, 'data') };
 	release.macos   = { 'md5': md5(MACOS_PKG),   'path': MACOS_PKG.replace(DATA_DIR, 'data') };
 	release.source  = { 'md5': md5(SOURCE_PKG),  'path': SOURCE_PKG.replace(DATA_DIR, 'data') };
-	
+
+	let beta = {
+		'version': RELEASE.version_beta,
+		'linux':   { 'path': LINUX_BETA.replace(DATA_DIR, 'data') },
+		'windows': { 'path': WINDOWS_BETA.replace(DATA_DIR, 'data') },
+		'macos':   { 'path': MACOS_BETA.replace(DATA_DIR, 'data') }
+	};
+
 	const opt = {
 		'NODE_ENV'  : process.env.NODE_ENV,
 		'CONSTANTS' : constants,
-		'RELEASE'   : RELEASE,
+		'RELEASE'   : release,
+		'HAS_BETA'  : HAS_BETA,
+		'BETA'      : beta,
 		'NEWS'      : NEWS
 	};
 	
@@ -125,10 +136,13 @@ function copyStatic()
 
 	console.log(`Copy packages`);
 	FSE.mkdirsSync(`${BUILD_DIR}/data`);
-	FSE.copySync(LINUX_PKG,   `${BUILD_DIR}/data/${PATH.basename(LINUX_PKG)}`);
-	FSE.copySync(WINDOWS_PKG, `${BUILD_DIR}/data/${PATH.basename(WINDOWS_PKG)}`);
-	FSE.copySync(MACOS_PKG,   `${BUILD_DIR}/data/${PATH.basename(MACOS_PKG)}`);
-	FSE.copySync(SOURCE_PKG,  `${BUILD_DIR}/data/${PATH.basename(SOURCE_PKG)}`);
+	FSE.copySync(LINUX_PKG,    `${BUILD_DIR}/data/${PATH.basename(LINUX_PKG)}`);
+	FSE.copySync(WINDOWS_PKG,  `${BUILD_DIR}/data/${PATH.basename(WINDOWS_PKG)}`);
+	FSE.copySync(MACOS_PKG,    `${BUILD_DIR}/data/${PATH.basename(MACOS_PKG)}`);
+	FSE.copySync(SOURCE_PKG,   `${BUILD_DIR}/data/${PATH.basename(SOURCE_PKG)}`);
+	FSE.copySync(LINUX_BETA,   `${BUILD_DIR}/data/${PATH.basename(LINUX_BETA)}`);
+	FSE.copySync(WINDOWS_BETA, `${BUILD_DIR}/data/${PATH.basename(WINDOWS_BETA)}`);
+	FSE.copySync(MACOS_BETA,   `${BUILD_DIR}/data/${PATH.basename(MACOS_BETA)}`);
 
 	console.log(`Copy extra fonts`);
 	FSE.copySync(`${SRC_DIR}/font`, `${BUILD_DIR}/font`);
@@ -144,13 +158,8 @@ function copyStatic()
 function compileCSS() 
 {
 	console.log(`Compile CSS`);
-	const env = process.env.NODE_ENV;
-	const res = SASS.renderSync(
-	{ 
-		'file':        `${SRC_DIR}/css/main.sass` ,
-		'outputStyle': env === 'prod' ? 'compressed' : 'expanded',
-	});
-	FSE.outputFileSync(`${BUILD_DIR}/css/main-${PACKAGE.version}.css`, res.css.toString());
+	FSE.copySync(`${SRC_DIR}/css/giada.css`, `${BUILD_DIR}/css/main-${PACKAGE.version}.css`);
+	/* TODO - minify CSS */
 }
 
 
