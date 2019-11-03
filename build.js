@@ -5,7 +5,7 @@ const DATA_DIR  = `${SRC_DIR}/data`;
 
 const FSE     = require('fs-extra');
 const PP      = require('preprocess');
-const GLOB    = require("glob");
+const GLOB    = require('glob');
 const JSHINT  = require('jshint').JSHINT;
 const UGLYJS  = require('uglify-js');
 const PUG     = require('pug');
@@ -48,10 +48,10 @@ function jsHint()
 	GLOB.sync(`${SRC_DIR}/js/*.js`).forEach(function(file) 
 	{
 		console.log(`Lint JS: ${file}`);
-		JSHINT(FSE.readFileSync(file, 'utf8'));
+		JSHINT(FSE.readFileSync(file, 'utf8'), { 'esversion': 6 });
 		if (JSHINT.errors.length > 0) {
 			console.log(JSHINT.errors);
-			process.exit();
+			process.exit(1);
 		}
 	});
 }
@@ -123,6 +123,7 @@ function compileJs() {
 		'/tmp/js/cookie-banner.js',
 		'/tmp/js/follow-us-popup.js',
 		'/tmp/js/main-menu.js',
+		'/tmp/js/patch-converter.js',
 	];
 	CONCAT(files, `${BUILD_DIR}/js/main-${PACKAGE.version}.js`);
 }
