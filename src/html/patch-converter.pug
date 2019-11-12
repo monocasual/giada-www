@@ -1,0 +1,22 @@
+extends base
+
+block content
+	.container.glm-patch-converter
+
+		//- Intro
+
+		.row.margin-top-xl
+			.col-md-12
+				h1.text-center The almighty Patch Converter.
+				h2.margin-top-xl.description.text-center Convert your old patch/project files to make it work again with Giada 0.16.0 and later. 
+
+		.row.margin-top-xl
+			textarea(placeholder="Paste here your patch file content." class="input")
+
+		.row.margin-top-xl
+			.col-md-12
+				a(href='#' class="convert")
+					input.download-btn.btn.btn-default.center-block(type='button' value='Convert it!')
+
+		.row.margin-top-xl
+			textarea(class="output")
