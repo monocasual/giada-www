@@ -1,5 +1,10 @@
 [
     {
+        "title": "Giada 0.16.0 beta 2 released",
+        "date": "November 13, 2019",
+        "body": "<p>Another beta version of Giada 0.16.0 has been baked today in our laboratories. This new release marked as <em>0.16.0beta2</em> fixes many annoying bugs and crashes, paving the road for the long-awaited final version 0.16.0. Please take a look at the full <a href=\"https://github.com/monocasual/giada/blob/master/ChangeLog\">changelog</a> and feel free to play with Giada 0.16.0beta2 in the <a href=\"/download\">download area</a>.</p>"
+    }, 
+    {
         "title": "Giada 0.16.0 beta 1 released today",
         "date": "October 19, 2019",
         "body": "<p>We are very happy to announce that the first experimental version of Giada from the new 0.16 branch is out and ready to be tested. The most important change is how the engine now talks to the UI, thanks to a complete refactoring of the intermediate layer. This improvement lays the foundation for a solid, flexible architecture and paves the way for the long-awaited 1.0.0 version!</p><p>Giada 0.16.0 will also feature a completely overhauled persistence mechanism to save and load your patches/projects, along with many other minor fixes and code beautifications. Unfortunately, patches/projects created with a previous version of Giada are not supported anymore. But don't despair: we are working on a sleek online tool that automatically upgrades your files for you in a click.</p><p>The new experimental Giada version, marked as <em>beta1</em> is available in the <a href=\"https://giadamusic.com/download\">download area</a>, along with the latest stable version 0.15.4. Please share your feedback with us and report any bugs you may find!</p>"

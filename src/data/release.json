@@ -14,5 +14,5 @@
         "Fix velocity always discarded when sending key-press to Sample Channel",
         "Fix inability to record actions with quantizer enabled"
     ],
-	"version_beta": "0.16.0beta1"
+	"version_beta": "0.16.0beta2"
 }
