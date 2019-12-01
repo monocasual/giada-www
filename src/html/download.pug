@@ -10,6 +10,7 @@ block content
 		.row.margin-top-xl
 			.col-md-12.text-center
 				h1 Grab the unbelievable Giada #{RELEASE.version}.
+				h2 “#{RELEASE.codename}”
 				p
 					| Or try a 
 					a(href='https://github.com/monocasual/giada/releases/') previous version
@@ -49,16 +50,17 @@ block content
 							a(title='Giada Documentation - Compiling from Source' href='documentation-compiling-from-source') here
 							| .
 
-		.row.margin-top-xl
-			.col-md-12
-				h2.text-center Try the new experimental version #{BETA.version}.
-				ul.beta-version-list
-					li
-						p #[a(href=`${BETA.linux.path}`) Giada #{BETA.version} for Linux] AppImage, 64 bit
-					li
-						p #[a(href=`${BETA.windows.path}`) Giada #{BETA.version} for Windows], 64 bit
-					li
-						p #[a(href=`${BETA.macos.path}`) Giada #{BETA.version} for macOS], 64 bit
+		if HAS_BETA
+			.row.margin-top-xl
+				.col-md-12
+					h2.text-center Try the new experimental version #{BETA.version}.
+					ul.beta-version-list
+						li
+							p #[a(href=`${BETA.linux.path}`) Giada #{BETA.version} for Linux] AppImage, 64 bit
+						li
+							p #[a(href=`${BETA.windows.path}`) Giada #{BETA.version} for Windows], 64 bit
+						li
+							p #[a(href=`${BETA.macos.path}`) Giada #{BETA.version} for macOS], 64 bit
 						
 		.row.margin-top-xl
 			.col-md-8.col-md-offset-2.text-center

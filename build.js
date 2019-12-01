@@ -63,10 +63,10 @@ function compileHTML()
 	constants.version = PACKAGE.version;
 	
 	let release = RELEASE;
-	release.linux   = { 'md5': md5(LINUX_PKG),   'path': LINUX_PKG.replace(DATA_DIR, 'data') };
-	release.windows = { 'md5': md5(WINDOWS_PKG), 'path': WINDOWS_PKG.replace(DATA_DIR, 'data') };
-	release.macos   = { 'md5': md5(MACOS_PKG),   'path': MACOS_PKG.replace(DATA_DIR, 'data') };
-	release.source  = { 'md5': md5(SOURCE_PKG),  'path': SOURCE_PKG.replace(DATA_DIR, 'data') };
+	release.linux    = { 'md5': md5(LINUX_PKG),   'path': LINUX_PKG.replace(DATA_DIR, 'data') };
+	release.windows  = { 'md5': md5(WINDOWS_PKG), 'path': WINDOWS_PKG.replace(DATA_DIR, 'data') };
+	release.macos    = { 'md5': md5(MACOS_PKG),   'path': MACOS_PKG.replace(DATA_DIR, 'data') };
+	release.source   = { 'md5': md5(SOURCE_PKG),  'path': SOURCE_PKG.replace(DATA_DIR, 'data') };
 
 	let beta = {
 		'version': RELEASE.version_beta,
@@ -141,9 +141,12 @@ function copyStatic()
 	FSE.copySync(WINDOWS_PKG,  `${BUILD_DIR}/data/${PATH.basename(WINDOWS_PKG)}`);
 	FSE.copySync(MACOS_PKG,    `${BUILD_DIR}/data/${PATH.basename(MACOS_PKG)}`);
 	FSE.copySync(SOURCE_PKG,   `${BUILD_DIR}/data/${PATH.basename(SOURCE_PKG)}`);
-	FSE.copySync(LINUX_BETA,   `${BUILD_DIR}/data/${PATH.basename(LINUX_BETA)}`);
-	FSE.copySync(WINDOWS_BETA, `${BUILD_DIR}/data/${PATH.basename(WINDOWS_BETA)}`);
-	FSE.copySync(MACOS_BETA,   `${BUILD_DIR}/data/${PATH.basename(MACOS_BETA)}`);
+	if (HAS_BETA) 
+	{
+		FSE.copySync(LINUX_BETA,   `${BUILD_DIR}/data/${PATH.basename(LINUX_BETA)}`);
+		FSE.copySync(WINDOWS_BETA, `${BUILD_DIR}/data/${PATH.basename(WINDOWS_BETA)}`);
+		FSE.copySync(MACOS_BETA,   `${BUILD_DIR}/data/${PATH.basename(MACOS_BETA)}`);
+	}
 
 	console.log(`Copy extra fonts`);
 	FSE.copySync(`${SRC_DIR}/font`, `${BUILD_DIR}/font`);

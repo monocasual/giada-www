@@ -1,18 +1,15 @@
 {
-    "version": "0.15.4",
+    "version": "0.16.0",
+    "codename": "Dungeons and Catacombs",
     "changes": [
-        "New record-on-signal option for input and action recording",
-        "Initial support for plug-ins with mono I/O buses",
-        "PluginHost refactoring",
-        "Smart pointers for Wave and Plugin objects",
-        "Remove old and deprecated input delay compensation",
-        "Optimized audio I/O processing in Mixer callback",
-        "Atomic I/O meters with improved accuracy",
-        "Fix memory leak when replacing samples in a Sample Channel",
-        "Fix plug-ins ordering method when re-opening Giada",
-        "Fix silent Sample Channel when recording actions a second time",
-        "Fix velocity always discarded when sending key-press to Sample Channel",
-        "Fix inability to record actions with quantizer enabled"
+        "New internal engine<->UI architecture",
+        "New persistence layer",
+        "New MIDI queue for incoming live MIDI messages",
+        "Switch to std::thread",
+        "Absolute #include paths in source code",
+        "Removed 'boost' parameter from Sample Channel",
+        "Show missing (and removable) plug-ins in Plug-in Window list",
+        "Removed FLTK multithreading initialization"
     ],
-	"version_beta": "0.16.0beta2"
+	"version_beta": null
 }

@@ -1,5 +1,10 @@
 [
     {
+        "title": "Giada 0.16.0 final version released",
+        "date": "December 2, 2019",
+		"body": "<p>After some months of development, we are happy to announce Giada 0.16.0 codename “Dungeons and Catacombs”. This version brings in many architectural changes and improvements to the audio rendering thread, as well as the UI layer. We want to get ready for the long-awaited version 1.0 with a solid, reliable and easy to extend audio engine.</p><p>Given all these important changes, patches/projects created with Giada prior to version 0.16.0 won't be supported anymore. Don't worry, though: the <a href=\"patch-converter\">Almighty Patch Converter</a> tool will update your projects automatically in a click. Just follow the instructions on that page and you are ready to go :)</p><p>As always a big warm hug to all our supporters, bug reporters and friends. Go grab Giada 0.16.0 “Dungeons and Catacombs” in the <a href=\"/download\">download area</a> now!</p>"
+    }, 
+    {
         "title": "Giada 0.16.0 beta 2 released",
         "date": "November 13, 2019",
         "body": "<p>Another beta version of Giada 0.16.0 has been baked today in our laboratories. This new release marked as <em>0.16.0beta2</em> fixes many annoying bugs and crashes, paving the road for the long-awaited final version 0.16.0. Please take a look at the full <a href=\"https://github.com/monocasual/giada/blob/master/ChangeLog\">changelog</a> and feel free to play with Giada 0.16.0beta2 in the <a href=\"/download\">download area</a>.</p>"
@@ -12,7 +17,7 @@
     {
         "title": "Giada 0.15.4 <em>Joseph Pilates</em> is out",
         "date": "March 22, 2019",
-        "body": "<p>Giada 0.15.4, codename <em>Joseph Pilates</em> is out today, inspired by the famous German-American trainer notable for his Pilates method of physical fitness. Giada 0.15.4 contains many new exciting features:</p><ul><li>New <strong>record-on-signal</strong> option for input and action recording;</li><li>Initial support for plug-ins with mono I/O buses;</li>    <li>Optimized audio I/O processing;</li>    <li>Many minor bugs fixed and a huge code clean-up.</li></ul><p>Documentation about the new record-on-signal option will be uploaded soon, as well as more video tutorials. Take a look at the full changelog and grab the binaries <a href=\"https://giadamusic.com/download\">in the download area</a>!</p>"
+        "body": "<p>Giada 0.15.4, codename <em>Joseph Pilates</em> is out today, inspired by the famous German-American trainer notable for his Pilates method of physical fitness. Giada 0.15.4 contains many new exciting features:</p><ul><li>New <strong>record-on-signal</strong> option for input and action recording;</li><li>Initial support for plug-ins with mono I/O buses;</li><li>Optimized audio I/O processing;</li><li>Many minor bugs fixed and a huge code clean-up.</li></ul><p>Documentation about the new record-on-signal option will be uploaded soon, as well as more video tutorials. Take a look at the full changelog and grab the binaries <a href=\"https://giadamusic.com/download\">in the download area</a>!</p>"
     },      
     {
         "title": "Giada 0.15.3 <em>Medicine Ball</em> released!",
