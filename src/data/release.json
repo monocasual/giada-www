@@ -1,15 +1,16 @@
 {
-    "version": "0.16.0",
-    "codename": "Dungeons and Catacombs",
+    "version": "0.16.1",
+    "codename": "Goblins",
     "changes": [
-        "New internal engine<->UI architecture",
-        "New persistence layer",
-        "New MIDI queue for incoming live MIDI messages",
-        "Switch to std::thread",
-        "Absolute #include paths in source code",
-        "Removed 'boost' parameter from Sample Channel",
-        "Show missing (and removable) plug-ins in Plug-in Window list",
-        "Removed FLTK multithreading initialization"
+        "FreeBSD support",
+        "Ability to remove empty columns manually",
+        "Gray out bpm value when in JACK client mode",
+        "'Reset to init state' becomes 'close project' under File menu",
+        "[Linux] Upgrade Travis CI Linux machine to Xenial",
+        "Add namespaces to file system and logging functions ",
+        "Remove unused G_quit global variable",
+        "Fix Sample Channels in loop mode not playing automatically after audio recording",
+        "Fix action recording button status during audio recording, signal mode"
     ],
 	"version_beta": null
 }
