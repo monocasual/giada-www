@@ -116,16 +116,16 @@ function compileJs() {
 	/* Then concat it. */
 
 	let files = [
-		'/tmp/js/deps/bootstrap-transition-3.2.0.js',
-		'/tmp/js/deps/bootstrap-carousel-3.2.0.js',
 		'/tmp/js/consts.js',
 		'/tmp/js/utils.js',
 		'/tmp/js/cookie-banner.js',
 		'/tmp/js/follow-us-popup.js',
-		'/tmp/js/main-menu.js',
-		'/tmp/js/patch-converter.js',
 	];
 	CONCAT(files, `${BUILD_DIR}/js/main-${PACKAGE.version}.js`);
+
+	/* Copy other specific files. */
+
+	FSE.copySync(`${SRC_DIR}/js/patch-converter.js`, `${BUILD_DIR}/js/patch-converter.js`);
 }
 
 

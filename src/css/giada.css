@@ -137,6 +137,7 @@ a:hover     { text-decoration: none; }
 	color: #808080;
 	font-size: 21px;
 	line-height: 30px;
+	text-align: center;
 }
 
 .code {
