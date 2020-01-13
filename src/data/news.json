@@ -1,5 +1,10 @@
 [
     {
+        "title": "Giada 0.16.1 codename “Goblins” released today",
+        "date": "January 12, 2020",
+		"body": "<p>We are happy to announce a new minor version of Giada coming out from our laboratories. This time we have fixed plenty of glitches around the user interface, performed some code refactoring and added some nice improvements such as the <strong>ability to remove empty columns manually</strong> from the main window. Also, our friend <a href=\"https://github.com/yurivict\">yurivict</a> added support for FreeBSD: thank you a lot for this!</p><p>As always, Giada 0.16.1 “Goblins” binaries are ready for download in the <a href=\"/download\">download area</a>, along with the full changelog.</p>"
+    }, 
+    {
         "title": "Giada 0.16.0 final version released",
         "date": "December 2, 2019",
 		"body": "<p>After some months of development, we are happy to announce Giada 0.16.0 codename “Dungeons and Catacombs”. This version brings in many architectural changes and improvements to the audio rendering thread, as well as the UI layer. We want to get ready for the long-awaited version 1.0 with a solid, reliable and easy to extend audio engine.</p><p>Given all these important changes, patches/projects created with Giada prior to version 0.16.0 won't be supported anymore. Don't worry, though: the <a href=\"patch-converter\">Almighty Patch Converter</a> tool will update your projects automatically in a click. Just follow the instructions on that page and you are ready to go :)</p><p>As always a big warm hug to all our supporters, bug reporters and friends. Go grab Giada 0.16.0 “Dungeons and Catacombs” in the <a href=\"/download\">download area</a> now!</p>"
