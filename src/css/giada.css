@@ -329,6 +329,19 @@ a:hover     { text-decoration: none; }
 
 /* -------------------------------------------------------------------------- */
 
+.news-list.hero-space {
+	padding-bottom: 0;
+}
+.news-list.hero-space img {
+	width: 100%;
+	margin-top: 20px;
+}
+.main-features img {
+	width: 40px;
+}
+
+/* -------------------------------------------------------------------------- */
+
 .paypal-inline {
   display: inline-block;
 }
