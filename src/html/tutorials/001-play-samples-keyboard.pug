@@ -1,0 +1,82 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Tutorial #001: play samples with your keyboard - '
+	- var description = ', Use Giada as a sample player, by loading samples into channels and binding keyboard buttons to them.'
+	- var keywords    = ', tutorial, sample channel, samples, keyboard, sample player'
+
+block content
+	.container#tutorial
+		.row.margin-top-xl
+			.col-md-12.text-center
+				h1 Tutorial #001: play samples with your keyboard.
+		
+		.row.margin-top-xl
+			.col-md-12
+				h2 Getting started
+				p.
+					In this tutorial we are going to use Giada as a sample player by loading samples into channels and binding keyboard buttons to them. So the first thing to do is to find some nice samples to play: a drum kit sample pack can be a good candidate, for example.
+				
+				h2 Load samples into sample channels
+				p.
+					Suppose you have a drum audio file, say #[em Kick.wav]: select it in the operating system's file browser and drag it over an empty column in Giada. This will create a new sample channel already filled with your sound and ready to play. You can also drag and drop multiple files at once. 
+				
+				p.
+					Alternatively, you can create an empty sample channel first and then load it with the audio file. Click on the #[em Edit column] button on top of any column, then select #[em Add Sample channel] from the drop-down menu: a new empty sample channel will appear in the selected column. Now click on the channel main button, highlighted below:
+
+				p 
+					img(src='images/tutorials/001/empty-sample-channel.png' alt='An empty sample channel')
+				
+				p.
+					Select #[em Load new sample...] from the drop-down menu. A file browser window will appear: select the file you want to load (say #[em Kick.wav]) and then click the #[em Load] button when you're done. The sample channel will now look like this:
+
+				p 
+					img(src='images/tutorials/001/filled-sample-channel.png' alt='A filled sample channel')
+				
+				p.
+					Rinse and repeat for all the samples you want to load. 
+				
+				h2 Bind channels to keyboard buttons
+				
+				p.
+					Click on the channel main button again, and select #[em Setup keyboard input...]. from the drop-down menu. A new window will pop up:
+
+				p 
+					img(src='images/tutorials/001/key-binding-window.png' alt='Keyboard binding window')
+				
+				p.
+					Press the key on your keyboard you want to bind to the selected channel, then click the #[em Close] button when done. Click #[em Clear] instead to reset the binding. The channel will look like this:
+				
+				p 
+					img(src='images/tutorials/001/channel-bound.png' alt='Channel bound')
+				
+				p.
+					The keyboard button that has been bound to the channel is displayed next to the sample name. 
+				
+				h2 Select the right sample channel mode
+
+				p.
+					You are now ready to launch samples by pressing the corresponding key on your keyboard. New sample channels have the play mode set to #[em One-shot basic] by default, as seen in the picture below:
+
+				p
+					img(src='images/tutorials/001/sample-channel-mode.png' alt='Sample Channel mode')
+				
+				p.
+					This mode allows you to trigger a sample as soon as the bound key is pressed. You may also want to experiment with other #[em single shot] modes, by clicking the button outlined in the picture above and select an option from the drop-down menu. For example:
+
+				ul
+					li
+						p #[em One-shot press] — the channel plays as long as its key is pressed;
+					li
+						p #[em One-shot retrig] — the first keypress starts the channel; a second keypress (while playing) rewinds it. Perfect fit for drumming;
+					li
+						p #[em One-shot endless] — the channel plays in loop forever; pressing its key stops it. Good for layering up multiple sounds.
+
+				h2 See also
+
+				ul
+					li #[a(href='/documentation-performing-1') Documentation: Channel and Samples]
+					li #[a(href='/documentation-channels-and-samples') Documentation: Performing, part 1]
+
+
+				

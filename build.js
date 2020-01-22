@@ -99,6 +99,14 @@ function compileHTML()
 		const out = `${BUILD_DIR}/documentation-${PATH.basename(file, '.pug')}.html`; 
 		FSE.writeFileSync(out, fnc(opt));
 	});
+
+	GLOB.sync(`${SRC_DIR}/html/tutorials/*.pug`).forEach(function(file)
+	{
+		console.log(`Compile HTML: ${file}`);
+		const fnc = PUG.compileFile(file);
+		const out = `${BUILD_DIR}/tutorial-${PATH.basename(file, '.pug')}.html`; 
+		FSE.writeFileSync(out, fnc(opt));
+	});
 }
 
 

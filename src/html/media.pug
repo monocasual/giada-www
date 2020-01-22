@@ -3,16 +3,24 @@ extends base
 include mixins/media
 
 block metas-vars
-	- var title       = 'Media - '
-	- var description = ', media collection'
-	- var keywords    = ', media, video, audio'
+	- var title       = 'Tutorials and media - '
+	- var description = ', media collection, tutorials'
+	- var keywords    = ', media, video, audio, tutorials'
 
 block content
 	.container
 		.row.margin-top-xl
 			.col-md-12.text-center
 				h1 Seeing (and listening) is believing.
-		
+
+		.row.margin-top-xl
+			.col-md-12.text-center
+				h2.description One-page tutorials
+
+		.row.margin-top-xl
+			.col-md-12
+				+tutorial("#001: play samples with your keyboard", "How to use Giada as a sample player by loading samples into channels and binding keyboard buttons to them.", "/tutorial-001-play-samples-keyboard")
+
 		.row.margin-top-xl
 			.col-md-12.text-center
 				h2.description Official video tutorials

@@ -289,11 +289,16 @@ a:hover     { text-decoration: none; }
 #documentation h1,
 #documentation h2,
 #documentation h3,
-#documentation h4 {
+#documentation h4,
+#tutorial h1,
+#tutorial h2,
+#tutorial h3,
+#tutorial h4 {
 	margin: 40px 0;
 }
 
-#documentation li {
+#documentation li,
+#tutorial li {
 	margin: 12px 0;
 }
 
@@ -307,13 +312,20 @@ a:hover     { text-decoration: none; }
 	padding: 0 16px 16px 16px;
 }
 
-#documentation img {
+#documentation img,
+#tutorial img {
 	float: left;
 	margin: 0 10px 10px 0;
 	border-radius: 6px;
 	-moz-border-radius: 6px;
 	-khtml-border-radius: 6px;
 	-webkit-border-radius: 6px;
+}
+
+#tutorial img {
+	float: none;
+    display: block;
+    margin: 2em auto;
 }
 
 #documentation img.inline {
@@ -326,6 +338,7 @@ a:hover     { text-decoration: none; }
 	margin-top: 40px;
 	margin-bottom: 40px;
 }
+
 
 /* -------------------------------------------------------------------------- */
 
@@ -362,50 +375,6 @@ a:hover     { text-decoration: none; }
   font-weight: normal;
   font-style: normal;
 }
-
-.carousel {
-	padding-left: 50px;
-	padding-right: 50px;
-	overflow: hidden;
-}
-
-.carousel-control {
-	text-shadow: none;
-	color: #d0451b;
-	width: 40px; /* should match font-size below */
-}
-
-.carousel-control.right,
-.carousel-control.left {
-  background-image:none;
-  border-bottom: none;
-}
-
-.carousel-control.left {
-    margin-left: -20px;
-}
-
-.carousel-control.right {
-    margin-right: -20px;
-}
-
-.carousel-control .glyphicon {
-	font-family: "fontello";
-	font-size: 40px;  /* should match width above */
-	width: auto;
-	height: auto;
-	margin: auto;
-}
-
-.carousel-control .glyphicon-chevron-right:before {
-  content: '\e801';
-}
-
-.carousel-control .glyphicon-chevron-left:before {
-  content: '\e800';
-}
-
-.carousel-indicators li { visibility: hidden; }
 
 .quotes {
   text-align: center
