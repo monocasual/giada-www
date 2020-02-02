@@ -1,5 +1,10 @@
 [
     {
+        "title": "New one-page tutorial #001",
+        "date": "February 02, 2020",
+		"body": "<p>Say hello to our new <strong>one-page tutorial series</strong>! A collection of short guides that explain how to do useful things with Giada. In the first episode, <a href=\"/tutorial-001-play-samples-keyboard\">Play samples with your keyboard</a> you will learn how to use Giada as a sample player by loading samples into channels and binding keyboard buttons to them. The full list is available in the <a href=\"/media\">tutorials & media</a> corner.</p>"
+    }, 
+    {
         "title": "Giada 0.16.1 codename “Goblins” released today",
         "date": "January 12, 2020",
 		"body": "<p>We are happy to announce a new minor version of Giada coming out from our laboratories. This time we have fixed plenty of glitches around the user interface, performed some code refactoring and added some nice improvements such as the <strong>ability to remove empty columns manually</strong> from the main window. Also, our friend <a href=\"https://github.com/yurivict\">yurivict</a> added support for FreeBSD: thank you a lot for this!</p><p>As always, Giada 0.16.1 “Goblins” binaries are ready for download in the <a href=\"/download\">download area</a>, along with the full changelog.</p>"
