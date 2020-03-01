@@ -10,43 +10,74 @@ block content
 		#documentation.row
 			.col-md-9
 				h1 Introduction, installation and first run
+
 				p #{CONSTANTS.description}
+
 				h2 Warnings
-				p
-					| Giada is in a constant stage of development and may lack of some functionalities which could make it hard to use. Please see the changelog file inside the package to understand the direction of development. Giada is obviously full of bugs, too. So please join our 
-					a(href='forum') forum
-					|  and submit any malfunction or suggestion.
-				p
-					| If you are a coder / programmer / developer / hacker and you want to collaborate with the project, join us on 
-					a(href='https://github.com/monocasual/giada') GitHub
-					| . More information on the 
-					a(href='documentation-development-git-setup') Git setup
-					|  page.
-				h2 How to run Giada
-				p
-					| Go to the 
-					a(href='download') Download
-					|  area, grab the package for your operating system, unzip/untar it. Now double-click on the program icon to start Giada. No installation or setup needed.
-				p
-					| If you are on Linux and you have installed Giada through your package manager, you should find a shortcut in your main menu.
-				h2 The configuration file
-				p
-					| Giada saves its configuration inside a file called 
-					span.code giada.conf
-					| , generated somewhere in your filesystem:
+
+				p.
+					Giada is still in a beta stage of development and may lack of some functionalities which could make it hard to use. Please see the Changelog file inside the package to understand the direction of development. Giada is obviously full of bugs, too. So please join our #[a(href='/forum') forum] and submit any malfunction or suggestion.
+				p.
+					If you are a coder / programmer / developer / hacker and you want to collaborate with this project, join us on #[a(href='https://github.com/monocasual/giada') GitHub]. More information on the #[a(href='documentation-development-git-setup') Git setup page].
+				
+				h2 Requirements
+
+				p.
+					We distribute Giada as 64-bit binary files for Windows, macOS and Linux. more specifically:
+
 				ul
 					li
-						| Linux —
-						span.code /home/[your_user]/.giada/giada.conf
-						| ;
+						p on Windows — Windows Vista or greater;
 					li
-						| Mac —
-						span.code [your_home]/Library/Application Support/Giada/giada.conf
-						| ;
-					li Windows — in the same folder of the binary file.
-				p
-					| If you accidentally delete or alter it, the default setup will be used. This file is restored the next
-					| time you quit the program.
+						p on macOS — macOS Sierra 10.12 or greater;
+					li
+						p.
+							on Linux — Giada is packaged as an #[a(href='https://appimage.org/') AppImage] and can run on many distributions (including Ubuntu, Fedora, openSUSE, CentOS, elementaryOS, Linux Mint, and others). What you need: 
+						ul
+							li 
+								p glibc version 2.23 or greater;
+							li
+								p libstdc++ version 3.4.21 or greater;
+							li
+								p JACK installed.
+				
+				p.
+					You can also build Giada from source. More information in the #[a(href='/documentation-compiling-from-source') Compiling from source] page.
+
+				h2 How to run Giada
+
+				p.
+					Go to the #[a(href='/download') Download area], grab the package for your operating system, unzip it if required. Then:
+				ul
+					li
+						p on Windows and macOS — Double-click on the program icon to start Giada;
+					li
+						p.
+							on Linux — Mark the .appimage file you have downloaded as #[em executable]. For example, on the command line:
+
+						p.code.
+							chmod +x Giada-1.0.0-x86_64.AppImage
+						p.
+							Now double-click on the .appimage file to start Giada. 
+						p.
+							Alternatively, you can download Giada from the package manager of your favorite distribution. Giada is available on #[a(href='https://packages.debian.org/search?keywords=giada&searchon=names&section=all') Debian], #[a(href='https://packages.ubuntu.com/search?section=all&arch=any&keywords=giada&searchon=names') Ubuntu], #[a(href='https://aur.archlinux.org/packages/giada/') Arch Linux] and many more.
+
+				h2 The configuration file
+
+				p.
+					Giada saves its configuration in a file called #[span.code giada.conf], generated somewhere in your filesystem:
+				ul
+					li
+						p.
+							Linux — #[span.code /home/(your_user)/.giada/giada.conf];
+					li
+						p.
+							Mac — #[span.code (your_home)/Library/Application Support/Giada/giada.conf];
+					li 
+						p.
+							Windows — in the same folder of the binary file.
+				p.
+					If you accidentally delete or alter it, the default setup will be used. This file is restored the next time you quit the program.
 
 			#side-menu.col-md-3.margin-top-xl
 				include side-menu

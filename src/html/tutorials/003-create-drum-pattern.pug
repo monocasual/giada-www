@@ -1,0 +1,74 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'Tutorial #003: how to create a drum pattern with - '
+	- var description = ', Use Giada as a live audio FX processor.'
+	- var keywords    = ', tutorial, fx, effect, plug-in, vst, live processing'
+
+block content
+	.container#tutorial
+		.row.margin-top-xl
+			.col-md-12.text-center
+				h1 Tutorial #003: how to create a drum pattern.
+
+		.row.margin-top-xl
+			.col-md-12
+				h2 Getting started
+				p.
+					In this tutorial you will learn how to lay down a drum loop made of multiple samples (kick, snare, ...) through the powerful Action Editor. All you need is a bunch of good drum audio samples, say #[em Kick.wav] and #[em Snare.wav] for simplicity.
+
+				h2 Prepare the sample channels
+
+				p.
+					Since you are working with audio data, you will need some sample channels to hold your drum kit. Select the audio files from your operating system's desktop and drag them over an empty column in Giada. This will create a new sample channel for each audio file, already filled with your sound and ready to play.
+				
+				p.
+					Alternatively, you can create an empty sample channel first and then load the audio file in it. Click on the #[em Edit column] button on top of any column, then select #[em Add Sample channel] from the drop-down menu: a new empty sample channel will appear in the selected column. Now click on the channel main button, highlighted below:
+
+				p 
+					img(src='images/tutorials/003/empty-sample-channel.png' alt='An empty sample channel')
+				
+				p.
+					Select #[em Load new sample...] from the drop-down menu. A file browser window will appear: select the file you want to load (say #[em Kick.wav]) and then click the #[em Load] button when you're done. The sample channel will now look like this:
+
+				p 
+					img(src='images/tutorials/003/filled-sample-channel.png' alt='A filled sample channel')
+				
+				p.
+					Rinse and repeat for all the samples you want to load. 
+	
+				h2 Select the proper sample channel mode
+
+				p.
+					Click on the sample channel mode button highlighted below and select #[em Oneshot . retrig] mode from the drop down menu:
+
+				p 
+					img(src='images/tutorials/003/select-channel-mode.png' alt='Select channel mode')
+
+				p.
+					Do this for both #[em Kick.wav] and #[em Snare.wav] sample channels. This mode works best for short samples that you want to trigger through the Action Editor.
+				
+				h2 Lay down the drum beat
+
+				p.
+					It's now time for drum programming. Once again click on the sample channel main button (let's work with #[em Kick.wav] first) and select #[em Edit actions...] from the drop-down menu. You will be presented with the Action Editor for sample channels, which looks like this:
+
+				p
+					img(src='images/tutorials/003/sample-action-editor-empty.png' alt='Sample Action Editor, empty')
+			
+				p.
+					The upper row contains the start and stop actions for the sample channel you are editing. Click on each beat cell to place a #[em start] action. For example, a 4/4 kick layout would look like this:
+
+				p
+					img(src='images/tutorials/003/sample-action-editor-filled.png' alt='Sample Action Editor, filled')
+				
+				p.
+					You can also snap actions to grid for more accuracy. Choose the grid spacing from the drop-down menu and enable snapping by clicking on the checkbox:
+
+				p
+					img(src='images/tutorials/003/snap-to-grid.png' alt='Snap to grid')
+				
+				p.
+					Repeat the process for #[em Snare.wav] too, or more generally for any other sample channel that holds your drum kit. Close the Action Editor when you're done with it.
+
+				h2 Play the drum beat

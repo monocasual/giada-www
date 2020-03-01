@@ -1,5 +1,10 @@
 [
     {
+        "title": "Giada 0.16.2 <em>Realm of Magic</em> released",
+        "date": "March 01, 2020",
+		"body": "<p>Giada 0.16.2 is ready for your studio! Many things are changing under the hood: a new library for reading JSON projects and configuration files, a new version of RtAudio that fixes some annoying errors on Linux, significant code clean-ups and optimizations.</p><p>And what about new features, instead? Giada 0.16.2 provides the ability to vertically resize channels, as well as many minor user-interface improvements that will make for a better user experience. We also deprecated the old patch format: from now on Giada will always store and load <em>projects</em>, while single-file patches are still supported in read-only mode for backward compatibility.<p>Enjoy Giada 0.16.2 “Realm of Magic” by grabbing it in the <a href=\"/download\">download area</a>, along with the full changelog.</p>"
+    }, 
+    {
         "title": "New one-page tutorial #001",
         "date": "February 02, 2020",
 		"body": "<p>Say hello to our new <strong>one-page tutorial series</strong>! A collection of short guides that explain how to do useful things with Giada. In the first episode, <a href=\"/tutorial-001-play-samples-keyboard\">Play samples with your keyboard</a> you will learn how to use Giada as a sample player by loading samples into channels and binding keyboard buttons to them. The full list is available in the <a href=\"/media\">tutorials & media</a> corner.</p>"

@@ -10,61 +10,40 @@ block content
 		#documentation.row
 			.col-md-9
 				h1 Recording actions
-				p
-					| An 
-					strong action
-					|  is something you do on a channel. First of all Giada must be put in 
-					em record mode
-					| . You can do that by clicking on the 
-					strong action rec button
-					img.inline(src='images/docs/action-recorder-button.png' alt='Action recorder button' title='Action recorder button')
-					|  or by pressing the 
-					span.code enter
-					|  key: now Giada will record any gesture coming from your mouse+keyboard and/or MIDI controllers.
-				p
+
+				p. 
+					An #[strong action] is something you do on a channel. First of all Giada must be put in #[em action recording mode] by clicking on the #[strong record actions button] #[img.inline(src='images/docs/action-recorder-button.png' alt='Action recorder button')] in the main transport or by pressing the #[span.code enter] key: now Giada will record any gesture coming from your mouse+keyboard and/or MIDI controllers.
+
 				h2 Actions for sample channels
-				p
-					| On a 
-					strong sample channel
-					|  you can record the following:
+
+				p.
+					On a sample channel you can record the following:
 				ul
 					li key press;
 					li key release;
 					li sample kill.
-				p
-					| Start your performance, be it via computer keyboard or a MIDI device. Sample channels available and ready for recording will turn red. When you&apos;re done, disable the record mode by clicking on the 
-					strong action rec button
-					|  a second time: you will notice that all the sample channels with something recorded in them show a "R" button 
-					img.inline(src='images/docs/read-recs-button.png' alt='Read recordings button' title='Read recordings button')
-					| : this one enables or disables the recordings.
-				p
-					| If you need to remove all actions from a sample channel, click on the sample button and select 
-					em clear recordings
-					| , or tweak them more thoroughly with the 
-					a(href='documentation-action-editor') Action Editor
-					| .
-				h2 Actions for MIDI channels
-				p
-					| On 
-					strong MIDI channels
-					|  you can record any type of MIDI event supported by the 
-					a(href='documentation-action-editor') Piano Roll Editor
-					| . First of all press the 
-					strong arm button
-					img.inline(src='images/docs/arm-button.png' alt='Arm button' title='Arm button')
-					| , then start your performance with your MIDI controller. When you're done, disable the record mode by clicking on the 
-					strong action rec button
-					|  a second time.
-				p
-					| If you need to erase the actions on a MIDI channel, click on the sample button and select 
-					em clear recordings
-					| , or tweak them more thoroughly with the 
-					a(href='documentation-action-editor') Action Editor
-					| .
 
-				h3 Live FX processor
-				p
-					| You can also arm one or more MIDI channels without triggering the main recorder. This way Giada turns into a live FX processor, driven by your MIDI notes in input. This is very useful when you want to live play your virtual instruments through a MIDI controller.
+				p.
+					Once Giada is in action recording mode, sample channels available and ready for receiving actions will turn #[em red]. When you're done, disable the action recording mode by clicking on the record actions button a second time: any sample channel with something recorded in it will have the #[strong read actions button] #[img.inline(src='images/docs/read-recs-button.png' alt='Read recordings button')] enabled: if pressed, actions recorded for this channel will be reproduced.
+				p.
+					If you need to remove all actions from a sample channel, click on the channel main button and select #[em Clear actions] from the drop-down menu, or tweak them more thoroughly with the #[a(href='documentation-action-editor') Action Editor].
+
+				h2 Actions for MIDI channels
+
+				p.
+					On MIDI channels you can record any type of MIDI event supported by the #[a(href='documentation-action-editor') Piano Roll Editor]. First of all press the #[strong arm button] #[img.inline(src='images/docs/arm-button.png' alt='Arm button')], then enable the action recording mode and start your performance with your MIDI controller. When you're done, disable the action recording mode by clicking on the record actions button a second time.
+				p.
+					If you need to remove all actions from a MIDI channel, click on the channel main button and select #[em Clear actions] from the drop-down menu, or tweak them more thoroughly with the #[a(href='documentation-action-editor') Action Editor].
+
+				h3 Live effects processor
+
+				p.
+					You can also arm one or more MIDI channels without triggering the action recording mode. This way Giada turns into a live effects processor, driven by your MIDI notes received in input. This is very useful when you want to live play your virtual instruments through a MIDI controller.
+				
+				h2 Record on signal
+
+				p.
+					Pressing the record actions button will also start the sequencer. Sometimes you want it to wait instead and start when the first action is received. This mode is called #[strong record on signal] and you can enable it by clicking on the #[strong record on signal button] #[img.inline(src='images/docs/record-on-signal-button.png' alt='Record on signal button')] located on the main transport.
 
 			#side-menu.col-md-3.margin-top-xl
 				include side-menu

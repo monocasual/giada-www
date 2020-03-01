@@ -10,48 +10,28 @@ block content
 		#documentation.row
 			.col-md-9
 				h1 Live sampling
-				p
-					| Giada gives you the ability to record anything coming in from your soundcard thanks to its live sampler and the master input channel. Configure your device in the 
-					a(href='documentation-configuration') Configuration panel
-					|  first, then turn up the knob of the 
-					strong input volume
-					img.inline(src='images/docs/gui_inputmeter.png' alt='The input peakmeter' title='The input peakmeter')
-					|  in the main window.
+
+				p.
+					Giada gives you the ability to record anything coming in from your soundcard thanks to its live sampler and the master input channel. Configure your device in the #[a(href='documentation-configuration') Configuration panel] first, then turn up the knob of the #[strong input volume] #[img.inline(src='images/docs/gui_inputmeter.png' alt='The input peakmeter')] in the main window.
+
 				h2 How to use the live sampler
-				p
-					| First of all you need to add at least one 
-					strong sample channel
-					| , then arm it with the channel 
-					strong arm button
-					img.inline(src='images/docs/arm-button.png' alt='Arm button' title='Arm button')
-					| . You can of course arm multiple channels. When you are ready, click on the 
-					strong input rec
-					|  button 
-					img.inline(src='images/docs/input-recording-button.png' alt='Input rec button' title='Input rec button')
-					|  on the main transport or press 
-					span.code end
-					|  to enable the sampler: channels with active input will turn blue.
-				p
-					| The sequencer will start automatically, since recording a sound with the sequencer turned off doesn't make sense. The sampler works in 
-					em overdub mode
-					|  by default: the messages coming from the soundcard are being continuously summed to the existing data until the sampler is halted.
-				h2 Live FX processor
-				p
-					| Arm the channel and check the 
-					strong input monitor 
-					| flag in channel menu. This way you will hear what you're actually playing, previously processed by the plugins stack (if any). If you don't enable the sampler (
-					strong input rec
-					|  button 
-					img.inline(src='images/docs/input-recording-button.png' alt='Input rec button' title='Input rec button')
-					|  or 
-					span.code end
-					| ), Giada won't record anything and turns itself into a live FX processor.
-				p
-					| You can accomplish the same result by using the 
-					strong stream linker
-					| , the button between the input and the output meter 
-					img.inline(src='images/docs/input-output-linker.png' alt='Input to output linker' title='Input to output linker')
-					| . Enable it and you will be able to hear what you're playing.
+
+				p.
+					The live sampler works only with sample channels. Add at least one sample channel, then arm it with the channel #[strong arm button] #[img.inline(src='images/docs/arm-button.png' alt='Arm button')]. You can of course arm multiple channels. When you are ready, click on the #[strong audio recording button] #[img.inline(src='images/docs/input-recording-button.png' alt='audio recording button')] located on the main transport or press the #[span.code end] key to enable the sampler: channels with active input will turn #[em blue].
+				p.
+					The sequencer will start automatically, since recording audio with the sequencer turned off doesn't make sense. The sampler works in #[em overdub mode] by default: data coming from the soundcard is being continuously summed to the existing audio until the sampler is halted.
+
+				h2 Live effects processor
+
+				p.
+					Arm the channel and check the #[strong input monitor] flag in channel drop-down menu. This way you will hear what you're actually playing, previously processed by the plugins stack (if any). If you don't enable the sampler (#[strong input recording button] #[img.inline(src='images/docs/input-recording-button.png' alt='Input recording button')] or #[span.code end] key), Giada won't record anything and turns itself into a live effects processor.
+				p.
+					You can accomplish the same result by using the #[strong stream linker], the button between the input and the output meter #[img.inline(src='images/docs/input-output-linker.png' alt='Input to output linker')] located on the main window. Enable it and you will be able to hear what you're playing.
+
+				h2 Record on signal
+
+				p.
+					Pressing the audio recording button will also start the sequencer. Sometimes you want it to wait instead and start when the audio level in input reaches a certain threshold. This mode is called #[strong record on signal] and you can enable it by clicking on the #[strong record on signal button] #[img.inline(src='images/docs/record-on-signal-button.png' alt='Record on signal button')] located on the main transport. You can set the desired threshold level in the #[a(href='documentation-configuration') Configuration panel].
 
 			#side-menu.col-md-3.margin-top-xl
 				include side-menu

@@ -10,166 +10,52 @@ block content
 		#documentation.row
 			.col-md-9
 				h1 A look at the main window
-				p
-					| After the startup, you should see the main window where all buttons and levers are grouped. Horizontal lines are channels which contain samples or MIDI events, stacked up in columns. Don't worry if you don't understand the behavior of these tools right now; they will be covered more clearly in the 
-					a(href='documentation-performing-1') Performing 1
-					| , 
-					a(href='documentation-performing-2') Performing 2
-					| , 
-					a(href='documentation-channels-and-samples') Channels and samples
-					|  and 
-					a(href='documentation-channels-and-midi') Channels and MIDI
-					|  sections.
+				p.
+					The main window is the part of Giada where you will spend most of the time while live playing. The upper part contains the main menu and several tools for input/output, tempo management and global synchronization. The remaining space is for #[strong columns] and #[strong channels]. 
+				
+				p.
+					Don't worry if you don't understand the behavior of these elements right now; they will be covered more clearly in the next chapters. Let's take a quick glance at the several components that make up the main interface, starting from the main area.
+				
+				h2 Columns and channels
 
-				h2 Input and output stuff
-				p
-					img.first(src='images/docs/gui_peakmeter.png' alt='The output peakmeter' title='The output peakmeter')
-					|  This is the 
-					strong output peak meter
-					| . It goes from -60 to 0 dBFS; when the bar is completely full it means that your program is playing at the maximum range available. If you exceed this limit your sound starts to clip and the meter turns to red. The circular knob controls the master volume.
-				p
-					img.first(src='images/docs/gui_inputmeter.png' alt='The input peakmeter' title='The input peakmeter')
-					|  This is the 
-					strong input peak meter
-					| . It works exactly as the input meter but it manages the sound level coming from the soundcard. Turn the knob to zero in order to mute the recorder.
-				p
-					img.first(src='images/docs/input-output-linker.png' alt='Input to output linker' title='Input to output linker')
-					|  The button between the input and the output meter is a 
-					strong stream linker
-					| . If enabled, it takes the processed input and it copies it straight onto the output channel, in order to obtain a "hear what you're playing" functionality.
+				p.
+					Columns contain channels, which in turn hold audio samples or MIDI events. Each column has a button on top of it to perform some basic operations (add channels, remove if empty). Channels are one of the building blocks of a Giada performance and that's where the sound comes from (mostly). Their usage will be covered in #[a(href='/documentation-performing-1') Performing part 1], #[a(href='/documentation-performing-2') Performing part 2], #[a(href='/documentation-channels-and-samples') Channels and samples] and #[a(href='/documentation-channels-and-midi') Channels and MIDI] chapters.
+				
+				p.
+					You can add as many channels and columns as you want. Columns are used to organize your project and arrange channels according to some logic. For example, you can group drum kits on column 1 and pads on column 2, while voice loops live in column 3. Columns are just a user interface thing that doesn't affect the audio processing.
 
-				h2 The sequencer
-				p
-					img.first(src='images/docs/gui_beat.png' alt='The sequencer (or beat bar)' title='The sequencer (or beat bar)')
-					img.first(src='images/docs/gui_playstop.png' alt='Play and stop buttons' title='Play and stop buttons')
-					|  The 
-					strong sequencer
-					|  shows the current running beat and the total bars of your program. This tool is managed by the two side buttons: 
-					strong play/stop
-					|  and 
-					strong rewind
-					| . The former simply starts/stops the beat counting, the latter is used to quickly rewind to the first beat, useful for synching with other audio sources.
+				h2 Input and output tools
 
-				h2 Recording tools
 				p
-					img.first(src='images/docs/gui_recs.png' alt='Recording buttons' title='Recording buttons')
-					| These buttons manage the #[strong recordings]. The first one enables the #[a(href='documentation-recording-actions') action recorder]: if switched on, every channel-related action (key press, key release, MIDI messages, ...) is recorded and playable at a later time. The second one starts the #[a(href='documentation-live-sampling') live sampler]: it records any sound from the sound card input(s) into the selected channels. Finally the #[strong metronome] #[img.inline(src='images/docs/metronome.png' alt='Metronome' title='Metronome')] might help you during a recording session.
+					img(src='images/docs/master-io.png' alt='Master IO')
+
+				p.
+					These tools take care of audio I/O: input on the left, ouput on the right. The circular knobs control the volume, the horizontal bars are meters. Ranging from -60 to 0 dBFS, when a bar is completely full it means that you are recording or playing at the maximum level allowed. If you exceed this limit your sound starts to clip and the meter turns red.
+				p.
+					The button between the input and the output meter is the #[strong stream linker]. If enabled, it copies the input audio straight to the output channel, in order to obtain a "hear what you're playing" functionality.
+				p.
+					The #[img.inline(src='images/docs/fx-button.png' alt='FX')] buttons are used to load audio plug-ins both for the input and the output channel. More information in the #[a(href='/documentation-audio-plugins') Audio Plugins] chapter.
+
+				h2 The sequencer and the main transport
+
+				p
+					img(src='images/docs/gui_beat.png' alt='The sequencer')
+					img(src='images/docs/main-transport.png' alt='The main transport')
+				
+				p.
+					#[strong The sequencer] is a central tool in Giada. It keeps your live performance in sync and is responsible for driving loops, samples and MIDI events. It is managed by the #[strong main transport], namely the #[strong play/stop] button that starts and stops the song and the #[strong rewind] button that quickly rewinds the sequencer to the first beat. 
+				
+				p.
+					The main transport features additional elements such as the recording buttons (second group from the left), used to 
+					toggle #[strong audio recording] and #[strong action recording]. More information in the #[a(href='/documentation-recording-actions') Recording Actions] and #[a(href='/documentation-live-sampling') Live sampling] chapters. The last button is the #[strong metronome], useful during a recording session.
 
 				h2 Beats, bars, quantizer and BPM
-				p
-					img.first(src='images/docs/beats-tools.png' alt='Beats tools' title='Beats tools')
-					|  A set of tools dedicated to the beat management. You can find them grouped in the top right area of the main window.
-				ul
-					li
-						strong Quantizer
-						img.inline(src='images/docs/quantizer.png' alt='Quantizer' title='Quantizer')
-						|  — a useful feature which aligns the samples on beats and on exact fractions of beats (for a detailed explanation look at 
-						a(href='http://en.wikipedia.org/wiki/Quantization_%28music%29' target='_blank') Wikipedia - Quantization
-						| ). The quantizer provides seven operating methods: off (disabled), 1b, 2b, 3b, 4b, 6b, 8b. It operates only when the main program is running and affects those channels which are in a 
-						a(href='documentation-performing') oneshot mode
-						| ;
-					li
-						strong BPM
-						img.inline(src='images/docs/bpm.png' alt='BPM' title='BPM')
-						|  — Changes the BPM (i.e. the speed) of the performance;
-					li
-						strong Beats/bars
-						img.inline(src='images/docs/beats-bars.png' alt='Beats/bars' title='Beats/bars')
-						|  — Changes the number of beats and bars; the feature was designed to provide a graphical hint for your performance and to activate the 
-						a(href='documentation-performing') loop repeat mode
-						| . This tool allows to shrink or expand the recorded actions on the timeline through the checkbox 
-						strong resize recordings
-						|  in the small popup window, as well as manage the sub-beats division;
-					li
-						strong Beat operators
-						img.inline(src='images/docs/beat-bar-operators.png' alt='Beat operators' title='Beat operators')
-						|  — Dynamically shrink or expand the range of the sequencer (i.e. the total number of beats of your performance).
 
-				h2 Sample Channels
 				p
-					img(src='images/docs/sample-channel.png' alt='Channels' title='Channels')
-				p
-					| The first type of channel is the  
-					strong sample channel
-					| . Each element is composed, from left to right by the following elements:
-				ul
-					li
-						img.inline(src='images/docs/play-button.png' alt='Play button' title='Play button')
-						strong Play button
-						|  — Starts and stops the channel (if loaded);
-					li
-						img.inline(src='images/docs/arm-button.png' alt='Arm button' title='Arm button')
-						strong Arm button
-						|  — Arms the channel for recording;
-					li
-						img.inline(src='images/docs/status-box.png' alt='Status box' title='Status box')
-						strong Status box
-						|  — Reports the playback position of the running sample;
-					li
-						img.inline(src='images/docs/sample-button.png' alt='Main button' title='Main button')
-						strong Main button
-						|  — Shows the name of the loaded sample and allows many operations on it;
-					li
-						img.inline(src='images/docs/mute-button.png' alt='Mute button' title='Mute button')
-						strong Mute button
-						|  — Mutes the sample;
-					li
-						img.inline(src='images/docs/solo-button.png' alt='Mute button' title='Mute button')
-						strong Solo button
-						|  — Puts channel in solo mode;
-					li
-						img.inline(src='images/docs/fx-button.png' alt='FX button' title='FX button')
-						strong FX button
-						|  — Opens up the 
-						a(href='documentation-fx-stack') FX stack
-						| ;
-					li
-						img.inline(src='images/docs/volume-dial.png' alt='Volume dial' title='Volume dial')
-						strong Volume dial
-						|  — Controls the channel volume;
-					li
-						img.inline(src='images/docs/mode_loopa.png' alt='Mode box' title='Mode box')
-						strong Mode box
-						|  — Sets the play mode of the channel.
-
-				h2 MIDI Channels
-				p
-					img(src='images/docs/midi-channel.png' alt='MIDI channel' title='MIDI channel')
-				p
-					| The second type of channel is the  
-					strong MIDI channel
-					| . Each element is composed, from left to right by the following elements:
-				ul
-					li
-						img.inline(src='images/docs/play-button.png' alt='Play button' title='Play button')
-						strong Play button
-						|  — Starts and stops the channel;
-					li
-						img.inline(src='images/docs/arm-button.png' alt='Arm button' title='Arm button')
-						strong Arm button
-						|  — Arms the channel for recording;
-					li
-						img.inline(src='images/docs/midi-button.png' alt='Main button' title='Main button')
-						strong Main button
-						|  — If clicked, opens up a menu with options;
-					li
-						img.inline(src='images/docs/mute-button.png' alt='Mute button' title='Mute button')
-						strong Mute button
-						|  — Mutes the channel;
-					li
-						img.inline(src='images/docs/solo-button.png' alt='Mute button' title='Mute button')
-						strong Solo button
-						|  — Puts channel in solo mode;
-					li
-						img.inline(src='images/docs/fx-button.png' alt='FX button' title='FX button')
-						strong FX button
-						|  — Opens up the 
-						a(href='documentation-fx-stack') FX stack
-						| ;
-					li
-						img.inline(src='images/docs/volume-dial.png' alt='Volume dial' title='Volume dial')
-						strong Volume dial
-						|  — Controls the channel volume;
+					img(src='images/docs/beats-tools.png' alt='Beats tools')
+				
+				p.
+					A set of tools responsible for beats and tempo management. You can find them grouped in the top right area of the main window. From left to right, the #[strong Quantizer] aligns the samples on beats and on exact fractions of beats. It works only when the main sequencer is running. More information in the #[a(href='/documentation-performing-1') Performing part 1] chapter; The #[strong BPM button] changes the speed of your performance; the #[strong Beats/bars button] changes the number of beats and bars of the main sequencer; the #[strong Beat operators] (last two buttons on the right) dynamically shrink or expand the the total number of beats of the main sequencer.
 
 			#side-menu.col-md-3.margin-top-xl
 				include side-menu
