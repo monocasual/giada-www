@@ -194,81 +194,57 @@ a:hover     { text-decoration: none; }
 
 /* -------------------------------------------------------------------------- */
 
-.glm-header .logo img {
-  height: 40px;
-}
-
-.glm-header nav li {
-  float: none;
-  text-align: right;
-}
-
-.glm-header nav.main-menu .burger-button a:focus {
-  background-color: transparent;
-}
-
-/* Mobile first: hide all elements except burger button */
-.glm-header nav.main-menu li:not(.burger-button) {
-  display: none;
-}
-
-.glm-header nav.burger-menu {
-  display: none;
+.glm-header {
+  margin-top: 10px;
 }
 
 @media (min-width: 992px) {
-  .glm-header nav li {
-    float: right;
-  }
-  .glm-header nav.main-menu li:nth-child(1),
-  .glm-header nav.main-menu li:nth-child(2),
-  .glm-header nav.main-menu li:nth-child(3),
-  .glm-header nav.main-menu li:nth-child(4),
-  .glm-header nav.main-menu li:nth-child(5),
-  .glm-header nav.main-menu li:nth-child(6)
-  {
-    display: inline;
-  }
-  .glm-header nav.burger-menu li:nth-child(0),
-  .glm-header nav.burger-menu li:nth-child(1),
-  .glm-header nav.burger-menu li:nth-child(2),
-  .glm-header nav.burger-menu li:nth-child(3),
-  .glm-header nav.burger-menu li:nth-child(4),
-  .glm-header nav.burger-menu li:nth-child(5)
-  {
-    display: none;
+  .glm-header .menu {
+    display: grid;
+    grid-template-columns: 10% 90%;
   }
 }
 
-@media (min-width: 1200px) {
-  .glm-header nav.main-menu li:nth-child(7),
-  .glm-header nav.main-menu li:nth-child(8) {
-    display: inline;
-  }
-  .glm-header nav.burger-menu li:nth-child(6),
-  .glm-header nav.burger-menu li:nth-child(7)
-  {
-    display: none;
-  }
+.glm-header .menu .logo img {
+  height: 40px;
 }
 
-.glm-header nav li a {
+.glm-header .menu .links {
+  text-align: right;
+}
+
+.glm-header .menu .links ul {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0 0;
+}
+
+.glm-header .menu .links ul li {
+  float: left;
+}
+
+.glm-header .menu .links ul li a {
+  display: block;
 	text-transform: uppercase;
 	font-weight: 600;
-	font-size: 1em;
+  font-size: 1em;
+  line-height: 40px;
+  padding: 0 1em;
 	border: none;
 }
 
-.glm-header nav li a:hover {
-	background-color: #ffffff;
+.glm-header .menu .links ul li a:hover {
+  background-color: #ffffff;
+  border-radius: 4px;
 	color: inherit;
 }
 
-.glm-header nav.sub li a {
-  text-transform: none;
-  font-size: 0.8em;
-  font-weight: normal;
+.glm-header .ad {
+  margin-top: 10px;
+  padding-top: 30px;
+  border-top: 1px solid #B8B5A4;
 }
+
 
 #footer {
 	font-size: 13px;
