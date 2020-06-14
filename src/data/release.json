@@ -1,5 +1,5 @@
 {
-    "version": "0.16.2",
+    "version": "0.16.2.2",
     "codename": "Realm of Magic",
     "changes": [
         "Switch to Json for modern C++ library for reading and writing Json data",

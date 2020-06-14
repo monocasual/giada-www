@@ -1,5 +1,10 @@
 [
     {
+        "title": "The Forest – Giada live showcase",
+        "date": "June 14, 2020",
+		"body": "<p>Enjoy a new demo of the upcoming Giada v.0.16.3! Featuring MIDI mapping, multiple sample channels, VST plug-ins and full-screen UI.</p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/OI7dW4JAz3U\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+    }, 
+    {
         "title": "Giada 0.16.2 <em>Realm of Magic</em> released",
         "date": "March 01, 2020",
 		"body": "<p>Giada 0.16.2 is ready for your studio! Many things are changing under the hood: a new library for reading JSON projects and configuration files, a new version of RtAudio that fixes some annoying errors on Linux, significant code clean-ups and optimizations.</p><p>And what about new features, instead? Giada 0.16.2 provides the ability to vertically resize channels, as well as many minor user-interface improvements that will make for a better user experience. We also deprecated the old patch format: from now on Giada will always store and load <em>projects</em>, while single-file patches are still supported in read-only mode for backward compatibility.<p>Enjoy Giada 0.16.2 “Realm of Magic” by grabbing it in the <a href=\"/download\">download area</a>, along with the full changelog.</p>"
