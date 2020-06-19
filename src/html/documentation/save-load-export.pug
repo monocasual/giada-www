@@ -9,55 +9,39 @@ block content
 	.container
 		#documentation.row
 			.col-md-9
+
 				h1 Save, Load, Export
-				p
-					| Giada is able to produce three kinds of files: 
-					strong patches
-					| , 
-					strong projects
-					|  and 
-					strong samples
-					| .
-				h2 Patch
-				p
-					| A 
-					strong patch
-					|  is a JSON-based 
-					em .gptc
-					|  file in which volumes, samples, statuses and configurations are stored. Use this one if you are using samples from your collection (i.e. no takes or any destructive editing done) and you are sure of opening the patch in the same system you saved it. Path: 
-					em file -&gt; save patch...
+	
+				p.
+					Giada is able to generate two kinds of files: #[strong projects] and #[strong samples].
+
 				h2 Project
-				p
-					| Any take from the outside world and/or any destructive editing on the samples must be stored somewhere in order to be used the next time you load your patch. This function creates a 
-					em .gprj
-					|  folder in your filesystem, then copies all of your samples inside the folder and creates the 
-					em .gptc
-					|  fil in which all sample paths are made relative to that folder. Path: 
-					em file -&gt; save project...
+
+				p.
+					A project is a folder called #[span.code (project name).gprj] that contains all the samples in use in your current song and a JSON-based file called #[span.code (project name).gptc] that stores the project information. You can save and load a project from the #[em file] option in the main menu.
+				
+				p.
+					Being a project a regular folder in your filesystem, you can browse it, add new content and edit the project file in case something is wrong (it shouldn't!). You can also get fancy and write the project file by hand or generate it with a script. Be careful not to delete any file in the folder, as you might end up with missing samples.
+				
+				p.
+					A project is portable: you can save it on your computer and move it to another one. Note that audio plug-ins will not be stored in a project: make sure the required plug-ins are installed also in the target system.
+
 				h2 Samples
-				p
-					| This function exports the sample to file. At the moment only WAV format is supported. Path: 
-					em [sample button] -&gt; export sample to file...
-				h2 Other interesting options
-				p
-					img.first(src='images/docs/edit-menu-popup.png' alt='Edit menu' title='Edit menu')
-					| The 
-					strong edit button
-					img.inline(src='images/docs/edit-button.png' alt='Edit button' title='Edit button')
-					|  in the main window offers some other useful options for your work:
+
+				p.
+					Giada can export samples to file. This is useful for edited samples or recorded takes. At the moment only WAV format is supported. You can export the sample to file by clicking on any sample channel's main button and select #[em export sample to file...].
+
+				h2 Other interesting operations
+
+				p.
+					The #[em edit] option in the main menu offers some additional actions:
 				ul
 					li
 						strong Clear all samples
-						|  &mdash; unloads all channels. Modes, volumes and FXs remain untouched;
+						|  &mdash; unloads all sample channels. Modes, volumes and plug-ins remain untouched;
 					li
 						strong Clear all actions
-						|  &mdash; removes any type of action from all the channels;
-					li
-						strong Remove empty columns
-						|  &mdash; removes all columns containing no samples;
-					li
-						strong Reset to init state
-						|  &mdash; resets Giada to the default blank patch;
+						|  &mdash; removes any type of action from sample and MIDI channels;
 					li
 						strong Setup global MIDI input
 						|  &mdash; binds MIDI events to global parameters, see 

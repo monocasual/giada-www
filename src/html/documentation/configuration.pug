@@ -10,21 +10,13 @@ block content
 		#documentation.row
 			.col-md-9
 				h1 Configuration
-				p
-					| This panel gives you the ability to tweak hardware parameters as well as operational modes, through four different tabs: 
-					strong Sound System
-					| , 
-					strong MIDI
-					| , 
-					strong Behaviors
-					| , 
-					strong Misc
-					|  and 
-					strong Plugins
-					| .
+				p.
+					This panel gives you the ability to tweak hardware parameters as well as operational modes, through four different tabs: #[strong Sound System], #[strong MIDI], #[strong Behaviors], #[strong Misc] and #[strong Plugins].
 				
 				h2 Sound System
-				p Configure your sound system, input/output channels and the buffer size.
+
+				p.
+					Configure your sound system, input/output channels and the buffer size.
 				p
 					img.first(src='images/docs/giada-configuration-panel.png' alt='Giada configuration panel - sound system tab' title='Giada configuration panel - sound system tab')
 				ul
@@ -49,9 +41,6 @@ block content
 						strong Input device
 						|  &mdash; The device used for recording. Disabled by default. The question mark on the right pops up some information about it.
 					li
-						strong Rec delay comp
-						|  &mdash; Too much latency can make it difficult to record a live performance: the record delay compensation (in frames) helps you to align the incoming audio to the rest of your existing beats.
-					li
 						strong Resampling
 						|  &mdash; The algorithm used for resampling, i.e. when you load a sample whose sample rate differs from the system's rate. You can choose between five algorithms:
 						ol
@@ -75,6 +64,7 @@ block content
 						|  the algorithm used for pitch manipulation, which is currently hardcoded to Linear quality for speed purposes.
 				
 				h2 MIDI
+
 				p Configure here the global MIDI parameters.
 				ul
 					li
@@ -112,42 +102,19 @@ block content
 								| . This is quite experimental: the rate is temporarily hardcoded to 25 frame/s (standard rate for PAL video).
 				
 				h2 Behaviors
+
 				p Define how Giada should handle loops, timing and channels.
-				p
-					img.first(src='images/docs/giada-behaviors-panel.png' alt='Giada behaviors panel' title='Giada behaviors panel')
 				ul
-					li
-						strong When a channel with recorded action is halted
-						|  &mdash; This options defines the behavior  when you stop of a channel with some actions recorded with by cliking on the &quot;R&quot; button 
-						img.inline(src='images/docs/read-recs-button.png' alt='Read recordings button' title='Read recordings button')
-						|  (or the 
-						span.code shift + [key]
-						|  combination). If you check 
-						em stop it immediately
-						| , the sample will stop abruptly; otherwise with 
-						em play it until finished
-						|  the sample will play until it reaches its end.
-					li
-						strong When the sequencer is halted
-						|  &mdash; What should happen when you pull up the performance (by pressing the 
-						span.code spacebar
-						|  or the stop button)? If you choose 
-						em stop immediately all dynamic channels
-						|  any sample in loop mode and any sample with recorded actions will stop abruptly; otherwise with 
-						em play all dynamic channels until finished
-						| , those samples will play until the end.
-					li
-						strong Treat recorded channels as loops
-						|  &mdash; By default a click on the &quot;R&quot; button 
-						img.inline(src='images/docs/read-recs-button.png' alt='Read recordings button' title='Read recordings button')
-						|  (or the 
-						span.code shift + [key]
-						|  combination) stops immediately any recorded action. When this option is enabled any channel whose actions are suspended puts itself in ending mode, as the loop mode would do, and stops at the next first beat.
-					li
-						strong New samples channels have input monitor on by default
-						|  &mdash; Say you are adding new sample channel: should its input monitor be on or off by default?
+					li.
+						#[strong When the sequencer is halted] &mdash; What should happen when you pull up the performance (by pressing the 
+						#[span.code spacebar] or the stop button)? If you choose #[em stop immediately all dynamic channels], any sample in loop mode and any sample with recorded actions will stop abruptly; otherwise with #[em play all dynamic channels until finished], those channels will play until the end.
+					li.
+						#[strong Treat recorded channels as loops] &mdash; By default, clicking the #[img.inline(src='images/docs/read-recs-button.png' alt='Read actions button')] button (or pressing the #[span.code shift + (key)] combination) on a channel that is reading actions stops it immediately. When this option is enabled, any playing channel whose actions are suspended will be set to #[em ending mode] first, as a channel in loop mode would do, and then it will stop at the next first beat.
+					li.
+						#[strong New samples channels have input monitor on by default] &mdash; Say you are adding a new sample channel: should its input monitor be on or off by default?
 				
 				h2 Misc
+
 				p This tab contains miscellaneous options.
 				ul
 					li
