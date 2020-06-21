@@ -1,5 +1,10 @@
 [
     {
+        "title": "Giada 0.16.3 codename “Talisman” released",
+        "date": "June 21, 2020",
+		"body": "<p>A new version of Giada Loop Machine is ready for your desktop! This release features an important refactoring of the internal channel architecture. Such improvement will make easier for us to extend Giada with new channel-related features in view of the upcoming 1.0 release. And also:</p><ul><li>Big CPU usage optimization when playing with lots of sample/MIDI channels;</li><li>a better, sample-precise quantizer;</li><li>simplified logic when halting channels containing pre-recorded actions;</li><li>many bugs fixed, specially the number of BPM not changing when using Jack on Linux.</li></ul><p>The full changelog is available in the <a href=\"https://giadamusic.com/download\">download area</a>. Have fun and stay safe!</p>"
+    }, 
+    {
         "title": "The Forest – Giada live showcase",
         "date": "June 14, 2020",
 		"body": "<p>Enjoy a new demo of the upcoming Giada v.0.16.3! Featuring MIDI mapping, multiple sample channels, VST plug-ins and full-screen UI. Kindly performed by <a href=\"https://soundcloud.com/tblr_orchestra\">the TBLR Orchestra</a>.</p><div class=\"embed-responsive embed-responsive-16by9\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/OI7dW4JAz3U\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>"
