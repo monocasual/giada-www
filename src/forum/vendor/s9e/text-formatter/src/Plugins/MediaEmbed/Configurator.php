@@ -1,206 +1,332 @@
 <?php
 
-/*
+/**
 * @package   s9e\TextFormatter
-* @copyright Copyright (c) 2010-2017 The s9e Authors
+* @copyright Copyright (c) 2010-2019 The s9e Authors
 * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
 */
 namespace s9e\TextFormatter\Plugins\MediaEmbed;
+
 use InvalidArgumentException;
 use RuntimeException;
-use s9e\TextFormatter\Configurator\Helpers\RegexpBuilder;
-use s9e\TextFormatter\Configurator\Items\Attribute;
-use s9e\TextFormatter\Configurator\Items\AttributeFilters\RegexpFilter;
-use s9e\TextFormatter\Configurator\Items\AttributePreprocessor;
+use s9e\TextFormatter\Configurator\Helpers\FilterHelper;
+use s9e\TextFormatter\Configurator\Items\Regexp;
 use s9e\TextFormatter\Configurator\Items\Tag;
+use s9e\TextFormatter\Configurator\JavaScript\Dictionary;
 use s9e\TextFormatter\Plugins\ConfiguratorBase;
 use s9e\TextFormatter\Plugins\MediaEmbed\Configurator\Collections\CachedDefinitionCollection;
-use s9e\TextFormatter\Plugins\MediaEmbed\Configurator\Collections\SiteCollection;
 use s9e\TextFormatter\Plugins\MediaEmbed\Configurator\TemplateBuilder;
+
 class Configurator extends ConfiguratorBase
 {
-	public $allowedFilters = array(
-		'hexdec',
-		'stripslashes',
-		'urldecode'
-	);
-	protected $appendTemplate = '';
-	protected $captureURLs = \true;
-	protected $collection;
-	protected $createMediaBBCode = \true;
-	public $createIndividualBBCodes = \false;
+	/**
+	* @var array List of filters that are explicitly allowed in attribute definitions
+	*/
+	public $allowedFilters = ['htmlspecialchars_decode', 'stripslashes', 'urldecode'];
+
+	/**
+	* @var bool Whether to create the MEDIA BBCode
+	*/
+	protected $createMediaBBCode = true;
+
+	/**
+	* @var Configurator\Collections\SiteDefinitionCollection Default sites
+	*/
 	public $defaultSites;
+
+	/**
+	* {@inheritdoc}
+	*/
+	protected $quickMatch = '://';
+
+	/**
+	* {@inheritdoc}
+	*/
+	protected $regexp = '/\\bhttps?:\\/\\/[^["\'\\s]+/Si';
+
+	/**
+	* @var array Configured sites
+	*/
+	protected $sites = [];
+
+	/**
+	* @var string Name of the tag used to handle embeddable URLs
+	*/
 	protected $tagName = 'MEDIA';
+
+	/**
+	* @var TemplateBuilder
+	*/
 	protected $templateBuilder;
+
+	/**
+	* {@inheritdoc}
+	*/
 	protected function setUp()
 	{
-		$this->collection = new SiteCollection;
-		$this->configurator->registeredVars['mediasites'] = $this->collection;
-		$tag = $this->configurator->tags->add($this->tagName);
-		$tag->rules->autoClose();
-		$tag->rules->denyChild($this->tagName);
-		$tag->filterChain->clear();
-		$tag->filterChain
-		    ->append(array(__NAMESPACE__ . '\\Parser', 'filterTag'))
-		    ->addParameterByName('parser')
-		    ->addParameterByName('mediasites')
-		    ->setJS(\file_get_contents(__DIR__ . '/Parser/tagFilter.js'));
-		if ($this->createMediaBBCode)
-			$this->configurator->BBCodes->set(
-				$this->tagName,
-				array(
-					'contentAttributes' => array('url'),
-					'defaultAttribute'  => 'site'
-				)
-			);
-		if (!isset($this->defaultSites))
-			$this->defaultSites = new CachedDefinitionCollection;
+		$this->defaultSites    = new CachedDefinitionCollection;
 		$this->templateBuilder = new TemplateBuilder;
+
+		$this->configurator->registeredVars['MediaEmbed.hosts'] = new Dictionary;
+		$this->configurator->registeredVars['MediaEmbed.sites'] = new Dictionary;
+
+		// Create a MEDIA tag
+		$this->createMediaTag();
+
+		// Create a [MEDIA] BBCode if applicable
+		if ($this->createMediaBBCode)
+		{
+			$this->configurator->BBCodes->set($this->tagName, ['contentAttributes' => ['url']]);
+		}
 	}
+
+	/**
+	* {@inheritdoc}
+	*/
 	public function asConfig()
 	{
-		if (!$this->captureURLs || !\count($this->collection))
+		if (empty($this->sites))
+		{
 			return;
-		$regexp  = 'https?:\\/\\/';
-		$schemes = $this->getSchemes();
-		if (!empty($schemes))
-			$regexp = '(?>' . RegexpBuilder::fromList($schemes) . ':|' . $regexp . ')';
-		return array(
-			'quickMatch' => (empty($schemes)) ? '://' : ':',
-			'regexp'     => '/\\b' . $regexp . '[^["\'\\s]+/Si',
+		}
+
+		return [
+			'quickMatch' => $this->quickMatch,
+			'regexp'     => $this->regexp,
 			'tagName'    => $this->tagName
-		);
+		];
 	}
-	public function add($siteId, array $siteConfig = \null)
+
+	/**
+	* Add a media site
+	*
+	* @param  string $siteId     Site's ID
+	* @param  array  $siteConfig Site's config
+	* @return Tag                Tag created for this site
+	*/
+	public function add($siteId, array $siteConfig = null)
 	{
+		// Normalize or retrieve the site definition
 		$siteId = $this->normalizeId($siteId);
-		if (!isset($siteConfig))
+		if (isset($siteConfig))
+		{
+			$siteConfig = $this->defaultSites->normalizeValue($siteConfig);
+		}
+		else
+		{
 			$siteConfig = $this->defaultSites->get($siteId);
-		$this->collection[$siteId] = $siteConfig;
-		$tag = new Tag;
-		$tag->rules->autoClose();
-		$tag->rules->denyChild($siteId);
-		$tag->rules->denyChild($this->tagName);
-		$attributes = array(
-			'url' => array('type' => 'url')
-		);
-		if (isset($siteConfig['scrape']))
-			$attributes += $this->addScrapes($tag, $siteConfig['scrape']);
-		if (isset($siteConfig['extract']))
-			foreach ((array) $siteConfig['extract'] as $regexp)
-			{
-				$attrRegexps = $tag->attributePreprocessors->add('url', $regexp)->getAttributes();
-				foreach ($attrRegexps as $attrName => $attrRegexp)
-					$attributes[$attrName]['regexp'] = $attrRegexp;
-			}
-		if (isset($siteConfig['attributes']))
-			foreach ($siteConfig['attributes'] as $attrName => $attrConfig)
-				foreach ($attrConfig as $configName => $configValue)
-					$attributes[$attrName][$configName] = $configValue;
-		$hasRequiredAttribute = \false;
-		foreach ($attributes as $attrName => $attrConfig)
-		{
-			$attribute = $tag->attributes->add($attrName);
-			if (isset($attrConfig['preFilter']))
-				$this->appendFilter($attribute, $attrConfig['preFilter']);
-			if (isset($attrConfig['type']))
-			{
-				$filter = $this->configurator->attributeFilters['#' . $attrConfig['type']];
-				$attribute->filterChain->append($filter);
-			}
-			elseif (isset($attrConfig['regexp']))
-				$attribute->filterChain->append(new RegexpFilter($attrConfig['regexp']));
-			if (isset($attrConfig['required']))
-				$attribute->required = $attrConfig['required'];
-			else
-				$attribute->required = ($attrName === 'id');
-			if (isset($attrConfig['postFilter']))
-				$this->appendFilter($attribute, $attrConfig['postFilter']);
-			if (isset($attrConfig['defaultValue']))
-				$attribute->defaultValue = $attrConfig['defaultValue'];
-			$hasRequiredAttribute |= $attribute->required;
 		}
-		if (isset($attributes['id']['regexp']))
+		$siteConfig['extract'] = $this->convertRegexps($siteConfig['extract']);
+		$siteConfig['scrape']  = $this->convertScrapes($siteConfig['scrape']);
+
+		// Check the safety of attribute filters
+		$this->checkAttributeFilters($siteConfig['attributes']);
+
+		// Create the tag for this site
+		$tag = $this->addTag($siteId, $siteConfig);
+
+		// Update the configurator's data
+		$this->sites[$siteId] = $siteConfig;
+		foreach ($siteConfig['host'] as $host)
 		{
-			$attrRegexp = \preg_replace('(\\^(.*)\\$)s', "^(?'id'$1)$", $attributes['id']['regexp']);
-			$tag->attributePreprocessors->add('url', $attrRegexp);
+			$this->configurator->registeredVars['MediaEmbed.hosts'][$host] = $siteId;
 		}
-		if (!$hasRequiredAttribute)
-			$tag->filterChain
-				->append(array(__NAMESPACE__ . '\\Parser', 'hasNonDefaultAttribute'))
-				->setJS(\file_get_contents(__DIR__ . '/Parser/hasNonDefaultAttribute.js'));
-		$tag->template = $this->templateBuilder->build($siteId, $siteConfig) . $this->appendTemplate;
+		$this->configurator->registeredVars['MediaEmbed.sites'][$siteId] = [$siteConfig['extract'], $siteConfig['scrape']];
+
+		return $tag;
+	}
+
+	/**
+	* Return the list of configured sites
+	*
+	* @return array Site's ID as keys, site's config as values
+	*/
+	public function getSites()
+	{
+		return $this->sites;
+	}
+
+	/**
+	* Create and return a tag that handles given media site
+	*
+	* @param  string $siteId
+	* @param  array  $siteConfig
+	* @return Tag
+	*/
+	protected function addTag($siteId, array $siteConfig)
+	{
+		$tag = new Tag([
+			'attributes' => $this->getAttributesConfig($siteConfig),
+			'rules'      => [
+				'allowChild' => 'URL',
+				'autoClose'  => true,
+				'denyChild'  => [$siteId, $this->tagName]
+			],
+			'template'   => $this->templateBuilder->build($siteId, $siteConfig)
+		]);
+
 		$this->configurator->templateNormalizer->normalizeTag($tag);
 		$this->configurator->templateChecker->checkTag($tag);
 		$this->configurator->tags->add($siteId, $tag);
-		if ($this->createIndividualBBCodes)
-			$this->configurator->BBCodes->add(
-				$siteId,
-				array(
-					'defaultAttribute'  => 'url',
-					'contentAttributes' => array('url')
-				)
-			);
+
 		return $tag;
 	}
-	public function appendTemplate($template = '')
+
+	/**
+	* Check the safety of given attributes
+	*
+	* @param  array $attributes
+	* @return void
+	*/
+	protected function checkAttributeFilters(array $attributes)
 	{
-		$this->appendTemplate = $this->configurator->templateNormalizer->normalizeTemplate($template);
-	}
-	protected function addScrapes(Tag $tag, array $scrapes)
-	{
-		if (!isset($scrapes[0]))
-			$scrapes = array($scrapes);
-		$attributes   = array();
-		$scrapeConfig = array();
-		foreach ($scrapes as $scrape)
+		foreach ($attributes as $attrConfig)
 		{
-			$attrNames = array();
-			foreach ((array) $scrape['extract'] as $extractRegexp)
+			if (empty($attrConfig['filterChain']))
 			{
-				$attributePreprocessor = new AttributePreprocessor($extractRegexp);
-				foreach ($attributePreprocessor->getAttributes() as $attrName => $attrRegexp)
+				continue;
+			}
+			foreach ($attrConfig['filterChain'] as $filter)
+			{
+				if (!FilterHelper::isAllowed($filter, $this->allowedFilters))
 				{
-					$attrNames[] = $attrName;
-					$attributes[$attrName]['regexp'] = $attrRegexp;
+					throw new RuntimeException("Filter '$filter' is not allowed in media sites");
 				}
 			}
-			$attrNames = \array_unique($attrNames);
-			\sort($attrNames);
-			if (!isset($scrape['match']))
-				$scrape['match'] = '//';
-			$entry = array($scrape['match'], $scrape['extract'], $attrNames);
-			if (isset($scrape['url']))
-				$entry[] = $scrape['url'];
-			$scrapeConfig[] = $entry;
 		}
-		$tag->filterChain->insert(1, __NAMESPACE__ . '\\Parser::scrape')
-		                 ->addParameterByName('scrapeConfig')
-		                 ->addParameterByName('cacheDir')
-		                 ->setVar('scrapeConfig', $scrapeConfig)
-		                 ->setJS('returnTrue');
+	}
+
+	/**
+	* Convert given regexp to a [regexp, map] pair
+	*
+	* @param  string $regexp Original regexp
+	* @return array          [regexp, [list of captures' names]]
+	*/
+	protected function convertRegexp($regexp)
+	{
+		$regexp = new Regexp($regexp);
+
+		return [$regexp, $regexp->getCaptureNames()];
+	}
+
+	/**
+	* Convert a list of regexps
+	*
+	* @param  string[] $regexps Original list
+	* @return array[]           Converted list
+	*/
+	protected function convertRegexps(array $regexps)
+	{
+		return array_map([$this, 'convertRegexp'], $regexps);
+	}
+
+	/**
+	* Convert all regexps in a scraping config
+	*
+	* @param  array $config Original config
+	* @return array         Converted config
+	*/
+	protected function convertScrapeConfig(array $config)
+	{
+		$config['extract'] = $this->convertRegexps($config['extract']);
+		$config['match']   = $this->convertRegexps($config['match']);
+
+		return $config;
+	}
+
+	/**
+	* Convert all regexps in a list of scraping configs
+	*
+	* @param  array[] $scrapes Original config
+	* @return array[]          Converted config
+	*/
+	protected function convertScrapes(array $scrapes)
+	{
+		return array_map([$this, 'convertScrapeConfig'], $scrapes);
+	}
+
+	/**
+	* Create the default MEDIA tag
+	*
+	* @return void
+	*/
+	protected function createMediaTag()
+	{
+		$tag = $this->configurator->tags->add($this->tagName);
+
+		// This tag should not need to be closed and should not contain itself
+		$tag->rules->autoClose();
+		$tag->rules->denyChild($this->tagName);
+
+		// Empty this tag's filter chain and add our tag filter
+		$tag->filterChain->clear();
+		$tag->filterChain
+		    ->append(__NAMESPACE__ . '\\Parser::filterTag')
+		    ->resetParameters()
+		    ->addParameterByName('tag')
+		    ->addParameterByName('parser')
+		    ->addParameterByName('MediaEmbed.hosts')
+		    ->addParameterByName('MediaEmbed.sites')
+		    ->addParameterByName('cacheDir')
+		    ->setJS(file_get_contents(__DIR__ . '/Parser/tagFilter.js'));
+	}
+
+	/**
+	* Return the list of named captures from a list of [regexp, map] pairs
+	*
+	* @param  array[] $regexps List of [regexp, map] pairs
+	* @return string[]
+	*/
+	protected function getAttributeNamesFromRegexps(array $regexps)
+	{
+		$attrNames = [];
+		foreach ($regexps as list($regexp, $map))
+		{
+			$attrNames += array_flip(array_filter($map));
+		}
+
+		return $attrNames;
+	}
+
+	/**
+	* Get the attributes config for given site config
+	*
+	* @param  array $siteConfig Site's config
+	* @return array             Map of [attrName => attrConfig]
+	*/
+	protected function getAttributesConfig(array $siteConfig)
+	{
+		$attrNames = $this->getAttributeNamesFromRegexps($siteConfig['extract']);
+		foreach ($siteConfig['scrape'] as $scrapeConfig)
+		{
+			$attrNames += $this->getAttributeNamesFromRegexps($scrapeConfig['extract']);
+		}
+
+		$attributes = $siteConfig['attributes'] + array_fill_keys(array_keys($attrNames), []);
+		foreach ($attributes as &$attrConfig)
+		{
+			$attrConfig += ['required' => false];
+		}
+		unset($attrConfig);
+
 		return $attributes;
 	}
-	protected function appendFilter(Attribute $attribute, $filter)
-	{
-		if (!\in_array($filter, $this->allowedFilters, \true))
-			throw new RuntimeException("Filter '" . $filter . "' is not allowed");
-		$attribute->filterChain->append($this->configurator->attributeFilters[$filter]);
-	}
-	protected function getSchemes()
-	{
-		$schemes = array();
-		foreach ($this->collection as $site)
-			if (isset($site['scheme']))
-				foreach ((array) $site['scheme'] as $scheme)
-					$schemes[] = $scheme;
-		return $schemes;
-	}
+
+	/**
+	* Validate and normalize a site ID
+	*
+	* @param  string $siteId
+	* @return string
+	*/
 	protected function normalizeId($siteId)
 	{
-		$siteId = \strtolower($siteId);
-		if (!\preg_match('(^[a-z0-9]+$)', $siteId))
+		$siteId = strtolower($siteId);
+
+		if (!preg_match('(^[a-z0-9]+$)', $siteId))
+		{
 			throw new InvalidArgumentException('Invalid site ID');
+		}
+
 		return $siteId;
 	}
 }

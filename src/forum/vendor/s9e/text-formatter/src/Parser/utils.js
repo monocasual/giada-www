@@ -1,11 +1,10 @@
 /**
-* @param  {!string} str
-* @return {!string}
+* @param  {string} str
+* @return {string}
 */
 function html_entity_decode(str)
 {
 	var b = document.createElement('b');
-
 	html_entity_decode = function (str)
 	{
 		// We escape left brackets so that we don't inadvertently evaluate some nasty HTML such as
@@ -13,14 +12,14 @@ function html_entity_decode(str)
 		b.innerHTML = str.replace(/</g, '&lt;');
 
 		return b.textContent;
-	}
+	};
 
 	return html_entity_decode(str);
 }
 
 /**
-* @param  {!string} str
-* @return {!string}
+* @param  {string} str
+* @return {string}
 */
 function htmlspecialchars_compat(str)
 {
@@ -33,7 +32,8 @@ function htmlspecialchars_compat(str)
 	return str.replace(
 		/[<>&"]/g,
 		/**
-		* @param {!string} c
+		* @param  {string} c
+		* @return {string}
 		*/
 		function(c)
 		{
@@ -43,8 +43,8 @@ function htmlspecialchars_compat(str)
 }
 
 /**
-* @param  {!string} str
-* @return {!string}
+* @param  {string} str
+* @return {string}
 */
 function htmlspecialchars_noquotes(str)
 {
@@ -56,7 +56,8 @@ function htmlspecialchars_noquotes(str)
 	return str.replace(
 		/[<>&]/g,
 		/**
-		* @param {!string} c
+		* @param  {string} c
+		* @return {string}
 		*/
 		function(c)
 		{
@@ -66,7 +67,26 @@ function htmlspecialchars_noquotes(str)
 }
 
 /**
-* @return {!boolean}
+* @param  {string} str
+* @return {string}
+*/
+function rawurlencode(str)
+{
+	return encodeURIComponent(str).replace(
+		/[!'()*]/g,
+		/**
+		* @param  {string} c
+		* @return {string}
+		*/
+		function(c)
+		{
+			return '%' + c.charCodeAt(0).toString(16).toUpperCase();
+		}
+	);
+}
+
+/**
+* @return {boolean}
 */
 function returnFalse()
 {
@@ -74,7 +94,7 @@ function returnFalse()
 }
 
 /**
-* @return {!boolean}
+* @return {boolean}
 */
 function returnTrue()
 {

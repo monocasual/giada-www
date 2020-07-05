@@ -1,79 +1,107 @@
 <?php
 
-/*
+/**
 * @package   s9e\TextFormatter
-* @copyright Copyright (c) 2010-2017 The s9e Authors
+* @copyright Copyright (c) 2010-2019 The s9e Authors
 * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
 */
 namespace s9e\TextFormatter\Configurator\JavaScript\Minifiers;
+
 use RuntimeException;
 use s9e\TextFormatter\Configurator\JavaScript\Minifier;
+
 class ClosureCompilerApplication extends Minifier
 {
-	public $closureCompilerBin;
+	/**
+	* @var string Command used to invoke the Closure Compiler application
+	*/
+	public $command;
+
+	/**
+	* @var string Closure Compiler's compilation level
+	*/
 	public $compilationLevel = 'ADVANCED_OPTIMIZATIONS';
-	public $excludeDefaultExterns = \true;
-	public $javaBin = 'java';
+
+	/**
+	* @var bool Whether to exclude Closure Compiler's default externs
+	*/
+	public $excludeDefaultExterns = true;
+
+	/**
+	* @var string Extra options to be passed to the Closure Compiler application
+	*/
 	public $options = '--use_types_for_optimization';
-	public function __construct($filepath = \null)
+
+	/**
+	* Constructor
+	*
+	* @param string $command Command to execute
+	*/
+	public function __construct($command)
 	{
-		if (isset($filepath))
-		{
-			$this->closureCompilerBin = $filepath;
-			$this->testFilepaths();
-		}
+		$this->command = $command;
 	}
+
+	/**
+	* {@inheritdoc}
+	*/
 	public function getCacheDifferentiator()
 	{
-		$key = array(
+		$key = [
+			$this->command,
 			$this->compilationLevel,
 			$this->excludeDefaultExterns,
-			$this->options,
-			$this->getClosureCompilerBinHash()
-		);
+			$this->options
+		];
 		if ($this->excludeDefaultExterns)
-			$key[] = \file_get_contents(__DIR__ . '/../externs.application.js');
+		{
+			$key[] = file_get_contents(__DIR__ . '/../externs.application.js');
+		}
+
 		return $key;
 	}
+
+	/**
+	* Compile given JavaScript source via the Closure Compiler application
+	*
+	* @param  string $src JavaScript source
+	* @return string      Compiled source
+	*/
 	public function minify($src)
 	{
-		$this->testFilepaths();
 		$options = ($this->options) ? ' ' . $this->options : '';
+
+		// Add our custom externs if default externs are disabled
 		if ($this->excludeDefaultExterns && $this->compilationLevel === 'ADVANCED_OPTIMIZATIONS')
-			$options .= ' --externs ' . __DIR__ . '/../externs.application.js --env=CUSTOM';
-		$crc     = \crc32($src);
-		$inFile  = \sys_get_temp_dir() . '/' . $crc . '.js';
-		$outFile = \sys_get_temp_dir() . '/' . $crc . '.min.js';
-		\file_put_contents($inFile, $src);
-		$cmd = \escapeshellcmd($this->javaBin)
-		     . ' -jar ' . \escapeshellarg($this->closureCompilerBin)
-		     . ' --compilation_level ' . \escapeshellarg($this->compilationLevel)
-		     . $options
-		     . ' --js ' . \escapeshellarg($inFile)
-		     . ' --js_output_file ' . \escapeshellarg($outFile);
-		\exec($cmd . ' 2>/dev/null', $output, $return);
-		\unlink($inFile);
-		if (\file_exists($outFile))
 		{
-			$src = \trim(\file_get_contents($outFile));
-			\unlink($outFile);
+			$options .= ' --externs ' . __DIR__ . '/../externs.application.js --env=CUSTOM';
 		}
+
+		$crc     = crc32($src);
+		$inFile  = sys_get_temp_dir() . '/' . $crc . '.js';
+		$outFile = sys_get_temp_dir() . '/' . $crc . '.min.js';
+		file_put_contents($inFile, $src);
+
+		$cmd = $this->command
+		     . ' --compilation_level ' . escapeshellarg($this->compilationLevel)
+		     . $options
+		     . ' --js ' . escapeshellarg($inFile)
+		     . ' --js_output_file ' . escapeshellarg($outFile);
+
+		exec($cmd . ' 2>&1', $output, $return);
+		unlink($inFile);
+
+		if (file_exists($outFile))
+		{
+			$src = trim(file_get_contents($outFile));
+			unlink($outFile);
+		}
+
 		if (!empty($return))
-			throw new RuntimeException('An error occured during minification');
+		{
+			throw new RuntimeException('An error occured during minification: ' . implode("\n", $output));
+		}
+
 		return $src;
-	}
-	protected function getClosureCompilerBinHash()
-	{
-		static $cache = array();
-		if (!isset($cache[$this->closureCompilerBin]))
-			$cache[$this->closureCompilerBin] = \md5_file($this->closureCompilerBin);
-		return $cache[$this->closureCompilerBin];
-	}
-	protected function testFilepaths()
-	{
-		if (!isset($this->closureCompilerBin))
-			throw new RuntimeException('No path set for Closure Compiler');
-		if (!\file_exists($this->closureCompilerBin))
-			throw new RuntimeException('Cannot find Closure Compiler at ' . $this->closureCompilerBin);
 	}
 }

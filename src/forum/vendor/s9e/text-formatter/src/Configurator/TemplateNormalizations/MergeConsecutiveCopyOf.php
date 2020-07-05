@@ -1,32 +1,41 @@
 <?php
 
-/*
+/**
 * @package   s9e\TextFormatter
-* @copyright Copyright (c) 2010-2017 The s9e Authors
+* @copyright Copyright (c) 2010-2019 The s9e Authors
 * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
 */
 namespace s9e\TextFormatter\Configurator\TemplateNormalizations;
+
 use DOMElement;
-use DOMXPath;
-use s9e\TextFormatter\Configurator\TemplateNormalization;
-class MergeConsecutiveCopyOf extends TemplateNormalization
+
+class MergeConsecutiveCopyOf extends AbstractNormalization
 {
-	public function normalize(DOMElement $template)
+	/**
+	* {@inheritdoc}
+	*/
+	protected $queries = ['//xsl:copy-of'];
+
+	/**
+	* {@inheritdoc}
+	*/
+	protected function normalizeElement(DOMElement $element)
 	{
-		$xpath = new DOMXPath($template->ownerDocument);
-		foreach ($xpath->query('//xsl:copy-of') as $node)
-			$this->mergeCopyOfSiblings($node);
-	}
-	protected function mergeCopyOfSiblings(DOMElement $node)
-	{
-		while ($this->nextSiblingIsCopyOf($node))
+		while ($this->nextSiblingIsCopyOf($element))
 		{
-			$node->setAttribute('select', $node->getAttribute('select') . '|' . $node->nextSibling->getAttribute('select'));
-			$node->parentNode->removeChild($node->nextSibling);
+			$element->setAttribute('select', $element->getAttribute('select') . '|' . $element->nextSibling->getAttribute('select'));
+			$element->parentNode->removeChild($element->nextSibling);
 		}
 	}
-	protected function nextSiblingIsCopyOf(DOMElement $node)
+
+	/**
+	* Test whether the next sibling to given element is an xsl:copy-of element
+	*
+	* @param  DOMElement $element Context node
+	* @return bool
+	*/
+	protected function nextSiblingIsCopyOf(DOMElement $element)
 	{
-		return ($node->nextSibling && $node->nextSibling->localName === 'copy-of' && $node->nextSibling->namespaceURI === self::XMLNS_XSL);
+		return ($element->nextSibling && $this->isXsl($element->nextSibling, 'copy-of'));
 	}
 }
