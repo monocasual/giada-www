@@ -37,19 +37,23 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'ACP_USER_UTILS'			=> 'User utilities',
+	'ACP_USER_UTILS'				=> 'User utilities',
+	'AUTOGROUPS_TYPE_PPACCPT'		=> 'Privacy Policy accepted',
 
-	'COOKIE_POLICY'				=> 'Privacy & Cookie policy',
+	'COOKIE_POLICY'					=> 'Privacy & Cookie policies',
 
-	'POLICY_RESET_LOG'			=> '<strong>Privacy policy acceptance reset</strong>',
-	'PRIVACY_DATA'				=> 'Privacy data',
-	'PRIVACY_EDIT_CREATED'		=> 'New privacy policy created',
-	'PRIVACY_EDIT_UPDATED'		=> 'Privacy policy updated',
-	'PRIVACY_LIST'				=> 'Privacy list',
-	'PRIVACY_POLICY'			=> 'Privacy policy',
-	'PRIVACY_POLICY_ADD_LOG'	=> '<strong>Privacy policy added</strong>',
-	'PRIVACY_POLICY_EDIT'		=> 'Edit language data',
-	'PRIVACY_POLICY_EDIT_LOG'	=> '<strong>Privacy policy edited</strong>',
-	'PRIVACY_POLICY_LOG'		=> '<strong>Privacy policy settings updated</strong>',
-	'PRIVACY_POLICY_MANAGE'		=> 'Privacy policy settings',
+	'POLICY_RESET_LOG'				=> '<strong>Privacy policy acceptance reset for all users</strong>',
+	'POLICY_USER_ACCEPT_LOG'		=> '<strong>Privacy policy acceptance set for user</strong><br>»» %1$s',
+	'POLICY_USER_UNSET_LOG'			=> '<strong>Privacy policy acceptance unset for user</strong><br>»» %1$s',
+	'PRIVACY_DATA'					=> 'Privacy data',
+	'PRIVACY_LIST'					=> 'Privacy list',
+	'PRIVACY_POLICY'				=> 'Privacy policy',
+	'PRIVACY_POLICY_ADD_LOG'		=> '<strong>Privacy policy added</strong><br>»» %1$s',
+	'PRIVACY_POLICY_EDIT'			=> 'Policy files editor',
+	'PRIVACY_POLICY_EDIT_LOG'		=> '<strong>Privacy policy edited</strong><br>»» %1$s',
+	'PRIVACY_POLICY_LOG'			=> '<strong>Privacy policy settings updated</strong>',
+	'PRIVACY_POLICY_MANAGE'			=> 'Privacy policy settings',
+
+	'TAPATALK_INSTALLED'			=> 'Tapatalk detected',
+	'TAPATALK_INSTALLED_EXPLAIN'	=> 'The Tapatalk extension has been detected as being installed on this board which is incompatible with the Privacy Policy extension.<br><br>This means that any Tapatalk users accessing this board will not be subject to the requirements of the Privacy Policy.',
 ));

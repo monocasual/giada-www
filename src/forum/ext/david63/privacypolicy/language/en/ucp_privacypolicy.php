@@ -41,7 +41,7 @@ $lang = array_merge($lang, array(
 
 	'REMOVE_ACCOUNT'				=> 'Click this link to send an email to the board Admin requesting the removal of your account',
 	'REMOVE_MY_ACCOUNT'				=> 'Please Remove My Account',
-	'REMOVE_MY_ACCOUNT_BODY'		=> 'I no longer wish to be a member of this board and request that my details are removed in accordance with the GDPR (2018) regulations.%1$sMy Username is %2$s',
+	'REMOVE_MY_ACCOUNT_BODY'		=> 'I no longer wish to be a member of this board and request that my details are removed in accordance with the GDPR (2018) regulations.%1$sMy Username is %2$s%1$s%1$sThe reason that I wish to be removed is [please enter reason. If no reason is entered then your details will not be removed.]',
 
 	'UCP_PRIVACY_POLICY_EXPLAIN'	=> 'Below you will find the details of your personal data that we store on this site.',
 	'UCP_PRIVACY_TITLE'				=> 'Privacy Policy Data',

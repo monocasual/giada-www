@@ -1,0 +1,39 @@
+{% include 'overall_header.html' %}
+{% INCLUDECSS '@' ~ NAMESPACE ~ '/css/admin_forms.css' %}
+
+<a name="maincontent"></a>
+
+{% if S_BACK %}
+	<a href="{{ U_BACK }}" style="float: {{ S_CONTENT_FLOW_END }};">&laquo; {{ lang('BACK') }}</a>
+	<br>
+{% endif %}
+
+<div class="head-panel">
+	<div class="head-title">{{ HEAD_TITLE }}</div>
+	<div class="head-description">{{ HEAD_DESCRIPTION }}</div>
+	<div class="version-wrapper" style="float: {{ S_CONTENT_FLOW_END }};">
+		<div class="version-text">{{ lang('VERSION') }}</div>
+		<div class="version-data">{{ VERSION_NUMBER }}</div>
+	</div>
+	<br>
+</div>
+
+{% if S_ERROR %}
+	<div class="head-panel-error">
+		<div class="head-title">{{ ERROR_TITLE }}</div>
+		<div class="head-description">{{ ERROR_DESCRIPTION }}</div>
+	</div>
+{% endif %}
+
+{% if S_VERSION_CHECK %}
+	{% if S_VERSION_CHECK == 'fail' %}
+		<div class="head-panel-noversion">
+			<div class="head-description">{{ lang('NO_VERSION_EXPLAIN') }}</div>
+		</div>
+	{% else %}
+		<div class="head-panel-version">
+			<div class="head-title">{{ lang('NEW_VERSION', S_VERSION_CHECK) }}</div>
+			<div class="head-description">{{ lang('NEW_VERSION_EXPLAIN', S_VERSION_CHECK, DOWNLOAD) }}</div>
+		</div>
+	{% endif %}
+{% endif %}

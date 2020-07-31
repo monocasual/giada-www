@@ -15,14 +15,15 @@ class ext extends \phpbb\extension\base
 
 	/**
 	 * Check the phpBB version to determine if this extension can be enabled.
-	 * The path of INCLUDECSS has changed since 3.1.3. This check is added to prevent usage with older versions where CSS will not being included.
+	 * Sortables extends from phpBB's default Q&A captcha. Since phpBB 3.2.6 object arguments were no longer
+	 * passed by reference which resulted in "declaration should be compatible" errors.
 	 *
 	 * @return boolean
 	 */
 	public function is_enableable()
 	{
 		$config = $this->container->get('config');
-		return version_compare($config['version'], '3.1.3', '>=');
+		return version_compare($config['version'], '3.2.6', '>=');
 	}
 
 	/**

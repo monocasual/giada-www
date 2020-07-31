@@ -36,41 +36,41 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, array(
-	'CAPTCHA_SORTABLES'				=> 'Sortables CAPTCHA',
-	'CONFIRM_QUESTION_EXPLAIN'		=> 'Per evitare registrazioni automatiche si prega di trascinare le opzioni nell\'elenco corretto.',
-	'CONFIRM_QUESTION_EXPLAIN_NOJS'	=> 'Per evitare registrazioni automatiche si prega di selezionare le opzioni all\'elenco corretto.', // With JavaScript disabled
-	'CONFIRM_QUESTION_WRONG'		=> 'Si prega di verificare l\'ordine degli oggetti.',
+	'CAPTCHA_SORTABLES'				=> 'CAPTCHA ordinabili',
+	'CONFIRM_QUESTION_EXPLAIN'		=> 'Per evitare registrazioni automatiche, trascinare le opzioni nell’elenco corretto.',
+	'CONFIRM_QUESTION_EXPLAIN_NOJS'	=> 'Per evitare registrazioni automatiche, selezionare le opzioni dell’elenco corretto.', // With JavaScript disabled
+	'CONFIRM_QUESTION_WRONG'		=> 'Verificare l’ordine degli oggetti.',
 
 	'QUESTION_ANSWERS'			=> 'Risposte',
-	'ANSWERS_EXPLAIN'			=> 'L\'opzione per questa colonna. Si prega di scrivere una opzione per linea.',
+	'ANSWERS_EXPLAIN'			=> 'L’opzione per questa colonna. Scrivere un’opzione per linea.',
 	'CONFIRM_QUESTION'			=> 'Domanda',
-	'CHANGES_SUBMIT'			=> 'Invia cambiamenti',
+	'CHANGES_SUBMIT'			=> 'Applica modifiche',
 
-	'EDIT_QUESTION'				=> 'Modifica Domanda',
-	'QUESTIONS'					=> 'Elenco Domande ordinabili',
-	'QUESTIONS_EXPLAIN'			=> 'Qui è possibile aggiungere e modificare le domande per la registrazione. Per poter usare questo plugin è necessario fornire almeno una domanda nel forum predefinito della lingua. Le domande devono essere semplici per i target di riferimento. Gli utenti vedranno tutte le opzioni in una colonna e avranno la possibilità di ordinare la colonna corretta. Inoltre, bisogna ricordarsi di cambiare regolarmente le domande. ',
-	'QUESTION_DELETED'			=> 'Domanda cancellata',
+	'EDIT_QUESTION'				=> 'Modifica domanda',
+	'QUESTIONS'					=> 'Elenco domande ordinabili',
+	'QUESTIONS_EXPLAIN'			=> 'Qui è possibile aggiungere e modificare le domande per la registrazione. Per poter usare questo plugin è necessario fornire almeno una domanda nella lingua predefinita della board. Le domande devono essere semplici per i potenziali utenti. Gli utenti vedranno tutte le opzioni in una colonna e avranno la possibilità di ordinare nella colonna corretta. Inoltre, non dimenticare di cambiare le domande regolarmente.',
+	'QUESTION_DELETED'			=> 'Domanda rimossa',
 	'QUESTION_LANG'				=> 'Lingua',
-	'QUESTION_LANG_EXPLAIN'		=> 'La lingua per questa domanda e le sue opzioni sono scritte in',
-	'QUESTION_SORT'				=> 'Elenco predefinito ordinabile',
-	'QUESTION_SORT_EXPLAIN'		=> 'In quale colonna devono essere visualizzate le risposte di default',
+	'QUESTION_LANG_EXPLAIN'		=> 'La lingua in cui sono scritte questa domanda e le opzioni di risposta.',
+	'QUESTION_SORT'				=> 'Elenco ordinabile predefinito',
+	'QUESTION_SORT_EXPLAIN'		=> 'La colonna in cui sono mostrate le opzioni per impostazione predefinita.',
 
-	'COLUMN_LEFT'				=> 'Colonna di sinistra',
-	'COLUMN_RIGHT'				=> 'Colonna di destra',
+	'COLUMN_LEFT'				=> 'Colonna sinistra',
+	'COLUMN_RIGHT'				=> 'Colonna destra',
 	'COLUMN_NAME'				=> 'Nome colonna',
-	'COLUMN_NAME_LEFT_EXPLAIN'	=> 'Come: Cose che ho bisogno',
-	'COLUMN_NAME_RIGHT_EXPLAIN'	=> 'Come: Cose che non ho bisogno',
+	'COLUMN_NAME_LEFT_EXPLAIN'	=> 'Es.: “Oggetti di cui ho bisogno”',
+	'COLUMN_NAME_RIGHT_EXPLAIN'	=> 'Es.: “Oggetti di cui non ho bisogno”',
 
-	'DEMO_QUESTION'				=> 'Che cosa è incluso nella zuppa di pomodoro',
+	'DEMO_QUESTION'				=> 'L’ingrediente per il sugo di pomodoro',
 	'DEMO_NAME_LEFT'			=> 'In padella',
-	'DEMO_NAME_RIGHT'			=> 'Buttare via',
+	'DEMO_NAME_RIGHT'			=> 'Butta via',
 	'DEMO_OPTION_BANANAS'		=> 'Banane',
 	'DEMO_OPTION_TOMATOES'		=> 'Pomodori',
 	'DEMO_OPTION_APPLES'		=> 'Mele',
-	'DEMO_PREVIEW_ONLY'			=> 'Non è possibile spostare le opzioni in un\' anteprima.',
+	'DEMO_PREVIEW_ONLY'			=> 'Non è possibile spostare le opzioni nell’anteprima.',
 
 	'QUESTION_TEXT'				=> 'Domanda',
-	'QUESTION_TEXT_EXPLAIN'		=> 'Spiega in che modo le opzioni devono essere ordinati nelle colonne.',
+	'QUESTION_TEXT_EXPLAIN'		=> 'Spiega in che modo le opzioni devono essere ordinate nelle colonne.',
 
-	'SORTABLES_ERROR_MSG'		=> 'Si prega di compilare tutti i campi e inserire almeno una opzione per entrambe le colonne.',
+	'SORTABLES_ERROR_MSG'		=> 'Compilare tutti i campi e inserire almeno un’opzione per entrambe le colonne.',
 ));

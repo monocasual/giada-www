@@ -37,7 +37,7 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'CAPTCHA_SORTABLES'				=> 'Sortables CAPTCHA',
 	'CONFIRM_QUESTION_EXPLAIN'		=> 'Per favor, arrossega les opcions a la llista correcta, per a evitar registres automàtics.',
-	'CONFIRM_QUESTION_EXPLAIN_NOJS'	=> 'Per favor selecciona les opcions d\'abaix a la llista correcta per evitar registres automàtics.', // With JavaScript disabled
+	'CONFIRM_QUESTION_EXPLAIN_NOJS'	=> 'Per favor selecciona les opcions d’abaix a la llista correcta per evitar registres automàtics.', // With JavaScript disabled
 	'CONFIRM_QUESTION_WRONG'		=> 'Tens mal ordenats els elements a la llista correcta de la pregunta de confirmació.',
 
 	'QUESTION_ANSWERS'			=> 'Respostes',
@@ -47,12 +47,12 @@ $lang = array_merge($lang, array(
 
 	'EDIT_QUESTION'				=> 'Editar la pregunta',
 	'QUESTIONS'					=> 'Preguntes sobre llistes de classificació',
-	'QUESTIONS_EXPLAIN'			=> 'Aquí pots afegir i editar les qüestions que se li poden preguntar en el registre. Has de proporcionar almenys una pregunta en l\'idioma per defecte del fòrum per utilitzar aquest complement. Les preguntes han de ser fàcils per al seu públic objectiu. Els usuaris veuran totes les opcions en una columna i ha d\'ordenar-les a la columna correcta. A més, recordi canviar les preguntes amb regularitat.',
+	'QUESTIONS_EXPLAIN'			=> 'Aquí pots afegir i editar les qüestions que se li poden preguntar en el registre. Has de proporcionar almenys una pregunta en l’idioma per defecte del fòrum per utilitzar aquest complement. Les preguntes han de ser fàcils per al seu públic objectiu. Els usuaris veuran totes les opcions en una columna i ha d’ordenar-les a la columna correcta. A més, recordi canviar les preguntes amb regularitat.',
 	'QUESTION_DELETED'			=> 'Pregunta esborrada',
 	'QUESTION_LANG'				=> 'Llengua',
 	'QUESTION_LANG_EXPLAIN'		=> 'Llengua en la qual aquesta pregunta i les seves opciones estan escrites.',
 	'QUESTION_SORT'				=> 'Llista de classificació per defecte',
-	'QUESTION_SORT_EXPLAIN'		=> 'En quina columna s\'haurien de mostrar totes les respostes per defecte.',
+	'QUESTION_SORT_EXPLAIN'		=> 'En quina columna s’haurien de mostrar totes les respostes per defecte.',
 
 	'COLUMN_LEFT'				=> 'Columna esquerra',
 	'COLUMN_RIGHT'				=> 'Columna dreta',
@@ -60,7 +60,7 @@ $lang = array_merge($lang, array(
 	'COLUMN_NAME_LEFT_EXPLAIN'	=> 'Com: Coses que necessito',
 	'COLUMN_NAME_RIGHT_EXPLAIN'	=> 'Com: Coses que no necessito',
 
-	'DEMO_QUESTION'				=> 'Què s\'ha d\'incloure per una sopa de tomàquet?',
+	'DEMO_QUESTION'				=> 'Què s’ha d’incloure per una sopa de tomàquet?',
 	'DEMO_NAME_LEFT'			=> 'A la paella',
 	'DEMO_NAME_RIGHT'			=> 'Llençar',
 	'DEMO_OPTION_BANANAS'		=> 'Plàtans',
@@ -69,7 +69,7 @@ $lang = array_merge($lang, array(
 	'DEMO_PREVIEW_ONLY'			=> 'No pots moure la opcions en una previsualització.',
 
 	'QUESTION_TEXT'				=> 'Pregunta',
-	'QUESTION_TEXT_EXPLAIN'		=> 'Explica com s\'haurien d\'ordenar les opcions en les columnes.',
+	'QUESTION_TEXT_EXPLAIN'		=> 'Explica com s’haurien d’ordenar les opcions en les columnes.',
 
 	'SORTABLES_ERROR_MSG'		=> 'Per favor, omple tots els camps i introdueix al menys una opció per ambdues columnes.',
 ));

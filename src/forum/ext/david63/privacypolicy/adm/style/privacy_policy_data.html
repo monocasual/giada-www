@@ -1,59 +1,65 @@
-{% include 'overall_header.html' %}
-{% INCLUDECSS '@david63_privacypolicy/admin_forms.css' %}
+{% include '@' ~ NAMESPACE ~ '/head_panel.html' %}
 
-{% if not S_CONFIRM %}
-	<a href="{{ U_BACK }}" style="float: {{ S_CONTENT_FLOW_END }};">&laquo; {{ lang('BACK') }}</a>
-{% endif %}
-
-<div class="head-panel">
-	<div class="head-title">{{ lang('ACP_PRIVACY_TITLE') }}</div>
-	<div class="head-description">{{ lang('ACP_PRIVACY_POLICY_EXPLAIN') }}</div>
-	<div class="version-wrapper" style="float: {{ S_CONTENT_FLOW_END }};">
-		<div class="version-text">{{ lang('VERSION') }}</div>
-		<div class="version-data">{{ PRIVACY_POLICY_VERSION }}</div>
-	</div>
-	<br />
-</div>
+<form id="privacy_policy_data" method="post" action="{U_ACTION}">
 
 {% if S_CONFIRM %}
-	<form id="privacy_policy_data" method="post" action="{U_ACTION}">
-		<fieldset>
-			<dl>
-				<dt><label for="privacy_username">{{ lang('SELECT_USERNAME') }}{{ lang('COLON') }}</label><br /><span>{{ lang('SELECT_USERNAME_EXPLAIN') }}</span></dt>
-				<dd>
-					<input class="textbox" type="text" id="privacy_username" name="privacy_username" size="25" maxlength="255" />
-				</dd>
-				<dd>
-					[ <a href="{{ U_FIND_USERNAME }}" onclick="find_username(this.href); return false;">{{ lang('FIND_USERNAME') }}</a> ]
-				</dd>
-			</dl>
-		</fieldset>
+	<fieldset>
+		<dl>
+			<dt><label for="privacy_username">{{ lang('SELECT_USERNAME') }}{{ lang('COLON') }}</label><br><span>{{ lang('SELECT_USERNAME_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox" type="text" id="privacy_username" name="privacy_username" size="25" maxlength="255" />
+			</dd>
 
-		<fieldset class="submit-buttons">
-			<legend>{{ lang('SUBMIT}') }}</legend>
-			<input class="adm-button" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+			<dd>
+				[ <a href="{{ U_FIND_USERNAME }}" onclick="find_username(this.href); return false;">{{ lang('FIND_USERNAME') }}</a> ]
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<p class="submit-buttons">
+			<input class="adm-button" type="submit" id="details" name="details" value="{{ lang('SUBMIT') }}" />&nbsp;
 			<input class="adm-button" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
 			{{ S_FORM_TOKEN }}
-			{{ S_HIDDEN_FIELDS }}
-		</fieldset>
-	</form>
+		</p>
+	</fieldset>
 {% else %}
 	<fieldset>
 		<legend>{{ BANNER }}</legend>
+
 		<dl><dt>{{ lang('USERNAME') }}</dt><dd>{{ USER }}</dd></dl>
 		<dl><dt>{{ lang('BIRTHDAY') }}</dt><dd>{{ BIRTHDAY }}</dd></dl>
 		<dl><dt>{{ lang('REG_DATE') }}</dt><dd>{{ REG_DATE }}</dd></dl>
 		<dl><dt>{{ lang('ACCEPT_DATE') }}</dt><dd>{{ ACCEPT_DATE }}</dd></dl>
 		<dl><dt>{{ lang('EMAIL') }}</dt><dd>{{ EMAIL }}</dd></dl>
+
 		{% EVENT david63_privacypolicy_acp_data_after %}
+
 		{% for cpf in cpf_data %}
 			<dl><dt>{{ cpf.FIELD_NAME }}</dt><dd>{{ cpf.FIELD_DATA }}</dd></dl>
 		{% endfor %}
+
 		{% EVENT david63_privacypolicy_acp_cpf_after %}
+
 		<dl><dt>{{ lang('REG_IP') }}</dt><dd>{{ REG_IP }}</dd></dl>
 		<dl><dt>{{ lang('USER_IPS') }}</dt><dd><div class="ip-list">{{ USER_IPS }}</div></dd></dl>
+
 		{% EVENT david63_privacypolicy_acp_ip_after %}
 	</fieldset>
+
+	<fieldset>
+		<p class="submit-buttons">
+			{% if S_ACCEPTED %}
+				<input class="adm-button" type="submit" id="unaccept" name="unaccept" value="{{ lang('ACCEPT_REMOVE') }}" />
+			{% else %}
+				<input class="adm-button" type="submit" id="accept" name="accept" value="{{ lang('ACCEPT_ME') }}" />
+			{% endif %}
+			{{ S_FORM_TOKEN }}
+			{{ S_HIDDEN_FIELDS }}
+		</p>
+	</fieldset>
 {% endif %}
+
+</form>
 
 {% include 'overall_footer.html' %}

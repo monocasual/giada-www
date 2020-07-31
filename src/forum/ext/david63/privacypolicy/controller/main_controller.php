@@ -9,15 +9,17 @@
 
 namespace david63\privacypolicy\controller;
 
-use \phpbb\exception\http_exception;
-use \phpbb\user;
-use \phpbb\request\request;
-use \phpbb\controller\helper;
-use \phpbb\db\driver\driver_interface;
-use \phpbb\template\template;
-use \phpbb\config\config;
-use \phpbb\language\language;
-use \david63\privacypolicy\core\privacypolicy_lang;
+use phpbb\exception\http_exception;
+use phpbb\user;
+use phpbb\request\request;
+use phpbb\controller\helper;
+use phpbb\db\driver\driver_interface;
+use phpbb\template\template;
+use phpbb\config\config;
+use phpbb\language\language;
+use david63\privacypolicy\core\privacypolicy_lang;
+use david63\privacypolicy\core\privacypolicy;
+use david63\privacypolicy\core\functions;
 
 class main_controller implements main_interface
 {
@@ -51,21 +53,35 @@ class main_controller implements main_interface
 	/** @var \david63\privacypolicy\core\privacypolicy_lang */
 	protected $privacypolicy_lang;
 
+	/** @var \david63\privacypolicy\core\privacypolicy */
+	protected $privacypolicy;
+
+	/** @var \david63\privacypolicy\core\functions */
+	protected $functions;
+
+	/** @var string phpBB tables */
+	protected $tables;
+
 	/**
 	* Constructor
 	*
 	* @param \phpbb\user									$user				User object
 	* @param \phpbb\request\request							$request			Request object
 	* @param \phpbb\controller\helper						$helper				Helper object
-	* @param phpbb_db_driver								$db					The db connection
+	* @param \phpbb_db_driver								$db					The db connection
 	* @param \phpbb\template\template						$template			Template object
 	* @param \phpbb\config\config							$config				Config object
 	* @param \phpbb\language\language						$language			Language object
 	* @param string											$phpbb_root_path	phpBB root path
 	* @param string											$php_ext            phpBB extension
 	* @param \david63\privacypolicy\core\privacypolicy_lang privacypolicy_lang  Methods for the extension
+	* @param \david63\privacypolicy\core\privacypolicy		privacypolicy		Methods for the extension
+	* @param \david63\privacypolicy\core\functions			$functions			Functions for the extension
+	* @param array											$tables			phpBB db tables
+	*
+	* @return \david63\privacypolicy\controller\acp_managemain
 	*/
-	public function __construct(user $user, request $request, helper $helper, driver_interface $db, template $template, config $config, language $language, $root_path, $php_ext, privacypolicy_lang $privacypolicy_lang)
+	public function __construct(user $user, request $request, helper $helper, driver_interface $db, template $template, config $config, language $language, $root_path, $php_ext, privacypolicy_lang $privacypolicy_lang, privacypolicy $privacypolicy, functions $functions, $tables)
 	{
 		$this->user					= $user;
 		$this->request				= $request;
@@ -77,6 +93,9 @@ class main_controller implements main_interface
 		$this->root_path			= $root_path;
 		$this->php_ext				= $php_ext;
 		$this->privacypolicy_lang 	= $privacypolicy_lang;
+		$this->privacypolicy		= $privacypolicy;
+		$this->functions			= $functions;
+		$this->tables				= $tables;
 	}
 
 	/**
@@ -104,11 +123,14 @@ class main_controller implements main_interface
 			if ($this->request->is_set_post('accept'))
 			{
 				// Set selected groups to 1
-				$sql = 'UPDATE ' . USERS_TABLE . '
+				$sql = 'UPDATE ' . $this->tables['users'] . '
 					SET user_accept_date = ' . time() . '
-					WHERE user_id = ' . $this->user->data['user_id'];
+					WHERE user_id = ' . (int) $this->user->data['user_id'];
 
 				$this->db->sql_query($sql);
+
+				// Update Auto Groups
+				$this->privacypolicy->update_auto_groups($this->user->data['user_id']);
 
 				redirect(append_sid("{$this->root_path}index.$this->php_ext"));
 			}
@@ -172,6 +194,8 @@ class main_controller implements main_interface
 			'COOKIE_PAGE_CORNERS'		=> $this->config['cookie_page_corners'],
 			'COOKIE_PAGE_RADIUS'		=> $this->config['cookie_page_radius'],
 			'COOKIE_PAGE_TXT_COLOUR'	=> $this->config['cookie_page_txt_colour'],
+
+			'NAMESPACE'					=> $this->functions->get_ext_namespace('twig'),
 
 			'S_COOKIE_CUSTOM_PAGE'		=> $this->config['cookie_custom_page'],
 		));

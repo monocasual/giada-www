@@ -9,7 +9,7 @@
 
 namespace david63\privacypolicy\migrations\v210;
 
-use \phpbb\db\migration\migration;
+use phpbb\db\migration\migration;
 
 class m1_initial_schema extends migration
 {
@@ -40,7 +40,7 @@ class m1_initial_schema extends migration
 						'privacy_id'        			=> array('UINT', null, 'auto_increment'),
 						'privacy_lang_name'				=> array('VCHAR:40', ''),
 						'privacy_lang_description'		=> array('VCHAR:40', ''),
-						'privacy_lang_id'				=> array('VCHAR:10', ''),
+						'privacy_lang_id'				=> array('VCHAR:30', ''),
 						'privacy_lang_text'				=> array('MTEXT', ''),
 						'privacy_text_bbcode_uid'		=> array('VCHAR:8', ''),
 						'privacy_text_bbcode_bitfield'	=> array('VCHAR:255', ''),

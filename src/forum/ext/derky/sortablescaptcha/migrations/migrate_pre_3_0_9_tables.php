@@ -38,8 +38,8 @@ class migrate_pre_3_0_9_tables extends \phpbb\db\migration\migration
 		);
 
 		// Loop through the tables
-		foreach ($old_new_tables as $old_table => $new_table) {
-
+		foreach ($old_new_tables as $old_table => $new_table)
+		{
 			// Create an insert buffer for the new table
 			$insert_buffer = new \phpbb\db\sql_insert_buffer($this->db, $new_table);
 

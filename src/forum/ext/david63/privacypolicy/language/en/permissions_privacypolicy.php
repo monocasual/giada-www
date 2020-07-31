@@ -41,5 +41,3 @@ $lang = array_merge($lang, array(
 	'ACL_A_PRIVACY_VIEW'	=> 'Can view user’s privacy data',
 	'ACL_U_PRIVACY_VIEW'	=> 'Can view privacy data',
 ));
-
-?>

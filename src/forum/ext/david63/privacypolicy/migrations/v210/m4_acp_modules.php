@@ -9,7 +9,7 @@
 
 namespace david63\privacypolicy\migrations\v210;
 
-use \phpbb\db\migration\migration;
+use phpbb\db\migration\migration;
 
 class m4_acp_modules extends migration
 {

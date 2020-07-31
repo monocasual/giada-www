@@ -1,13 +1,8 @@
 {% include 'ucp_header.html' %}
-{% INCLUDECSS '@david63_privacypolicy/cookie.css' %}
+{% INCLUDECSS '@' ~ PP_NAMESPACE ~ '/cookie.css' %}
 
 <h2>
 	{{ lang('UCP_PRIVACY_TITLE') }}
-	<div class="version-wrapper" style="float: {{ S_CONTENT_FLOW_END }};">
-		<div class="version-text">{{ lang('VERSION') }}</div>
-		<div class="version-data">{{ PRIVACY_POLICY_VERSION }}</div>
-	</div>
-	<br />
 </h2>
 
 <div class="panel">
@@ -27,24 +22,29 @@
 			<dt>{{ lang('REG_DATE') }}{{ lang('COLON') }}</dt><dd>{{ REG_DATE }}</dd>
 			<dt>{{ lang('ACCEPT_DATE') }}{{ lang('COLON') }}</dt><dd>{{ ACCEPT_DATE }}</dd>
 			<dt>{{ lang('EMAIL') }}{{ lang('COLON') }}</dt><dd>{{ EMAIL }}</dd>
+
 			{% EVENT david63_privacypolicy_ucp_data_after %}
+
 			{% for cpf in cpf_data %}
 				<dt>{{ cpf.FIELD_NAME }}{{ lang('COLON') }}</dt><dd>{{ cpf.FIELD_DATA }}</dd>
 			{% endfor %}
+
 			{% EVENT david63_privacypolicy_ucp_cpf_after %}
+
 			<dt>{{ lang('REG_IP') }}{{ lang('COLON') }}</dt><dd>{{ REG_IP }}</dd>
 			<dt>{{ lang('USER_IPS') }}{{ lang('COLON') }}</dt><dd><div class="ip-list">{{ USER_IPS }}</div></dd>
+			
 			{% EVENT david63_privacypolicy_ucp_ip_after %}
 		</dl>
 	</div>
 
-	<form id="ucp_privacy" method="post" action="{{ S_UCP_ACTION }}"{{ S_FORM_ENCTYPE }}>
+	<form id="privacy_policy_data" method="post" action="{{ S_UCP_ACTION }}"{{ S_FORM_ENCTYPE }}>
 		<fieldset class="submit-buttons">
 			<input type="submit" name="submit" class="download-btn" value="{{ lang('CSV_DOWNLOAD') }}" />
-			{{ S_FORM_TOKEN }}
 			{% if U_REMOVE_ME %}
 				<a href="{{ U_EMAIL }}">{{ lang('REMOVE_ACCOUNT') }}</a>
 			{% endif %}
+			{{ S_FORM_TOKEN }}
 		</fieldset>
 	</form>
 </div>

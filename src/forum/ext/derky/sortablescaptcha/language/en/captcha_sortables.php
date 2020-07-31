@@ -57,7 +57,7 @@ $lang = array_merge($lang, array(
 	'COLUMN_RIGHT'				=> 'Right column',
 	'COLUMN_NAME'				=> 'Column name',
 	'COLUMN_NAME_LEFT_EXPLAIN'	=> 'Like: Things I need',
-	'COLUMN_NAME_RIGHT_EXPLAIN'	=> 'Like: Things I don\'t need',
+	'COLUMN_NAME_RIGHT_EXPLAIN'	=> 'Like: Things I don’t need',
 
 	'DEMO_QUESTION'				=> 'What to include for tomato soup',
 	'DEMO_NAME_LEFT'			=> 'In the pan',

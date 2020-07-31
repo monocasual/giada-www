@@ -2,24 +2,19 @@
 * cookie.css
 **/
 
-#cookie-box {
-	height:auto;
-}
-
 .cookie-box {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
-	text-align:center;
-	display:inline-block;
+	text-align: center;
+	height: auto;
 	z-index: 10;
-	text-decoration:none;
-	padding:10px 10px 10px 10px;
-	position:fixed;
-	top:0px;
-	left:0;
-	width:100%;
+	text-decoration: none;
+	padding: 10px 10px 10px 10px;
+	position: fixed;
 	box-sizing: border-box;
+	opacity: 0.7;
+	border-radius: 8px 8px 8px 8px;
 }
 
 .cookie-box a {
@@ -49,10 +44,15 @@
   	margin-bottom: 15px;
 }
 
+.policy-text {
+	font-size: 12px;
+}
+
 /* Darker background on mouse-over */
 .download-btn:hover {
   	background-color: #4169E1;
 }
+
 
 /* ---------
 Version
@@ -63,29 +63,33 @@ Version
 }
 
 .version-text, .version-data {
-	width:auto;
-	height:17px;
+	width: auto;
+	height: 17px;
 	text-align: center;
 	color: #FFFFFF;
 	font-size: 0.8em;
-	font: / Tahoma, Arial, sans-serif;
 	font-weight: bold;
-	padding-left: 5px;
-	padding-right: 5px;
+	padding: 4px 5px 0 5px
 }
 
 .version-text {
-	-webkit-border-radius: 4px 0px 0px 4px;
-	-moz-border-radius: 4px 0px 0px 4px;
-	border-radius: 4px 0px 0px 4px;
-	background-color:#2E2E2E;
+	border-radius: 4px 0 0 4px;
+	background-color: #2E2E2E;
 	float: left;
 }
 
-.version-data {
-	-webkit-border-radius: 0px 4px 4px 0px;
-	-moz-border-radius: 0px 4px 4px 0px;
-	border-radius: 0px 4px 4px 0px;
-	background-color:#EB3B00;
+.rtl .version-text {
+	border-radius: 0 4px 4px 0;
 	float: right;
+}
+
+.version-data {
+	border-radius: 0 4px 4px 0;
+	background-color:#CC7A00;
+	float: right;
+}
+
+.rtl .version-data {
+	border-radius: 4px 0 0 4px;
+	float: left;
 }

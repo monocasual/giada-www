@@ -9,16 +9,15 @@
 
 namespace david63\privacypolicy\core;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
-use \phpbb\config\config;
-use \phpbb\template\template;
-use \phpbb\user;
-use \phpbb\language\language;
-use \phpbb\db\driver\driver_interface;
-use \phpbb\event\dispatcher_interface;
-use \phpbb\di\service_collection;
-use \david63\privacypolicy\ext;
+use phpbb\config\config;
+use phpbb\template\template;
+use phpbb\user;
+use phpbb\language\language;
+use phpbb\db\driver\driver_interface;
+use phpbb\event\dispatcher_interface;
+use phpbb\di\service_collection;
+use phpbb\autogroups\conditions\manager;
+use david63\privacypolicy\core\functions;
 
 /**
 * privacypolicy
@@ -52,38 +51,53 @@ class privacypolicy
 	/** @var string PHP extension */
 	protected $phpEx;
 
+	/** @var \david63\privacypolicy\core\functions */
+	protected $functions;
+
+	/** @var string phpBB tables */
+	protected $tables;
+
+	/** @var \phpbb\autogroups\conditions\manage */
+	protected $autogroup_manager;
+
 	/** @var string Custom form action */
 	protected $u_action;
 
-    /**
+	/**
 	* Constructor for privacypolicy
 	*
-	* @param \phpbb\config\config			$config				Config object
-	* @param \phpbb\template\template		$template			Template object
-	* @param \phpbb\user					$user				User object
-	* @param \phpbb\language\language		$language			Language object
-	* @param \phpbb_db_driver				$db					The db connection
-	* @param dispatcher_interface			$dispatcher			phpBB dispatcher
-	* @param \phpbb\di\service_collection 	$type_collection	CPF data
-	* @param string							$phpbb_root_path    phpBB root path
-	* @param string							$php_ext            phpBB extension
+	* @param \phpbb\config\config					$config				Config object
+	* @param \phpbb\template\template				$template			Template object
+	* @param \phpbb\user							$user				User object
+	* @param \phpbb\language\language				$language			Language object
+	* @param \phpbb_db_driver						$db					The db connection
+	* @param dispatcher_interface					$dispatcher			phpBB dispatcher
+	* @param \phpbb\di\service_collection 			$type_collection	CPF data
+	* @param string									$phpbb_root_path    phpBB root path
+	* @param string									$php_ext            phpBB extension
+	* @param \david63\privacypolicy\core\functions	$functions			Functions for the extension
+	* @param array									$tables				phpBB db tables
+	* @param \phpbb\autogroups\conditions\manage	autogroup_manager	Autogroup manager
 	*
 	* @access public
 	*/
-	public function __construct(config $config, template $template, user $user, language $language, driver_interface $db, dispatcher_interface $dispatcher, service_collection $type_collection, $root_path, $php_ext)
+	public function __construct(config $config, template $template, user $user, language $language, driver_interface $db, dispatcher_interface $dispatcher, service_collection $type_collection, $root_path, $php_ext, functions $functions, $tables, manager $autogroup_manager = null)
 	{
-		$this->config			= $config;
-		$this->template			= $template;
-		$this->user				= $user;
-		$this->language			= $language;
-		$this->db				= $db;
-		$this->dispatcher		= $dispatcher;
-		$this->type_collection 	= $type_collection;
-		$this->root_path		= $root_path;
-		$this->php_ext			= $php_ext;
+		$this->config				= $config;
+		$this->template				= $template;
+		$this->user					= $user;
+		$this->language				= $language;
+		$this->db					= $db;
+		$this->dispatcher			= $dispatcher;
+		$this->type_collection 		= $type_collection;
+		$this->root_path			= $root_path;
+		$this->php_ext				= $php_ext;
+		$this->functions			= $functions;
+		$this->tables				= $tables;
+		$this->autogroup_manager	= $autogroup_manager;
 	}
 
-    /**
+	/**
 	* Display the user privacy data
 	*
 	* @return null
@@ -93,22 +107,21 @@ class privacypolicy
 	{
 		$row = $this->get_user_data_row ($user_id);
 
-
 		// Set output vars for display in the template
 		$this->template->assign_vars(array(
 			'ACCEPT_DATE'				=> ($row['user_accept_date'] > 0) ? $this->user->format_date($row['user_accept_date']) : $this->language->lang('NOT_ACCEPTED'),
 			'BANNER'					=> $this->language->lang('DETAILS_FOR', $row['username']),
- 			'BIRTHDAY'					=> $this->get_birthday($row['user_birthday']),
+			'BIRTHDAY'					=> $this->get_birthday($row['user_birthday']),
 
 			'EMAIL'						=> $row['user_email'],
-
-			'PRIVACY_POLICY_VERSION'	=> ext::PRIVACY_POLICY_VERSION,
 
 			'REG_DATE'					=> $this->user->format_date($row['user_regdate']),
 			'REG_IP'					=> $row['user_ip'],
 
 			'USER'						=> $row['username'],
 			'U_EMAIL'					=> 'mailto:' . $this->config['board_email'] . '?subject=' . $this->language->lang('REMOVE_MY_ACCOUNT') . '&body=' . $this->language->lang('REMOVE_MY_ACCOUNT_BODY', '%0D%0A', $row['username']),
+
+			'S_ACCEPTED'				=> ($row['user_accept_date'] > 0) ? true : false,
 		));
 
 		// Get the core CPF data fields
@@ -119,7 +132,7 @@ class privacypolicy
 
 		$template_array = array_merge_recursive($cpf_fields, $cpf_user_data);
 
-		foreach($template_array as $key => $data)
+		foreach ($template_array as $key => $data)
 		{
 			if (array_key_exists($key, $cpf_fields))
 			{
@@ -145,8 +158,6 @@ class privacypolicy
 		extract($this->dispatcher->trigger_event('david63.privacypolicy.add_data_after', compact($vars)));
 
 		$this->template->assign_var('USER_IPS', $this->get_user_ips($user_id));
-
-
 	}
 
 	/**
@@ -195,7 +206,7 @@ class privacypolicy
 
 		$csv_array = array_merge_recursive($cpf_fields, $cpf_user_data);
 
-		foreach($csv_array as $key => $data)
+		foreach ($csv_array as $key => $data)
 		{
 			if (array_key_exists($key, $cpf_fields))
 			{
@@ -243,7 +254,6 @@ class privacypolicy
 		);
 		extract($this->dispatcher->trigger_event('david63.privacypolicy.add_csv_ip_after', compact($vars)));
 
-
 		// Merge the header and data files
 		$csv_file = $csv_header . $csv_data;
 
@@ -274,10 +284,10 @@ class privacypolicy
 	 */
 	public function get_user_data_row ($user_id)
 	{
-			// Get the user data
+		// Get the user data
 		$sql = 'SELECT *
-			FROM ' . USERS_TABLE . '
-			WHERE user_id = ' . $user_id;
+			FROM ' . $this->tables['users'] . '
+			WHERE user_id = ' . (int) $user_id;
 
 		$result = $this->db->sql_query($sql);
 		$row	= $this->db->sql_fetchrow($result);
@@ -297,25 +307,39 @@ class privacypolicy
 	 */
 	public function get_user_ips($user_id)
 	{
-		$sql = 'SELECT poster_ip
-			FROM ' . POSTS_TABLE . '
-			WHERE poster_id = ' . $user_id . "
-			GROUP BY poster_ip";
-
-		$result = $this->db->sql_query($sql);
-
-		$user_ips = '';
-		while ($row = $this->db->sql_fetchrow($result))
+		if ($this->config['privacy_policy_anonymise'])
 		{
-			if($row['poster_ip'])
+			return $this->language->lang('IP_ANONYMISED');
+		}
+		else
+		{
+			$sql = 'SELECT poster_ip
+				FROM ' . $this->tables['posts'] . '
+				WHERE poster_id = ' . (int) $user_id . "
+				GROUP BY poster_ip";
+
+			$result = $this->db->sql_query($sql);
+
+			$user_ips = array();
+			while ($row = $this->db->sql_fetchrow($result))
 			{
-				$user_ips .= $row['poster_ip'] . '<br>';
+				if ($row['poster_ip'])
+				{
+					$user_ips[] = $row['poster_ip'];
+				}
 			}
 		}
-
 		$this->db->sql_freeresult($result);
 
-		return $user_ips;
+		if (!sizeof($user_ips))
+		{
+			return $this->language->lang('NO_IPS_FOUND');
+		}
+		else
+		{
+			natsort($user_ips);
+			return implode('<br>', $user_ips);
+		}
 	}
 
 	/**
@@ -359,15 +383,15 @@ class privacypolicy
 		$sql = $this->db->sql_build_query('SELECT', array(
 			'SELECT'	=> 'pfd.*',
 			'FROM'		=> array(
-				USERS_TABLE => 'u',
+				$this->tables['users'] => 'u',
 			),
 			'LEFT_JOIN'	=> array(
 				array(
-					'FROM'	=> array(PROFILE_FIELDS_DATA_TABLE	=> ' pfd',),
+					'FROM'	=> array($this->tables['profile_fields_data']	=> ' pfd',),
 					'ON'	=> 'u.user_id = pfd.user_id',
 				),
 			),
-			'WHERE' => "u.user_id = '" . $user_id . "'",
+			'WHERE' => "u.user_id = '" . (int) $user_id . "'",
 		));
 
 		$result 		= $this->db->sql_query($sql);
@@ -375,7 +399,7 @@ class privacypolicy
 
 		$this->db->sql_freeresult($result);
 
-		foreach($cpf_user_data as $key => $data)
+		foreach ($cpf_user_data as $key => $data)
 		{
 			if ($key != 'user_id')
 			{
@@ -395,7 +419,7 @@ class privacypolicy
 	public function get_cpf_fields()
 	{
 		$sql = 'SELECT pf.field_name, pl.lang_name
-			FROM ' . PROFILE_FIELDS_TABLE . ' pf, ' . PROFILE_LANG_TABLE . ' pl, ' . LANG_TABLE . " l
+			FROM ' . $this->tables['profile_fields'] . ' pf, ' . $this->tables['profile_fields_language'] . ' pl, ' . $this->tables['lang'] . " l
 			WHERE pf.field_id  = pl.field_id
 				AND pf.field_privacy_show = 1
 				AND pl.lang_id = l.lang_id
@@ -435,11 +459,11 @@ class privacypolicy
 		$sql = $this->db->sql_build_query('SELECT', array(
 			'SELECT'	=> 'pf.*, pfl.lang_id, pfl.option_id, pfl.lang_value',
 			'FROM'		=> array(
-				PROFILE_FIELDS_TABLE => 'pf',
+				$this->tables['profile_fields'] => 'pf',
 			),
 			'LEFT_JOIN'	=> array(
 				array(
-					'FROM'	=> array(PROFILE_FIELDS_LANG_TABLE	=> ' pfl',),
+					'FROM'	=> array($this->tables['profile_fields_options_language']	=> ' pfl',),
 					'ON'	=> 'pf.field_id = pfl.field_id',
 				),
 			),
@@ -452,7 +476,66 @@ class privacypolicy
 		$this->db->sql_freeresult($result);
 
 		$profile_field = $this->type_collection[$profile_data['field_type']];
+
 		return $profile_field->get_profile_value($field_value, $profile_data);
+	}
+
+	/**
+	 * Update Auto Groups (if installed)
+	 *
+	 * @param $user_id
+	 *
+	 * @return null
+	 * @access public
+	 */
+	public function update_auto_groups($user_id, $sync = false)
+	{
+		// This conditional must be used to ensure calls only go out if Auto Groups is installed/enabled
+		if ($this->autogroup_manager !== null)
+		{
+			if (!$sync)
+			{
+				// This calls our class and sends it some $options data
+				$this->autogroup_manager->check_condition('david63.privacypolicy.autogroups.type.ppaccept', array(
+					'users' => $user_id,
+				));
+			}
+			else
+			{
+				$this->autogroup_manager->check_condition('david63.privacypolicy.autogroups.type.ppaccept', array(
+					'action' => 'sync',
+				));
+			}
+		}
+	}
+
+	/**
+	* Check for Tapatalk enabled
+	*
+	* @return null
+	* @access public
+	*/
+	public function tapatalk($error = true)
+	{
+		$sql = 'SELECT *
+			FROM ' . $this->tables['ext'] . "
+			WHERE ext_name = 'tapatalk/tapatalk'";
+
+		$result	= $this->db->sql_query($sql);
+		$row 	= $this->db->sql_fetchrow($result);
+
+		$this->db->sql_freeresult($result);
+
+		$tapatalk_installed = ($row && $row['ext_active'] == 1) ? true : false;
+
+		if ($error)
+		{
+			$this->template->assign_var('S_ERROR', $tapatalk_installed);
+		}
+		else
+		{
+			return $tapatalk_installed;
+		}
 	}
 
 	/**

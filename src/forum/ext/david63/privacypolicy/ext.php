@@ -10,13 +10,11 @@
 
 namespace david63\privacypolicy;
 
-use \phpbb\extension\base;
+use phpbb\extension\base;
 
 class ext extends base
 {
-	const PRIVACY_POLICY_VERSION = '2.1.0 RC5';
-
-    /**
+	/**
 	* Enable extension if phpBB version requirement is met
 	*
 	* @var string Require 3.2.0-a1 due to updated 3.2 syntax
@@ -29,8 +27,8 @@ class ext extends base
 		// Set globals for use in the language file
 		global $ver_error, $cookie_error;
 
-		// Requires phpBB 3.2.0 or newer.
-		$ver 		= phpbb_version_compare(PHPBB_VERSION, '3.2.0', '>=');
+		// Requires phpBB 3.3.0 or newer.
+		$ver 		= phpbb_version_compare(PHPBB_VERSION, '3.3.0', '>=');
 		// Display a custom warning message if this requirement fails.
 		$ver_error 	= ($ver) ? false : true;
 
@@ -51,5 +49,33 @@ class ext extends base
 		}
 
 		return $ver && $cookie_policy;
+	}
+
+	/**
+	* This method is required for Auto Groups
+	*/
+	public function purge_step($old_state)
+	{
+		switch ($old_state)
+		{
+			case '':
+				try
+				{
+					// Try to remove this extension from auto groups db tables
+					$autogroups = $this->container->get('phpbb.autogroups.manager');
+					$autogroups->purge_autogroups_type('david63.privacypolicy.autogroups.type.ppaccept');
+				}
+				catch (\InvalidArgumentException $e)
+				{
+					// Continue
+				}
+
+				return 'autogroups';
+			break;
+
+			default:
+				return parent::purge_step($old_state);
+			break;
+		}
 	}
 }

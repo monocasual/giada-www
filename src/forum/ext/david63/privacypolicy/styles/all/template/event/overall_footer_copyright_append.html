@@ -1,0 +1,4 @@
+{% if S_POLICY_HIDE_CORE %}
+	{% INCLUDEJS '@' ~ PP_NAMESPACE ~ '/jxtools.js' %}
+	<div id="privacy_hidden_container" style="display:none;" jxdom-target="p.footer-row > a.footer-link" jxdom-action="remove"></div>
+{% endif %}

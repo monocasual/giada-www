@@ -5,7 +5,7 @@
 			var cookieLinks = '{{ lang('COOKIE_BLOCK') | escape('js') }}';
 		</script>
 
-		{% INCLUDEJS '@david63_privacypolicy/remove_url.js' %}
+		{% INCLUDEJS '@' ~ PP_NAMESPACE ~ '/remove_url.js' %}
 	{% endif %}
 
 	<script>
@@ -14,14 +14,17 @@
 		var cookieBoxBdWidth	= '{{ COOKIE_BOX_BD_WIDTH | escape('js') }}';
 		var cookieBoxBgColour	= '{{ COOKIE_BOX_BG_COLOUR | escape('js') }}';
 		var cookieBoxHrefColour	= '{{ COOKIE_BOX_HREF_COLOUR | escape('js') }}';
+		var cookieBoxTop		= '{{ COOKIE_BOX_TOP | escape('js') }}';
 		var cookieBoxTxtColour	= '{{ COOKIE_BOX_TXT_COLOUR | escape('js') }}';
+		var cookieDomain		= '{{ COOKIE_DOMAIN | escape('js') }}';
 		var cookieExpires		= '{{ COOKIE_EXPIRES | escape('js') }}';
 		var cookieLink			= '{{ lang('COOKIE_POLICY') | escape('js') }}';
+		var cookiePath			= '{{ COOKIE_PATH | escape('js') }}';
 		var cookieText			= '{{ lang('COOKIE_ACCEPT_TEXT') | escape('js') }}';
 		var cookiePage			= '{{ U_COOKIE_PAGE | escape('js') }}';
+		var cookieSecure		= '{{ COOKIE_SECURE | escape('js') }}';
 		var phpbbCookieName		= '{{ COOKIE_NAME | escape('js') }}';
 	</script>
 
-
-	{% INCLUDEJS '@david63_privacypolicy/cookie_fn.js' %}
+	{% INCLUDEJS '@' ~ PP_NAMESPACE ~ '/cookie_fn.js' %}
 {% endif %}

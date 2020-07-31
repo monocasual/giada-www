@@ -88,7 +88,7 @@ var sortablescaptcha = {
 			$(column_id).css('min-height', min_height + 'px');
 		});
 	}
-}
+};
 
 $(function() {
 	sortablescaptcha.init();

@@ -63,6 +63,18 @@ class sortables extends \phpbb\captcha\plugins\qa
 	/** @var string */
 	protected $table_sortables_confirm;
 
+	/** @var string */
+	private $question;
+
+	/** @var string */
+	private $name_left;
+
+	/** @var string */
+	private $name_right;
+
+	/** @var int */
+	private $total_options;
+
 	/**
 	 *
 	 * @param \phpbb\db\driver\driver_interface		$db
@@ -109,11 +121,11 @@ class sortables extends \phpbb\captcha\plugins\qa
 		$this->load_question_ids($this->user->lang_name);
 
 		// fallback to the board default lang
-		if (!sizeof($this->question_ids))
+		if (!count($this->question_ids))
 		{
 			$this->load_question_ids($this->config['default_lang']);
 
-			// Overwrite the question_lang because the comfirm table uses this as well.
+			// Overwrite the question_lang because the confirm table uses this as well.
 			$this->question_lang = $this->config['default_lang'];
 		}
 
@@ -188,20 +200,18 @@ class sortables extends \phpbb\captcha\plugins\qa
 		{
 			return false;
 		}
-		else
-		{
-			$this->template->assign_vars(array(
-				'SORTABLES_CONFIRM_QUESTION'	=> $this->question_text,
-				'SORTABLES_CONFIRM_ID'			=> $this->confirm_id,
-				'SORTABLES_NAME_LEFT'			=> $this->name_left,
-				'SORTABLES_NAME_RIGHT'			=> $this->name_right,
-				'SORTABLES_DEFAULT_SORT'		=> (!$this->question_sort) ? 'LEFT' : 'RIGHT', // 0 = left, 1 = right
-				'S_CONFIRM_CODE'				=> true,
-				'S_TYPE'						=> $this->type,
-			));
 
-			return '@derky_sortablescaptcha/captcha_sortables.html';
-		}
+		$this->template->assign_vars(array(
+			'SORTABLES_CONFIRM_QUESTION'	=> $this->question_text,
+			'SORTABLES_CONFIRM_ID'			=> $this->confirm_id,
+			'SORTABLES_NAME_LEFT'			=> $this->name_left,
+			'SORTABLES_NAME_RIGHT'			=> $this->name_right,
+			'SORTABLES_DEFAULT_SORT'		=> (!$this->question_sort) ? 'LEFT' : 'RIGHT', // 0 = left, 1 = right
+			'S_CONFIRM_CODE'				=> true,
+			'S_TYPE'						=> $this->type,
+		));
+
+		return '@derky_sortablescaptcha/captcha_sortables.html';
 	}
 
 	/**
@@ -230,36 +240,24 @@ class sortables extends \phpbb\captcha\plugins\qa
 	}
 
 	/**
-	*  API function, just the same from captcha_qa but with other table names
+	*  API function, if sessions are pruned also remove related sortables_confirm rows
 	*/
 	public function garbage_collect($type = 0)
 	{
-		$sql = 'SELECT c.confirm_id
-			FROM ' . $this->table_sortables_confirm . ' c
-			LEFT JOIN ' . SESSIONS_TABLE . ' s
-				ON (c.session_id = s.session_id)
-			WHERE s.session_id IS NULL' .
-				((empty($type)) ? '' : ' AND c.confirm_type = ' . (int) $type);
-		$result = $this->db->sql_query($sql);
-
-		if ($row = $this->db->sql_fetchrow($result))
-		{
-			$sql_in = array();
-
-			do
-			{
-				$sql_in[] = (string) $row['confirm_id'];
-			}
-			while ($row = $this->db->sql_fetchrow($result));
-
-			if (sizeof($sql_in))
-			{
-				$sql = 'DELETE FROM ' . $this->table_sortables_confirm . '
-					WHERE ' . $this->db->sql_in_set('confirm_id', $sql_in);
-				$this->db->sql_query($sql);
-			}
-		}
-		$this->db->sql_freeresult($result);
+		// Using subquery for SQLite support (instead of using DELETE with LEFT JOIN directly) this however causes the following
+		// problem in MySQL "You can't specify target table for update in FROM clause", workaround by adding a derived table on the subquery result
+		$sql = 'DELETE FROM ' . $this->table_sortables_confirm . '
+			WHERE confirm_id IN (
+				SELECT derived.confirm_id 
+				FROM (
+					SELECT c.confirm_id
+					FROM ' . $this->table_sortables_confirm . ' c
+					LEFT JOIN ' . SESSIONS_TABLE . ' s
+						ON (c.session_id = s.session_id)
+					WHERE s.session_id IS NULL' .
+						((empty($type)) ? '' : ' AND c.confirm_type = ' . (int) $type) .
+					') derived)';
+		$this->db->sql_query($sql);
 	}
 
 	/**
@@ -286,7 +284,7 @@ class sortables extends \phpbb\captcha\plugins\qa
 	{
 		$error = '';
 
-		if (!sizeof($this->question_ids))
+		if (!count($this->question_ids))
 		{
 			return false;
 		}
@@ -315,10 +313,8 @@ class sortables extends \phpbb\captcha\plugins\qa
 
 			return $error;
 		}
-		else
-		{
-			return false;
-		}
+
+		return false;
 	}
 
 	/**
@@ -326,7 +322,7 @@ class sortables extends \phpbb\captcha\plugins\qa
 	*/
 	public function select_question()
 	{
-		if (!sizeof($this->question_ids))
+		if (!count($this->question_ids))
 		{
 			return false;
 		}
@@ -350,7 +346,7 @@ class sortables extends \phpbb\captcha\plugins\qa
 	*/
 	public function reselect_question()
 	{
-		if (!sizeof($this->question_ids))
+		if (!count($this->question_ids))
 		{
 			return false;
 		}
@@ -397,7 +393,7 @@ class sortables extends \phpbb\captcha\plugins\qa
 			WHERE
 				session_id = '" . $this->db->sql_escape($this->user->session_id) . "'
 				AND lang_iso = '" . $this->db->sql_escape($this->question_lang) . "'
-				AND confirm_type = " . $this->type;
+				AND confirm_type = " . (int) $this->type;
 		$result = $this->db->sql_query_limit($sql, 1);
 		$confirm_id = $this->db->sql_fetchfield('confirm_id');
 		$this->db->sql_freeresult($result);
@@ -415,7 +411,7 @@ class sortables extends \phpbb\captcha\plugins\qa
 	*/
 	public function load_answer()
 	{
-		if (!strlen($this->confirm_id) || !sizeof($this->question_ids))
+		if (!strlen($this->confirm_id) || !count($this->question_ids))
 		{
 			return false;
 		}
@@ -426,7 +422,7 @@ class sortables extends \phpbb\captcha\plugins\qa
 				AND confirm_id = '" . $this->db->sql_escape($this->confirm_id) . "'
 				AND session_id = '" . $this->db->sql_escape($this->user->session_id) . "'
 				AND qes.lang_iso = '" . $this->db->sql_escape($this->question_lang) . "'
-				AND confirm_type = " . $this->type;
+				AND confirm_type = " . (int) $this->type;
 		$result = $this->db->sql_query($sql);
 		$row = $this->db->sql_fetchrow($result);
 		$this->db->sql_freeresult($result);
@@ -475,7 +471,7 @@ class sortables extends \phpbb\captcha\plugins\qa
 		$options_right = $this->request->variable('sortables_options_right', array(0));
 
 		// Make sure the didn't submitted more options then it should (like trying everything... left/right: options ^ 2 )
-		if ($this->total_options === sizeof($options_left) + sizeof($options_right))
+		if ($this->total_options === count($options_left) + count($options_right))
 		{
 			// Let's count how many options the user sorted correctly
 			$sql = 'SELECT COUNT(*) AS total
@@ -538,7 +534,7 @@ class sortables extends \phpbb\captcha\plugins\qa
 	/**
 	*  API function - The ACP backend, this marks the end of the easy methods
 	*/
-	public function acp_page($id, &$module)
+	public function acp_page($id, $module)
 	{
 		$this->user->add_lang('acp/board');
 		$this->user->add_lang_ext('derky/sortablescaptcha', 'captcha_sortables');
@@ -558,7 +554,6 @@ class sortables extends \phpbb\captcha\plugins\qa
 			'U_ACTION'		=> $module->u_action,
 			'QUESTION_ID'	=> $question_id ,
 			'CLASS'			=> $this->get_service_name(),
-			'U_LIST'		=> $this->acp_list_url,
 		));
 
 		// Show the list?
@@ -574,6 +569,8 @@ class sortables extends \phpbb\captcha\plugins\qa
 		}
 		else // Add or edit question
 		{
+			$this->template->assign_var('U_LIST', $this->acp_list_url);
+
 			$this->acp_add_or_edit_question($question_id, $submit);
 		}
 	}
@@ -707,7 +704,7 @@ class sortables extends \phpbb\captcha\plugins\qa
 	/**
 	*  This handles the list overview
 	*/
-	public function acp_question_list(&$module)
+	public function acp_question_list($module)
 	{
 		$sql = 'SELECT *
 				FROM ' . $this->table_sortables_questions;
@@ -837,7 +834,7 @@ class sortables extends \phpbb\captcha\plugins\qa
 
 		$sql = "UPDATE " . $this->table_sortables_questions . '
 			SET ' . $this->db->sql_build_array('UPDATE', $question_ary) . "
-			WHERE question_id = $question_id";
+			WHERE question_id = " . (int) $question_id;
 		$this->db->sql_query($sql);
 
 		$this->acp_insert_answers($data, $question_id);

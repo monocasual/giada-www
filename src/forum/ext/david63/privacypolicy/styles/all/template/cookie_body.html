@@ -1,4 +1,5 @@
 {% include 'overall_header.html' %}
+{% INCLUDECSS '@' ~ PP_NAMESPACE ~ '/cookie.css' %}
 
 <script>
 	var cookieCustomPage	= '{{ S_COOKIE_CUSTOM_PAGE | escape('js') }}';
@@ -8,7 +9,7 @@
 	var cookiePageTxtColour	= '{{ COOKIE_PAGE_TXT_COLOUR | escape('js') }}';
 </script>
 
-{{ COOKIE_MESSAGE }}
+<span class="policy-text">{{ COOKIE_MESSAGE }}</span>
 
-{% INCLUDEJS '@david63_privacypolicy/cookie_page.js' %}
+{% INCLUDEJS '@' ~ PP_NAMESPACE ~ '/cookie_page.js' %}
 {% include 'overall_footer.html' %}

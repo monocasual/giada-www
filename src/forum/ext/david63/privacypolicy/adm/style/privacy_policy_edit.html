@@ -1,5 +1,4 @@
-{% include 'overall_header.html' %}
-{% INCLUDECSS '@david63_privacypolicy/admin_forms.css' %}
+{% include '@' ~ NAMESPACE ~ '/head_panel.html' %}
 
 <script>
 	var form_name	= 'privacypolicy';
@@ -8,18 +7,6 @@
 	var upload 		= false;
 	var imageTag 	= false;
 </script>
-
-<a name="maincontent"></a>
-
-<div class="head-panel">
-	<div class="head-title">{{ lang('POLICY_EDIT') }}</div>
-	<div class="head-description">{{ lang('POLICY_EDIT_EXPLAIN') }}</div>
-		<div class="version-wrapper" style="float: {{ S_CONTENT_FLOW_END }};">
-		<div class="version-text">{{ lang('VERSION') }}</div>
-		<div class="version-data">{{ PRIVACY_POLICY_VERSION }}</div>
-	</div>
-	<br />
-</div>
 
 {% if S_GET_TEXT %}
 	<form id="privacypolicy_edit" method="post" action="{{ U_ACTION }}">
@@ -50,7 +37,9 @@
 					</select>
 				</dd>
 			</dl>
+		</fieldset>
 
+		<fieldset>
 			<p class="submit-buttons">
 				<input class="adm-button" type="submit" id="submit" name="submit_text" value="{{ lang('GO') }}" />
 				{{ S_FORM_TOKEN }}
@@ -60,12 +49,12 @@
 {% else %}
 	<form id="privacypolicy" method="post" action="{{ U_ACTION }}">
 
-	{% if S_PREVIEW %}
-		<fieldset>
-			<legend>{{ lang('PREVIEW') }}{{ lang('COLON') }}{{ POLICY_TITLE_PREVIEW }}</legend>
-			{{ POLICY_PREVIEW }}
-		</fieldset>
-	{% endif %}
+		{% if S_PREVIEW %}
+			<fieldset>
+				<legend>{{ lang('PREVIEW') }}{{ lang('COLON') }} {{ POLICY_TITLE_PREVIEW }}</legend>
+				{{ POLICY_PREVIEW }}
+			</fieldset>
+		{% endif %}
 
 		<fieldset>
 			{% if S_ADD_NEW %}
@@ -76,12 +65,12 @@
 
 			{% if S_ADD_NEW %}
 				<dl>
-					<dt><label for="privacy_lang_description">{{ lang('POLICY_DESCRIPTION') }}{{ lang('COLON') }}</label><br /><span>{{ lang('POLICY_DESCRIPTION_EXPLAIN') }}</span></dt>
+					<dt><label for="privacy_lang_description">{{ lang('POLICY_DESCRIPTION') }}{{ lang('COLON') }}</label><br><span>{{ POLICY_DESCRIPTION_EXPLAIN }}</span></dt>
 					<dd><input class="text medium" type="text" id="privacy_lang_description" name="privacy_lang_description" value="{{ POLICY_DESCRIPTION }}" maxlength="40" /></dd>
 				</dl>
 			{% endif %}
 
-			{% INCLUDE 'acp_posting_buttons.html' %}
+			{% include 'acp_posting_buttons.html' %}
 			<dl class="responsive-columns">
 				<dt style="width: 90px;" id="color_palette_placeholder" data-orientation="v" data-height="12" data-width="15" data-bbcode="true"></dt>
 				<dd style="margin-{{ S_CONTENT_FLOW_BEGIN }}: 90px;">
@@ -102,5 +91,5 @@
 	</form>
 {% endif %}
 
-{% INCLUDEJS '@david63_privacypolicy/sitename.js' %}
+{% INCLUDEJS '@' ~ NAMESPACE ~ '/js/sitename.js' %}
 {% include 'overall_footer.html' %}

@@ -2,8 +2,8 @@
 	"name": "david63/privacypolicy",
 	"type": "phpbb-extension",
 	"description": "Adds an option for the user to accept the use of cookies under EU Cookie Directive (2012), and the privacy requirements under the GDPR Directive (2018)",
-	"version": "2.1.0-rc5",
-	"time": "2018-05-16",
+	"version": "3.1.0-RC2",
+	"time": "2020-01-19",
 	"keywords": [
 		"phpbb",
 		"extension",
@@ -13,11 +13,15 @@
 		"EU",
 		"GDPR"
 	],
-	"license": "GPL-2.0",
+	"license": "GPL-2.0-only",
 	"authors": [
 		{
 			"name": "David Wood",
-			"role": "Developer"
+			"role": "Extension Developer"
+		},
+		{
+			"name": "Javier Lopez",
+			"role": "Developer - jxtools"
 		},
         {
             "name": "Jan Odvarko",
@@ -26,13 +30,19 @@
         }
     ],
 	"require": {
-        "php": ">=5.3.3",
+        "php": ">=7.1.3",
         "composer/installers": "~1.0"
     },
 	"extra": {
-		"display-name": "Privacy policy",
+		"display-name": "[**] Privacy policy",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.2.0"
-		}
+			"phpbb/phpbb": ">=3.3.0"
+		},
+		"version-check": {
+        	"host": "version.phpbbdev.space",
+        	"directory": "/versions",
+        	"filename": "privacy_policy_version_file.json",
+			"ssl": false
+    	}
 	}
 }

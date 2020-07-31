@@ -39,8 +39,8 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'ACCEPT' 				=> 'I accept this policy',
 
-	'COOKIE_ACCEPT_TEXT'	=> 'This board uses cookies to give you the best and most relevant experience. To use this board this means that you need accept the policy.<br />You can find out more about the cookies used by clicking the "Cookie policy" on the main page or the link below.<br />',
-	'COOKIE_ACCEPT'			=> '[ I accept ]',
+	'COOKIE_ACCEPT_TEXT'	=> 'This board uses cookies to give you the best and most relevant experience. In order to use this board it means that you need accept this policy.<br>You can find out more about the cookies used on this board by clicking the "Policies" link at the bottom of the page.<br>',
+	'COOKIE_ACCEPT'			=> 'Accept cookies',
 	'COOKIE_ACCESS'			=> 'Cookie Access',
 
 	'COOKIE_BLOCK'			=> 'You cannot access links on this board until you have accepted the Cookie Policy.',
@@ -56,4 +56,5 @@ $lang = array_merge($lang, array(
 	'HR_BBCODE_HELPLINE' 	=> 'Insert a horizontal line',
 
 	'POLICY_ACCEPT' 		=> 'Accept privacy policy',
+	'POLICY_EXPLAIN'		=> 'Display the Privacy &Cookie policies for this board',
 ));

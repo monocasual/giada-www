@@ -37,6 +37,8 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
+	'ACCEPT_ME'						=> 'Accept Privacy Policy for member',
+	'ACCEPT_REMOVE'					=> 'Remove acceptance for member',
 	'ACP_PRIVACY_POLICY_EXPLAIN'	=> 'Here you can select and view a user’s privacy data.',
 	'ACP_PRIVACY_TITLE'				=> 'Privacy Policy Data',
 
@@ -44,7 +46,11 @@ $lang = array_merge($lang, array(
 
 	'INVALID_USERNAME'				=> 'Invalid username entered',
 
+	'NO_IPS_FOUND'					=> 'No IPs found',
 	'NO_USERNAME'					=> 'No Username entered',
+
+	'POLICY_ACCEPTANCE_SET'			=> 'Privacy Policy acceptance set for %1$s',
+	'POLICY_ACCEPTANCE_UNSET'		=> 'Privacy Policy acceptance unset for %1$s',
 
 	'SELECT_USERNAME_EXPLAIN'		=> 'The user whose privacy data you wish to examine.',
 	'SELECT_USERNAME'				=> 'Select username',

@@ -10,7 +10,7 @@
 namespace david63\privacypolicy\controller;
 
 /**
-* Interface for our admin controller
+* Interface for our admin manage controller
 *
 * This describes all of the methods we'll use for the admin front-end of this extension
 */

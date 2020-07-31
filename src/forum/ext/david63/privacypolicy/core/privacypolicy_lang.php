@@ -9,13 +9,11 @@
 
 namespace david63\privacypolicy\core;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
-use \phpbb\config\config;
-use \phpbb\user;
-use \phpbb\language\language;
-use \phpbb\db\driver\driver_interface;
-use \phpbb\template\template;
+use phpbb\config\config;
+use phpbb\user;
+use phpbb\language\language;
+use phpbb\db\driver\driver_interface;
+use phpbb\template\template;
 
 /**
 * privacypolicy
@@ -37,36 +35,32 @@ class privacypolicy_lang
 	/** @var \phpbb\template\template */
 	protected $template;
 
-	/**
-	* The database table the privacy lang data is stored in
-	*
-	* @var string
-	*/
-	protected $privacy_lang_table;
+	/** @var string phpBB tables */
+	protected $tables;
 
-    /**
+	/**
 	* Constructor for privacypolicy
 	*
-	* @param \phpbb\config\config		$config					Config object
-	* @param \phpbb\user				$user					User object
-	* @param \phpbb\language\language	$language				Language object
-	* @param \phpbb_db_driver			$db						The db connection
-	* @param \phpbb\template\template	$template				Template object
-	* @param string						$privacy_lang_table		Name of the table used to store log searches data
+	* @param \phpbb\config\config		$config		Config object
+	* @param \phpbb\user				$user		User object
+	* @param \phpbb\language\language	$language	Language object
+	* @param \phpbb_db_driver			$db			The db connection
+	* @param \phpbb\template\template	$template	Template object
+	* @param array						$tables		phpBB db tables
 	*
 	* @access public
 	*/
-	public function __construct(config $config, user $user, language $language, driver_interface $db, template $template, $privacy_lang_table)
+	public function __construct(config $config, user $user, language $language, driver_interface $db, template $template, $tables)
 	{
 		$this->config				= $config;
 		$this->user					= $user;
 		$this->language 			= $language;
 		$this->db					= $db;
 		$this->template				= $template;
-		$this->privacy_lang_table	= $privacy_lang_table;
+		$this->tables				= $tables;
 	}
 
-    /**
+	/**
 	* Display the user privacy data
 	*
 	* @return null
@@ -96,7 +90,7 @@ class privacypolicy_lang
 		}
 
 		$sql = 'SELECT privacy_lang_text
-			FROM ' . $this->privacy_lang_table . '
+			FROM ' . $this->tables['privacy_lang'] . '
 				WHERE privacy_lang_name = ' . "'$lang_name'" . '
 				AND privacy_lang_id = ' . "'$lang_id'";
 
@@ -117,7 +111,7 @@ class privacypolicy_lang
 	public function validate_lang($lang_name, $lang_id)
 	{
 		$sql = 'SELECT privacy_lang_text
-			FROM ' . $this->privacy_lang_table . '
+			FROM ' . $this->tables['privacy_lang'] . '
 				WHERE privacy_lang_name = ' . "'$lang_name'" . '
 				AND privacy_lang_id = ' . "'$lang_id'";
 
@@ -140,7 +134,7 @@ class privacypolicy_lang
 			// Is the user a Guest? If so then we need to default
 			if ($this->user->data['user_id'] == ANONYMOUS)
 			{
-				$lang_valid = false;
+				$lang_valid = true;
 			}
 			else
 			{
@@ -152,6 +146,7 @@ class privacypolicy_lang
 			{
 				// Does board default language/text file combination exist?
 				$lang_valid = $this->validate_lang($lang_name, $this->config['default_lang']);
+
 				if ($lang_valid)
 				{
 					$lang_id = $this->config['default_lang'];
@@ -165,7 +160,7 @@ class privacypolicy_lang
 		}
 
 		$sql = 'SELECT *
-			FROM ' . $this->privacy_lang_table . '
+			FROM ' . $this->tables['privacy_lang'] . '
 				WHERE privacy_lang_name = ' . "'$lang_name'" . '
 				AND privacy_lang_id = ' . "'$lang_id'";
 
@@ -186,7 +181,7 @@ class privacypolicy_lang
 	public function get_description($lang_name, $lang_id)
 	{
 		$sql = 'SELECT privacy_lang_description
-			FROM ' . $this->privacy_lang_table . '
+			FROM ' . $this->tables['privacy_lang'] . '
 				WHERE privacy_lang_name = ' . "'$lang_name'" . '
 				AND privacy_lang_id = ' . "'$lang_id'";
 
@@ -207,7 +202,7 @@ class privacypolicy_lang
 	public function get_text_names()
 	{
 		$sql = 'SELECT privacy_lang_name, privacy_lang_description
-			FROM ' . $this->privacy_lang_table . '
+			FROM ' . $this->tables['privacy_lang'] . '
 			ORDER BY privacy_lang_description ASC';
 
 		$result = $this->db->sql_query($sql);
@@ -233,7 +228,7 @@ class privacypolicy_lang
 	public function get_languages()
 	{
 		$sql = 'SELECT lang_iso, lang_local_name
-			FROM ' . LANG_TABLE . '
+			FROM ' . $this->tables['lang'] . '
 			ORDER BY lang_english_name';
 
 		$result	= $this->db->sql_query($sql);
@@ -249,6 +244,29 @@ class privacypolicy_lang
 				'LANG_ID'			=> $row['lang_iso'],
 				'LANG_LOCAL_NAME'	=> $row['lang_local_name'],
 			));
+		}
+	}
+
+	/**
+	* Get the board languages for the select
+	*
+	* @return null
+	* @access public
+	*/
+	public function get_lang_name($lang_iso)
+	{
+		$sql = 'SELECT lang_local_name
+			FROM ' . $this->tables['lang'] . '
+			WHERE lang_iso = ' . "'$lang_iso'";
+
+		$result	= $this->db->sql_query($sql);
+		$row 	= $this->db->sql_fetchrow($result);
+
+		$this->db->sql_freeresult($result);
+
+		if ($row)
+		{
+			return $row['lang_local_name'];
 		}
 	}
 }

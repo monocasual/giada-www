@@ -9,7 +9,7 @@
 
 namespace david63\privacypolicy\migrations\v2105;
 
-use \phpbb\db\migration\migration;
+use phpbb\db\migration\migration;
 
 class m1_update_config extends migration
 {

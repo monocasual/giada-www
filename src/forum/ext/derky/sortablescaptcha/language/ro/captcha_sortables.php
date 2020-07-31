@@ -47,7 +47,7 @@ $lang = array_merge($lang, array(
 
 	'EDIT_QUESTION'				=> 'Editeaza intrebarea',
 	'QUESTIONS'					=> 'Intrebari lista sortabila',
-	'QUESTIONS_EXPLAIN'			=> 'Aici poti adauga si edita intrebarile folosite la inregistrarea noilor utilizatori. Pentru folosirea acestui plugin trebuie definita cel putin o intrebare pentru limba standard folosita de forum. Intrebarile trebuie sa fie usoare pentru utilizatorii ce urmeaza a folosi acest forum. Utilizatorii vor vedea toate optiunile intr-o coloana si vor trebui sa le sorteze corect in cealalta coloana. De asemenea, retine ca trebuie sa schimbi intrebarile regulat, pentru ca in timp acestea sunt \'invatate\' de roboti.',
+	'QUESTIONS_EXPLAIN'			=> 'Aici poti adauga si edita intrebarile folosite la inregistrarea noilor utilizatori. Pentru folosirea acestui plugin trebuie definita cel putin o intrebare pentru limba standard folosita de forum. Intrebarile trebuie sa fie usoare pentru utilizatorii ce urmeaza a folosi acest forum. Utilizatorii vor vedea toate optiunile intr-o coloana si vor trebui sa le sorteze corect in cealalta coloana. De asemenea, retine ca trebuie sa schimbi intrebarile regulat, pentru ca in timp acestea sunt ’invatate’ de roboti.',
 	'QUESTION_DELETED'			=> 'Intrebare stearsa',
 	'QUESTION_LANG'				=> 'Limba',
 	'QUESTION_LANG_EXPLAIN'		=> 'Limba in care sunt scrise intrebarea si optiunile ei.',
