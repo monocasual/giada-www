@@ -1,19 +1,16 @@
 {
-    "version": "0.16.3.1",
-    "codename": "Talisman",
+    "version": "0.16.4",
+    "codename": "Baba Yaga",
     "changes": [
-        "Non-virtual Channels architecture",
-        "Added G_DEBUG macro",
-        "Optimized CPU usage when playing with many channels",
-        "Increased UI refresh rate to 30 frames per second",
-        "Improved quantizer precision",
-        "Simplified behavior when halting channels containing recorded actions",
-        "Fix wrong audio sample looping with pitch != 1.0",
-        "Fix MIDI input master values not stored on quit",
-        "Fix One-shot press channel mode not working via mouse",
-        "Fix Action recording overlap (both live and via Action Editor)",
-        "Fix crash when loading a project with missing audio files",
-        "Fix BPM not changing via Jack"
+        "Support for mono inputs",
+        "Overdub mode for Sample Channels with optional overdub protection",
+        "Disable record-on-signal mode when sequencer is running",
+        "Shift + [click on R button] kills action reading when 'Treat one-shot channels with actions as loops' option is on",
+        "Start MIDI channels automatically after action recording session",
+        "Fix wrong sample rate conversion when project rate != system rate ",
+        "Fix Wrong begin/end sample markers when loading a project with samplerate != system.samplerate ",
+        "Fix wrong MIDI learn mapping for master parameters",
+        "Fix BPM button disabled after audio recording session"
     ],
 	"version_beta": null
 }

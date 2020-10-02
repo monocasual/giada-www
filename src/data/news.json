@@ -1,5 +1,10 @@
 [
     {
+        "title": "Giada 0.16.4 “Baba Yaga” is ready",
+        "date": "September 26, 2020",
+		"body": "<p>Say hello to Giada 0.16.4 codename <em>Baba Yaga</em>, the last version in the 0.16 branch. This new release features many improvements and annoying bugs fixed. To name a few:</p><ul><li><strong>Support for mono inputs</strong> ― you can finally record from your mono inputs, no need for mandatory stereo channels anymore!</li><li>improved <strong>overdub mode</strong> for Sample Channels, featuring <em>Overdub protection</em> mode to avoid dangerous overwrites.</li></ul><p>We have also fixed several errors regarding sample rate conversion and improved the UI interaction. As always the full changelog is available in the <a href=\"/download\">download area</a>. A big \"Thank You\" to all supporters, developers and hackers who helped us with the release of Giada 0.16.4. Get ready for the 0.17 branch!</p>"
+    }, 
+    {
         "title": "Giada 0.16.3 codename “Talisman” released",
         "date": "June 21, 2020",
 		"body": "<p>A new version of Giada Loop Machine is ready for your desktop! This release features an important refactoring of the internal channel architecture. Such improvement will make easier for us to extend Giada with new channel-related features in view of the upcoming 1.0 release. And also:</p><ul><li>Big CPU usage optimization when playing with lots of sample/MIDI channels;</li><li>a better, sample-precise quantizer;</li><li>simplified logic when halting channels containing pre-recorded actions;</li><li>many bugs fixed, specially the number of BPM not changing when using Jack on Linux.</li></ul><p>The full changelog is available in the <a href=\"https://giadamusic.com/download\">download area</a>. Have fun and stay safe!</p>"
