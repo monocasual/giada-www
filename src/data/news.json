@@ -1,5 +1,10 @@
 [
     {
+        "title": "Waterlord – Giada live demo #4",
+        "date": "October 26, 2020",
+		"body": "<p>Dark beats on a sunny Saturday... with Giada Loop Machine 0.17.0 (development version), 100% laptop keyboard only!</p><div class=\"embed-responsive embed-responsive-16by9\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/TzrISWdKgcs\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>"
+    }, 
+    {
         "title": "Giada 0.16.4 “Baba Yaga” is ready",
         "date": "September 26, 2020",
 		"body": "<p>Say hello to Giada 0.16.4 codename <em>Baba Yaga</em>, the last version in the 0.16 branch. This new release features many improvements and annoying bugs fixed. To name a few:</p><ul><li><strong>Support for mono inputs</strong> ― you can finally record from your mono inputs, no need for mandatory stereo channels anymore!</li><li>improved <strong>overdub mode</strong> for Sample Channels, featuring <em>Overdub protection</em> mode to avoid dangerous overwrites.</li></ul><p>We have also fixed several errors regarding sample rate conversion and improved the UI interaction. As always the full changelog is available in the <a href=\"/download\">download area</a>. A big \"Thank You\" to all supporters, developers and hackers who helped us with the release of Giada 0.16.4. Get ready for the 0.17 branch!</p>"
