@@ -12,7 +12,7 @@ block content
 				h1 Compiling from source
 
 				p.
-					Giada source code is hosted and mantained on #[a(href='https://github.com/monocasual/giada') GitHub] and requires a C++14-compatible compiler. If you're new to GitHub, we recommend a very nice #[a(href='http://net.tutsplus.com/tutorials/other/getting-the-hang-of-github/') tutorial] for beginners.
+					Giada source code is hosted and mantained on #[a(href='https://github.com/monocasual/giada') GitHub]. It requires a C++17-compatible compiler and #[a(href='https://cmake.org/') CMake] already installed. This document is about setting up Giada #[em from the command line], but you can also configure and build it directly in your IDE. 
 
 				h2 Grab the code
 
@@ -28,38 +28,25 @@ block content
 				pre.code.
 					git submodule init  
 					git submodule update --recursive
-				
-				p.
-					Finally, run the included #[span.code autogen.sh] script in order to prepare the build environment.
 
 				h2 Configure and build
 
 				p.
-					The configure script inside the package, designed for Unix systems and MinGW (Windows) will help you to guess correct values for various system-dependent variables used during compilation. You have to pass it the #[span.code --target] parameter depending on your operating system:
+					Create a build directory inside the #[span.code giada] folder and go in there:
 
-				p.code.
-					./configure --target=[linux | osx | windows]
-
-				p.
-					e.g. if you want to compile for Linux, do:
-
-				p.code.
-					./configure --target=linux
+				pre.code.
+					cd giada
+					mkdir build
+					cd build
 
 				p.
-					When the script is done without errors, do:
+					Now invoke CMake:
 
-				p.code.
-					make
-
-				p.
-					to compile everything. If you wish to install Giada on Linux, become root and type
-
-				p.code.
-					make install
+				pre.code.
+					cmake ..
 
 				p.
-					to copy the binary file into /usr/local/bin path. 
+					CMake will generate the proper project according to your environment: Makefile on Linux, Visual Studio solution on Windows, XCode project on macOS. When the script is done without errors, open the generated project with your IDE or run the makefile from the command line to compile Giada. 
 
 				h2 Dependencies
 
@@ -75,23 +62,36 @@ block content
 					li 
 						p RtMidi — 3.0.0 or greater;
 
-				h3 Additional flags
+				h3 Additional configuration parameters
 
+				p.
+					You can pass several parameters to CMake during the configuration stage as #[span.code -D&lt;parameter&gt;=&lt;value&gt;]. For example: 
+					
+				p.code.
+					cmake -DPARAMETER1=VALUE1 -DPARAMETER2=VALUE2 ..
+				
+				p.
+					Available parameters:
+				
 				ul
 					li
-						p #[span.code --enable-vst] — enable support for VST plug-ins. Disabled by default;
+						p #[span.code CMAKE_BUILD_TYPE] — define the build type. Possible values: #[span.code Debug], #[span.code Release];
+
+						p #[span.code WITH_VST2] — enable support for VST2 plug-ins. Disabled by default and requires the now deprecated VST2.x SDK by Steinberg. Possible values: #[span.code ON], #[span.code OFF];
 					li
-						p #[span.code --enable-debug] — enable debug mode (mainly asserts). Disabled by default;
+						p #[span.code WITH_VST3] — enable support for VST3 plug-ins. Disabled by default. Possible values: #[span.code ON], #[span.code OFF];
 					li
-						p #[span.code --enable-system-catch] — by default Giada includes Catch from the local source folder. Pass this flag to use the system provided one instead (useful in most Linux distributions);
+						p #[span.code WITH_TESTS] — include the test suite. Disabled by default. Possible values: #[span.code ON], #[span.code OFF];
+					li
+						p #[span.code WITH_SYSTEM_CATCH] — by default Giada includes Catch as a git submodule. Pass this flag to use the system provided one instead (useful in most Linux distributions). Possible values: #[span.code ON], #[span.code OFF];
 
 				h2 Run the tests (optional)
 
 				p.
-					All unit tests in Giada are based on #[a(href='https://github.com/philsquared/Catch/') Catch automated test framework], which supports several command-line options. Please take a look at the #[a(href='https://github.com/philsquared/Catch/blob/master/docs/command-line.md') official documentation] to understand the gritty details. The command below will just run the entire test suite:
+					All unit tests in Giada are based on #[a(href='https://github.com/philsquared/Catch/') Catch automated test framework], which supports several command-line options. Please take a look at the #[a(href='https://github.com/philsquared/Catch/blob/master/docs/command-line.md') official documentation] to understand the gritty details. Giada must be configured with #[span.code -DWITH_TESTS=ON] first, while tests are run as following:
 				
 				p.code.
-					make check
+					./giada --run-tests [optional catch parameters]
 	
 			#side-menu.col-md-3.margin-top-xl
 				include side-menu
