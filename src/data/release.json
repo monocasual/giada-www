@@ -1,16 +1,27 @@
 {
-    "version": "0.16.4",
-    "codename": "Baba Yaga",
+    "version": "0.17.0",
+    "codename": "Chupacabra",
     "changes": [
-        "Support for mono inputs",
-        "Overdub mode for Sample Channels with optional overdub protection",
-        "Disable record-on-signal mode when sequencer is running",
-        "Shift + [click on R button] kills action reading when 'Treat one-shot channels with actions as loops' option is on",
-        "Start MIDI channels automatically after action recording session",
-        "Fix wrong sample rate conversion when project rate != system rate ",
-        "Fix Wrong begin/end sample markers when loading a project with samplerate != system.samplerate ",
-        "Fix wrong MIDI learn mapping for master parameters",
-        "Fix BPM button disabled after audio recording session"
+        "Add CMake build system",
+        "VST3 support",
+        "Show descriptive plug-in names in Plug-in List Window",
+        "Resizable plug-in list",
+        "New persistence mechanism for Plug-ins state",
+        "Improved text truncation for small buttons and text boxes",
+        "Beautify Sample Editor window",
+        "Resizable plug-in list window",
+        "Show descriptive plug-in name in plug-in list",
+        "Update JUCE, version 6.0.4",
+        "Update Catch2 to version 2.13.2",
+        "Replace old filesystem functions in fs.h with std::filesystem",
+        "Add VST3 SDK as git submodule",
+        "Set minimum macOS version to 10.14",
+        "Statically link the MSVC runtime library on Windows",
+        "Avoid crash on opening plug-in list with invalid plug-ins",
+        "Rewind sample channels in loop.once.bar mode on bar, if still playing (fix #403)",
+        "Modernize log::print() function to handle std::string arguments (PR #402)",
+        "Fix playStatus logic for ending sample channels in loop-once-bar mode (#404)",
+        "Fix shrinking beats that could glitch the output (#361)"
     ],
 	"version_beta": null
 }

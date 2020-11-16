@@ -1,5 +1,10 @@
 [
     {
+        "title": "Giada 0.17.0 “Chupacabra” released",
+        "date": "November 16, 2020",
+		"body": "<p>A new version of Giada has been released yesterday, named after the dangerous creature that attacks and drinks the blood of livestock, including goats. What's new in this version:</p><ul><li><p><strong>VST3 support</strong> — yes, VST3 has finally landed, along with a better persistence mechanism for plug-ins state. On Mac, Linux and Windows of course;</p></li><li><p><strong>CMake build system</strong> — we finally switched to a modern build system for compiling Giada from source. The previous Autotools machinery is now deprecated and will be removed soon. Don't use it!</p></li><li><p>several UI beautifications and improvements such as the ability to resize the Plug-in List Window and a parameters cleanup in the Sample Editor;</p></li><li><p>many bugs fixed and source code optimizations.</p></li></ul><p>A warm kiss goes out to all the supporters who helped us with the release. As always, the full changelog is available in the <a href=\"/download\">download area</a>. Have fun with Giada 0.17.0 and remember to keep your animals safe from the chupacabra!</p>"
+    }, 
+    {
         "title": "Waterlord – Giada live demo #4",
         "date": "October 26, 2020",
 		"body": "<p>Dark beats on a sunny Saturday... with Giada Loop Machine 0.17.0 (development version), 100% laptop keyboard only!</p><div class=\"embed-responsive embed-responsive-16by9\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/TzrISWdKgcs\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>"
