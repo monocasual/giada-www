@@ -1,5 +1,15 @@
 [
     {
+        "title": "Giada 0.17.1 “Skinwalker” released",
+        "date": "February 02, 2021",
+		"body": "<p>Giada 0.17.1 <em>Skinwalker</em> is out! Inspired by the harmful witch who has the ability to turn into an animal, this release is mostly focused on bugfixing: many CMake improvements, lots of engine and usability glitches fixed, beautifications on the Continuous Integration/Packaging side. The complete changelog is available in the <a href=\"/download\">download area</a>. Have fun and stay safe 👽</p>"
+    }, 
+    {
+        "title": "Slow Winter – Giada live demo #5",
+        "date": "December 10, 2020",
+		"body": "<p>Quick loop made with Giada 0.17.1 (development version) and our new AKAI MPD218. What you see here is Giada fully controlled with a MIDI device... except for the 'solo' button at 00:36 :D</p><div class=\"embed-responsive embed-responsive-16by9\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/H8Sfsx5X5w4\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>"
+    }, 
+    {
         "title": "Giada 0.17.0 “Chupacabra” released",
         "date": "November 16, 2020",
 		"body": "<p>A new version of Giada has been released yesterday, named after the dangerous creature that attacks and drinks the blood of livestock, including goats. What's new in this version:</p><ul><li><p><strong>VST3 support</strong> — yes, VST3 has finally landed, along with a better persistence mechanism for plug-ins state. On Mac, Linux and Windows of course;</p></li><li><p><strong>CMake build system</strong> — we finally switched to a modern build system for compiling Giada from source. The previous Autotools machinery is now deprecated and will be removed soon. Don't use it!</p></li><li><p>several UI beautifications and improvements such as the ability to resize the Plug-in List Window and a parameters cleanup in the Sample Editor;</p></li><li><p>many bugs fixed and source code optimizations.</p></li></ul><p>A warm kiss goes out to all the supporters who helped us with the release. As always, the full changelog is available in the <a href=\"/download\">download area</a>. Have fun with Giada 0.17.0 and remember to keep your animals safe from the chupacabra!</p>"
