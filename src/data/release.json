@@ -1,16 +1,18 @@
 {
-    "version": "0.17.1",
-    "codename": "Skinwalker",
+    "version": "0.17.2",
+    "codename": "Sphinx",
     "changes": [
-        "Better CMake dependency management",
-        "Add CMake install rules (#422)",
-        "Switch to GitHub Actions for CI and release builds (#440)",
-        "Remove hardcoded 'test' folder in test suite (#432)",
-        "Make sure macOS minimum target is set to 10.14 (#444)",
-        "Fix crash when restarting after setting jack as an audio server (#409, #368)",
-        "Fix crash when clicking 'Cancel' button in Browser dialog (#430)",
-        "Fix wrong action ID mapping when cloning a channel (#426)",
-        "Fix scrambled MIDI bindings (#427)"
+        "New double-buffered audio engine",
+        "Improved audio sample rendering precision",
+        "Show tooltips when hovering over UI components",
+        "Add .clang-format file",
+        "Removed support for Autotools build system",
+        "Removed support for old raw patches",
+        "[CMake] Use find_package command for libsamplerate",
+        "Improved AudioBuffer move semantics",
+        "Send time + position information to plug-ins",
+        "Update JUCE library to version 6.0.7",
+        "Fix crash when saving project with plug-ins in invalid state"
     ],
 	"version_beta": null
 }
