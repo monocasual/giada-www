@@ -1,5 +1,10 @@
 [
     {
+        "title": "Giada 0.17.2 “Sphinx“ is ready",
+        "date": "April 01, 2021",
+		"body": "<p>Giada 0.17.2 codename <em>“Sphinx“</em> is ready for your desktop! Inspired by the merciless Greek mythical creature that will kill and eat those who cannot answer her riddle, this version marks the end of the 0.17 cycle and brings cool things on the table:</p><ul><li><strong>Improved audio engine</strong> with better sample rendering precision;</li><li>show <strong>tooltips</strong> when hovering over UI components — the UI overhaul has just begun!;</li><li>support for old, raw patches has been removed;</li><li>fixed an issue where the tempo information was not sent to plug-ins, resulting in wrong timing;</li><li>Add .clang-format file — automatically format source code, so that we don't need to worry about style issues anymore;</li><li>many more minor fixes and quality-of-life improvements.</li></ul><p>The complete changelog is available in the <a href=\"/download\">download area</a>. Thank you all!</p>"
+    }, 
+    {
         "title": "Giada 0.17.1 “Skinwalker” released",
         "date": "February 02, 2021",
 		"body": "<p>Giada 0.17.1 <em>Skinwalker</em> is out! Inspired by the harmful witch who has the ability to turn into an animal, this release is mostly focused on bugfixing: many CMake improvements, lots of engine and usability glitches fixed, beautifications on the Continuous Integration/Packaging side. The complete changelog is available in the <a href=\"/download\">download area</a>. Have fun and stay safe 👽</p>"
