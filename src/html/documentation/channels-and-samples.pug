@@ -64,84 +64,69 @@ block content
 					img(src='images/docs/channel-button-menu.png' alt="Sample channel button's menu")
 				ul
 					li
-						strong Input monitor
-						|  — when enabled, it allows you to monitor (i.e. listen to) the audio input to an armed channel. This option can be set to on or off by default in the 
-						a(href='documentation-configuration') configuration window
-						| , "Behaviors" tab;
+						p.
+							#[strong Input monitor] — when enabled, it allows you to monitor (i.e. listen to) the audio input to an armed channel. This option can be set to on or off by default in the #[a(ref='documentation-configuration') configuration window], "Behaviors" tab;
 					li
-						strong Load new sample
-						|  — replaces the current sample with a new one. Volume, actions, mode will be preserved;
+						p.
+							#[strong Overdub protection] — if enabled, the #[strong arm button] is disabled when the channel is not empty. This is useful to prevent unwanted overwrites of your audio recordings while live recording;
 					li
-						strong Export sample to file
-						|  — writes the loaded sample to disk. This option is useful to export a single take without saving the entire project (more information in section 
-						a(href='documentation-save-load-export') Save, load, export
-						| );
+						p.
+							#[strong Load new sample] — replaces the current sample with a new one. Volume, actions, mode will be preserved;
 					li
-						strong Set keyboard input
-						|  — binds keyboard buttons to this channel;
+						p.
+							#[strong Export sample to file] — writes the loaded sample to disk. This option is useful to export a single take without saving the entire project (more information in section #[a (href='documentation-save-load-export') Save, load, export]);
 					li
-						strong Setup MIDI input
-						|  — binds MIDI events to this channel, see 
-						a(href='documentation-midi-input-management') MIDI input management
-						| ;					
+						p.
+							#[strong Set keyboard input] — binds keyboard buttons to this channel;
 					li
-						strong Setup MIDI output
-						|  — enables MIDI output from this channel, see 
-						a(href='documentation-midi-output-management') MIDI output management
-						| ;
+						p.
+							#[strong Setup MIDI input] — binds MIDI events to this channel, see #[a(href='documentation-midi-input-management') MIDI input management];					
 					li
-						strong Edit sample
-						|  — opens the 
-						a(href='documentation-sample-editor') Sample Editor
-						| ;
+						p.
+							#[strong Setup MIDI output] — enables MIDI output from this channel, see #[a(href='documentation-midi-output-management') MIDI output management];
 					li
-						strong Edit actions
-						|  — opens the 
-						a(href='documentation-action-editor') Action Editor
-						| ;
+						p.
+							#[strong Edit sample] — opens the #[a(href='documentation-sample-editor') Sample Editor];
 					li
-						strong Clear actions
-						|  — deletes recorded actions from the channel: key press/key release, volume or everything. The option is grayed out if there are no actions to delete;
+						p.
+							#[strong Edit actions] — opens the #[a(href='documentation-action-editor') Action Editor];
 					li
-						strong Rename
-						|  — changes the channel name;
+						p.
+							#[strong Clear actions] — deletes recorded actions from the channel: key press/key release, volume or everything. The option is grayed out if there are no actions to delete;
 					li
-						strong Clone
-						|  — adds a new channel by making a full copy of the current one;
+						p.
+							#[strong Rename] — changes the channel name;
 					li
-						strong Free
-						|  — discharges the sample and the recorded actions, if any. Volume and mode will be preserved.
+						p.
+							#[strong Clone] — adds a new channel by making a full copy of the current one;
 					li
-						strong Delete
-						|  — removes the channel from the column. Actions and samples will be deleted as well.
+						p.
+							#[strong Free] — discharges the sample and the recorded actions, if any. Volume and mode will be preserved.
+					li
+						p.
+							#[strong Delete] — removes the channel from the column. Actions and samples will be deleted as well.
 				
 				h2 Channel statuses
-				p
-					| The 
-					strong status box
-					img.inline(src='images/docs/status-box.png' alt='Status box' title='Status box')
-					|  gives you informations about the sample:
+
+				p.
+					The #[strong status box] #[img.inline(src='images/docs/status-box.png' alt='Status box' title='Status box')] gives you informations about the sample:
+
 				ul
 					li
-						img.inline(src='images/docs/chanstatus_off.png' alt='Chan status off' title='Chan status off')
-						strong Off
-						|  — the channel is stopped;
+						p.
+							#[img.inline(src='images/docs/chanstatus_off.png' alt='Chan status off' title='Chan status off')] #[strong Off] — the channel is stopped;
 					li
-						img.inline(src='images/docs/chanstatus_wait.png' alt='Chan status wait' title='Chan status wait')
-						strong Wait/ending
-						|  (blinking) — the channel is waiting for the first beat or is about to stop;
+						p.
+							#[img.inline(src='images/docs/chanstatus_wait.png' alt='Chan status wait' title='Chan status wait')] #[strong Wait/ending] (blinking) — the channel is waiting for the first beat or is about to stop;
 					li
-						img.inline(src='images/docs/chanstatus_play.png' alt='Chan status play' title='Chan status play')
-						strong Play
-						|  — the channel is active and playing;
+						p.
+							#[img.inline(src='images/docs/chanstatus_play.png' alt='Chan status play' title='Chan status play')] #[strong Play] — the channel is active and playing;
 					li
-						img.inline(src='images/docs/chanstatus_actionrec_on.png' alt='Chan status action recs on' title='Chan status action recs on')
-						strong Action recs on
-						|   — the channel is ready to record actions;
+						p.
+							#[img.inline(src='images/docs/chanstatus_actionrec_on.png' alt='Chan status action recs on' title='Chan status action recs on')] #[strong Action recording on] — the channel is ready to record actions;
 					li
-						img.inline(src='images/docs/chanstatus_inputrec_on.png' alt='Chan status input recs on' title='Chan status input recs on')
-						strong Input recs on
-						|  — the channel is recording something from the soundcard.
+						p.
+							#[img.inline(src='images/docs/chanstatus_inputrec_on.png' alt='Chan status input recs on' title='Chan status input recs on')] #[strong Audio recording on] — the channel is recording something from the sound card.
 				
 				h2 Play modes
 
@@ -189,8 +174,7 @@ block content
 						td
 							img(src='images/docs/mode_loopf.png' alt='Loop repeat' title='Loop repeat')
 						td loop repeat
-						td
-							| the sample starts at beat 1 and will play continuously, rewinding itself at every bar
+						td the sample starts at beat 1 and will play continuously, rewinding itself at every bar
 					tr
 						td(rowspan=4) one shot
 						td
@@ -216,8 +200,7 @@ block content
 				h2 Keyboard interactions
 
 				p.
-					Sample channels are playable by clicking on the channel #[strong play button]
-					#[img.inline(src='images/docs/play-button.png' alt='Play button')]. or by pressing the corresponding keyboard/MIDI button if bound. The following table shows the behavior of sample channels in #[strong loop] mode:
+					Sample channels are playable by clicking on the channel #[strong play button] #[img.inline(src='images/docs/play-button.png' alt='Play button')]. or by pressing the corresponding keyboard/MIDI button if bound. The following table shows the behavior of sample channels in #[strong loop] mode:
 				
 				table.table
 					tr
