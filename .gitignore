@@ -3,3 +3,5 @@
 /package-lock.json
 /src/data/giada-*
 /src/data/Giada-*
+
+.vscode/
