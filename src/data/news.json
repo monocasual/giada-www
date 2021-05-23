@@ -1,99 +1,104 @@
 [
-    {
-        "title": "Giada 0.17.2 “Sphinx“ is ready",
-        "date": "April 01, 2021",
+	{
+		"title": "Giada 0.18.0 “Leprechaun“ is out",
+		"date": "May 23, 2021",
+		"body": "<p>Few days ago we released a new version of Giada, named after the supernatural being in Irish folklore. What's new in this version:</p><ul><li><p><strong>'free loop-length' audio recording mode</strong> — a brand new way of live-recording and looping audio without tempo constraints. Tutorials and demos on how to use it are coming soon;</p></li><li><p>the code that drives the Audio Configuration panel has been simplified and cleaned up. This will hopefully provide a better audio configuration experience with less errors and weird crashes. Please report any nuisance!</p></li><li><p>Many other under-the-hood improvements and bugs fixed.</p></li></ul><p>As always, the full changelog is available in the <a href=\"/download\">download area</a>. Starting from this month we also decided on moving our official forum to <a href=\"https://github.com/monocasual/giada/discussions\">GitHub Discussions</a>, in order to provide a better and safer user experience. The <a href=\"https://www.giadamusic.com/forum/\">old forum</a> will stay online for a while in read-only mode.</p>"
+	},
+	{
+		"title": "Giada 0.17.2 “Sphinx“ is ready",
+		"date": "April 01, 2021",
 		"body": "<p>Giada 0.17.2 codename <em>“Sphinx“</em> is ready for your desktop! Inspired by the merciless Greek mythical creature that will kill and eat those who cannot answer her riddle, this version marks the end of the 0.17 cycle and brings cool things on the table:</p><ul><li><strong>Improved audio engine</strong> with better sample rendering precision;</li><li>show <strong>tooltips</strong> when hovering over UI components — the UI overhaul has just begun!;</li><li>support for old, raw patches has been removed;</li><li>fixed an issue where the tempo information was not sent to plug-ins, resulting in wrong timing;</li><li>Add .clang-format file — automatically format source code, so that we don't need to worry about style issues anymore;</li><li>many more minor fixes and quality-of-life improvements.</li></ul><p>The complete changelog is available in the <a href=\"/download\">download area</a>. Thank you all!</p>"
-    }, 
-    {
-        "title": "Giada 0.17.1 “Skinwalker” released",
-        "date": "February 02, 2021",
+	},
+	{
+		"title": "Giada 0.17.1 “Skinwalker” released",
+		"date": "February 02, 2021",
 		"body": "<p>Giada 0.17.1 <em>Skinwalker</em> is out! Inspired by the harmful witch who has the ability to turn into an animal, this release is mostly focused on bugfixing: many CMake improvements, lots of engine and usability glitches fixed, beautifications on the Continuous Integration/Packaging side. The complete changelog is available in the <a href=\"/download\">download area</a>. Have fun and stay safe 👽</p>"
-    }, 
-    {
-        "title": "Slow Winter – Giada live demo #5",
-        "date": "December 10, 2020",
+	},
+	{
+		"title": "Slow Winter – Giada live demo #5",
+		"date": "December 10, 2020",
 		"body": "<p>Quick loop made with Giada 0.17.1 (development version) and our new AKAI MPD218. What you see here is Giada fully controlled with a MIDI device... except for the 'solo' button at 00:36 :D</p><div class=\"embed-responsive embed-responsive-16by9\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/H8Sfsx5X5w4\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>"
-    }, 
-    {
-        "title": "Giada 0.17.0 “Chupacabra” released",
-        "date": "November 16, 2020",
+	},
+	{
+		"title": "Giada 0.17.0 “Chupacabra” released",
+		"date": "November 16, 2020",
 		"body": "<p>A new version of Giada has been released yesterday, named after the dangerous creature that attacks and drinks the blood of livestock, including goats. What's new in this version:</p><ul><li><p><strong>VST3 support</strong> — yes, VST3 has finally landed, along with a better persistence mechanism for plug-ins state. On Mac, Linux and Windows of course;</p></li><li><p><strong>CMake build system</strong> — we finally switched to a modern build system for compiling Giada from source. The previous Autotools machinery is now deprecated and will be removed soon. Don't use it!</p></li><li><p>several UI beautifications and improvements such as the ability to resize the Plug-in List Window and a parameters cleanup in the Sample Editor;</p></li><li><p>many bugs fixed and source code optimizations.</p></li></ul><p>A warm kiss goes out to all the supporters who helped us with the release. As always, the full changelog is available in the <a href=\"/download\">download area</a>. Have fun with Giada 0.17.0 and remember to keep your animals safe from the chupacabra!</p>"
-    }, 
-    {
-        "title": "Waterlord – Giada live demo #4",
-        "date": "October 26, 2020",
+	},
+	{
+		"title": "Waterlord – Giada live demo #4",
+		"date": "October 26, 2020",
 		"body": "<p>Dark beats on a sunny Saturday... with Giada Loop Machine 0.17.0 (development version), 100% laptop keyboard only!</p><div class=\"embed-responsive embed-responsive-16by9\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/TzrISWdKgcs\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>"
-    }, 
-    {
-        "title": "Giada 0.16.4 “Baba Yaga” is ready",
-        "date": "September 26, 2020",
+	},
+	{
+		"title": "Giada 0.16.4 “Baba Yaga” is ready",
+		"date": "September 26, 2020",
 		"body": "<p>Say hello to Giada 0.16.4 codename <em>Baba Yaga</em>, the last version in the 0.16 branch. This new release features many improvements and annoying bugs fixed. To name a few:</p><ul><li><strong>Support for mono inputs</strong> ― you can finally record from your mono inputs, no need for mandatory stereo channels anymore!</li><li>improved <strong>overdub mode</strong> for Sample Channels, featuring <em>Overdub protection</em> mode to avoid dangerous overwrites.</li></ul><p>We have also fixed several errors regarding sample rate conversion and improved the UI interaction. As always the full changelog is available in the <a href=\"/download\">download area</a>. A big \"Thank You\" to all supporters, developers and hackers who helped us with the release of Giada 0.16.4. Get ready for the 0.17 branch!</p>"
-    }, 
-    {
-        "title": "Giada 0.16.3 codename “Talisman” released",
-        "date": "June 21, 2020",
+	},
+	{
+		"title": "Giada 0.16.3 codename “Talisman” released",
+		"date": "June 21, 2020",
 		"body": "<p>A new version of Giada Loop Machine is ready for your desktop! This release features an important refactoring of the internal channel architecture. Such improvement will make easier for us to extend Giada with new channel-related features in view of the upcoming 1.0 release. And also:</p><ul><li>Big CPU usage optimization when playing with lots of sample/MIDI channels;</li><li>a better, sample-precise quantizer;</li><li>simplified logic when halting channels containing pre-recorded actions;</li><li>many bugs fixed, specially the number of BPM not changing when using Jack on Linux.</li></ul><p>The full changelog is available in the <a href=\"https://giadamusic.com/download\">download area</a>. Have fun and stay safe!</p>"
-    }, 
-    {
-        "title": "The Forest – Giada live showcase",
-        "date": "June 14, 2020",
+	},
+	{
+		"title": "The Forest – Giada live showcase",
+		"date": "June 14, 2020",
 		"body": "<p>Enjoy a new demo of the upcoming Giada v.0.16.3! Featuring MIDI mapping, multiple sample channels, VST plug-ins and full-screen UI. Kindly performed by <a href=\"https://soundcloud.com/tblr_orchestra\">the TBLR Orchestra</a>.</p><div class=\"embed-responsive embed-responsive-16by9\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/OI7dW4JAz3U\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>"
-    }, 
-    {
-        "title": "Giada 0.16.2 <em>Realm of Magic</em> released",
-        "date": "March 01, 2020",
+	},
+	{
+		"title": "Giada 0.16.2 <em>Realm of Magic</em> released",
+		"date": "March 01, 2020",
 		"body": "<p>Giada 0.16.2 is ready for your studio! Many things are changing under the hood: a new library for reading JSON projects and configuration files, a new version of RtAudio that fixes some annoying errors on Linux, significant code clean-ups and optimizations.</p><p>And what about new features, instead? Giada 0.16.2 provides the ability to vertically resize channels, as well as many minor user-interface improvements that will make for a better user experience. We also deprecated the old patch format: from now on Giada will always store and load <em>projects</em>, while single-file patches are still supported in read-only mode for backward compatibility.<p>Enjoy Giada 0.16.2 “Realm of Magic” by grabbing it in the <a href=\"/download\">download area</a>, along with the full changelog.</p>"
-    }, 
-    {
-        "title": "New one-page tutorial #001",
-        "date": "February 02, 2020",
+	},
+	{
+		"title": "New one-page tutorial #001",
+		"date": "February 02, 2020",
 		"body": "<p>Say hello to our new <strong>one-page tutorial series</strong>! A collection of short guides that explain how to do useful things with Giada. In the first episode, <a href=\"/tutorial-001-play-samples-keyboard\">Play samples with your keyboard</a> you will learn how to use Giada as a sample player by loading samples into channels and binding keyboard buttons to them. The full list is available in the <a href=\"/media\">tutorials & media</a> corner.</p>"
-    }, 
-    {
-        "title": "Giada 0.16.1 codename “Goblins” released today",
-        "date": "January 12, 2020",
+	},
+	{
+		"title": "Giada 0.16.1 codename “Goblins” released today",
+		"date": "January 12, 2020",
 		"body": "<p>We are happy to announce a new minor version of Giada coming out from our laboratories. This time we have fixed plenty of glitches around the user interface, performed some code refactoring and added some nice improvements such as the <strong>ability to remove empty columns manually</strong> from the main window. Also, our friend <a href=\"https://github.com/yurivict\">yurivict</a> added support for FreeBSD: thank you a lot for this!</p><p>As always, Giada 0.16.1 “Goblins” binaries are ready for download in the <a href=\"/download\">download area</a>, along with the full changelog.</p>"
-    }, 
-    {
-        "title": "Giada 0.16.0 final version released",
-        "date": "December 2, 2019",
+	},
+	{
+		"title": "Giada 0.16.0 final version released",
+		"date": "December 2, 2019",
 		"body": "<p>After some months of development, we are happy to announce Giada 0.16.0 codename “Dungeons and Catacombs”. This version brings in many architectural changes and improvements to the audio rendering thread, as well as the UI layer. We want to get ready for the long-awaited version 1.0 with a solid, reliable and easy to extend audio engine.</p><p>Given all these important changes, patches/projects created with Giada prior to version 0.16.0 won't be supported anymore. Don't worry, though: the <a href=\"patch-converter\">Almighty Patch Converter</a> tool will update your projects automatically in a click. Just follow the instructions on that page and you are ready to go :)</p><p>As always a big warm hug to all our supporters, bug reporters and friends. Go grab Giada 0.16.0 “Dungeons and Catacombs” in the <a href=\"/download\">download area</a> now!</p>"
-    }, 
-    {
-        "title": "Giada 0.16.0 beta 2 released",
-        "date": "November 13, 2019",
-        "body": "<p>Another beta version of Giada 0.16.0 has been baked today in our laboratories. This new release marked as <em>0.16.0beta2</em> fixes many annoying bugs and crashes, paving the road for the long-awaited final version 0.16.0. Please take a look at the full <a href=\"https://github.com/monocasual/giada/blob/master/ChangeLog\">changelog</a> and feel free to play with Giada 0.16.0beta2 in the <a href=\"/download\">download area</a>.</p>"
-    }, 
-    {
-        "title": "Giada 0.16.0 beta 1 released today",
-        "date": "October 19, 2019",
-        "body": "<p>We are very happy to announce that the first experimental version of Giada from the new 0.16 branch is out and ready to be tested. The most important change is how the engine now talks to the UI, thanks to a complete refactoring of the intermediate layer. This improvement lays the foundation for a solid, flexible architecture and paves the way for the long-awaited 1.0.0 version!</p><p>Giada 0.16.0 will also feature a completely overhauled persistence mechanism to save and load your patches/projects, along with many other minor fixes and code beautifications. Unfortunately, patches/projects created with a previous version of Giada are not supported anymore. But don't despair: we are working on a sleek online tool that automatically upgrades your files for you in a click.</p><p>The new experimental Giada version, marked as <em>beta1</em> is available in the <a href=\"https://giadamusic.com/download\">download area</a>, along with the latest stable version 0.15.4. Please share your feedback with us and report any bugs you may find!</p>"
-    },      
-    {
-        "title": "Giada 0.15.4 <em>Joseph Pilates</em> is out",
-        "date": "March 22, 2019",
-        "body": "<p>Giada 0.15.4, codename <em>Joseph Pilates</em> is out today, inspired by the famous German-American trainer notable for his Pilates method of physical fitness. Giada 0.15.4 contains many new exciting features:</p><ul><li>New <strong>record-on-signal</strong> option for input and action recording;</li><li>Initial support for plug-ins with mono I/O buses;</li><li>Optimized audio I/O processing;</li><li>Many minor bugs fixed and a huge code clean-up.</li></ul><p>Documentation about the new record-on-signal option will be uploaded soon, as well as more video tutorials. Take a look at the full changelog and grab the binaries <a href=\"https://giadamusic.com/download\">in the download area</a>!</p>"
-    },      
-    {
-        "title": "Giada 0.15.3 <em>Medicine Ball</em> released!",
-        "date": "December 24, 2018",
-        "body": "<p>After a long development stage we are happy to present to you Giada 0.15.3, codename <em>Medicine Ball</em>. Inspired by the fitness ball used for rehabilitation and strength training, this release introduces many changes:</p><ul><li>huge refactoring of the <strong>Action Editor</strong> — rewritten from scratch, more reliable and robust during action editing and live recording; </li><li>support for <strong>'inaudible' MIDI lightning events</strong>, along with optional midimap parameters. Thank you Tomek Szczęsny!</li><li>more optimization in the AppImage binary file;</li><li>lots of minor bugs and crashes fixed.</li></ul><p>Full changelog and binaries <a href=\"https://giadamusic.com/download\">in the download area</a>. Thank you all for you help and support, stay fit!</p>"
-    },  
+	},
+	{
+		"title": "Giada 0.16.0 beta 2 released",
+		"date": "November 13, 2019",
+		"body": "<p>Another beta version of Giada 0.16.0 has been baked today in our laboratories. This new release marked as <em>0.16.0beta2</em> fixes many annoying bugs and crashes, paving the road for the long-awaited final version 0.16.0. Please take a look at the full <a href=\"https://github.com/monocasual/giada/blob/master/ChangeLog\">changelog</a> and feel free to play with Giada 0.16.0beta2 in the <a href=\"/download\">download area</a>.</p>"
+	},
+	{
+		"title": "Giada 0.16.0 beta 1 released today",
+		"date": "October 19, 2019",
+		"body": "<p>We are very happy to announce that the first experimental version of Giada from the new 0.16 branch is out and ready to be tested. The most important change is how the engine now talks to the UI, thanks to a complete refactoring of the intermediate layer. This improvement lays the foundation for a solid, flexible architecture and paves the way for the long-awaited 1.0.0 version!</p><p>Giada 0.16.0 will also feature a completely overhauled persistence mechanism to save and load your patches/projects, along with many other minor fixes and code beautifications. Unfortunately, patches/projects created with a previous version of Giada are not supported anymore. But don't despair: we are working on a sleek online tool that automatically upgrades your files for you in a click.</p><p>The new experimental Giada version, marked as <em>beta1</em> is available in the <a href=\"https://giadamusic.com/download\">download area</a>, along with the latest stable version 0.15.4. Please share your feedback with us and report any bugs you may find!</p>"
+	},
+	{
+		"title": "Giada 0.15.4 <em>Joseph Pilates</em> is out",
+		"date": "March 22, 2019",
+		"body": "<p>Giada 0.15.4, codename <em>Joseph Pilates</em> is out today, inspired by the famous German-American trainer notable for his Pilates method of physical fitness. Giada 0.15.4 contains many new exciting features:</p><ul><li>New <strong>record-on-signal</strong> option for input and action recording;</li><li>Initial support for plug-ins with mono I/O buses;</li><li>Optimized audio I/O processing;</li><li>Many minor bugs fixed and a huge code clean-up.</li></ul><p>Documentation about the new record-on-signal option will be uploaded soon, as well as more video tutorials. Take a look at the full changelog and grab the binaries <a href=\"https://giadamusic.com/download\">in the download area</a>!</p>"
+	},
+	{
+		"title": "Giada 0.15.3 <em>Medicine Ball</em> released!",
+		"date": "December 24, 2018",
+		"body": "<p>After a long development stage we are happy to present to you Giada 0.15.3, codename <em>Medicine Ball</em>. Inspired by the fitness ball used for rehabilitation and strength training, this release introduces many changes:</p><ul><li>huge refactoring of the <strong>Action Editor</strong> — rewritten from scratch, more reliable and robust during action editing and live recording; </li><li>support for <strong>'inaudible' MIDI lightning events</strong>, along with optional midimap parameters. Thank you Tomek Szczęsny!</li><li>more optimization in the AppImage binary file;</li><li>lots of minor bugs and crashes fixed.</li></ul><p>Full changelog and binaries <a href=\"https://giadamusic.com/download\">in the download area</a>. Thank you all for you help and support, stay fit!</p>"
+	},
 	{
 		"title": "New video tutorial #4: The Sample Editor",
 		"date": "September 30, 2018",
 		"body": "<p>Our buddy Bartholomew Davenport is back with another smashing Giada tutorial! This time he will introduce us to the voodoo universe of the Sample Editor: the tool used to edit audio samples, loops and sound effects.</p> <div class=\"embed-responsive embed-responsive-16by9\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/AUdPeWlScLI\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe></div>"
-	},		
+	},
 	{
 		"title": "Giada 0.15.2 <em>Smith Machine</em> released today",
 		"date": "September 06, 2018",
 		"body": "<p>Today we are proud to release Giada 0.15.2 <em>Smith Machine</em>, inspired by the so-called weight machine used for weight training. This new version introduces a list of satisfying features:</p><ul><li>a new logo, thanks to our friend <a href=\"https://github.com/foways\">foways</a>;<li>a new, sample-accurate and easier to use <strong>Action Editor</strong>, rewritten from scratch;</li><li>ability to edit <strong>MIDI Velocity</strong> in MIDI channels;</li><li>improved compatibility with those MIDI devices that send weird Note Off events (Note On + Velocity = 0);</li><li>many annoying bugs fixed, including a crash while opening plug-in windows on macOS;</li><li>other small improvements and minor fixes.</li></ul><p>The full changelog is available in <a href=\"https://giadamusic.com/download\">the download area</a>. A muscular \"thank you\" to all the contributors who inspired us with Giada 0.15.2!</p>"
-	},		
+	},
 	{
 		"title": "Giada 0.15.1 <em>Leg Curl</em> is finally out",
 		"date": "July 05, 2018",
 		"body": "<p>Yesterday a new version of Giada, 0.15.1 codename <em>Leg Curl</em> appeared in bodily form, inspired by the fitness exercise that involves flexing the lower leg against resistance towards the buttocks.</p> <p>This version mainly features a huge internal refactoring of how Sample Channels and MIDI Channels get processed by the Audio Engine. This renovation opens up the doors to many new exciting functionalities planned for the 0.15 series - take a look <a href=\"https://github.com/monocasual/giada/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3A%220.15+series%22+\">here</a> for the full list.</p> <p>In addition to that, we have also fixed a couple of bugs regarding plug-ins crashes on Linux and improved BPM changes detection while running Giada as JACK client.</p> <p>Full changelog + downloads available <a href=\"https://giadamusic.com/download\">here</a>. <img src=\"https://assets-cdn.github.com/images/icons/emoji/unicode/1f4aa.png\" style=\"height:2em\" alt=\"Stay strong.\"></a></p>"
-	},	
+	},
 	{
 		"title": "Giada 0.15.0 <em>French Press</em> released",
 		"date": "April 19, 2018",
