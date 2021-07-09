@@ -1,5 +1,15 @@
 [
 	{
+		"title": "Giada demo #6: “Coraggio“",
+		"date": "July 10, 2021",
+		"body": "<p>A new lo-fi house experiment live-recorded with Giada Loop Machine version 0.18.1 has been published on our YouTube channels few days ago. Music by <a href=\"https://www.youtube.com/user/toblerOrchestra\">TBLR</a>, visuals by <a href=\"https://www.instagram.com/kikimoredesign/\">Kikimoredesign</a>. Enjoy!</p><div class=\"embed-responsive embed-responsive-16by9\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/BZyOuaRkY-c\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>"
+	},
+	{
+		"title": "New free loop-length audio recording tutorial",
+		"date": "July 02, 2021",
+		"body": "<p>The <a href=\"media\">Tutorials & Media</a> section recently gained a new one-page tutorial on how to use the free loop-length mode. Introduced in Giada version 0.18.0, the free loop-length mode allows you to freely record audio from your sound card without time boundaries. <a href=\"https://www.giadamusic.com/tutorial-002-free-loop-length-recording\">Check it out now!</a></p>"
+	},
+	{
 		"title": "Giada 0.18.0 “Leprechaun“ is out",
 		"date": "May 23, 2021",
 		"body": "<p>Few days ago we released a new version of Giada, named after the supernatural being in Irish folklore. What's new in this version:</p><ul><li><p><strong>'free loop-length' audio recording mode</strong> — a brand new way of live-recording and looping audio without tempo constraints. Tutorials and demos on how to use it are coming soon;</p></li><li><p>the code that drives the Audio Configuration panel has been simplified and cleaned up. This will hopefully provide a better audio configuration experience with less errors and weird crashes. Please report any nuisance!</p></li><li><p>Many other under-the-hood improvements and bugs fixed.</p></li></ul><p>As always, the full changelog is available in the <a href=\"/download\">download area</a>. Starting from this month we also decided on moving our official forum to <a href=\"https://github.com/monocasual/giada/discussions\">GitHub Discussions</a>, in order to provide a better and safer user experience. The <a href=\"https://www.giadamusic.com/forum/\">old forum</a> will stay online for a while in read-only mode.</p>"
