@@ -1,16 +1,16 @@
 {
-    "version": "0.18.0.1",
-    "codename": "Leprechaun",
+    "version": "0.18.1",
+    "codename": "Kelpie",
     "changes": [
-        "New 'free loop-length' audio recording mode (#63)",
-        "Many AudioBuffer improvements",
-        "Audio configuration panel refactoring",
-        "KernelAudio improvements and cleanups",
-        "Relaxed BPM handling when working with JACK",
-        "Install executable to FHS compliant location (#450)",
-        "[CI] Don't UPX binaries on macOS (#459)",
-        "Fix Overdub protection ON by default not working (#460)",
-        "Fix crash when moving up from a deleted folder (#455)"
+        "New resampler architecture: allows for changing quality also for live rendering (#288)",
+        "Gracefully shutdown UI on close to avoid random crashes on quit on Windows",
+        "Fix 'one shot channels with actions as loops' mode not working correctly",
+        "Fix wrong sequencer signals while starting/stopping action recs with JACK (#397)",
+        "Fix extra dot in unique audio file name generation",
+        "Fix sample overflow when looping a sample with pitch != 1.0",
+        "[CMake, Linux] Detect JACK with pkg-config",
+        "[CMake, Linux] Install Freedesktop files and icon",
+        "[CMake, Linux] Add configure switches for ALSA, JACK and PulseAudio"
     ],
     "version_beta": null
 }
