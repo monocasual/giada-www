@@ -1,5 +1,10 @@
 [
 	{
+		"title": "Giada 0.18.1 “Kelpie“ is out",
+		"date": "July 31, 2021",
+		"body": "<p>Few days ago we released Giada 0.18.1 codename “Kelpie“, named after the shape-shifting spirit inhabiting lakes in Scottish folklore. Giada 0.18.1 features a new audio resampling architecture that allows you to change the resampling quality of the live audio stream — prior to this change the resampling quality setting was used only for converting audio files when a project was initially loaded.</p><p>Giada 0.18.1 also includes many CMake fixes on Linux, hardened runtime on macOS release, additional fixes for JACK Transport (Linux) and much more. The full changelog is available in the <a href=\"/download\">download area</a>. Have fun with Giada 0.18.1 and stay safe!</p>" 
+	},
+	{
 		"title": "Giada demo #6: “Coraggio“",
 		"date": "July 10, 2021",
 		"body": "<p>A new lo-fi house experiment live-recorded with Giada Loop Machine version 0.18.1 has been published on our YouTube channels few days ago. Music by <a href=\"https://www.youtube.com/user/toblerOrchestra\">TBLR</a>, visuals by <a href=\"https://www.instagram.com/kikimoredesign/\">Kikimoredesign</a>. Enjoy!</p><div class=\"embed-responsive embed-responsive-16by9\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/BZyOuaRkY-c\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>"
