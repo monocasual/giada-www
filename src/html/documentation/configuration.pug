@@ -20,48 +20,20 @@ block content
 				p
 					img.first(src='images/docs/giada-configuration-panel.png' alt='Giada configuration panel - sound system tab' title='Giada configuration panel - sound system tab')
 				ul
-					li
-						strong System
-						|  — This is the audio framework to choose from. It may vary from OS to OS.
-					li
-						strong Buffer size
-						|  — (in frames): a low value means low latency but high cpu work, while an high value means high latency with low cpu work  (useful if you have a slow machine or you don't need to play channels in live mode).
-					li
-						strong Sample rate
-						|  — (in Hz): the sample rate at which your soundcard works. If you load a set of samples recorded at different sample rates, they will be converted to that rate (see 
-						em resampling
-						|  below).
-					li
-						strong Output device
-						|  — The device used for playing. The question mark on the right pops up some information about it.
-					li
-						strong Limit output
-						|  — If enabled, the output signal will be truncated if greater than &pm; 1.0 (floating point values).
-					li
-						strong Input device
-						|  — The device used for recording. Disabled by default. The question mark on the right pops up some information about it.
-					li
-						strong Resampling
-						|  — The algorithm used for resampling, i.e. when you load a sample whose sample rate differs from the system's rate. You can choose between five algorithms:
-						ol
-							li
-								strong Linear
-								|  — very fast, low quality;
-							li
-								strong Zero Order Hold
-								|  — fast, low quality;
-							li
-								strong Sinc basic quality
-								|  — not so fast, medium quality;
-							li
-								strong Sinc medium quality
-								|  — not fast, good quality;
-							li
-								strong Sinc best quality
-								|  — slow, super quality.
-						|  Warning: this is 
-						em not
-						|  the algorithm used for pitch manipulation, which is currently hardcoded to Linear quality for speed purposes.
+					li.
+						#[strong System] — This is the audio framework to choose from. It may vary from OS to OS.
+					li.
+						#[strong Buffer size] — (in frames): a low value means low latency but high cpu work, while an high value means high latency with low cpu work  (useful if you have a slow machine or you don't need to play channels in live mode).
+					li.
+						#[strong Sample rate] — (in Hz): the sample rate at which your soundcard works. If you load a set of samples recorded at different sample rates, they will be converted to that rate (see #[em resampling] below).
+					li.
+						#[strong Output device] — The device used for playing. The question mark on the right pops up some information about it.
+					li.
+						#[strong Limit output] — If enabled, the output signal will be truncated if greater than &pm; 1.0 (floating point values).
+					li.
+						#[strong Input device] — The device used for recording. Disabled by default. The question mark on the right pops up some information about it.
+					li.
+						#[strong Resampling] — The algorithm used for resampling, i.e. when you load a sample whose sample rate differs from the system's rate and when you change the pitch of a sample channel. You can choose between five algorithms: 1) #[strong Linear] — very fast, low quality; 2) #[strong Zero Order Hold] — fast, low quality; 3) #[strong Sinc basic quality] — not so fast, medium quality; 4) #[strong Sinc medium quality] — not fast, good quality; 5) #[strong Sinc best quality] — slow, super quality.
 				
 				h2 MIDI
 
