@@ -18,13 +18,13 @@ const RELEASE = require(`${DATA_DIR}/release.json`);
 
 
 const HAS_BETA     = RELEASE.version_beta !== null;
-const LINUX_PKG    = `${DATA_DIR}/Giada-${RELEASE.version}-x86_64.AppImage`;
-const WINDOWS_PKG  = `${DATA_DIR}/giada-${RELEASE.version}-x86_64-windows.zip`;
-const MACOS_PKG    = `${DATA_DIR}/giada-${RELEASE.version}-x86_64-macos.zip`;
-const SOURCE_PKG   = `${DATA_DIR}/giada-${RELEASE.version}-src.tar.gz`;
-const LINUX_BETA   = `${DATA_DIR}/Giada-${RELEASE.version_beta}-x86_64.AppImage`;
-const WINDOWS_BETA = `${DATA_DIR}/giada-${RELEASE.version_beta}-x86_64-windows.zip`;
-const MACOS_BETA   = `${DATA_DIR}/giada-${RELEASE.version_beta}-x86_64-macos.zip`;
+const LINUX_PKG    = `${DATA_DIR}/Giada-v${RELEASE.version}-x86_64.AppImage`;
+const WINDOWS_PKG  = `${DATA_DIR}/giada-v${RELEASE.version}-x86_64-windows.zip`;
+const MACOS_PKG    = `${DATA_DIR}/giada-v${RELEASE.version}-x86_64-macos.zip`;
+const SOURCE_PKG   = `${DATA_DIR}/giada-v${RELEASE.version}-src.tar.gz`;
+const LINUX_BETA   = `${DATA_DIR}/Giada-v${RELEASE.version_beta}-x86_64.AppImage`;
+const WINDOWS_BETA = `${DATA_DIR}/giada-v${RELEASE.version_beta}-x86_64-windows.zip`;
+const MACOS_BETA   = `${DATA_DIR}/giada-v${RELEASE.version_beta}-x86_64-macos.zip`;
 
 /* -------------------------------------------------------------------------- */
 
