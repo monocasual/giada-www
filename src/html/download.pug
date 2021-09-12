@@ -10,11 +10,12 @@ block content
 		.row.margin-top-xl
 			.col-md-12.text-center
 				h1 Grab the unbelievable Giada #{RELEASE.version}.
+				
 				h2 “#{RELEASE.codename}”
-				p
-					| Or try a 
-					a(href='https://github.com/monocasual/giada/releases/') previous version
-					| .
+
+				p.
+					Or try a #[a(href='https://github.com/monocasual/giada/releases/') previous version].
+
 		.row.margin-top-xl
 			.col-md-5.col-md-offset-1
 				.download-box
@@ -45,10 +46,8 @@ block content
 					div
 						p.skinfont
 							a(href=`${RELEASE.source.path}` title='Download Giada Source Code') Giada #{RELEASE.version} Source Code
-						p
-							| Learn how to compile it 
-							a(title='Giada Documentation - Compiling from Source' href='documentation-compiling-from-source') here
-							| .
+						p.
+							Learn how to compile it #[a(title='Giada Documentation - Compiling from Source' href='documentation-compiling-from-source') here].
 
 		if HAS_BETA
 			.row.margin-top-xl
@@ -76,13 +75,19 @@ block content
 						li= change
 
 				h2 Problems with the Linux version?
-				p
-					| We provide #[a(href='https://appimage.org/') AppImage] packages for Linux on 64 bit architectures. However for the absolute, best, top-notch experience you should also try binaries shipped by the package manager of your favorite distribution. Giada is already available on #[a(href='https://packages.debian.org/search?keywords=giada&searchon=names&section=all') Debian], #[a(href='https://packages.ubuntu.com/search?section=all&arch=any&keywords=giada&searchon=names') Ubuntu], #[a(href='https://archlinux.org/packages/community/x86_64/giada/') Arch Linux] and many more.
+				p.
+					We provide #[a(href='https://appimage.org/') AppImage] packages for Linux on 64 bit architectures. However for the absolute, best, top-notch experience you should also try binaries shipped by the package manager of your favorite distribution. Giada is already available on #[a(href='https://packages.debian.org/search?keywords=giada&searchon=names&section=all') Debian], #[a(href='https://packages.ubuntu.com/search?section=all&arch=any&keywords=giada&searchon=names') Ubuntu], #[a(href='https://archlinux.org/packages/community/x86_64/giada/') Arch Linux] and many more.
+			
+				h2 Problems with the macOS version?
+				p.
+					If Giada doesn't start when double-clicked, try to remove the "quarantine flag" by running #[a(href='https://apple.stackexchange.com/a/372208') these instructions]. Additionaly, macOS Gatekeeper might get in the way: follow #[a(href='https://disable-gatekeeper.github.io/') these instructions] to disable it.
+
 			.col-md-6
 
 				h2 MD5 checksums
-				p
-					| Beware of imitations! This is the only place where to pick up the latest official Giada packages.
+				p.
+					Beware of imitations! This is the only place where to pick up the latest official Giada packages.
+
 				table.table
 					tr
 						td Giada for Linux, 64 bit
@@ -102,6 +107,6 @@ block content
 							code.code #{RELEASE.source.md5}
 							
 				h2 Plans for the future
-				p
-					| Giada is in constant stage of growth; take a look at our #[a(href='https://github.com/monocasual/giada/milestones') roadmap] to understand the direction of the development or join the #[a(href='https://github.com/monocasual/giada/discussions') forum] to submit feature requests and bugs found.
+				p.
+					Giada is in constant stage of growth; take a look at our #[a(href='https://github.com/monocasual/giada/milestones') roadmap] to understand the direction of the development or join the #[a(href='https://github.com/monocasual/giada/discussions') forum] to submit feature requests and bugs found.
 
