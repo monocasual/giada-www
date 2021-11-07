@@ -109,7 +109,7 @@ block content
 				h2 Channel statuses
 
 				p.
-					The #[strong status box] #[img.inline(src='images/docs/status-box.png' alt='Status box' title='Status box')] gives you informations about the sample:
+					The #[strong status box] #[img.inline(src='images/docs/status-box.png' alt='Status box' title='Status box')] gives you information about the sample:
 
 				ul
 					li
@@ -161,36 +161,40 @@ block content
 						td(rowspan=4) loop
 						td #[img(src='images/docs/mode_loopa.png' alt='Loop basic' title='Loop basic')]
 						td loop basic
-						td the sample starts at beat 1 and will play continuously until its key is pressed
+						td The sample starts at beat 1 and will play continuously until its key is pressed
 					tr
 						td #[img(src='images/docs/mode_loopb.png' alt='Loop once' title='Loop once')]
 						td loop once
-						td the sample starts at beat 1 and will play until finished. Then, at the next first beat it starts again
+						td The sample starts at beat 1 and will play until finished. Then, at the next first beat it starts again
 					tr
 						td #[img(src='images/docs/loop-once-bar.png' alt='Loop once bar' title='Loop once bar')]
 						td loop once bar
-						td similar to the previous mode, but the sample starts again also on the next first bar
+						td Similar to the previous mode, but the sample starts again also on the next first bar
 					tr
 						td #[img(src='images/docs/mode_loopf.png' alt='Loop repeat' title='Loop repeat')]
 						td loop repeat
-						td the sample starts at beat 1 and will play continuously, rewinding itself at every bar
+						td The sample starts at beat 1 and will play continuously, rewinding itself at every bar
 					tr
-						td(rowspan=4) one shot
-						td #[img(src='images/docs/mode_loopc.png' title='Oneshot basic' alt='Oneshot basic')]
+						td(rowspan=5) one shot
+						td #[img(src='images/docs/mode_loopc.png' title='One Shot basic' alt='One Shot basic')]
 						td one shot basic
-						td the sample starts on key press and stops on a second keypress
+						td The sample starts on key press, stops and rewinds on a second keypress
 					tr
-						td #[img(src='images/docs/mode_loopd.png' tile='Oneshot press' alt='Oneshot press')]
+						td #[img(src='images/docs/one-shot-basic-pause.png' title='One Shot basic pause' alt='One Shot basic pause')]
+						td one shot basic pause
+						td Like the previous mode, but the sample just pauses on a second keypress. Pressing the key again resumes play
+					tr
+						td #[img(src='images/docs/mode_loopd.png' tile='One Shot press' alt='One Shot press')]
 						td one shot press
-						td the sample plays as long as its key is pressed
+						td The sample plays as long as its key is pressed
 					tr
-						td #[img(src='images/docs/mode_loope.png' title='Oneshot retrig' alt='Oneshot retrig')]
+						td #[img(src='images/docs/mode_loope.png' title='One Shot retrig' alt='One Shot retrig')]
 						td one shot retrig
-						td the sample plays until the end; pressing its key rewinds it
+						td The sample plays until the end; pressing its key rewinds it
 					tr
-						td #[img(src='images/docs/mode_loopg.png' title='Oneshot endless' alt='Oneshot endless')]
+						td #[img(src='images/docs/mode_loopg.png' title='One Shot endless' alt='One Shot endless')]
 						td one shot endless
-						td the sample plays in loop forever; pressing its key stops it
+						td The sample plays in loop forever; pressing its key stops it
 				
 				h2 Keyboard interactions
 
@@ -212,7 +216,7 @@ block content
 					tr
 						td #[span.code shift + (key)]
 						td #[span.code shift] + click on play button #[img.inline(src='images/docs/play-button.png' alt='Play button')]
-						td immediate stop
+						td immediate stop. Also rewinds samples in "one shot basic pause" mode
 					tr
 						td #[span.code control + (key)]
 						td click on mute button #[img.inline(src='images/docs/mute-button.png' alt='Mute button')]
