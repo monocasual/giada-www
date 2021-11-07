@@ -1,17 +1,12 @@
 {
-    "version": "0.18.2",
-    "codename": "Griffin",
-    "changes": [
-		"New stereo In/Out audio meters",
-		"Revamped Action Editor: better UI, improved usability",
-		"Show play head in Action Editor",
-		"Implement queue for MIDI events, fix issue #482",
-		"Simplified Event Dispatcher's Event type",
-		"Move JACK transport operations to new JackTransport class",
-		"Always pick sample rate from the first audio device when using JACK",
-		"Don't send MIDI events if MIDI channel is not playing (#499) or muted (#497)",
-		"Add AtomicSwapper as git submodule",
-		"Upgrade JUCE to version 6.1.0"
-    ],
-    "version_beta": null
+	"version": "0.19.0",
+	"codename": "Werewolf",
+	"changes": [
+		"New \"One-shot Pause\" channel mode",
+		"Refactoring: new component-based architecture",
+		"Fix crash on startup if recording from mono input",
+		"Improved event handling for plug-ins GUIs ",
+		"Fix many compiler warnings on menu items initialization"
+	],
+	"version_beta": null
 }
