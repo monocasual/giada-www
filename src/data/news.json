@@ -1,5 +1,10 @@
 [
 	{
+		"title": "Giada 0.19.2 “Werewolf“ <em>2nd bugfix</em> released",
+		"date": "December 23, 2021",
+		"body": "<p>The second bugfix release for Giada 0.19.2 has been churned out by our laboratories in the last few days. This time we squashed many annoying bugs and also finished polishing the zoom mechanism in the Action Editor. Please take a look at the changelog available in the <a href=\"/download\">download area</a> for the full list of bugfixes. Keep howling!</p>" 
+	},
+	{
 		"title": "Giada 0.19.0 “Werewolf“ released",
 		"date": "November 09, 2021",
 		"body": "<p>Few days ago we released Giada 0.19.0, codename “Werewolf“. Inspired by the mythological human with the ability to shapeshift into a wolf, Giada 0.19.0 introduces the new \"One-shot Pause\" channel mode: a new way of playing sample channels where the sample can be put on pause. More information available in the official documentation, <a href=\"https://www.giadamusic.com/documentation-channels-and-samples\">\"Channels and Samples\" chapter</a>.</p><p>In addition to such delicious new feature, Giada 0.19.0 features important internal refactorings, bug fixes and minor plug-in UI's improvements. For more information please take a look at the full changelog, available in the <a href=\"/download\">download area</a>. Auuu 🐺</p>" 
