@@ -1,5 +1,10 @@
 [
 	{
+		"title": "Giada demo #7: “Altered State“",
+		"date": "January 03, 2022",
+		"body": "<p>Let's celebrate the new year with another groundbreaking lo-fi house beat live-recorded with Giada v0.19 by <a href=\"https://www.youtube.com/user/toblerOrchestra\">TBLR</a>, powered by stunning visuals by <a href=\"https://www.instagram.com/billybigger/\">Carlo Alberto Barberi (GRDN)</a> (from <a href=\"https://www.instagram.com/ingoodandbadtimes/\">ingoodandbadtimes</a> project). And don't forget to subscribe to <a href=\"https://www.youtube.com/channel/UCAAZJ9SX0RZ9AiAToF6ebjA\">our YouTube channel!</a></p><div class=\"embed-responsive embed-responsive-16by9\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ws4FnpXVglY\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>"
+	},
+	{
 		"title": "Giada 0.19.2 “Werewolf“ <em>2nd bugfix</em> released",
 		"date": "December 23, 2021",
 		"body": "<p>The second bugfix release for Giada 0.19.2 has been churned out by our laboratories in the last few days. This time we squashed many annoying bugs and also finished polishing the zoom mechanism in the Action Editor. Please take a look at the changelog available in the <a href=\"/download\">download area</a> for the full list of bugfixes. Keep howling!</p>" 
