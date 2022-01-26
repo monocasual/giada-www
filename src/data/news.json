@@ -1,5 +1,10 @@
 [
 	{
+		"title": "Giada 0.20.0 “Alicanto“ released",
+		"date": "January 26, 2022",
+		"body": "<p>A new shiny version of Giada, codename “Alicanto“ has been released few days ago. The 0.20 release series aims to improve the usability of Giada, by adding nice touches and beautifications to the user interface, as well as to the entire user experience. Giada 0.20.0 specifically introduces:</p><ul><li>A progress bar on top of the main window, to provide useful feedback during long operations;</li><li>an improved rendering algorithm specifically tuned for sample channels — this one gave us the ability to fix many annoying rendering glitches when the sample pitch was different than 1.0;</li><li>minor UI fixes such as making the play head always visible in all action editors and a correct update of the main window title when saving a new project.</li></ul><p>The full list of changes and fixups is available in the <a href=\"https://www.giadamusic.com/download\">download area</a>.</p>"
+	},
+	{
 		"title": "Giada demo #7: “Altered State“",
 		"date": "January 03, 2022",
 		"body": "<p>Let's celebrate the new year with another groundbreaking lo-fi house beat live-recorded with Giada v0.19 by <a href=\"https://www.youtube.com/user/toblerOrchestra\">TBLR</a>, powered by stunning visuals by <a href=\"https://www.instagram.com/billybigger/\">Carlo Alberto Barberi (GRDN)</a> (from <a href=\"https://www.instagram.com/ingoodandbadtimes/\">ingoodandbadtimes</a> project). And don't forget to subscribe to <a href=\"https://www.youtube.com/channel/UCAAZJ9SX0RZ9AiAToF6ebjA\">our YouTube channel!</a></p><div class=\"embed-responsive embed-responsive-16by9\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ws4FnpXVglY\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>"
