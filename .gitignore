@@ -1,6 +1,5 @@
 /build
 /node_modules
-/package-lock.json
 /src/data/giada-*
 /src/data/Giada-*
 
