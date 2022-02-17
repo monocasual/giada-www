@@ -10,12 +10,12 @@ GLM.FollowUsPopup = {
 	},
 
 	'vars': {
-		'cookieName':  'glm-facebook-like',
+		'cookieName':  'glm-instagram-follow',
 		'cookieTimeOk': 60,    // days
 		'cookieTimeKo': 14,    // days
 		'fadeTime':     400,   // ms
 // @if NODE_ENV='prod'
-		'showupTime':   15000, // ms
+		'showupTime':   5000,  // ms
 // @endif
 // @if NODE_ENV='dev'
 		'showupTime':   1,     // jshint ignore:line
@@ -35,7 +35,7 @@ GLM.FollowUsPopup = {
 
 		var self = this;
 		this.elems.popupNope.click(function(e) {
-			self.close(e, self.vars.cookieTimeKo, 'no facebook like, thanks');
+			self.close(e, self.vars.cookieTimeKo, 'no instagram follow, thanks');
 		});
 		this.elems.popupOk.click(function(e) {
 			self.bindSubscribeEvent();
@@ -61,9 +61,9 @@ GLM.FollowUsPopup = {
 	'bindSubscribeEvent': function() {
 		Cookies.set(this.vars.cookieName, true, { expires: this.vars.cookieTimeOK });
 // @if NODE_ENV='prod'
-		GLM.utils.sendAnalytics('clicks - facebook like', 'click');
+		GLM.utils.sendAnalytics('clicks - instagram follow', 'click');
 // @endif
-    window.open(GLM.CONSTS.FACEBOOK.PAGE_URL, '_blank');
+    window.open(GLM.CONSTS.INSTAGRAM.PAGE_URL, '_blank');
 		this.toggle();
 	},
 
