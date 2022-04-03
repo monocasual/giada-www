@@ -1,19 +1,15 @@
 {
-	"version": "0.20.0",
-	"codename": "Alicanto",
+	"version": "0.21.0",
+	"codename": "Anqa",
 	"changes": [
-		"Show progress bar for long operations",
-		"Improved rendering algorithm for sample channels",
-		"Fix wrong sample tail rendering when pitch != 1.0 ",
-		"Always display play head in Action Editor (fix #534)",
-		"Fix re-initialization order of engine sub-components (fixes #533)",
-		"Change 'kill chan' wording to 'stop note' in Action Editor (fixes #532)",
-		"Update solo count when deleting a channel (fixes #540)",
-		"Update Main Window title when saving a new project (fixes #541)",
-		"[Config] Don't skip MIDI device fetching if one of the ports fail to open",
-		"[CMake] Include FLTK as suggested in the official docs",
-		"Add more unit tests for some Channel components",
-		"Minor cleanups and refactoring"
+		"Custom keyboard mappings for global actions (#213)",
+		"Pressing 'Esc' key no longer closes windows",
+		"Resizable Configuration window",
+		"Shut down the main UI nicely when closing a project or loading a new one",
+		"Prevent crashes when loading a new project by cleaning up the data model",
+		"Fix wrong plug-in processing where the local plug-in buffer was incorrectly deleted in case of instruments (#563)",
+		"Lots of UI code modernizations and cleanups",
+		"[Windows] Fix several assertions and MSVC warnings"
 	],
 	"version_beta": null
 }
