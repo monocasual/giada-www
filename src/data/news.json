@@ -1,5 +1,10 @@
 [
 	{
+		"title": "Giada 0.20.1 “Alicanto“ <em>1st bugfix</em> released",
+		"date": "February 23, 2022",
+		"body": "<p>The first (and last) bugfix release of Giada 0.20 series is ready! This version adds many improvements over the previous 0.20.0 release and closes the 0.20 milestone. What's new: </p><ul><li>New MIDI I/O activity LEDs on channels — a new indicator that shows when some MIDI activity takes place on the channel, both for input and output;</li><li>New \"Missing Assets\" alert window — missing audio files in your project? VST plug-ins uninstalled and no longer available? Now Giada no longer silentily fails and reports back what's could not find in the project folder;</li><li>many smaller fixes and improvements to the overall user interface.</li></ul><p>The full list of changes and fixups is available in the <a href=\"https://www.giadamusic.com/download\">download area</a>. Go grab Giada 0.20.1 now!</p>"
+	},
+	{
 		"title": "Giada 0.20.0 “Alicanto“ released",
 		"date": "January 26, 2022",
 		"body": "<p>A new shiny version of Giada, codename “Alicanto“ has been released few days ago. The 0.20 release series aims to improve the usability of Giada, by adding nice touches and beautifications to the user interface, as well as to the entire user experience. Giada 0.20.0 specifically introduces:</p><ul><li>A progress bar on top of the main window, to provide useful feedback during long operations;</li><li>an improved rendering algorithm specifically tuned for sample channels — this one gave us the ability to fix many annoying rendering glitches when the sample pitch was different than 1.0;</li><li>minor UI fixes such as making the play head always visible in all action editors and a correct update of the main window title when saving a new project.</li></ul><p>The full list of changes and fixups is available in the <a href=\"https://www.giadamusic.com/download\">download area</a>.</p>"
