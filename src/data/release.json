@@ -1,15 +1,14 @@
 {
-	"version": "0.21.0",
-	"codename": "Anqa",
+	"version": "0.22.0",
+	"codename": "Baccoo",
 	"changes": [
-		"Custom keyboard mappings for global actions (#213)",
-		"Pressing 'Esc' key no longer closes windows",
-		"Resizable Configuration window",
-		"Shut down the main UI nicely when closing a project or loading a new one",
-		"Prevent crashes when loading a new project by cleaning up the data model",
-		"Fix wrong plug-in processing where the local plug-in buffer was incorrectly deleted in case of instruments (#563)",
-		"Lots of UI code modernizations and cleanups",
-		"[Windows] Fix several assertions and MSVC warnings"
+		"Multi-language support via langmaps (#34)",
+		"Add new 'fmt' dependency",
+		"Add vcpkg.json manifest file",
+		"Log compiled RtMidi APIs on startup",
+		"Fix missing header with RtMidi 5.0.0",
+		"Fix Stream Linker button not working (#585)",
+		"Minor code refactoring and cleanups"
 	],
 	"version_beta": null
 }
