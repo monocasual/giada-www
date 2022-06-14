@@ -159,9 +159,6 @@ function copyStatic()
 	console.log(`Copy extra fonts`);
 	FSE.copySync(`${SRC_DIR}/font`, `${BUILD_DIR}/font`);
 
-	console.log(`Copy forum`);
-	FSE.copySync(`${SRC_DIR}/forum`, `${BUILD_DIR}/forum`);
-
     console.log(`Copy extra data`);   
     FSE.copySync(`${SRC_DIR}/extra/ads.txt`, `${BUILD_DIR}/ads.txt`);
 }
