@@ -1,5 +1,10 @@
 [
 	{
+		"title": "Giada 0.22.0 “Baccoo“ is out",
+		"date": "June 14, 2022",
+		"body": "<p>Giada 0.22.0 — codename Baccoo — is out, inspired by the legendary character from Guyanese and Surinamese folklore.</p><p>Giada 0.22.0 Baccoo introduces <strong>multi-language support via langmaps</strong>, special JSON files that contain translation strings used for localization. We also improved support for Vckpg, the C/C++ package manager by Microsoft and fixed many annoying bugs here and there.</p><p>We'd love your international help! Feel free to submit new langmap files in <a href=\"https://github.com/monocasual/giada-langmaps\">the official langmap repository for Giada</a>.They will become part of the translation pack and will make Giada a true polyglot app.</p>"
+	},
+	{
 		"title": "Giada 0.21.0 “Anqa“ is out",
 		"date": "April 08, 2022",
 		"body": "<p>Another smashing Giada version has been churned out recently, codename <em>Anqa</em>: a tribute to the large, mysterious female bird in Arabian mythology. Giada 0.21.0 features <strong>custom keyboard mappings</strong> for global actions, many user-interface beautifications and an important fix for audio plug-in processing (VST instruments). The full list of changes is available in the <a href=\"https://www.giadamusic.com/download\">download area</a>. Giada 0.21.0 is wating for you!</p>"
