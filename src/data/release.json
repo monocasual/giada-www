@@ -1,14 +1,15 @@
 {
-	"version": "0.22.0",
-	"codename": "Baccoo",
+	"version": "0.23.0",
+	"codename": "Catoblepas",
 	"changes": [
-		"Multi-language support via langmaps (#34)",
-		"Add new 'fmt' dependency",
-		"Add vcpkg.json manifest file",
-		"Log compiled RtMidi APIs on startup",
-		"Fix missing header with RtMidi 5.0.0",
-		"Fix Stream Linker button not working (#585)",
-		"Minor code refactoring and cleanups"
+		"Moveable channels between columns",
+		"Initial LV2 plug-ins support, thanks to JUCE v7.0.1",
+		"Add high DPI screens support + SVG icons, thanks to FLTK 1.4.0",
+		"Store Plug-in List Window width and height in configuration file",
+		"Set JSON for Modern C++ as an external dependency",
+		"Fix Sample Channels that couldn't be killed while in ENDING status",
+		"Lots of code refactoring in Channel class and related components",
+		"Code clean-ups for many UI widgets"
 	],
 	"version_beta": null
 }
