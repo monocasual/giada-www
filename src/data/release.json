@@ -1,15 +1,14 @@
 {
-	"version": "0.23.0",
-	"codename": "Catoblepas",
+	"version": "0.23.2",
+	"codename": "Catoblepas / bugfix 2",
 	"changes": [
-		"Moveable channels between columns",
-		"Initial LV2 plug-ins support, thanks to JUCE v7.0.1",
-		"Add high DPI screens support + SVG icons, thanks to FLTK 1.4.0",
-		"Store Plug-in List Window width and height in configuration file",
-		"Set JSON for Modern C++ as an external dependency",
-		"Fix Sample Channels that couldn't be killed while in ENDING status",
-		"Lots of code refactoring in Channel class and related components",
-		"Code clean-ups for many UI widgets"
+		"'Kill channel' action now rewinds channels in SINGLE_BASIC_PAUSE mode (#599)",
+		"Update FLTK to latest commit available",
+		"Fix audio recording always getting trimmed to 4 beats (#613)",
+		"Fix weird noise when playing two cloned Sample Channels with altered pitch (#602)",
+		"Fix MIDI channel behavior when key is pressed and channel has ENDING state",
+		"Fix channel's keyboard triggering not working",
+		"Fix missing begin/end points and shift value when cloning Sample channels (#601)"
 	],
 	"version_beta": null
 }

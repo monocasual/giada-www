@@ -1,5 +1,10 @@
 [
 	{
+		"title": "Giada 0.23.2 “Catoblepas / bugfix 2“ is out",
+		"date": "January 06, 2023",
+		"body": "<p>Giada 0.23.2 “Catoblepas / bugfix 2“ has been released last week, providing many bug fixes and small improvements. Full changelog in the <a href=\"https://www.giadamusic.com/download\">download area</a>. Happy new year!</p>"
+	},
+	{
 		"title": "Giada 0.23.0 “Catoblepas“ is out",
 		"date": "October 03, 2022",
 		"body": "<p>Giada 0.23.0 — codename Catoblepas — has been released few days ago. This version adds many important features that once again pave the way for the upcoming 1.0 release. Most notably:</p><ul><li><p><strong>High DPI screens support</strong> + redesigned and scalable SVG icons — Giada looks great on Retina displays!</p></li><li><p><strong>Moveable channels</strong> between columns — rearranging your projects is now much easier;</p></li><li><p><strong>Initial LV2 plug-ins support</strong> — thanks to JUCE framework version 7. Still experimental, please report any weirdness.</p></li></ul><p>We also cleaned up the code and fixed some annoying bugs, as always. You can find the full changelog in the <a href=\"https://www.giadamusic.com/download\">download area</a>.</p>"
