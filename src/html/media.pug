@@ -7,83 +7,52 @@ block metas-vars
 	- var description = ', media collection, tutorials'
 	- var keywords    = ', media, video, audio, tutorials'
 
+block styles
+	if NODE_ENV === 'dev'
+		link(rel='stylesheet' href=`css/media.css` type='text/css')
+
 block content
-	.container
-		.row.margin-top-xl
-			.col-md-12.text-center
-				h1 Seeing (and listening) is believing.
+	section.media
+		h1.
+			Tutorials &amp; media<br>Seeing (and listening) is believing.
 
-		.row.margin-top-xl
-			.col-md-12.text-center
-				h2.description One-page tutorials
+		div.group
+			h2 One-page tutorials.
 
-		.row.margin-top-xl
-			.col-md-12
+			div
 				+tutorial("#002: free loop-length audio recording", "Using Giada as a live looping machine without BPM constraints.", "/tutorial-002-free-loop-length-recording")
-
-		.row.margin-top-xl
-			.col-md-12
 				+tutorial("#001: play samples with your keyboard", "How to use Giada as a sample player by loading samples into channels and binding keyboard buttons to them.", "/tutorial-001-play-samples-keyboard")
 
-		.row.margin-top-xl
-			.col-md-12.text-center
-				h2.description Official video tutorials
-		
-		.row.margin-top-xl
+		div.group
+			h2 Official video tutorials.
 
-			.col-md-4
+			div.container
 				+media_video("Giada tutorial #4 a - The Sample Editor, part 1", "Our buddy Bartholomew Davenport is back with another smashing Giada tutorial. This time he will introduce us to the voodoo universe of the Sample Editor: the tool used to edit audio samples, loops and sound effects.", "https://www.youtube.com/watch?v=AUdPeWlScLI&index=4&list=PLWvg8ZoDDJR267zqagsUe8sWFb0M-81XO", "https://img.youtube.com/vi/AUdPeWlScLI/maxresdefault.jpg")
-
-			.hidden-lg.hidden-md.margin-top-xl
-
-			.col-md-4
 				+media_video("Giada tutorial #5 - Audio recording and looping", "Say hello to Bartholomew Davenport, our new digital friend who will guide us through the art of audio recording with Giada. In this episode you will learn how to create a live, loop-based performance with physical instruments and a couple of sample channels.", "https://www.youtube.com/watch?v=L66CA1Umk4w&list=PLWvg8ZoDDJR267zqagsUe8sWFb0M-81XO&index=5", "https://img.youtube.com/vi/L66CA1Umk4w/maxresdefault.jpg")
-
-			.hidden-lg.hidden-md.margin-top-xl
-
-			.col-md-4
 				+media_video("Giada tutorial #3 - The action editor", "This time Richard P. Aspromonte will guide us through the perils of the legendary Action Editor, a tool used for editing actions. He will eventually lay down some 80s/90s hip hop beats using samples from the glorious \"The Bridge\" by MC Shan.", "https://www.youtube.com/watch?v=UN7Uq9Kahqw&index=11&list=PLWvg8ZoDDJR267zqagsUe8sWFb0M-81XO", "https://img.youtube.com/vi/UN7Uq9Kahqw/maxresdefault.jpg")
-					
-		.row.margin-top-m
-			.col-md-4.col-md-offset-4.text-center
+						
+			div.more
 				a(href='https://www.youtube.com/playlist?list=PLWvg8ZoDDJR267zqagsUe8sWFb0M-81XO') &#x2794; Watch all episodes
 		
-		.row.margin-top-xl
-			.col-md-12.text-center
-				h2.description Demo projects
+		div.group
+			h2 Demo projects.
 		
-		.row.margin-top-xl
-			.col-md-4
+			div.container
 				+media_video("Giada Loop Machine demo #7 - Altered State", "Another lo-fi house beat live-recorded with Giada Loop Machine version 0.19. Music by <a href=\"https://www.youtube.com/user/toblerOrchestra\">TBLR</a>, visuals by <a href=\"https://www.instagram.com/billybigger/\">Carlo Alberto Barberi (GRDN)</a>.", "https://www.youtube.com/watch?v=ws4FnpXVglY", "https://img.youtube.com/vi/ws4FnpXVglY/hqdefault.jpg")
-
-			.hidden-lg.hidden-md.margin-top-xl
-
-			.col-md-4
 				+media_video("Giada Loop Machine demo #6 - Coraggio", "Lo-fi house experiment live-recorded with Giada Loop Machine version 0.18.1. Music by <a href=\"https://www.youtube.com/user/toblerOrchestra\">TBLR</a>, visuals by <a href=\"https://www.instagram.com/kikimoredesign/\">Kikimoredesign</a>.", "https://www.youtube.com/watch?v=BZyOuaRkY-c", "https://img.youtube.com/vi/BZyOuaRkY-c/hqdefault.jpg")
-			
-			.hidden-lg.hidden-md.margin-top-xl
-
-			.col-md-4
 				+media_video("Giada Loop Machine demo #5 - Slow Winter", "Quick loop made with Giada 0.17.1 (development version) and our new AKAI MPD218. What you see here is Giada fully controlled with a MIDI device... except for the 'solo' button at 00:36 :D", "https://www.youtube.com/watch?v=H8Sfsx5X5w4", "https://img.youtube.com/vi/H8Sfsx5X5w4/hqdefault.jpg")
-			
-		.row.margin-top-m
-			.col-md-4.col-md-offset-4.text-center
+				
+			div.more
 				a(href='https://www.youtube.com/playlist?list=PLWvg8ZoDDJR02wx8nwwurd_ceqK8bbW2I') &#x2794; Watch all demos
 
-		.row.margin-top-xl
-			.col-md-12.text-center
-				h2.description Feature testing
+		div.group
+			h2 Feature testing.
 		
-		.row.margin-top-xl
-			.col-md-4
+			div.container
 				+media_video("Testing Giada #3: revamped MIDI learning algorithm", "Testing the revamped MIDI learn algorithm and UI components... it works!", "https://www.youtube.com/watch?v=e2oYOK8IPZg&list=PLWvg8ZoDDJR1y2oJre2LshwYqS9ieBiAn", "http://img.youtube.com/vi/e2oYOK8IPZg/maxresdefault.jpg")
-
-			.hidden-lg.hidden-md.margin-top-xl
-
-			.col-md-4
 				+media_video("Testing #Giada 2 - (Drag and) Drop da beat", "In this video we want to test the new drag and drop feature introduced in version 0.9.2. No more \"click here and there\", please!", "https://www.youtube.com/watch?list=PLWvg8ZoDDJR1y2oJre2LshwYqS9ieBiAn&v=2h1pallZ020", "http://img.youtube.com/vi/2h1pallZ020/maxresdefault.jpg")
-
-			.hidden-lg.hidden-md.margin-top-xl
-
-			.col-md-4
 				+media_video("Testing Giada #1 - High quality pitch control", "Testing the new pitch control introduced in version 0.8.1, based on libsamplerate and way better than the previous one. For this test we used the Amen Break, possibly the most famous sample in the hiphop/dnb/jungle scene (original record: The Winstons - Amen Brother, 1969).", "https://www.youtube.com/watch?v=Ge5J6H7k0D4&list=PLWvg8ZoDDJR1y2oJre2LshwYqS9ieBiAn", "http://img.youtube.com/vi/Ge5J6H7k0D4/maxresdefault.jpg")
+			
+			div.more
+				a(href='https://www.youtube.com/playlist?list=PLWvg8ZoDDJR1y2oJre2LshwYqS9ieBiAn') &#x2794; Watch all testing
+		

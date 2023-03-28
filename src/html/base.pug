@@ -17,19 +17,17 @@ html(lang='en')
 
 		link(rel='icon' href=`images/favicon.ico?v=${CONSTANTS.version}`)
 		link(rel='apple-touch-icon-precomposed' href=`images/favicon-512.png?v=${CONSTANTS.version}`)
-		link(rel='stylesheet' href='//fonts.googleapis.com/css?family=Montserrat' type='text/css')
-		link(rel='stylesheet' href=`css/main-${CONSTANTS.version}.css` type='text/css')
+		if NODE_ENV === 'prod'
+			link(rel='stylesheet' href=`css/main-${CONSTANTS.version}.css` type='text/css')
+		else
+			link(rel='stylesheet' href=`css/common.css` type='text/css')
 		block styles
 
 	body
-		div#fb-root
-		include includes/follow-us-popup
 		include includes/cookie-banner
 		include includes/header
 		block content
 		include includes/footer
 
-		script(src='//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
-		script(src='//cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js')
-		script(src=`js/main-${CONSTANTS.version}.js`)
+		script(type='module' src=`js/main-${CONSTANTS.version}.js`)
 		block scripts

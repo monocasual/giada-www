@@ -1,78 +1,76 @@
 extends ../base
 
 block metas-vars
-	- var title       = 'Docs - Index - '
-	- var description = ', documentation, index'
-	- var keywords    = ', documentation, index'
+	- var title       = 'User Guide - Index - '
+	- var description = ', documentation, user guide, index'
+	- var keywords    = ', documentation, user guide, index'
+
+block styles
+	if NODE_ENV === 'dev'
+		link(rel='stylesheet' href=`css/documentation.css` type='text/css')
 
 block content
-	.container
-		.row.margin-top-xl
-			.col-md-12.text-center
-				h1 The path of knowledge.
-		#documentation.row
-			.col-md-12
-				.row.margin-top-m
-					.col-md-6
-						ol
-							li
-								h2 
-									a(href='documentation-introduction') Introduction, installation and first run
-							li
-								h2
-									a(href='documentation-look-at-the-main-window') A look at the main window
-								span.dida How to interact with.
-							li
-								h2
-									a(href='documentation-performing-1') Performing part 1
-								span.dida What can I do with Giada?
-							li
-								h2
-									a(href='documentation-performing-2') Performing part 2
-								span.dida Understanding channels and sequencer, keyboard interactions.
-							li
-								h2
-									a(href='documentation-channels-and-samples') Channels and samples
-							li
-								h2
-									a(href='documentation-channels-and-midi') Channels and MIDI
-							li
-								h2
-									a(href='documentation-recording-actions') Recording actions
-								span.dida How to store your performances.
-							li
-								h2
-									a(href='documentation-live-sampling') Live sampling
-								span.dida How to store your performances, episode II.
-					.col-md-6
-						ol(start='9')
-							li
-								h2
-									a(href='documentation-action-editor') The action editor
-								span.dida Fine recording tuning.
-							li
-								h2
-									a(href='documentation-sample-editor') The sample editor
-								span.dida Fine sound tuning.
-							li
-								h2
-									a(href='documentation-audio-plugins') Audio plugins
-								span.dida Enlarge your performances with VST plugins support.
-							li
-								h2
-									a(href='documentation-midi-input-management') MIDI input management
-							li
-								h2
-									a(href='documentation-midi-output-management') MIDI output management
-							li
-								h2
-									a(href='documentation-save-load-export') Save, load, export
-								span.dida Save your works, other interesting options.
-							li
-								h2
-									a(href='documentation-configuration') Configuration
-								span.dida Setting up Giada.
-							li
-								h2
-									a(href='documentation-compiling-from-source') Compiling from source
+	section.documentation
+		h1.
+			User guide<br>Index.
+
+		ol.index
+			li
+				h2
+					a(href='documentation-introduction') Introduction, installation and first run
+			li
+				h2
+					a(href='documentation-look-at-the-main-window') A look at the main window
+				p How to interact with.
+			li
+				h2
+					a(href='documentation-performing-1') Performing part 1
+				p What can I do with Giada?
+			li
+				h2
+					a(href='documentation-performing-2') Performing part 2
+				p Understanding channels and sequencer, keyboard interactions.
+			li
+				h2
+					a(href='documentation-channels-and-samples') Channels and samples
+			li
+				h2
+					a(href='documentation-channels-and-midi') Channels and MIDI
+			li
+				h2
+					a(href='documentation-recording-actions') Recording actions
+				p How to store your performances.
+			li
+				h2
+					a(href='documentation-live-sampling') Live sampling
+				p How to store your performances, episode II.
+			li
+				h2
+					a(href='documentation-action-editor') The action editor
+				p Fine recording tuning.
+			li
+				h2
+					a(href='documentation-sample-editor') The sample editor
+				p Fine sound tuning.
+			li
+				h2
+					a(href='documentation-audio-plugins') Audio plugins
+				p How to use Giada together with your plug-ins collection.
+			li
+				h2
+					a(href='documentation-midi-input-management') MIDI input management
+			li
+				h2
+					a(href='documentation-midi-output-management') MIDI output management
+			li
+				h2
+					a(href='documentation-save-load-export') Save, load, export
+				p How to save your works and other interesting options.
+			li
+				h2
+					a(href='documentation-configuration') Configuration
+				p Setting up Giada.
+			li
+				h2
+					a(href='documentation-compiling-from-source') Compiling from source
 

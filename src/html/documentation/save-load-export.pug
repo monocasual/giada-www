@@ -1,52 +1,46 @@
 extends ../base
 
 block metas-vars
-	- var title       = 'Docs - Save, load, export - '
-	- var description = ', documentation, Save, load, export'
-	- var keywords    = ', documentation, Save, load, export'
+	- var title       = 'User Guide - Save, load, export - '
+	- var description = ', documentation, user guide, save, load, export'
+	- var keywords    = ', documentation, user guide, save, load, export'
+
+block styles
+	if NODE_ENV === 'dev'
+		link(rel='stylesheet' href=`css/documentation.css` type='text/css')
 
 block content
-	.container
-		#documentation.row
-			.col-md-9
+	section.documentation
+		h1.
+			User guide<br>Save, Load, Export
 
-				h1 Save, Load, Export
-	
-				p.
-					Giada is able to generate two kinds of files: #[strong projects] and #[strong samples].
+		p.
+			Giada is able to generate two kinds of files: #[strong projects] and #[strong samples].
 
-				h2 Project
+		h2 Project
 
-				p.
-					A project is a folder called #[span.code (project name).gprj] that contains all the samples in use in your current song and a JSON-based file called #[span.code (project name).gptc] that stores the project information. You can save and load a project from the #[em file] option in the main menu.
-				
-				p.
-					Being a project a regular folder in your filesystem, you can browse it, add new content and edit the project file in case something is wrong (it shouldn't!). You can also get fancy and write the project file by hand or generate it with a script. Be careful not to delete any file in the folder, as you might end up with missing samples.
-				
-				p.
-					A project is portable: you can save it on your computer and move it to another one. Note that audio plug-ins will not be stored in a project: make sure the required plug-ins are installed also in the target system.
+		p.
+			A project is a folder called #[span.code (project name).gprj] that contains all the samples in use in your current song and a JSON-based file called #[span.code (project name).gptc] that stores the project information. You can save and load a project from the #[em file] option in the main menu.
+		
+		p.
+			Being a project a regular folder in your filesystem, you can browse it, add new content and edit the project file in case something is wrong (it shouldn't!). You can also get fancy and write the project file by hand or generate it with a script. Be careful not to delete any file in the folder, as you might end up with missing samples.
+		
+		p.
+			A project is portable: you can save it on your computer and move it to another one. Note that audio plug-ins will not be stored in a project: make sure the required plug-ins are installed also in the target system.
 
-				h2 Samples
+		h2 Samples
 
-				p.
-					Giada can export samples to file. This is useful for edited samples or recorded takes. At the moment only WAV format is supported. You can export the sample to file by clicking on any sample channel's main button and select #[em export sample to file...].
+		p.
+			Giada can export samples to file. This is useful for edited samples or recorded takes. At the moment only WAV format is supported. You can export the sample to file by clicking on any sample channel's main button and select #[em export sample to file...].
 
-				h2 Other interesting operations
+		h2 Other interesting operations
 
-				p.
-					The #[em edit] option in the main menu offers some additional actions:
-				ul
-					li
-						strong Clear all samples
-						|  &mdash; unloads all sample channels. Modes, volumes and plug-ins remain untouched;
-					li
-						strong Clear all actions
-						|  &mdash; removes any type of action from sample and MIDI channels;
-					li
-						strong Setup global MIDI input
-						|  &mdash; binds MIDI events to global parameters, see 
-						a(href='documentation-midi-input-management') MIDI input management
-						| .
-
-			#side-menu.col-md-3.margin-top-xl
-				include side-menu
+		p.
+			The #[em edit] option in the main menu offers some additional actions:
+		ul
+			li.
+				#[strong Clear all samples] — unloads all sample channels. Modes, volumes and plug-ins remain untouched;
+			li.
+				#[strong Clear all actions] — removes any type of action from sample and MIDI channels;
+			li.
+				#[strong Setup global MIDI input] — binds MIDI events to global parameters, see #[a(href='documentation-midi-input-management') MIDI input management].

@@ -1,16 +1,16 @@
 {
-	"version": "0.24.0",
-	"codename": "Dactyls",
-	"changes": [
-		"Revamped MIDI sync Clock support",
-		"MIDI engine refactoring, featuring multi-threading support",
-		"UI: Resizable vu-meters",
-		"UI: New global MIDI activity leds",
-		"More core classes and functions refactoring",
-		"More robust persistence mechanism for project and configuration files",
-		"Add new tests suites for MidiEvent and ChannelFactory",
-		"Set C++ version to C++20",
-		"Update FLTK to latest commit available"
-	],
-	"version_beta": null
+    "version": "0.24.0",
+    "codename": "Dactyls",
+    "date": "March 16, 2023",
+    "changes": [
+        "Revamped MIDI sync Clock support",
+        "MIDI engine refactoring, featuring multi-threading support",
+        "UI: Resizable vu-meters",
+        "UI: New global MIDI activity leds",
+        "More core classes and functions refactoring",
+        "More robust persistence mechanism for project and configuration files",
+        "Add new tests suites for MidiEvent and ChannelFactory",
+        "Set C++ version to C++20",
+        "Update FLTK to latest commit available"
+    ]
 }

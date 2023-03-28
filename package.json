@@ -1,22 +1,29 @@
 {
-	"name": "giada-www",
-	"version": "1.2.4",
-	"constants": {
-		"title": "Giada - Your Hardcore Loop Machine",
-		"description": "Giada is an open source, minimalistic and hardcore music production tool. Designed for DJs, live performers and electronic musicians.",
-		"keywords": "loopmachine, loop machine, giada, monocasual, software, opensource, open source, linux, windows, osx, os x, mac, macOS, macintosh, sample, digital, dj, sample editor, djtool, audio, music, drum machine, sequencer, live sampler, sampler, effect, fx, vst, vst host, host, daw",
-		"url": "https://www.giadamusic.com",
-		"social_image": "giada-loopmachine-screencast.jpg",
-		"facebook_app_id": "872336596226280",
-		"flattr_id": "giadamusic"
-	},
-	"dependencies": {
-		"fs-extra": "5.0.0",
-		"uglify-js": "3.4.9",
-		"jshint": "2.9.5",
-		"preprocess": "3.1.0",
-		"html-minifier": "3.5.6",
-		"pug": "2.0.3",
-		"concat": "1.0.3"
-	}
+    "name": "giada-www",
+    "version": "2.0.0",
+    "constants": {
+        "title": "Giada - Your Hardcore Loop Machine",
+        "description": "Giada is an open source, minimalistic and hardcore music production tool. Designed for DJs, live performers and electronic musicians.",
+        "keywords": "loopmachine, loop machine, giada, monocasual, software, opensource, open source, linux, windows, osx, os x, mac, macOS, macintosh, sample, digital, dj, sample editor, djtool, audio, music, drum machine, sequencer, live sampler, sampler, effect, fx, vst, vst host, host, daw",
+        "url": "https://www.giadamusic.com",
+        "social_image": "giada-loopmachine-screencast.jpg",
+        "facebook_app_id": "872336596226280",
+        "flattr_id": "giadamusic"
+    },
+    "dependencies": {
+        "concat": "1.0.3",
+        "fs-extra": "10.1.0",
+        "html-minifier": "4.0.0",
+        "jshint": "2.13.6",
+        "preprocess": "3.2.0",
+        "prettier": "2.8.8",
+        "pug": "3.0.2",
+        "typescript": "^5.0.4",
+        "uglify-js": "3.17.4"
+    },
+    "scripts": {
+        "check-format": "npx prettier --check src/ build.js",
+        "run-format": "npx prettier --write src/ build.js",
+        "compile-js": "npx tsc"
+    }
 }

@@ -1,28 +1,11 @@
-.glm-header.container
-	div.menu
-		div.logo
-			a(href='index' title='Giada - Your Hardcore Loopmachine' class='imagelink')
-				img(src='images/giada-logo.svg' alt='Giada - Your Hardcore Loopmachine')
-		div.links
-			ul
-				li: a(href='features' title='Feature list') features
-				li: a(href='download' title='Download Giada, latest version') download
-				li: a(href='screenshots' title='Screenshots') screenshots
-				li: a(href='documentation-index' title='Giada documentation area') user guide
-				li: a(href='media' title='Tutorials and media') tutorials & media
-				li: a(href='https://github.com/monocasual/giada/discussions' title='Giada forum for end users') forum
-				li: a(href='https://github.com/monocasual/giada' title='Giada @ GitHub') GitHub
-
-	div.ad
-		if NODE_ENV === 'prod'
-			script(src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' async)
-			ins.adsbygoogle(
-				style='display:block'
-				data-ad-client='ca-pub-1778432007040046'
-				data-ad-slot='9025673290'
-				data-ad-format='auto'
-			)
-			script.
-				(adsbygoogle = window.adsbygoogle || []).push({});
-		else
-			img.img-responsive(src='https://via.placeholder.com/1140x280')
+header
+	div.logo
+		a(href='index' title='Giada - Your Hardcore Loopmachine')
+			img(src='images/giada-logo.svg' alt='Giada - Your Hardcore Loopmachine')
+	nav
+		ul
+			li: a(href='index#download' title='Download') Download
+			li: a(href='documentation-index' title='Giada documentation area') User guide
+			li: a(href='media' title='Tutorials and media') Tutorials & media
+			li: a(href='https://github.com/monocasual/giada/discussions' title='Giada forum for end users') Forum
+			li: a(href='https://github.com/monocasual/giada' title='Giada @ GitHub') GitHub

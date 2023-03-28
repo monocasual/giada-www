@@ -1,98 +1,98 @@
 extends ../base
 
 block metas-vars
-	- var title       = 'Docs - Channels and MIDI - '
-	- var description = ', documentation, Channels and MIDI'
-	- var keywords    = ', documentation, Channels and MIDI'
+	- var title       = 'User Guide - Channels and MIDI - '
+	- var description = ', documentation, user guide, channels and MIDI'
+	- var keywords    = ', documentation, user guide, channels and MIDI'
+
+block styles
+	if NODE_ENV === 'dev'
+		link(rel='stylesheet' href=`css/documentation.css` type='text/css')
 
 block content
-	.container
-		#documentation.row
-			.col-md-9
-				h1 Channels and MIDI
+	section.documentation
+		h1.
+			User guide<br>Channels and MIDI.
 
-				img(src='images/docs/midi-channel.png' alt='MIDI Channel')
+		img(src='images/docs/midi-channel.png' alt='MIDI Channel')
 
-				p.
-					A #[strong MIDI channel] contains MIDI events. Strictly bound to the sequencer, you can't trigger a MIDI channel manually as you would do with a Sample channel. The main sequencer must be running if you want to play a MIDI channel.
-				
-				p.
-					By clicking on the #[strong main button] #[img.inline(src='images/docs/midi-button.png' alt='Main button')] you will be able to edit MIDI events as well as doing further operations. You can add a new MIDI channel by clicking on the button on top of each column on the main window.
-				
-				h2 Anatomy of a MIDI Channel
+		p.
+			A #[strong MIDI channel] contains MIDI events. Strictly bound to the sequencer, you can't trigger a MIDI channel manually as you would do with a Sample channel. The main sequencer must be running if you want to play a MIDI channel.
+		
+		p.
+			By clicking on the #[strong main button] #[img(src='images/docs/midi-button.png' alt='Main button' class='inline')] you will be able to edit MIDI events as well as doing further operations. You can add a new MIDI channel by clicking on the button on top of each column on the main window.
+		
+		h2 Anatomy of a MIDI Channel
 
-				p.
-					A MIDI channel is made of several components. From left to right:
-				ul
-					li
-						p #[img.inline(src='images/docs/play-button.png' alt='Play button')] #[strong Play button] — starts and stops the channel;
-					li
-						p #[img.inline(src='images/docs/arm-button.png' alt='Arm button')] #[strong Arm button] — arms the channel for recording;
-					li
-						p #[img.inline(src='images/docs/midi-button.png' alt='Main button')] #[strong Main button] — shows the channel name and allows many operations on it. More information in the paragraph below;
-					li
-						p #[img.inline(src='images/docs/mute-button.png' alt='Mute button')] #[strong Mute button] — mutes the channel;
-					li
-						p #[img.inline(src='images/docs/solo-button.png' alt='Mute button')] #[strong Solo button] — solo mode. Only this channel will be audible;
-					li
-						p #[img.inline(src='images/docs/fx-button.png' alt='FX button')] #[strong FX button] — display the #[a(href='documentation-audio-plugins') plug-ins window];
-					li
-						p #[img.inline(src='images/docs/volume-dial.png' alt='Volume dial')] #[strong Volume dial] — controls the channel volume.
-				
-				h2 The MIDI channel main button
+		p.
+			A MIDI channel is made of several components. From left to right:
+		ul
+			li
+				p #[img(src='images/docs/play-button.png' alt='Play button' class='inline')] #[strong Play button] — starts and stops the channel;
+			li
+				p #[img(src='images/docs/arm-button.png' alt='Arm button' class='inline')] #[strong Arm button] — arms the channel for recording;
+			li
+				p #[img(src='images/docs/midi-button.png' alt='Main button' class='inline')] #[strong Main button] — shows the channel name and allows many operations on it. More information in the paragraph below;
+			li
+				p #[img(src='images/docs/mute-button.png' alt='Mute button' class='inline')] #[strong Mute button] — mutes the channel;
+			li
+				p #[img(src='images/docs/solo-button.png' alt='Mute button' class='inline')] #[strong Solo button] — solo mode. Only this channel will be audible;
+			li
+				p #[img(src='images/docs/fx-button.png' alt='FX button' class='inline')] #[strong FX button] — display the #[a(href='documentation-audio-plugins') plug-ins window];
+			li
+				p #[img(src='images/docs/volume-dial.png' alt='Volume dial' class='inline')] #[strong Volume dial] — controls the channel volume.
+		
+		h2 The MIDI channel main button
 
-				p.
-					Clicking on a MIDI channel main button reveals a pop-up menu with several options available: 
-				p
-					img(src='images/docs/channel-midi-button-menu.png' alt='MIDI Channel button menu')
-				ul
-					li
-						p #[strong Edit actions] — opens the #[a(href='documentation-action-editor') Action Editor];
-					li
-						p #[strong Clear actions] — deletes all recorded actions from this channel: 
+		p.
+			Clicking on a MIDI channel main button reveals a pop-up menu with several options available: 
+		p
+			img(src='images/docs/channel-midi-button-menu.png' alt='MIDI Channel button menu')
+		ul
+			li
+				p #[strong Edit actions] — opens the #[a(href='documentation-action-editor') Action Editor];
+			li
+				p #[strong Clear actions] — deletes all recorded actions from this channel: 
 
-					li
-						p #[strong Set keyboard input] — binds keys to channel;
-					li
-						p #[strong Setup MIDI input] — binds MIDI events to channel. More information in the #[a(href='documentation-midi-input-management') MIDI input management] chapter;
-					li
-						p #[strong Setup MIDI output] — enables MIDI output from this channel. More information in the #[a(href='documentation-midi-output-management') MIDI output management] chapter;
-					li
-						p #[strong Rename] — changes the channel name;
-					li
-						p #[strong Clone] — adds a new channel by making a full copy of the current one;
-					li
-						p #[strong Delete] — removes the channel from the column. All MIDI actions will be deleted as well.
+			li
+				p #[strong Set keyboard input] — binds keys to channel;
+			li
+				p #[strong Setup MIDI input] — binds MIDI events to channel. More information in the #[a(href='documentation-midi-input-management') MIDI input management] chapter;
+			li
+				p #[strong Setup MIDI output] — enables MIDI output from this channel. More information in the #[a(href='documentation-midi-output-management') MIDI output management] chapter;
+			li
+				p #[strong Rename] — changes the channel name;
+			li
+				p #[strong Clone] — adds a new channel by making a full copy of the current one;
+			li
+				p #[strong Delete] — removes the channel from the column. All MIDI actions will be deleted as well.
 
-				h2 MIDI Channel statuses
+		h2 MIDI Channel statuses
 
-				ul
-					li
-						p #[img.inline(src='images/docs/chanstatus_off.png' alt='Chan status off')] #[strong Off] — the channel is stopped;
-					li
-						p #[img.inline(src='images/docs/chanstatus_wait.png' alt='Chan status wait')] #[strong Wait/ending] (blinking) — the channel is waiting for the first beat to start or is about to stop;
-					li
-						p #[img.inline(src='images/docs/chanstatus_wait.png' alt='Chan status wait')] #[strong Play] (fixed) — the channel is active and playing.
-				
-				h2 Keyboard interactions
+		ul
+			li
+				p #[img(src='images/docs/chanstatus_off.png' alt='Chan status off' class='inline')] #[strong Off] — the channel is stopped;
+			li
+				p #[img(src='images/docs/chanstatus_wait.png' alt='Chan status wait' class='inline')] #[strong Wait/ending] (blinking) — the channel is waiting for the first beat to start or is about to stop;
+			li
+				p #[img(src='images/docs/chanstatus_wait.png' alt='Chan status wait' class='inline')] #[strong Play] (fixed) — the channel is active and playing.
+		
+		h2 Keyboard interactions
 
-				p.
-					MIDI channels are playable by clicking on the channel #[strong play button]
-					#[img.inline(src='images/docs/play-button.png' alt='Play button')] or by pressing the corresponding keyboard/MIDI button if bound:
+		p.
+			MIDI channels are playable by clicking on the channel #[strong play button]
+			#[img(src='images/docs/play-button.png' alt='Play button' class='inline')] or by pressing the corresponding keyboard/MIDI button if bound:
 
-				table.table
-					tr
-						th event
-						th result
-					tr
-						td click on play button #[img.inline(src='images/docs/play-button.png' alt='Play button')]
-						td wait, then start or stop on the next first beat
-					tr
-						td #[span.code shift] + click on play button #[img.inline(src='images/docs/play-button.png' alt='Play button')]
-						td immediate stop
-					tr
-						td click on mute button #[img.inline(src='images/docs/mute-button.png' alt='Mute button')]
-						td mute
-
-			#side-menu.col-md-3.margin-top-xl
-				include side-menu
+		table.table
+			tr
+				th event
+				th result
+			tr
+				td click on play button #[img(src='images/docs/play-button.png' alt='Play button' class='inline')]
+				td wait, then start or stop on the next first beat
+			tr
+				td #[span.code shift] + click on play button #[img(src='images/docs/play-button.png' alt='Play button' class='inline')]
+				td immediate stop
+			tr
+				td click on mute button #[img(src='images/docs/mute-button.png' alt='Mute button' class='inline')]
+				td mute

@@ -5,111 +5,111 @@ block metas-vars
 	- var description = ', record audio freely.'
 	- var keywords    = ', tutorial, fx, effect, plug-in, vst, live processing'
 
+block styles
+	if NODE_ENV === 'dev'
+		link(rel='stylesheet' href=`css/documentation.css` type='text/css')
+
 block content
-	.container#tutorial
-		.row.margin-top-xl
-			.col-md-12.text-center
-				h1 Tutorial #002: free loop-length audio recording.
+	section.documentation
+		h1.
+			Tutorial #002<br>Free loop-length audio recording.
 
-		.row.margin-top-xl
-			.col-md-12
-				h2 Getting started
+		h2 Getting started
 
-				p.
-					In this tutorial you will learn how to use the #[strong free loop-length mode] for live audio recording. Added in Giada 0.18, the free loop-length mode allows you to freely record audio from your sound card without time boundaries. When you are done with the recording, Giada will automatically adjust the speed of the sequencer according to the duration of your performance.
+		p.
+			In this tutorial you will learn how to use the #[strong free loop-length mode] for live audio recording. Added in Giada 0.18, the free loop-length mode allows you to freely record audio from your sound card without time boundaries. When you are done with the recording, Giada will automatically adjust the speed of the sequencer according to the duration of your performance.
 
-				h2  Prepare your sound card for audio input
+		h2  Prepare your sound card for audio input
 
-				p.
-					The first thing to do is to enable the input device in your sound card. Open the #[em Configuration window] from the main menu and select the #[em Sound System] tab. You will be prompted with the sound card configuration as in the image below:
+		p.
+			The first thing to do is to enable the input device in your sound card. Open the #[em Configuration window] from the main menu and select the #[em Sound System] tab. You will be prompted with the sound card configuration as in the image below:
 
-				p
-					img(src='images/tutorials/002/configuration-window.png' alt='The configuration window')
+		p
+			img(src='images/tutorials/002/configuration-window.png' alt='The configuration window')
 
-				p.
-					Select a device from the #[em Input device] drop-down menu and the channels you want to record from in the #[em Input channels] menu. Save the configuration and restart Giada for the changes to take effect.
+		p.
+			Select a device from the #[em Input device] drop-down menu and the channels you want to record from in the #[em Input channels] menu. Save the configuration and restart Giada for the changes to take effect.
 
-				h2 Prepare a new sample channel
+		h2 Prepare a new sample channel
 
-				p.
-					You will need a sample channel in order to record audio. Click on the #[em Edit column] button on top of any column on the main window, then select #[em Add Sample channel] from the drop-down menu: a new empty sample channel will appear in the current column.
-				
-				p.
-					Now arm it, so that incoming audio will be recorded in it. Press the #[em arm button] on the left side: 
+		p.
+			You will need a sample channel in order to record audio. Click on the #[em Edit column] button on top of any column on the main window, then select #[em Add Sample channel] from the drop-down menu: a new empty sample channel will appear in the current column.
+		
+		p.
+			Now arm it, so that incoming audio will be recorded in it. Press the #[em arm button] on the left side: 
 
-				p
-					img(src='images/tutorials/002/arm-button.png' alt='Arm button')
-				
-				p.
-					Finally, select a proper loop mode for the channel: you want it to loop once the recording is over. Select the loop mode from the menu on the right: 
+		p
+			img(src='images/tutorials/002/arm-button.png' alt='Arm button')
+		
+		p.
+			Finally, select a proper loop mode for the channel: you want it to loop once the recording is over. Select the loop mode from the menu on the right: 
 
-				p
-					img(src='images/tutorials/002/loop-mode.png' alt='Loop mode')
-				
-				p.
-					The loop mode called #[em Loop . basic] is a good fit.
-				
-				h2 Select the number of beats (optional)
+		p
+			img(src='images/tutorials/002/loop-mode.png' alt='Loop mode')
+		
+		p.
+			The loop mode called #[em Loop . basic] is a good fit.
+		
+		h2 Select the number of beats (optional)
 
-				p.
-					Giada uses the current number of beats in your project to compute the maximum length of a free-loop length session, as well as the final BPM when the recording is done. By default the number of beats in a new project is set to 4: you can adjust it by clicking on the #[em beats/bars box] on the right side of the main window: 
+		p.
+			Giada uses the current number of beats in your project to compute the maximum length of a free-loop length session, as well as the final BPM when the recording is done. By default the number of beats in a new project is set to 4: you can adjust it by clicking on the #[em beats/bars box] on the right side of the main window: 
 
-				p
-					img(src='images/tutorials/002/beats-bars.png' alt='Beats/bars')
+		p
+			img(src='images/tutorials/002/beats-bars.png' alt='Beats/bars')
 
-				p.
-					A new window will pop up where you can edit values:
+		p.
+			A new window will pop up where you can edit values:
 
-				p
-					img(src='images/tutorials/002/beats-bars-window.png' alt='Beats/bars window')
+		p
+			img(src='images/tutorials/002/beats-bars-window.png' alt='Beats/bars window')
 
-				p.
-					Type a value between 1 and 32 in the first box on the left and then click #[em Ok] to apply the changes.
+		p.
+			Type a value between 1 and 32 in the first box on the left and then click #[em Ok] to apply the changes.
 
-				h2 Enable the free loop-length mode
+		h2 Enable the free loop-length mode
 
-				p.
-					The free loop-length mode can be enabled only if there are no other audio samples in your project. Click on the rightmost button in the main transport to enable it: 
+		p.
+			The free loop-length mode can be enabled only if there are no other audio samples in your project. Click on the rightmost button in the main transport to enable it: 
 
-				p
-					img(src='images/tutorials/002/free-loop-length-button.png' alt='Free loop-length button')
-				
-				h2 Start the recording
+		p
+			img(src='images/tutorials/002/free-loop-length-button.png' alt='Free loop-length button')
+		
+		h2 Start the recording
 
-				p.
-					Grab your instrument! When you are ready to go, click on the #[em audio recording button] (or press the corresponding keyboard button) located in the main transport to start the recording:
+		p.
+			Grab your instrument! When you are ready to go, click on the #[em audio recording button] (or press the corresponding keyboard button) located in the main transport to start the recording:
 
-				p
-					img(src='images/tutorials/002/audio-recording-button.png' alt='Audio recording button')
-				
-				p.
-					You will notice how the sequencer will activate right away, with blinking cursors and two bars running from left to right:
+		p
+			img(src='images/tutorials/002/audio-recording-button.png' alt='Audio recording button')
+		
+		p.
+			You will notice how the sequencer will activate right away, with blinking cursors and two bars running from left to right:
 
-				p
-					img(src='images/tutorials/002/sequencer.png' alt='Sequencer')
+		p
+			img(src='images/tutorials/002/sequencer.png' alt='Sequencer')
 
-				p.
-					The running bars show the time progression of your audio recording. If they reach the right side, your recording automatically stops as there's no more audio space for it.  
-				
-				h2 Stop the recording
+		p.
+			The running bars show the time progression of your audio recording. If they reach the right side, your recording automatically stops as there's no more audio space for it.  
+		
+		h2 Stop the recording
 
-				p.
-					When you are satisfied with your performance, press the #[em audio recording button] again to terminate the recording session. Three things will happen at this point: 
+		p.
+			When you are satisfied with your performance, press the #[em audio recording button] again to terminate the recording session. Three things will happen at this point: 
 
-				ul
-					li
-						p The sequencer turns back to normal and starts playing;
-					li 
-						p the sample channel gets filled with the recorded audio data;
-					li
-						p Giada adjusts the number of BPM of the current project to the length of your audio recording. 
-					
-				p.
-					You can now add more elements to your song on top of the loop you've just recorded, either manually or live-recorded. Just remember that the free loop-length mode is now disabled: it is allowed only when you start a new project from scratch.
+		ul
+			li
+				p The sequencer turns back to normal and starts playing;
+			li 
+				p the sample channel gets filled with the recorded audio data;
+			li
+				p Giada adjusts the number of BPM of the current project to the length of your audio recording. 
+			
+		p.
+			You can now add more elements to your song on top of the loop you've just recorded, either manually or live-recorded. Just remember that the free loop-length mode is now disabled: it is allowed only when you start a new project from scratch.
 
-				h2 See also
+		h2 See also
 
-				ul
-					li #[a(href='/documentation-configuration') Documentation: Configuration]			
-					li #[a(href='/documentation-live-sampling') Documentation: Live sampling]			
-
+		ul
+			li #[a(href='/documentation-configuration') Documentation: Configuration]			
+			li #[a(href='/documentation-live-sampling') Documentation: Live sampling]			

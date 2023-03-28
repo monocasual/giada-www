@@ -1,0 +1,206 @@
+section.index .block {
+    margin-bottom: 8rem;
+}
+
+section.index .block:last-child {
+    margin-bottom: 0;
+}
+
+section.index .block h2 {
+    font-weight: bold;
+    font-size: 3rem;
+    color: var(--color-red-2);
+    margin-bottom: 8rem;
+}
+
+/* Intro block */
+
+section.index .intro {
+    margin-bottom: 8rem;
+}
+
+/* Canvas block */
+
+section.index .canvas {
+    margin-bottom: 8rem;
+}
+
+/* Description block */
+
+section.index .description {
+    margin-bottom: 8rem;
+}
+
+@media (min-width: 1024px) {
+    section.index .description {
+        padding: 0 14rem;
+    }
+}
+
+section.index .description p {
+    font-size: 1.3em;
+    text-align: justify;
+    margin-bottom: 3rem;
+}
+
+section.index .description p.see-it {
+    font-size: 1.1em;
+    text-align: center;
+}
+
+/* Features block */
+
+section.index .features div.main-features.last {
+    margin-bottom: 4rem;
+}
+
+section.index .features div.main-features div.feature {
+    margin-bottom: 2rem;
+}
+
+section.index .features div.main-features div.feature p:first-child {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--color-red-2);
+}
+
+@media (min-width: 1024px) {
+    section.index .features div.main-features {
+        display: flex;
+        flex-direction: row;
+        column-gap: 2rem;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+
+    section.index .features div.main-features div.feature {
+        margin-bottom: 0;
+        flex: 1;
+    }
+}
+
+section.index .features div.sub-features {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 2rem;
+    row-gap: 1rem;
+    justify-content: center;
+}
+
+section.index .features div.sub-features div.feature {
+    font-size: 0.9em;
+    color: var(--color-light);
+    flex: 0 0 10rem;
+}
+
+@media (min-width: 1024px) {
+    section.index .features div.sub-features {
+        row-gap: 2rem;
+    }
+
+    section.index .features div.sub-features div.feature {
+        flex: 0 0 12rem;
+    }
+}
+
+/* Donwload block */
+
+section.index .block.download .main-container {
+    margin-bottom: 4rem;
+}
+
+section.index .block.download .main-container .latest-version {
+    padding: 1rem 0;
+}
+
+section.index .block.download .main-container .latest-version p:first-of-type {
+    font-weight: bold;
+}
+
+section.index .block.download .main-container .box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 1rem;
+    background-color: var(--color-grey);
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+section.index .block.download .main-container .box .info {
+    flex-grow: 1;
+}
+
+section.index .block.download .main-container .box .get-it {
+    text-align: center;
+}
+
+section.index .block.download .main-container .box .os {
+    font-weight: bold;
+}
+
+@media (min-width: 1024px) {
+    section.index .block.download .main-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    section.index .block.download .main-container .box {
+        flex-direction: column;
+        width: 170px;
+        height: 170px;
+    }
+}
+
+@media (min-width: 1280px) {
+    section.index .block.download .main-container .box {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+section.index .block.download .secondary-container {
+    font-size: 0.9em;
+    color: var(--color-light);
+}
+
+section.index .block.download .secondary-container p.title {
+    font-weight: bold;
+}
+
+section.index .block.download .secondary-container .changes {
+    margin-bottom: 4rem;
+}
+
+section.index .block.download .secondary-container .changes li {
+    list-style: disc inside;
+}
+
+@media (min-width: 1024px) {
+    section.index .block.download .secondary-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    section.index .block.download .secondary-container .changes {
+        margin-bottom: 0;
+    }
+}
+
+/* Follow-us block */
+
+section.index .block.follow-us div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media (min-width: 1024px) {
+    section.index .block.follow-us div {
+        width: 70%;
+        margin: 0 auto;
+    }
+}

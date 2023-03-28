@@ -1,140 +1,142 @@
 extends ../base
 
 block metas-vars
-	- var title       = 'Docs - Configuration - '
-	- var description = ', documentation, Configuration'
-	- var keywords    = ', documentation, Configuration'
+	- var title       = 'User Guide - Configuration - '
+	- var description = ', documentation, user guide, configuration'
+	- var keywords    = ', documentation, user guide, configuration'
+
+
+block styles
+	if NODE_ENV === 'dev'
+		link(rel='stylesheet' href=`css/documentation.css` type='text/css')
 
 block content
-	.container
-		#documentation.row
-			.col-md-9
-				h1 Configuration
+	section.documentation
+		h1.
+			User guide<br>Configuration.
+
+		p.
+			This panel gives you the ability to tweak hardware parameters as well as operational modes, through six different tabs: #[strong Audio], #[strong MIDI], #[strong Behaviors], #[strong Plugins], #[strong Key Bindings] and #[strong Misc].
+		
+		h2 Audio
+
+		ul
+			li.
+				#[strong System] — The audio framework to choose from. It may vary from OS to OS.
+			li.
+				#[strong Buffer size] — (in frames): a low value means low latency but high CPU work, while an high value means high latency with low CPU work. The latter is useful if you have a slow machine or you don't need to play channels in live mode.
+			li.
+				#[strong Sample rate] — (in Hz): the sample rate at which your soundcard works. If you load a set of samples recorded at different sample rates, they will be converted to that rate (see #[em resampling] below).
+			li.
+				#[strong Output device] — The device used for playing.
+			li.
+				#[strong Limit output] — If enabled, the output signal will be truncated if greater than &pm; 1.0 (floating point values).
+			li.
+				#[strong Input device] — The device used for recording. Disabled by default: can be enabled by clicking on the checkbox button on the right.
+			li.
+				#[strong Resampling] — The algorithm used for resampling, i.e. when you load a sample whose sample rate differs from the system's rate and when you change the pitch of a sample channel. You can choose between five algorithms: 1) #[strong Linear] — very fast, low quality; 2) #[strong Zero Order Hold] — fast, low quality; 3) #[strong Sinc basic quality] — not so fast, medium quality; 4) #[strong Sinc medium quality] — not fast, good quality; 5) #[strong Sinc best quality] — slow, super quality.
+		
+		h2 MIDI
+
+		ul
+			li
 				p.
-					This panel gives you the ability to tweak hardware parameters as well as operational modes, through five different tabs: #[strong Audio], #[strong MIDI], #[strong Behaviors], #[strong Plugins], #[strong Key Bindings] and #[strong Misc].
+					#[strong System] — The MIDI framework to choose from. It may vary from OS to OS;
+			li
+				p.
+					#[strong Output port] — The MIDI output connection;
+			li
+				p.
+					#[strong Input port] — The MIDI input connection;
+			li
+				p.
+					#[strong Output midimap] — midimap file in use. Please refer to #[a(href='documentation-midi-output-management') MIDI output management] for more information about the MIDI lightning feature;
+			li
+				p.
+					#[strong Sync] — How to sync with another device. Giada can act only as a #[em master] controller:
 				
-				h2 Audio
+				ol
+					li
+						p.
+							#[strong (disabled)] — don't sync anything;
+					li
+						p.
+							#[strong MIDI Clock] — send #[a(href='http://en.wikipedia.org/wiki/MIDI_beat_clock') MIDI clock events], aka MIDI beat clock or MIDI clock;
+					li
+						p.
+							#[strong MTC] — send #[a(href='http://en.wikipedia.org/wiki/MIDI_timecode') MIDI timecode events]. This is quite experimental: the rate is temporarily hardcoded to 25 frame/s (standard rate for PAL video).
+		
+		h2 Behaviors
 
-				ul
-					li.
-						#[strong System] — The audio framework to choose from. It may vary from OS to OS.
-					li.
-						#[strong Buffer size] — (in frames): a low value means low latency but high CPU work, while an high value means high latency with low CPU work. The latter is useful if you have a slow machine or you don't need to play channels in live mode.
-					li.
-						#[strong Sample rate] — (in Hz): the sample rate at which your soundcard works. If you load a set of samples recorded at different sample rates, they will be converted to that rate (see #[em resampling] below).
-					li.
-						#[strong Output device] — The device used for playing.
-					li.
-						#[strong Limit output] — If enabled, the output signal will be truncated if greater than &pm; 1.0 (floating point values).
-					li.
-						#[strong Input device] — The device used for recording. Disabled by default: can be enabled by clicking on the checkbox button on the right.
-					li.
-						#[strong Resampling] — The algorithm used for resampling, i.e. when you load a sample whose sample rate differs from the system's rate and when you change the pitch of a sample channel. You can choose between five algorithms: 1) #[strong Linear] — very fast, low quality; 2) #[strong Zero Order Hold] — fast, low quality; 3) #[strong Sinc basic quality] — not so fast, medium quality; 4) #[strong Sinc medium quality] — not fast, good quality; 5) #[strong Sinc best quality] — slow, super quality.
+		p.
+			Define how Giada should handle loops, timing and channels.
+
+		ul
+			li
+				p.
+					#[strong Dynamic channels stop immediately when the sequencer is halted] — What should happen when you pull up the performance (by pressing the #[span.code spacebar] or the stop button)? If the option is enabled, any sample in loop mode and any sample with recorded actions will stop abruptly; otherwise it will play until the end.
+			li
+				p.
+					#[strong Treat one shot channels with actions as loops] — By default, clicking the #[img(src='images/docs/read-recs-button.png' alt='Read actions button' class='inline')] button (or pressing the #[span.code shift + (key)] combination) on a channel that is reading actions stops it immediately. When this option is enabled, any playing channel whose actions are suspended will be set to #[em ending mode] first, as a channel in loop mode would do, and then it will stop at the next first beat.
+			li
+				p.
+					#[strong New samples channels have input monitor on by default] — If enabled, new sample channels will have the #[em Input protection] flag checked by default;
+			li
+				p.
+					#[strong New samples channels have overdub protection on by default] — If enabled, new sample channels will have the #[em Overdub protection] flag checked by default. Useful when live recording audio. 
+
+		h2 Plug-ins
+
+		p.
+			This tab contains the plug-in scanner. It's used to search for available audio plug-ins in your system. Insert the path to your plug-in folder in the input field and press the #[strong scan] button. More than one path can be added, both manually or by clicking the "+" button (a directory browser will pop up). Paths are separated by the #[span.code ;] character.
+		
+		p.
+			Once finished, the #[strong scan] button will report the number of available plug-ins found. You should do a complete scan every time you add/install a new plug-in, to make it available for use.
+
+		h2 Key Bindings
+
+		p.
+			This tab allows you to change the default keyboard bindings for global actions such as start/stop sequencer, record audio, record actions and so on. Choose the key you want to remap, click the #[strong Bind] button and press a key on your keyboard. The #[strong Clear] button deletes the binding.
+
+		h2 Misc
+
+		p.
+			Miscellaneous options.
+
+		ul
+			li
+				p.
+					#[strong Debug messages] — How Giada prints information on its internal state:
 				
-				h2 MIDI
-
-				ul
+				ol
 					li
 						p.
-							#[strong System] — The MIDI framework to choose from. It may vary from OS to OS;
+							#[strong (disabled)] — don't print anything anywhere;
 					li
 						p.
-							#[strong Output port] — The MIDI output connection;
+							#[strong To standard output] — print messages on the command line, only if you run Giada from the terminal. This mode might not work on Windows;
 					li
 						p.
-							#[strong Input port] — The MIDI input connection;
-					li
-						p.
-							#[strong Output midimap] — midimap file in use. Please refer to #[a(href='documentation-midi-output-management') MIDI output management] for more information about the MIDI lightning feature;
-					li
-						p.
-							#[strong Sync] — How to sync with another device. Giada can act only as a #[em master] controller:
-						
-						ol
-							li
-								p.
-									#[strong (disabled)] — don't sync anything;
-							li
-								p.
-									#[strong MIDI Clock] — send #[a(href='http://en.wikipedia.org/wiki/MIDI_beat_clock') MIDI clock events], aka MIDI beat clock or MIDI clock;
-							li
-								p.
-									#[strong MTC] — send #[a(href='http://en.wikipedia.org/wiki/MIDI_timecode') MIDI timecode events]. This is quite experimental: the rate is temporarily hardcoded to 25 frame/s (standard rate for PAL video).
-				
-				h2 Behaviors
-
+							#[strong To file] — save messages to #[span.code giada.log] file, located in the same place of the configuration file as described in the #[a(href='documentation-introduction') Introduction] chapter.
+			
+			li
 				p.
-					Define how Giada should handle loops, timing and channels.
-
-				ul
-					li
-						p.
-							#[strong Dynamic channels stop immediately when the sequencer is halted] — What should happen when you pull up the performance (by pressing the #[span.code spacebar] or the stop button)? If the option is enabled, any sample in loop mode and any sample with recorded actions will stop abruptly; otherwise it will play until the end.
-					li
-						p.
-							#[strong Treat one shot channels with actions as loops] — By default, clicking the #[img.inline(src='images/docs/read-recs-button.png' alt='Read actions button')] button (or pressing the #[span.code shift + (key)] combination) on a channel that is reading actions stops it immediately. When this option is enabled, any playing channel whose actions are suspended will be set to #[em ending mode] first, as a channel in loop mode would do, and then it will stop at the next first beat.
-					li
-						p.
-							#[strong New samples channels have input monitor on by default] — If enabled, new sample channels will have the #[em Input protection] flag checked by default;
-					li
-						p.
-							#[strong New samples channels have overdub protection on by default] — If enabled, new sample channels will have the #[em Overdub protection] flag checked by default. Useful when live recording audio. 
-
-				h2 Plug-ins
-
+					#[strong Tooltips] — Toggles little pop-up messages that appear when hovering the mouse over UI components. 
+			
+			li
 				p.
-					This tab contains the plug-in scanner. It's used to search for available audio plug-ins in your system. Insert the path to your plug-in folder in the input field and press the #[strong scan] button. More than one path can be added, both manually or by clicking the "+" button (a directory browser will pop up). Paths are separated by the #[span.code ;] character.
+					#[strong Language file] — The current language file in use for localization. Giada stores localized text in special JSON files called #[em langmaps] that reside in your configuration directory, or more precisely:
+				ol
+					li
+						p.
+							Linux — #[span.code /home/(your_user)/.giada/langmaps/];
+
+					li
+						p.
+							Mac — #[span.code (your_home)/Library/Application Support/Giada/langmaps/];
+					li
+						p.
+							Windows — #[span.code langmaps/] folder, alongside the binary file.
 				
 				p.
-					Once finished, the #[strong scan] button will report the number of available plug-ins found. You should do a complete scan every time you add/install a new plug-in, to make it available for use.
-
-				h2 Key Bindings
-
-				p.
-					This tab allows you to change the default keyboard bindings for global actions such as start/stop sequencer, record audio, record actions and so on. Choose the key you want to remap, click the #[strong Bind] button and press a key on your keyboard. The #[strong Clear] button deletes the binding.
-
-				h2 Misc
-
-				p.
-					Miscellaneous options.
-	
-				ul
-					li
-						p.
-							#[strong Debug messages] — How Giada prints information on its internal state:
-						
-						ol
-							li
-								p.
-									#[strong (disabled)] — don't print anything anywhere;
-							li
-								p.
-									#[strong To standard output] — print messages on the command line, only if you run Giada from the terminal. This mode might not work on Windows;
-							li
-								p.
-									#[strong To file] — save messages to #[span.code giada.log] file, located in the same place of the configuration file as described in the #[a(href='documentation-introduction') Introduction] chapter.
-					
-					li
-						p.
-							#[strong Tooltips] — Toggles little pop-up messages that appear when hovering the mouse over UI components. 
-					
-					li
-						p.
-							#[strong Language file] — The current language file in use for localization. Giada stores localized text in special JSON files called #[em langmaps] that reside in your configuration directory, or more precisely:
-						ol
-							li
-								p.
-									Linux — #[span.code /home/(your_user)/.giada/langmaps/];
-
-							li
-								p.
-									Mac — #[span.code (your_home)/Library/Application Support/Giada/langmaps/];
-							li
-								p.
-									Windows — #[span.code langmaps/] folder, alongside the binary file.
-						
-						p.
-							Langmap files can be downloaded from #[a(href='https://github.com/monocasual/giada-langmaps') the official repository of Giada langmap files] on GitHub. New translations are welcome! Plese take a look at the #[a(href='https://github.com/monocasual/giada-langmaps#readme') README.md] file if you want to contribute.
-				
-			#side-menu.col-md-3.margin-top-xl
-				include side-menu
+					Langmap files can be downloaded from #[a(href='https://github.com/monocasual/giada-langmaps') the official repository of Giada langmap files] on GitHub. New translations are welcome! Plese take a look at the #[a(href='https://github.com/monocasual/giada-langmaps#readme') README.md] file if you want to contribute.

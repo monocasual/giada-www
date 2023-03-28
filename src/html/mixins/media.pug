@@ -1,13 +1,14 @@
 //- Esclamation mark (e.g. span!= body) means "unescaped content"
 
 mixin media_video(title, body, link, image)
-	.media-thumb
+	div.media-video
 		a(href=link, target='_blank')
-			img.img-responsive(src=image alt=title)
-	h3!= title
-	p!= body
+			img(src=image alt=title)
+		h3!= title
+		p!= body
 
 mixin tutorial(title, description, link)
-	a(href=link)
-		h3!= title
-	p!=	description
+	div.tutorial
+		a(href=link)
+			h3!= title
+		p!=	description

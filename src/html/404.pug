@@ -1,27 +1,16 @@
 extends base
 
-include mixins/news
-
 block metas-vars
 	- var title = '404 - '
 
 block content
-	.container
-		.row.margin-top-xl
-			.col-md-8.col-md-offset-2
-				h1.text-center 404: such an epic fail.
-				.margin-top-xl
-					p We are very sorry, this page does not exist. But you always could:
-					ul
-						li
-							| return to the 
-							a(href='index') index page
-						li
-							| download the amazing 
-							a(href='download') latest version
-						li
-							| explore our 
-							a(href='https://github.com/monocasual/giada/discussions') official forum
-						li
-							| fork the project on 
-							a(href='https://github.com/monocasual/giada') GitHub
+	h1 404: such an epic fail.
+
+	p We are very sorry, this page does not exist. But you always could:
+	ul
+		li.
+			return to the #[a(href='index') index page]
+		li.
+			explore our #[a(href='https://github.com/monocasual/giada/discussions') official forum]
+		li.
+			fork the project on #[a(href='https://github.com/monocasual/giada') GitHub]

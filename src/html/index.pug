@@ -1,7 +1,5 @@
 extends base
 
-include mixins/news
-
 block metas
 	meta(property='og:title' content=`${CONSTANTS.title}`)
 	meta(property='og:type' content='website')
@@ -15,147 +13,191 @@ block metas
 	meta(name='twitter:description' content=`${CONSTANTS.description}`)
 	meta(name='twitter:image' content=`images/${CONSTANTS.social_image}`)
 
+block styles
+	if NODE_ENV === 'dev'
+		link(rel='stylesheet' href=`css/index.css` type='text/css')
+
 block content
-	.container
+	section.index
+		div.intro
+			h1.
+				Giada<br>Your hardcore loop machine.
 
-		//- Intro
+		div.canvas
+			picture
+				source(media='(min-width: 800px)' srcset='images/giada-canvas.webp')
+				img(src='images/giada-canvas-mobile.webp' alt='Giada - Your Hardcore Loopmachine')
 
-		.row.margin-top-xl
-			.col-md-12
-				h1.text-center Your hardcore loop machine.
-				h2.margin-top-xl.description #{CONSTANTS.description}
-	
-	//- Hero space
+		div.description
+			p.
+				#[strong Giada] is an open source, minimalistic and hardcore #[strong music production tool]. Designed for #[strong DJs], #[strong live performers] and #[strong electronic musicians].
 
-	.container-fluid.news-list.hero-space
-		.row
-			.col-sm-12
-				.container
-					.row
-						.col-md-12
-							img(alt='*' src='images/giada-canvas.png')
+			p.see-it
+				a(href='https://www.youtube.com/user/GiadaLoopMachine') &#x2794; See it in action!
 
-	.container.main-features
+		div.block.features
+			h2 Features.
 
-		.row.center-block.margin-top-xl
-			.col-md-12
-				h4.text-center
-					a.see-it-in-action(href='http://www.youtube.com/user/GiadaLoopMachine' target='_blank') see it in action!
+			div.main-features
+				div.feature
+					p.
+						1. Giada is a loop machine.
+					p.
+						Build your performance in real time by layering audio tracks or MIDI events, driven by the main sequencer.
 
-		//- Main features
+				div.feature
+					p.
+						2. Giada is a sample player.
+					p.
+						Load samples from your crates and play them with a computer keyboard or a MIDI controller.
+			
+				div.feature
+					p.
+						3. Giada is a song editor.
+					p.
+						Write songs from scratch or edit existing live recordings with the powerful Action Editor, for a fine-tuned control.
 
-		.row.center-block.margin-top-xl
-			.col-md-4
-				h3
-					img.margin-right-s(alt='*' src='images/icon-box.svg')
-					| Your sample player
-				p
-					| Load samples from your crates and play them with a computer keyboard or a MIDI controller. 
-			.col-md-4
-				h3
-					img.margin-right-s(alt='*' src='images/icon-circle.svg')
-					| Your loop machine
-				p
-					| Build your performance in real time by layering audio tracks or MIDI events, driven by the main sequencer.
-			.col-md-4
-				h3
-					img.margin-right-s(alt='*' src='images/icon-lines.svg')
-					| Your song editor
-				p
-					| Write songs from scratch or edit existing live recordings with the powerful Action Editor, for a fine-tuned control.
-		.row.center-block
-			.col-md-4
-				h3
-					img.margin-right-s(alt='*' src='images/icon-record.svg')
-					| Your live recorder
-				p
-					| Record sounds from the real world and MIDI events coming from external devices or other apps.
-			.col-md-4
-				h3
-					img.margin-right-s(alt='*' src='images/icon-diamond.svg')
-					| Your FX processor
-				p
-					| Process samples or audio/MIDI input signals with VST instruments from your plug-ins collection.
-			.col-md-4
-				h3
-					img.margin-right-s(alt='*' src='images/icon-knob.svg')
-					| Your MIDI controller
-				p
-					| Control other software or synchronize physical MIDI devices by using Giada as a MIDI master sequencer.	
+			div.main-features.last
+				div.feature
+					p.
+						4. Giada is a live recorder.
+					p.
+						Record sounds from the real world and MIDI events coming from external devices or other apps.
 
-		//- Detail features
+				div.feature
+					p.
+						5. Giada is an FX processor.
+					p.
+						Process samples or audio/MIDI input signals with VST instruments from your plug-ins collection.
 
-		.row.center-block.margin-top-xl
-			.col-md-3
-				h4
-					| Lightweight and powerful
-			.col-md-3
-				h4
-					| VST and MIDI support
-			.col-md-3
-				h4
-					| Designed for live performances
-			.col-md-3
-				h4
-					| Powerful multi-threaded audio engine
-		.row.center-block
-			.col-md-3
-				h4
-					| Super sleek interface, no exotic stuff
-			.col-md-3
-				h4
-					| Tons of tools to edit your songs
-			.col-md-3
-				h4
-					| 100% open-source GPL
-			.col-md-3
-				h4
-					| For Linux, Windows, macOS and FreeBSD
+				div.feature
+					p.
+						6. Giada is a MIDI controller.
+					p.
+						Control other software or synchronize physical MIDI devices by using Giada as a MIDI master sequencer.
+				
+			div.sub-features
+				div.feature
+					p.
+						Lightweight and powerful.
 
+				div.feature
+					p.
+						VST and MIDI support.
+
+				div.feature
+					p.
+						Designed for live performances.
+
+				div.feature
+					p.
+						Powerful multi-threaded audio engine.
+
+				div.feature
+					p.
+						Super sleek interface, no exotic stuff.
+
+				div.feature
+					p.
+						Tons of tools to edit your songs.
+
+				div.feature
+					p.
+						100% open-source GPL.
+
+				div.feature
+					p.
+						For Linux, Windows, macOS and FreeBSD.
+
+		div.block.download#download
+			h2 Download.
+
+			div.main-container
+				div.latest-version
+					p.
+						Latest version
+					p.
+						#{RELEASE.version}, #[em #{RELEASE.codename}]
+					p.
+						Released on #{RELEASE.date}
+
+				div.box
+					p.os.
+						Linux
+					p.info.
+						AppImage, 64 bit, #{RELEASE.linux.size} MB
+					p.get-it.
+						#[a(href=`${RELEASE.linux.path}` title='Download Giada for Linux') ⇩ get it! ⇩]
+
+				div.box
+					p.os.
+						Windows
+					p.info.
+						64 bit, #{RELEASE.windows.size} MB
+					p.get-it.
+						#[a(href=`${RELEASE.windows.path}` title='Download Giada for Windows') ⇩ get it! ⇩]
+				
+				div.box
+					p.os.
+						macOS
+					p.info.
+						64 bit, #{RELEASE.macos.size} MB
+					p.get-it.
+						#[a(href=`${RELEASE.macos.path}` title='Download Giada for macOS') ⇩ get it! ⇩]
+
+				div.box
+					p.os.
+						Source code
+					p.info.
+						#{RELEASE.source.size} MB
+					p.get-it.
+						#[a(href=`${RELEASE.source.path}` title='Download Giada source code') ⇩ get it! ⇩]					
+
+			div.secondary-container
+				div.changes
+					p.title.
+						Changes in version #{RELEASE.version}
+					
+					ul
+						each change in RELEASE.changes
+							li= change
+				
+				div.checksums
+					p.title.
+						MD5 checksums
+					table.table
+						tr
+							td Giada for Linux, 64 bit
+							td
+								code #{RELEASE.linux.md5}
+						tr
+							td Giada for Windows, 64 bit
+							td
+								code #{RELEASE.windows.md5}
+						tr
+							td Giada for macOS, 64 bit
+							td
+								code #{RELEASE.macos.md5}
+						tr
+							td Giada source code
+							td
+								code #{RELEASE.source.md5}
+			
+			div.
 		
-		//- Quotes
+		div.block.follow-us
+			h2 Follow us.
 
-		.quotes.row.margin-top-xl
-			.col-md-6.col-md-offset-3
-				p
-					i “This software is f*cking awesome.”
-					| ― Cinderskull27
-				p
-					i “Giada is one of the best open platform audio tool out there.”
-					| ― blinkworth1
-				p
-					i “Discovering Giada has completely changed my life.”
-					| ― D1RTY J0E
-		
-		//- Download button
-
-		.row.margin-top-xl
-			.col-md-12
-				a(href='download')
-					input.download-btn.btn.btn-default.center-block(type='button' value='Download it!')
-				.text-center.margin-top-s
-					| latest version: #{RELEASE.version} “#{RELEASE.codename}”
-		
-		//- Sharing area
-
-		.row
-			.col-md-10.col-md-offset-1
-				h2.margin-top-xl.text-center Sharing is caring!
-				.list-inline.text-center.margin-top-xl 
-					include includes/socials/facebook-like
-					include includes/socials/twitter-like
-					include includes/socials/reddit
-					include includes/socials/flattr
-					include includes/socials/github
-
-	//- News list
-
-	.container-fluid.news-list
-		.row
-			.col-sm-12
-				.container
-					.row
-						.col-md-10.col-md-offset-1
-							h2.margin-top-xl.text-center Latest news from our laboratories.
-							each news in NEWS.slice(0, 5)
-								+news(news.date, news.title, news.body)
+			div
+				a(href='https://www.facebook.com/GiadaYourHardcoreLoopmachine' title='Giada @ Facebook')
+					img(src='images/social-icon-facebook.svg' alt='Facebook' title='Giada @ Facebook')
+				a(href='https://twitter.com/GiadaLooper' title='Giada @ Twitter')
+					img(src='images/social-icon-twitter.svg' alt='twitter' title='Giada @ Twitter')
+				a(href='https://instagram.com/giadaloopmachine' title='Giada @ Instagram')
+					img(src='images/social-icon-instagram.svg' alt='instagram' title='Giada @ Instagram')
+				a(href='https://github.com/monocasual/giada' title='Giada @ Github')
+					img(src='images/social-icon-github.svg' alt='github' title='Giada @ Github')
+				a(href='http://www.youtube.com/user/GiadaLoopMachine' title='Giada @ Youtube')
+					img(src='images/social-icon-youtube.svg' alt='youtube' title='Giada @ Youtube')
+				a(href='http://www.kvraudio.com/product/giada-by-monocasual' title='Giada @ KVR Audio')
+					img(src='images/social-icon-kvr.svg' alt='kvr audio' title='Giada @ KVR Audio')

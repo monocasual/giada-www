@@ -1,123 +1,123 @@
 extends ../base
 
 block metas-vars
-	- var title       = 'Docs - Compiling from source - '
-	- var description = ', documentation, Compiling from source'
-	- var keywords    = ', documentation, Compiling from source'
+	- var title       = 'User Guide - Compiling from source - '
+	- var description = ', documentation, user guide, compiling from source'
+	- var keywords    = ', documentation, user guide, compiling from source'
+
+block styles
+	if NODE_ENV === 'dev'
+		link(rel='stylesheet' href=`css/documentation.css` type='text/css')
 
 block content
-	.container
-		#documentation.row
-			.col-md-9
-				h1 Compiling from source
+	section.documentation
+		h1.
+			User guide<br>Compiling from source.
 
-				p.
-					Giada source code is hosted and mantained on #[a(href='https://github.com/monocasual/giada') GitHub]. It requires a C++17-compatible compiler, #[a(href='https://git-scm.com/') Git] and #[a(href='https://cmake.org/') CMake] already installed. This document is about setting up Giada #[em from the command line], but you can also configure and build it directly in your IDE. 
+		p.
+			Giada source code is hosted and mantained on #[a(href='https://github.com/monocasual/giada') GitHub]. It requires a C++20-compatible compiler, #[a(href='https://git-scm.com/') Git] and #[a(href='https://cmake.org/') CMake] already installed. This document is about setting up Giada #[em from the command line], but you can also configure and build it directly in your IDE. 
 
-				h2 Grab the code
+		h2 Grab the code
 
-				p.
-					First of all clone the remote repository on your machine:
+		p.
+			First of all clone the remote repository on your machine:
 
-				p.code.
-					git clone git@github.com:monocasual/giada.git
-				
-				p.
-					a new folder #[span.code giada/] will be created. Go inside and initialize the submodules (i.e. the dependencies):
-				
-				pre.code.
-					git submodule update --init --recursive
+		p.code.
+			git clone git@github.com:monocasual/giada.git
+		
+		p.
+			a new folder #[span.code giada/] will be created. Go inside and initialize the submodules (i.e. the dependencies):
+		
+		pre.code.
+			git submodule update --init --recursive
 
-				h2 Configure and build
+		h2 Configure and build
 
-				p.
-					Invoke CMake from inside the #[span.code giada/] folder as follows:
+		p.
+			Invoke CMake from inside the #[span.code giada/] folder as follows:
 
-				pre.code.
-					cmake -B &lt;build-directory&gt; -S . 
-				
-				p.
-					For example:
+		pre.code.
+			cmake -B &lt;build-directory&gt; -S . 
+		
+		p.
+			For example:
 
-				pre.code.
-					cmake -B build/ -S . 
+		pre.code.
+			cmake -B build/ -S . 
 
-				p.
-					CMake will generate the proper project according to your environment: Makefile on Linux, Visual Studio solution on Windows, XCode project on macOS. When the script is done without errors, open the generated project with your IDE or run CMake from the command line to compile Giada. Command line example:
+		p.
+			CMake will generate the proper project according to your environment: Makefile on Linux, Visual Studio solution on Windows, XCode project on macOS. When the script is done without errors, open the generated project with your IDE or run CMake from the command line to compile Giada. Command line example:
 
-				pre.code.
-					cmake --build build/ 			
+		pre.code.
+			cmake --build build/ 			
 
-				h2 Dependencies
+		h2 Dependencies
 
-				p.
-					Some dependencies are included as git submodules. However, Giada requires other external libraries to be installed on your system. Namely: 
-				ul
-					li
-						p #[a(href='https://github.com/fltk/fltk') FLTK] — 1.3.[0 or greater];
-					li 
-						p #[a(href='https://github.com/libsndfile/libsndfile') Libsndfile] — 1.0.28 or greater;
-					li 
-						p #[a(href='https://github.com/libsndfile/libsamplerate') Libsamplerate] — 0.1.9 or greater;
-					li 
-						p #[a(href='https://github.com/thestk/rtmidi') RtMidi] — 3.0.0 or greater;
-					li
-						p (optional, used for tests) #[a(href='https://github.com/catchorg/Catch2') Catch2] — 2.0 or greater;
-				
-				h3 Additional configuration parameters
+		p.
+			Some dependencies are included as git submodules. However, Giada requires other external libraries to be installed on your system. Namely: 
+		ul
+			li
+				p #[a(href='https://github.com/fltk/fltk') FLTK] — 1.3.[0 or greater];
+			li 
+				p #[a(href='https://github.com/libsndfile/libsndfile') Libsndfile] — 1.0.28 or greater;
+			li 
+				p #[a(href='https://github.com/libsndfile/libsamplerate') Libsamplerate] — 0.1.9 or greater;
+			li 
+				p #[a(href='https://github.com/thestk/rtmidi') RtMidi] — 3.0.0 or greater;
+			li
+				p (optional, used for tests) #[a(href='https://github.com/catchorg/Catch2') Catch2] — 2.0 or greater;
+		
+		h2 Additional configuration parameters
 
-				p.
-					You can pass several parameters to CMake during the configuration stage as #[span.code -D&lt;parameter&gt;=&lt;value&gt;]. For example: 
-					
-				p.code.
-					cmake -B build/ -S . -DPARAMETER1=VALUE1 -DPARAMETER2=VALUE2
-				
-				table.table
-					tr
-						th Parameter
-						th Description
-						th Values
-					tr
-						td #[span.code CMAKE_BUILD_TYPE]
-						td Defines the build type.
-						td #[span.code Debug], #[span.code Release]
-					tr
-						td #[span.code WITH_VST2]
-						td Enables support for VST2 plug-ins. Requires the now deprecated VST2.x SDK by Steinberg. Disabled by default.
-						td #[span.code ON], #[span.code OFF]
-					
-					tr
-						td #[span.code WITH_VST3]
-						td Enables support for VST3 plug-ins. Disabled by default.
-						td #[span.code ON], #[span.code OFF]
-					
-					tr
-						td #[span.code WITH_TESTS]
-						td Includes the test suite. Requires the Catch2 library installed. Disabled by default.
-						td #[span.code ON], #[span.code OFF]
-					
-					tr
-						td #[span.code WITH_ALSA]
-						td (Linux only) Enables ALSA support. Enabled by default.
-						td #[span.code ON], #[span.code OFF]
-					
-					tr
-						td #[span.code WITH_PULSE]
-						td (Linux only) Enables PulseAudio support. Enabled by default.
-						td #[span.code ON], #[span.code OFF]
-					
-					tr
-						td #[span.code WITH_JACK]
-						td (Linux only) Enables JACK support. Enabled by default.
-						td #[span.code ON], #[span.code OFF]
+		p.
+			You can pass several parameters to CMake during the configuration stage as #[span.code -D&lt;parameter&gt;=&lt;value&gt;]. For example: 
+			
+		p.code.
+			cmake -B build/ -S . -DPARAMETER1=VALUE1 -DPARAMETER2=VALUE2
+		
+		table.table
+			tr
+				th Parameter
+				th Description
+				th Values
+			tr
+				td #[span.code CMAKE_BUILD_TYPE]
+				td Defines the build type.
+				td #[span.code Debug], #[span.code Release]
+			tr
+				td #[span.code WITH_VST2]
+				td Enables support for VST2 plug-ins. Requires the now deprecated VST2.x SDK by Steinberg. Disabled by default.
+				td #[span.code ON], #[span.code OFF]
+			
+			tr
+				td #[span.code WITH_VST3]
+				td Enables support for VST3 plug-ins. Disabled by default.
+				td #[span.code ON], #[span.code OFF]
+			
+			tr
+				td #[span.code WITH_TESTS]
+				td Includes the test suite. Requires the Catch2 library installed. Disabled by default.
+				td #[span.code ON], #[span.code OFF]
+			
+			tr
+				td #[span.code WITH_ALSA]
+				td (Linux only) Enables ALSA support. Enabled by default.
+				td #[span.code ON], #[span.code OFF]
+			
+			tr
+				td #[span.code WITH_PULSE]
+				td (Linux only) Enables PulseAudio support. Enabled by default.
+				td #[span.code ON], #[span.code OFF]
+			
+			tr
+				td #[span.code WITH_JACK]
+				td (Linux only) Enables JACK support. Enabled by default.
+				td #[span.code ON], #[span.code OFF]
 
-				h2 Run the tests (optional)
+		h2 Run the tests (optional)
 
-				p.
-					All unit tests in Giada are based on #[a(href='https://github.com/catchorg/Catch2') Catch2 automated test framework], which supports several command-line options. Please take a look at the #[a(href='https://github.com/catchorg/Catch2/blob/devel/docs/command-line.md') official documentation] to understand the gritty details. Giada must be configured with #[span.code -DWITH_TESTS=ON] first, while tests are run as following:
-				
-				p.code.
-					./giada --run-tests [optional catch parameters]
-	
-			#side-menu.col-md-3.margin-top-xl
-				include side-menu
+		p.
+			All unit tests in Giada are based on #[a(href='https://github.com/catchorg/Catch2') Catch2 automated test framework], which supports several command-line options. Please take a look at the #[a(href='https://github.com/catchorg/Catch2/blob/devel/docs/command-line.md') official documentation] to understand the gritty details. Giada must be configured with #[span.code -DWITH_TESTS=ON] first, while tests are run as following:
+		
+		p.code.
+			./giada --run-tests [optional catch parameters]
