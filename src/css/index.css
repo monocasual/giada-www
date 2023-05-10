@@ -183,6 +183,7 @@ section.index .block.download .secondary-container .changes li {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        column-gap: 2rem;
     }
 
     section.index .block.download .secondary-container .changes {
