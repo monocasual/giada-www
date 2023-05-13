@@ -165,23 +165,20 @@ block content
 				div.checksums
 					p.title.
 						MD5 checksums
-					table.table
-						tr
-							td Giada for Linux, 64 bit
-							td
-								code #{RELEASE.linux.md5}
-						tr
-							td Giada for Windows, 64 bit
-							td
-								code #{RELEASE.windows.md5}
-						tr
-							td Giada for macOS, 64 bit
-							td
-								code #{RELEASE.macos.md5}
-						tr
-							td Giada source code
-							td
-								code #{RELEASE.source.md5}
+
+					div.table
+						div Linux
+						div
+							code #{RELEASE.linux.md5}
+						div Windows
+						div
+							code #{RELEASE.windows.md5}
+						div macOS
+						div
+							code #{RELEASE.macos.md5}
+						div Source code
+						div
+							code #{RELEASE.source.md5}
 		
 		div.block.follow-us
 			h2 Follow us.
