@@ -99,6 +99,8 @@ code,
 
 header {
     margin-bottom: 8rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 header .logo {
@@ -108,7 +110,7 @@ header .logo {
 
 header nav ul {
     display: block;
-    text-align: center;
+    text-align: right;
 }
 
 header nav ul li {
