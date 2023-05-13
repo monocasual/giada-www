@@ -12,14 +12,13 @@ section.documentation li {
     list-style: disc;
 }
 
-section.documentation ol.index,
-section.documentation ol.index li {
-    margin-left: 0;
-}
-
 section.documentation ol.index li {
     list-style: decimal;
     padding-bottom: 2rem;
+}
+
+section.documentation ol.index li p {
+    margin-bottom: 0;
 }
 
 section.documentation ol.index li h2 {
