@@ -9,8 +9,7 @@ section.documentation h3 {
 }
 
 section.documentation li {
-    list-style: disc outside;
-    margin-left: 1rem;
+    list-style: disc;
 }
 
 section.documentation ol.index,
@@ -19,7 +18,7 @@ section.documentation ol.index li {
 }
 
 section.documentation ol.index li {
-    list-style: decimal inside;
+    list-style: decimal;
     padding-bottom: 2rem;
 }
 
@@ -41,11 +40,6 @@ section.documentation img.inline {
 
 section.documentation p {
     margin-bottom: 1rem;
-}
-
-section.documentation ol,
-section.documentation ul {
-    margin-left: 1rem;
 }
 
 section.documentation li {

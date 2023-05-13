@@ -175,7 +175,7 @@ section.index .block.download .secondary-container .changes {
 }
 
 section.index .block.download .secondary-container .changes li {
-    list-style: disc inside;
+    list-style: disc;
 }
 
 @media (min-width: 1024px) {
