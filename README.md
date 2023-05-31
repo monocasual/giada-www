@@ -8,7 +8,7 @@ Giada is a free, minimal, hardcore audio tool for DJs, live performers and elect
 
 ## Copyright
 
-giada-www is Copyright (C) 2010-2022 by Giovanni A. Zuliani | Monocasual Laboratories
+giada-www is Copyright (C) 2010-2023 by Giovanni A. Zuliani | Monocasual Laboratories
 
 giada-www is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
