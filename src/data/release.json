@@ -1,15 +1,17 @@
 {
-    "version": "0.25.0",
-    "codename": "Echidna",
-    "date": "June 06, 2023",
+    "version": "0.25.1",
+    "codename": "Echidna / bugfix 1",
+    "date": "August 03, 2023",
     "changes": [
-        "Ability to change audio and MIDI engines on the fly — no need to restart Giada anymore when the audio and/or MIDI devices change. No need to restart also when changing several properties in the Configuration Window;",
-        "Add new \"Clear\" button next to all MIDI learning widgets to easily clear the MIDI binding (#486);",
-        "Set default resampler quality to \"Linear\" (the fastest one);",
-        "Update FLTK to latest commit available;",
-        "Update JUCE to version 7.0.5;",
-        "Fix Velocity parameter not being usable in Action Editor;",
-        "Fix MIDI Channel parameter not being usable in MIDI input configuration;",
-        "Code refactoring and other architectural improvements."
+        "Enabled realtime scheduling in audio callback;",
+        "Input audio meter is now affected by the current input volume value;",
+        "Improved file name validation when saving projects and samples;",
+        "Fix compilation with format-security compiler flags;",
+        "Disable metronome when recording in free-loop-length mode;",
+        "Improved robustness of audio channel selection when changing audio devices in the configuration panel;",
+        "Upgrade libsndfile library to version 1.2.0;",
+        "Upgrade nlohmann-json library to version 3.11.2;",
+        "Upgrade fmt library to version 10.0.0;",
+        "Lots of code refactoring and internal cleanups."
     ]
 }
