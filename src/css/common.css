@@ -93,6 +93,7 @@ code,
 .code {
     background-color: var(--color-black);
     padding: 0.3em;
+    font-size: 0.85rem;
     font-family: 'Courier New', Courier, monospace;
     overflow: auto;
 }
