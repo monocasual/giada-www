@@ -56,17 +56,28 @@ block content
 		p.
 			Some dependencies are included as git submodules. However, Giada requires other external libraries to be installed on your system. Namely: 
 		ul
+			li 
+				p #[a(href='https://github.com/libsndfile/libsndfile') Libsndfile] — 1.2.0 or greater;
+			li 
+				p #[a(href='https://github.com/libsndfile/libsamplerate') Libsamplerate] — 0.2.2 or greater;
+			li 
+				p #[a(href='https://github.com/thestk/rtmidi') RtMidi] — 5.0.0 or greater;
+			li 
+				p #[a(href='https://github.com/nlohmann/json') JSON for Modern C++] — 3.11 or greater;
+			li 
+				p #[a(href='https://github.com/fmtlib/fmt') fmt] — 10.0 or greater;
 			li
-				p #[a(href='https://github.com/fltk/fltk') FLTK] — 1.3.[0 or greater];
-			li 
-				p #[a(href='https://github.com/libsndfile/libsndfile') Libsndfile] — 1.0.28 or greater;
-			li 
-				p #[a(href='https://github.com/libsndfile/libsamplerate') Libsamplerate] — 0.1.9 or greater;
-			li 
-				p #[a(href='https://github.com/thestk/rtmidi') RtMidi] — 3.0.0 or greater;
-			li
-				p (optional, used for tests) #[a(href='https://github.com/catchorg/Catch2') Catch2] — 2.0 or greater;
+				p (optional, used for tests) #[a(href='https://github.com/catchorg/Catch2') Catch2] — 2.0 or greater.
+
+		p.
+			You can install those dependencies manually and invoke CMake as seen above. Another, easier way is to use <a href="https://vcpkg.io/en/">vcpkg</a> package manager in <a href="https://learn.microsoft.com/en-us/vcpkg/users/manifests">manifest mode</a>. This way all the dependencies will be automatically downloaded before building the app. You need to <a href="https://vcpkg.io/en/getting-started.html">install vcpkg</a> first and then run CMake as follows:
 		
+		pre.code.
+			cmake -B [build-directory] -S . -DCMAKE_TOOLCHAIN_FILE=[path-to-vcpkg]\scripts\buildsystems\vcpkg.cmake
+		
+		p.
+			where #[span.code #{'[path-to-vcpkg]'}] is the location where vcpkg is installed in your system.
+
 		h2 Additional configuration parameters
 
 		p.
@@ -75,6 +86,9 @@ block content
 		p.code.
 			cmake -B build/ -S . -DPARAMETER1=VALUE1 -DPARAMETER2=VALUE2
 		
+		p.
+			This is the list of all CMake parameters currently supported by Giada:
+			
 		table.table
 			tr
 				th Parameter
