@@ -1,17 +1,13 @@
 {
-    "version": "0.25.1",
-    "codename": "Echidna / bugfix 1",
-    "date": "August 03, 2023",
+    "version": "0.26.0",
+    "codename": "Freybug",
+    "date": "October 15, 2023",
     "changes": [
-        "Enabled realtime scheduling in audio callback;",
-        "Input audio meter is now affected by the current input volume value;",
-        "Improved file name validation when saving projects and samples;",
-        "Fix compilation with format-security compiler flags;",
-        "Disable metronome when recording in free-loop-length mode;",
-        "Improved robustness of audio channel selection when changing audio devices in the configuration panel;",
-        "Upgrade libsndfile library to version 1.2.0;",
-        "Upgrade nlohmann-json library to version 3.11.2;",
-        "Upgrade fmt library to version 10.0.0;",
-        "Lots of code refactoring and internal cleanups."
+        "Add ability to open more than one plug-in UI — you can finally have multiple plug-in windows laying around while playing. Very useful for live performances;",
+        "improved floating legends in Action Editor — we added some cute floating legends that stick on top of each Action Editor widget, making it easier to edit actions in the right place;",
+        "huge optimizations to the audio rendering process;",
+        "Windows: store configuration file in AppData directory — to allow better integration with the environment;",
+        "Windows: fix missing .dll file on startup;",
+        "many more usability improvements and smaller optimizations."
     ]
 }
