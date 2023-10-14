@@ -22,8 +22,8 @@
         "uglify-js": "3.17.4"
     },
     "scripts": {
-        "check-format": "npx prettier --check src/ build.js",
-        "run-format": "npx prettier --write src/ build.js",
+        "check-format": "npx prettier --check src/ build.js package.json",
+        "run-format": "npx prettier --write src/ build.js package.json",
         "compile-js": "npx tsc"
     }
 }
