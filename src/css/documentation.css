@@ -12,6 +12,10 @@ section.documentation li {
     list-style: disc;
 }
 
+section.documentation a {
+    color: var(--color-red-2);
+}
+
 section.documentation ol.index li {
     list-style: decimal;
     padding-bottom: 2rem;
@@ -51,6 +55,7 @@ section.documentation table {
     margin: 4rem 0;
     border-collapse: collapse;
 }
+
 section.documentation table th,
 section.documentation table td {
     padding: 0.5rem;
