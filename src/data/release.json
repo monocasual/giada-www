@@ -1,13 +1,19 @@
 {
-    "version": "0.26.0",
-    "codename": "Freybug",
-    "date": "October 15, 2023",
+    "version": "0.26.1",
+    "codename": "Freybug / bugfix 1",
+    "date": "December 19, 2023",
     "changes": [
-        "Add ability to open more than one plug-in UI — you can finally have multiple plug-in windows laying around while playing. Very useful for live performances;",
-        "improved floating legends in Action Editor — we added some cute floating legends that stick on top of each Action Editor widget, making it easier to edit actions in the right place;",
-        "huge optimizations to the audio rendering process;",
-        "Windows: store configuration file in AppData directory — to allow better integration with the environment;",
-        "Windows: fix missing .dll file on startup;",
-        "many more usability improvements and smaller optimizations."
+        "Add ability to stop plug-ins scan;",
+        "Add ability to sort plug-ins in both ascending and descending order;",
+        "Disable main transport buttons when not available, with better explanation;",
+        "[Linux] Follow the XDG Base Directory Specification for configuration files;",
+        "Close all subwindows on project close before resetting the engine;",
+        "Fix assertion when when applying audio config changes and input device is disabled;",
+        "Fix assertion when selected RtMidi API is not present in available APIs;",
+        "Fix Sample Editor not picking up Channel properties (pitch, range, ...) when loading a project;",
+        "Fix crash when fetching audio device and JACK is in use;",
+        "Fix some scrolling glitches in Action Editor;",
+        "[Windows] Fix plug-in GUI weird auto-resize when dragged around;",
+        "Refactoring and code cleanup."
     ]
 }
