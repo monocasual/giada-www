@@ -14,6 +14,9 @@ block content
 		h1.
 			User guide<br>A look at the main window.
 		
+		p
+			img(src='images/docs/main-window.png' alt='Main Window')
+
 		p.
 			The main window is the part of Giada where you will spend most of the time while live playing. The upper part contains the main menu and several tools for input/output, tempo management and global synchronization. The remaining space is for #[strong columns] and #[strong channels]. 
 		
@@ -23,28 +26,19 @@ block content
 		h2 Columns and channels
 
 		p.
-			Columns contain channels, which in turn hold audio samples or MIDI events. Each column has a button on top of it to perform some basic operations (add channels, remove if empty). Channels are one of the building blocks of a Giada performance and that's where the sound comes from (mostly). Their usage will be covered in #[a(href='/documentation-performing-1') Performing part 1], #[a(href='/documentation-performing-2') Performing part 2], #[a(href='/documentation-channels-and-samples') Channels and samples] and #[a(href='/documentation-channels-and-midi') Channels and MIDI] chapters.
+			Columns contain channels, which in turn hold audio samples or MIDI events. Channels are one of the building blocks of Giada and that's where the sound comes from — mostly. Their usage will be covered in #[a(href='/documentation-performing-1') Performing part 1], #[a(href='/documentation-performing-2') Performing part 2], #[a(href='/documentation-channels-and-samples') Channels and samples] and #[a(href='/documentation-channels-and-midi') Channels and MIDI] chapters.
 		
 		p.
 			You can add as many channels and columns as you want. Columns are used to organize your project and arrange channels according to some logic. For example, you can group drum kits on column 1 and pads on column 2, while voice loops live in column 3. Columns are just a user interface thing that doesn't affect the audio processing.
 
-		h2 Input and output tools
-
-		p
-			img(src='images/docs/master-io.png' alt='Master IO')
+		h2 Main input and main output
 
 		p.
-			These tools take care of audio I/O: input on the left, ouput on the right. The circular knobs control the volume, the horizontal bars are meters. Ranging from -60 to 0 dBFS, when a bar is completely full it means that you are recording or playing at the maximum level allowed. If you exceed this limit your sound starts to clip and the meter turns red.
+			These tools take care of audio I/O: input on the left, ouput on the right. The circular knobs control the volume, the vertical bars are meters. Ranging from -60 to 0 dBFS, when a bar is completely full it means that you are recording or playing at the maximum level allowed. If you exceed this limit your sound starts to clip and the meter turns red.
 		p.
-			The button between the input and the output meter is the #[strong stream linker]. If enabled, it copies the input audio straight to the output channel, in order to obtain a "hear what you're playing" functionality.
-		p.
-			The #[img(src='images/docs/fx-button.png' alt='FX' class='inline')] buttons are used to load audio plug-ins both for the input and the output channel. More information in the #[a(href='/documentation-audio-plugins') Audio Plugins] chapter.
+			The button located below the input meter is the #[strong stream linker] #[img(src='images/docs/stream-linker-button.png' alt='Stream Linker button' class='inline')]. If enabled, it copies the input audio straight to the output channel, in order to obtain a "hear what you're playing" functionality. The #[img(src='images/docs/fx-button.png' alt='FX' class='inline')] buttons are used to load audio plug-ins both for the input and the output channel. More information in the #[a(href='/documentation-audio-plugins') Audio Plugins] chapter.
 
 		h2 The sequencer and the main transport
-
-		p
-			img(src='images/docs/gui_beat.png' alt='The sequencer')
-			img(src='images/docs/main-transport.png' alt='The main transport')
 		
 		p.
 			#[strong The sequencer] is a central tool in Giada. It keeps your live performance in sync and is responsible for driving loops, samples and MIDI events. It is managed by the #[strong main transport], namely the #[strong play/stop] button that starts and stops the song and the #[strong rewind] button that quickly rewinds the sequencer to the first beat. 
