@@ -15,40 +15,51 @@ block content
 			User guide<br>The Sample Editor.
 
 		p.
-			#[img(src='images/docs/giada-sample-editor.png' alt='The sample editor' title='The sample editor')]
+			#[img(src='images/docs/giada-sample-editor.png' alt='The Sample Editor')]
 		
 		p.
-			Giada is shipped with a powerful Sample Editor for fine samples manipulation. While the main window provides a fast and basic interaction, inside the Sample Editor you can tweak several parameters such as start/end points, pitch, boost and much more.
+			Giada is shipped with a powerful editor for fine samples manipulation. While the main window provides a fast and basic interaction, inside the Sample Editor you can tweak several parameters such as start/end points, pitch and much more.
 		p.
 			The Sample Editor also provides some basic tools for cutting, trimming or silencing your sample. Those are destructive actions; if you damage the sample you have to reload it from disk. Don't worry, the damage will occur only in memory; the original file won't be touched!
 		p.
 			On the lower right corner of the Sample Editor you will find some additional information on the sample currently loaded, such as the original file path, the size (in audio frames), the duration (in seconds), the bit depth and the frequency.
+
+		p.
+			You can zoom in and out by clicking on the #[strong Zoom buttons] located on the top-right corner, or by pressing #[code ctrl] (#[code cmd] on macOS) and scrolling up or down with the mouse wheel.
 		
-		h2 Start/end points
+		h2 Transport buttons
 
 		p.
-			Start/end points are used to set the play range of the sample and are represented by two vertical lines with a square handle: click on that handle and drag it around to set the points quickly, or use the boxes below the waveform for a precise, numeric setup. The #[strong Reset] button restores the default configuration.
-
-		h2 Panning
+			#[img(src='images/docs/sample-editor-preview-buttons.png' alt='Transport buttons')]
 
 		p.
-			#[img(src='images/docs/panning-knob.png' alt='Panning knob' title='Panning knob')] 
-		p.
-			The Pan knob sets the position of the sample into the stereo field. "L" stands for Left, "R" for Right and "C" for center.
-		
+			The transport buttons allow you to listen to the audio sample currently loaded. By checking the #[strong Loop] checkbox the sample will play back in loop. You can also press the #[code spacebar] key to start and stop playing. The playhead can be moved around by clicking on the waveform area.  
+
 		h2 Pitch
 
 		p.
-			#[img(src='images/docs/pitch-knob.png' alt='Pitch knob' title='Pitch knob')] 
+			#[img(src='images/docs/pitch-knob.png' alt='Pitch knob')] 
 		p.
-			The Pitch knob streches or compresses the sample, making it sound faster or slower. It works exactly as a turntable pitch control slider. It's currently powered by the Linear algorithm from Libsamplerate (very fast, low quality).
+			The Pitch knob streches or compresses the sample, making it sound faster or slower. It works exactly as a turntable pitch control slider. You can change the global resampling quality in the #[a(href='documentation-configuration') Configuration Window].
 		p.
 			You can spread the sample accross the whole song or the current bar by pressing #[strong To song] and #[strong To bar] buttons. Two additional operators, #[strong &times;] and #[strong &div;] will double or halve the sample's duration, while the #[strong Reset] button restores the pitch to 1.0.
+
+		h2 Range
+
+		p.
+			#[img(src='images/docs/sample-editor-range-tool.png' alt='Range tool')] 
+		p.
+			The range tool is used to set the play range of the sample through the begin and end points. Those points are represented in the waveform area by two vertical lines with a square handle: click on that handle and drag it around to set the points quickly, or use the numeric input fields to specify the exact position (in samples). The #[strong Reset] button restores the default configuration.
+		
+		h2 Shift
+
+		p.
+			#[img(src='images/docs/sample-editor-shift-tool.png' alt='Shift tool')] 
+		p.
+			The shift tool allows you to shift the sample horizontally. This is useful in case you want to make the sample start to a certain position, without spending too much time messing around with cut and paste. The shift value is specified in samples and can takes both positive and negative values.	
 		
 		h2 Editing operations
 
-		p.
-			#[img(src='images/docs/sample-editor-popup-menu.png' alt='The editing menu in the sample editor' title='The editing menu in the sample editor')]
 		p.
 			Select a portion of the waveform with the mouse and click on it with the #[em right button]: a menu will appear, giving you some editing tools:
 		ul
@@ -71,8 +82,8 @@ block content
 			li.
 				#[strong Smooth edges] — shapes gracefully the edges of a selection;
 			li.
-				#[strong Set start/end here] — sets the #[em start/end] points to the selection boundaries;
+				#[strong Set begin/end here] — sets the range to the selection boundaries;
 			li.
-				#[strong Copy to new channel] — creates a new Sample Channel out of the selection.
+				#[strong Copy to new channel] — creates a new Sample Channel out of the current selection.
 		p.
 			Is your sample messed up after the wrong editing? You can reload it from disk by clicking on the #[strong Reload] button #[img.inline(src='images/docs/reload-button.png' alt='Reload button' title='Reload button')].

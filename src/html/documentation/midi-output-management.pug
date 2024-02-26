@@ -49,7 +49,7 @@ block content
 			#[img(src='images/docs/midi-output-config-regular.png' alt='MIDI output config tool, regular')] 
 			
 		p.
-			This kind of messages are managed by the dropdown menu shown on the left. If you check #[em enable MIDI output], MIDI messages will be sent outside Giada whenever an action occurs, through the MIDI channel specified with the drop-down menu on the right. With this technique you will be able to control external MIDI hardware or other software as well.
+			This kind of messages are managed by the tools shown in the picture above. If you check #[em enable MIDI output], MIDI messages will be sent outside Giada whenever an action occurs, through the MIDI channel specified with the drop-down menu on the right. With this technique you will be able to control external MIDI hardware or other software as well.
 		
 		h3 MIDI lightning messages
 		
@@ -76,12 +76,11 @@ block content
 			Giada needs to know what data to send when MIDI lightning occurs. Each hardware producer defines its own set of messages, so we introduce the concept of #[strong midimap files]. A midimap is a JSON-formatted text file where you define what kind of messages you want Giada to send. They reside in your configuration directory, or more precisely:
 		ul
 			li.
-				Linux —
-				#[span.code  /home/(your_user)/.giada/midimaps/];
+				Linux — #[span.code /home/(your_user)/.config/giada/midimaps/];
 			li.
-				Mac — #[span.code (your_home)/Library/Application Support/Giada/midimaps/];
+				Mac — #[span.code /Users/(your_user)/Library/Application Support/Giada/midimaps/];
 			li.
-				Windows — #[span.code midimaps/] folder, alongside the binary file.
+				Windows — #[span.code C:\Users\(your_user)\AppData\Giada\midimaps\].
 		p.
 			Giada will look into those directories on startup. If the files are valid midimap files they will be listed in the #[a(href='documentation-configuration') Configuration window], MIDI section. Pick up the minimap file you want to use in the dropdown menu and you are ready to go.
 		
@@ -166,9 +165,9 @@ block content
 			In details:
 		ul
 			li.
-				#[strong MIDI-channel] —the MIDI channel where to output to, in a numeric range of 0-15;
+				#[strong channel] —the MIDI channel where to output to, in a numeric range of 0-15;
 			li.
-				#[strong hex-message] —the actual message to send, in hexadecimal form, 4 bytes long.
+				#[strong message] —the actual message to send, in hexadecimal form, 4 bytes long.
 		p.
 			The hexadecimal message contains a special placeholder for the note. Since each message is customized by the vendor, you have to specify where the byte for the note resides. The placeholder is defined as #[span.code nn]; Giada will replace it on the fly once the key has been configured and grabbed with the MIDI learning tool seen before. Below a couple of illustrative lightning messages:
 		pre.code.
@@ -236,7 +235,7 @@ block content
 		h2 Where do I find midimaps?
 		
 		p.
-			We store the full list of midimap files on GitHub in the #[a(href='https://github.com/monocasual/giada-midimaps')] midimap repository. Download the zip archive and uncompress it in the midimap folders seen before.
+			We store the full list of midimap files on GitHub in the #[a(href='https://github.com/monocasual/giada-midimaps') giada-midimaps repository]. Download the zip archive and uncompress it in the midimap folders seen before.
 		
 		p.
 			Pull requests and file submissions are absolutely welcome and encouraged. If you have a MIDI controller whose midimap file is missing, feel free to add it to our collection!
