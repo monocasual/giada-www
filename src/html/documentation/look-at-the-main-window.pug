@@ -29,7 +29,7 @@ block content
 			Columns contain channels, which in turn hold audio samples or MIDI events. Channels are one of the building blocks of Giada and that's where the sound comes from — mostly. Their usage will be covered in #[a(href='/documentation-performing-1') Performing part 1], #[a(href='/documentation-performing-2') Performing part 2], #[a(href='/documentation-channels-and-samples') Channels and samples] and #[a(href='/documentation-channels-and-midi') Channels and MIDI] chapters.
 		
 		p.
-			You can add as many channels and columns as you want. Columns are used to organize your project and arrange channels according to some logic. For example, you can group drum kits on column 1 and pads on column 2, while voice loops live in column 3. Columns are just a user interface thing that doesn't affect the audio processing.
+			You can add as many channels and columns as you want. Columns are used to organize your project and arrange channels according to some logic. For example, you can group drum kits on column 1 and pads on column 2, while voice loops live in column 3. Each column contains a special channel, the column channel, that controls the audio and MIDI signals of all the channels that belong to that column.
 
 		h2 Main input and main output
 
