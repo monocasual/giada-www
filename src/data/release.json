@@ -1,11 +1,21 @@
 {
-    "version": "1.1.0",
-    "codename": "Hamadryad",
-    "date": "October 25, 2024",
+    "version": "1.1.1",
+    "codename": "Hamadryad / bugfix 1",
+    "date": "February 7, 2025",
     "changes": [
-        "New 'Channel Groups' feature;",
-        "Update FLTK library to latest master;",
-        "Update JUCE Framework to 8.0.1;",
-        "Lots of refactoring and code cleanups."
+        "Render Group Channels audio data to master output only if audible (#709)",
+        "Fix MIDI out information not being refreshed properly on MIDI channels (#717)",
+        "Fix MIDI actions not being added on the rightmost edge in the Action Editor (#716)",
+        "Fix FX buttons not being properly lit (#712)",
+        "Fix ChannelShared objects not being deleted on Channel deletion (#695)",
+        "Fix wrong play mode for sample channels in one-shot retrig mode",
+        "Fix missing last sample when moving or resetting 'end' point in Sample Editor",
+        "Fix last audio sample not being played in sample channels",
+        "Fix inability to clear Channels' key bindings (#708)",
+        "Fix Main Window size not being stored correctly (#713)",
+        "Update FLTK dependency to 1.4.0-1",
+        "Add basic CMakePresets.json file",
+        "Many other minor bugs and typos fixed",
+        "Lots of refactoring and code cleanups"
     ]
 }
