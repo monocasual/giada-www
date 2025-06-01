@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="en"><head><title>User Guide - MIDI output management - Giada - Your Hardcore Loop Machine</title><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Monocasual Laboratories"><meta name="description" content="Giada is an open source, minimalistic and hardcore music production tool. Designed for DJs, live performers and electronic musicians., documentation, user guide, MIDI output management"><meta name="keywords" content="loopmachine, loop machine, giada, monocasual, software, opensource, open source, linux, windows, osx, os x, mac, macOS, macintosh, sample, digital, dj, sample editor, djtool, audio, music, drum machine, sequencer, live sampler, sampler, effect, fx, vst, vst host, host, daw, documentation, user guide, MIDI output management"><meta name="copyright" content="2010-2025 Monocasual Laboratories"><meta name="application-name" content="Giada - Your Hardcore Loop Machine"><link rel="icon" href="images/favicon.ico?v=2.0.3"><link rel="apple-touch-icon-precomposed" href="images/favicon-512.png?v=2.0.3"><link rel="stylesheet" href="css/common.css" type="text/css"><link rel="stylesheet" href="css/documentation.css" type="text/css"></head><body><div class="cookie-banner"><p>We use cookies for analytics. By using our site, you acknowledge that you have read and understand our <a href="privacy">Privacy Policy</a>, and our <a href="tos">Terms of Service</a>. Your use of this site is subject to these policies and terms. | <a class="close" href="#">OK, got it</a></p></div><header><div class="logo"><a href="index" title="Giada - Your Hardcore Loopmachine"><img src="images/giada-logo.svg" alt="Giada - Your Hardcore Loopmachine"></a></div><nav><ul><li><a href="index#download" title="Download">Download</a></li><li><a href="documentation-index" title="Giada documentation area">User guide</a></li><li><a href="media" title="Tutorials and media">Tutorials & media</a></li><li><a href="https://github.com/monocasual/giada/discussions" title="Giada forum for end users">Forum</a></li><li><a href="https://github.com/monocasual/giada" title="Giada @ GitHub">GitHub</a></li></ul></nav></header><section class="documentation"><h1>User guide<br>MIDI output management.
+</h1><p>Giada is able to output MIDI messages to the external world, both from <strong>sample channels</strong> and, of course, <strong>MIDI channels</strong>, with some notable differences. More precisely, there are two kinds of messages: <strong>regular MIDI messages</strong> and <strong>MIDI lightning messages</strong>.
+</p><h2>Regular messages vs lightning messages</h2><p><strong>Regular MIDI messages</strong> correspond to MIDI events, namely all those events you record with your physical devices, or actions edited in the Action Editor. Obviously this kind of events can be sent only from <strong>MIDI channels</strong>. On the other hand <strong>MIDI lightning messages</strong> are special codes used to light up parts of external devices, such as buttons, keys, knobs and many other shimmering things. The latter type of messages can be outputted from <strong>sample channels</strong> as well.</p><p>The following table shows what you can and cannot output from channels:
+</p><table class="table"><tr><td></td><td>regular MIDI messages</td><td>MIDI lightning messages</td></tr><tr><td>Sample channel</td><td>&#x2718;</td><td>&#x2714;</td></tr><tr><td>MIDI channel</td><td>&#x2714;</td><td>&#x2714;</td></tr></table><h2>Configuring the output</h2><p>Click on the <strong>main button</strong> of any channel and select <em>Setup MIDI output</em> from the menu, in order to configure how to output MIDI messages. A new window will pop up containing several tools.
+</p><h3>Regular MIDI messages</h3><p><img src="images/docs/midi-output-config-regular.png" alt="MIDI output config tool, regular"> 
+</p><p>This kind of messages are managed by the tools shown in the picture above. If you check <em>enable MIDI output</em>, MIDI messages will be sent outside Giada whenever an action occurs, through the MIDI channel specified with the drop-down menu on the right. With this technique you will be able to control external MIDI hardware or other software as well.
+</p><h3>MIDI lightning messages</h3><p><img src="images/docs/midi-output-config-lightning.png" alt="MIDI output config tool, lightning">
+</p><p>MIDI lightning requires key binding between the app and your physical device, so that whenever an event occurs, Giada sends a MIDI lightning message to the right part of your controller.</p><p>You bind controller elements to the events through the MIDI learning tool shown on the left, which works in the same way of the MIDI input learning tool described in <a href="documentation-midi-input-management">MIDI input management</a>.</p><p>Currently you can light up your device on the following events:</p><ul><li><strong>playing</strong> events, including <em>start</em>, <em>stop</em>, <em>wait</em>, <em>ending</em> statuses;</li><li><strong>mute</strong> events such as <em>mute on</em> and <em>mute off</em>;</li><li><strong>solo</strong> events such as <em>solo on</em> and <em>solo off</em>.
+</li></ul><h2>How MIDI lightning works</h2><p>Giada needs to know what data to send when MIDI lightning occurs. Each hardware producer defines its own set of messages, so we introduce the concept of <strong>midimap files</strong>. A midimap is a JSON-formatted text file where you define what kind of messages you want Giada to send. They reside in your configuration directory, or more precisely:</p><ul><li>Linux — <span class="code">/home/(your_user)/.config/giada/midimaps/</span>;</li><li>Mac — <span class="code">/Users/(your_user)/Library/Application Support/Giada/midimaps/</span>;</li><li>Windows — <span class="code">C:\Users\(your_user)\AppData\Giada\midimaps\</span>.</li></ul><p>Giada will look into those directories on startup. If the files are valid midimap files they will be listed in the <a href="documentation-configuration">Configuration window</a>, MIDI section. Pick up the minimap file you want to use in the dropdown menu and you are ready to go.
+</p><h2>Anatomy of a midimap file</h2><p>A midimap file follows this naming convention: <span class="code">(brand)-(device).giadamap</span>, lower-case text. For example if you own the <a href="http://www.akaipro.com/product/apc20">Akai APC20</a>, the corresponding midimap file would be <span class="code">akai-apc20.giadamap</span>.</p><p>Inside a midimap file you will find a collection of JSON objects. Each midimap command is made of two things: a <em>channel</em> and a <em>message</em>. The following is a complete midimap file, with placeholders:</p><pre class="code">{
+	"brand": "[text]",
+	"device": "[text]",
+	"init_commands": [
+		{
+			"channel": [MIDI-channel],
+			"message": "[hex-message]"
+		},
+		{
+			"channel": [MIDI-channel],
+			"message": "[hex-message]"
+		},
+		...
+	],
+	"mute_on": {
+		"channel": [MIDI-channel],
+		"message": "[hex-message]"
+	},
+	"mute_off": {
+		"channel": [MIDI-channel],
+		"message": "[hex-message]"
+	},
+	"solo_on": {
+		"channel": [MIDI-channel],
+		"message": "[hex-message]"
+	},
+	"solo_off": {
+		"channel": [MIDI-channel],
+		"message": "[hex-message]"
+	},
+	"waiting": {
+		"channel": [MIDI-channel],
+		"message": "[hex-message]"
+	},
+	"playing": {
+		"channel": [MIDI-channel],
+		"message": "[hex-message]"
+	},
+	"stopping": {
+		"channel": [MIDI-channel],
+		"message": "[hex-message]"
+	},
+	"stopped": {
+		"channel": [MIDI-channel],
+		"message": "[hex-message]"
+	}
+}
+</pre><p><The>first three elements are the <em>initializers</em>:</The></p><ul><li><strong>brand</strong> — the producer name;</li><li><strong>device</strong> — the device name;</li><li><strong>init_commands</strong> — a set of lightning messages sent on startup.</li></ul><p>The remaining elements are the <em>events</em>, defining what MIDI lighting message to send when each of them occur.
+</p><h2>Writing a MIDI lightning message</h2><p>A MIDI lightning message follows this structure:</p><pre class="code">{
+	"channel": [MIDI-channel],
+	"message": "[hex-message]"
+}
+	</pre><p>In details:</p><ul><li><strong>channel</strong> —the MIDI channel where to output to, in a numeric range of 0-15;</li><li><strong>message</strong> —the actual message to send, in hexadecimal form, 4 bytes long.</li></ul><p>The hexadecimal message contains a special placeholder for the note. Since each message is customized by the vendor, you have to specify where the byte for the note resides. The placeholder is defined as <span class="code">nn</span>; Giada will replace it on the fly once the key has been configured and grabbed with the MIDI learning tool seen before. Below a couple of illustrative lightning messages:</p><pre class="code">{
+	"channel": 0,               // MIDI channel 0
+	"message": "0x90nn3B00"     // note on byte 2
+},
+{
+	"channel": 7,               // MIDI channel 7
+	"message": "0x803Bnn00"     // note on byte 3
+},
+	</pre><h2>A complete example of a midimap file</h2><p>The following is a midimap file prepared for the <a href="http://global.novationmusic.com/launch/launchpad-s">Novation Launchpad S</a> MIDI controller:</p><pre class="code">{
+	"brand": "AKAI",
+	"device": "LPD8",
+	"init_commands": [
+		{
+			"channel": 0,
+			"message": "0xB0000000"
+		},
+		{
+			"channel": 0,
+			"message": "0xB0002800"
+		}
+	],
+	"mute_on": {
+		"channel": 0,
+		"message": "0x90nn3F00"
+	},
+	"mute_off": {
+		"channel": 0,
+		"message": "0x90nn0C00"
+	},
+	"solo_on": {
+		"channel": 0,
+		"message": "0x90nn0F00"
+	},
+	"solo_off": {
+		"channel": 0,
+		"message": "0x90nn0C00"
+	},
+	"waiting": {
+		"channel": 0,
+		"message": "0x90nn7f00"
+	},
+	"playing": {
+		"channel": 0,
+		"message": "0x90nn7f00"
+	},
+	"stopping": {
+		"channel": 0,
+		"message": "0x90nn7f00"
+	},
+	"stopped": {
+		"channel": 0,
+		"message": "0x80nn7f00"
+	}
+}
+	</pre><h2>Where do I find midimaps?</h2><p>We store the full list of midimap files on GitHub in the <a href="https://github.com/monocasual/giada-midimaps">giada-midimaps repository</a>. Download the zip archive and uncompress it in the midimap folders seen before.
+</p><p>Pull requests and file submissions are absolutely welcome and encouraged. If you have a MIDI controller whose midimap file is missing, feel free to add it to our collection!</p></section><footer><div class="about"><p>Giada is developed by<br><a href="http://www.monocasual.com"><img src="images/monocasual-logo.svg" alt="monocasual laboratories"></a></p></div><div class="vst"><p>VST Plug-In Technology by Steinberg.<br>VST is a trademark of Steinberg Media Technologies GmbH.</p></div><div class="links"><p><a href="privacy">privacy policy </a> | <a href="tos">terms of service </a></p></div></footer><script type="module" src="js/main-2.0.3.js"></script></body></html>
