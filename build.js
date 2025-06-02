@@ -1,4 +1,4 @@
-const BUILD_DIR = `${__dirname}/build`
+const BUILD_DIR = `${__dirname}/docs`
 const SRC_DIR = `${__dirname}/src`
 const DATA_DIR = `${SRC_DIR}/data`
 
@@ -12,10 +12,10 @@ const PATH = require('path')
 const PACKAGE = require('./package.json')
 const RELEASE = require(`${DATA_DIR}/release.json`)
 
-const LINUX_PKG = `${DATA_DIR}/Giada-${RELEASE.version}-x86_64.AppImage`
-const WINDOWS_PKG = `${DATA_DIR}/giada-${RELEASE.version}-x86_64-windows.zip`
-const MACOS_PKG = `${DATA_DIR}/giada-${RELEASE.version}-x86_64-macos.zip`
-const SOURCE_PKG = `${DATA_DIR}/giada-${RELEASE.version}-src.tar.gz`
+const LINUX_PKG = `https://github.com/monocasual/giada/releases/download/${RELEASE.version}/Giada-${RELEASE.version}-x86_64.AppImage`
+const WINDOWS_PKG = `https://github.com/monocasual/giada/releases/download/${RELEASE.version}/giada-${RELEASE.version}-x86_64-windows.zip`
+const MACOS_PKG = `https://github.com/monocasual/giada/releases/download/${RELEASE.version}/giada-${RELEASE.version}-x86_64-macos.zip`
+const SOURCE_PKG = `https://github.com/monocasual/giada/releases/download/${RELEASE.version}/giada-${RELEASE.version}-src.tar.gz`
 
 /* -------------------------------------------------------------------------- */
 
@@ -58,24 +58,24 @@ function compileHTML() {
 
     let release = RELEASE
     release.linux = {
-        md5: md5(LINUX_PKG),
-        path: LINUX_PKG.replace(DATA_DIR, 'data'),
-        size: getFileSizeMb(LINUX_PKG),
+        md5: '',
+        path: LINUX_PKG,
+        size: 0,
     }
     release.windows = {
-        md5: md5(WINDOWS_PKG),
-        path: WINDOWS_PKG.replace(DATA_DIR, 'data'),
-        size: getFileSizeMb(WINDOWS_PKG),
+        md5: '',
+        path: WINDOWS_PKG,
+        size: 0,
     }
     release.macos = {
-        md5: md5(MACOS_PKG),
-        path: MACOS_PKG.replace(DATA_DIR, 'data'),
-        size: getFileSizeMb(MACOS_PKG),
+        md5: '',
+        path: MACOS_PKG,
+        size: 0,
     }
     release.source = {
-        md5: md5(SOURCE_PKG),
-        path: SOURCE_PKG.replace(DATA_DIR, 'data'),
-        size: getFileSizeMb(SOURCE_PKG),
+        md5: '',
+        path: SOURCE_PKG,
+        size: 0,
     }
 
     const opt = {
@@ -120,13 +120,6 @@ function copyStatic() {
     console.log(`Copy images`)
     FSE.mkdirsSync(`${BUILD_DIR}/images`)
     FSE.copySync(`${SRC_DIR}/images`, `${BUILD_DIR}/images`)
-
-    console.log(`Copy packages`)
-    FSE.mkdirsSync(`${BUILD_DIR}/data`)
-    FSE.copySync(LINUX_PKG, `${BUILD_DIR}/data/${PATH.basename(LINUX_PKG)}`)
-    FSE.copySync(WINDOWS_PKG, `${BUILD_DIR}/data/${PATH.basename(WINDOWS_PKG)}`)
-    FSE.copySync(MACOS_PKG, `${BUILD_DIR}/data/${PATH.basename(MACOS_PKG)}`)
-    FSE.copySync(SOURCE_PKG, `${BUILD_DIR}/data/${PATH.basename(SOURCE_PKG)}`)
 }
 
 function compileCSS() {
