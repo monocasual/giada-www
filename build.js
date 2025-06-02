@@ -7,7 +7,6 @@ const FSE = require('fs-extra')
 const GLOB = require('glob')
 const PUG = require('pug')
 const CONCAT = require('concat')
-const CRYPTO = require('crypto')
 const PATH = require('path')
 const PACKAGE = require('./package.json')
 const RELEASE = require(`${DATA_DIR}/release.json`)
@@ -28,19 +27,6 @@ function tryExecSync(cmd) {
     }
 }
 
-function md5(file) {
-    return CRYPTO.createHash('md5')
-        .update(FSE.readFileSync(file), 'utf8')
-        .digest('hex')
-}
-
-function getFileSizeMb(file) {
-    const bytes = FSE.statSync(file).size
-    const megaBytes = bytes / (1024 * 1024)
-    const round = Math.round(megaBytes * 10 + Number.EPSILON) / 10
-    return round
-}
-
 function setup() {
     console.log('Create build dir')
     FSE.removeSync(BUILD_DIR)
@@ -58,24 +44,16 @@ function compileHTML() {
 
     let release = RELEASE
     release.linux = {
-        md5: '',
         path: LINUX_PKG,
-        size: 0,
     }
     release.windows = {
-        md5: '',
         path: WINDOWS_PKG,
-        size: 0,
     }
     release.macos = {
-        md5: '',
         path: MACOS_PKG,
-        size: 0,
     }
     release.source = {
-        md5: '',
         path: SOURCE_PKG,
-        size: 0,
     }
 
     const opt = {
