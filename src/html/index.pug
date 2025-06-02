@@ -125,7 +125,7 @@ block content
 					p.os.
 						Linux
 					p.info.
-						AppImage, 64 bit, #{RELEASE.linux.size} MB
+						AppImage, 64 bit
 					p.get-it.
 						#[a(href=`${RELEASE.linux.path}` title='Download Giada for Linux') ⇩ get it! ⇩]
 
@@ -133,7 +133,7 @@ block content
 					p.os.
 						Windows
 					p.info.
-						64 bit, #{RELEASE.windows.size} MB
+						64 bit
 					p.get-it.
 						#[a(href=`${RELEASE.windows.path}` title='Download Giada for Windows') ⇩ get it! ⇩]
 				
@@ -141,15 +141,13 @@ block content
 					p.os.
 						macOS
 					p.info.
-						64 bit, #{RELEASE.macos.size} MB
+						64 bit
 					p.get-it.
 						#[a(href=`${RELEASE.macos.path}` title='Download Giada for macOS') ⇩ get it! ⇩]
 
 				div.box
 					p.os.
 						Source code
-					p.info.
-						#{RELEASE.source.size} MB
 					p.get-it.
 						#[a(href=`${RELEASE.source.path}` title='Download Giada source code') ⇩ get it! ⇩]					
 
@@ -161,24 +159,6 @@ block content
 					ul
 						each change in RELEASE.changes
 							li= change
-				
-				div.checksums
-					p.title.
-						MD5 checksums
-
-					div.table
-						div Linux
-						div
-							code #{RELEASE.linux.md5}
-						div Windows
-						div
-							code #{RELEASE.windows.md5}
-						div macOS
-						div
-							code #{RELEASE.macos.md5}
-						div Source code
-						div
-							code #{RELEASE.source.md5}
 		
 		div.block.follow-us
 			h2 Follow us.
