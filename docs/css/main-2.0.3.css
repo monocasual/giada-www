@@ -412,6 +412,10 @@ section.index .block.download .secondary-container .changes {
     margin-bottom: 4rem;
 }
 
+section.index .block.download .secondary-container .changes .title {
+    margin-bottom: 1rem;
+}
+
 section.index .block.download .secondary-container .changes li {
     list-style: disc;
 }
@@ -420,12 +424,17 @@ section.index .block.download .secondary-container .changes li {
     section.index .block.download .secondary-container {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
         column-gap: 2rem;
     }
 
     section.index .block.download .secondary-container .changes {
         margin-bottom: 0;
+        width: 40%;
+    }
+
+    section.index .block.download .secondary-container .changes .title {
+        text-align: center;
     }
 }
 
