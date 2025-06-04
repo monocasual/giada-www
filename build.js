@@ -105,6 +105,9 @@ function copyStatic() {
     console.log(`Copy images`)
     FSE.mkdirsSync(`${BUILD_DIR}/images`)
     FSE.copySync(`${SRC_DIR}/images`, `${BUILD_DIR}/images`)
+
+    console.log(`Copy CNAME`)
+    FSE.copySync(`${SRC_DIR}/CNAME`, `${BUILD_DIR}/CNAME`)
 }
 
 function compileCSS() {
