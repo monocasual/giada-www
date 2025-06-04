@@ -1,9 +1,11 @@
 const BUILD_DIR = `${__dirname}/docs`
 const SRC_DIR = `${__dirname}/src`
 const DATA_DIR = `${SRC_DIR}/data`
+const CHANGES_FILE = `${DATA_DIR}/changes.html`
 
 const CHILD_PROCESS = require('child_process')
 const FSE = require('fs-extra')
+const FS = require('fs')
 const GLOB = require('glob')
 const PUG = require('pug')
 const CONCAT = require('concat')
@@ -25,6 +27,10 @@ function tryExecSync(cmd) {
         console.error(error.stdout.toString())
         process.exit(1)
     }
+}
+
+function readChanges() {
+    return FS.readFileSync(CHANGES_FILE, 'utf8')
 }
 
 function setup() {
@@ -55,6 +61,7 @@ function compileHTML() {
     release.source = {
         path: SOURCE_PKG,
     }
+    release.changes = readChanges()
 
     const opt = {
         NODE_ENV: process.env.NODE_ENV,

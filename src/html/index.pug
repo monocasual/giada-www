@@ -155,10 +155,7 @@ block content
 				div.changes
 					p.title.
 						Changes in version #{RELEASE.version}
-					
-					ul
-						each change in RELEASE.changes
-							li= change
+					!= RELEASE.changes
 		
 		div.block.follow-us
 			h2 Follow us.

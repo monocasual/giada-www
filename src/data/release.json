@@ -1,14 +1,5 @@
 {
     "version": "1.2.0",
     "codename": "Ifrit",
-    "date": "April 22, 2025",
-    "changes": [
-        "Add support for multiple MIDI devices",
-        "Preserve position and size of 'Settings' window",
-        "Fix wrong name in cloned sample channels",
-        "Update concurrentqueue dependency to version 1.0.4",
-        "Update FLTK dependency to version 1.4.2",
-        "More CMake presets improvements",
-        "Refactoring and code gardening"
-    ]
+    "date": "April 22, 2025"
 }
