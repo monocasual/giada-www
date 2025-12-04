@@ -5,11 +5,6 @@ block metas-vars
 	- var description = ', documentation, user guide, configuration'
 	- var keywords    = ', documentation, user guide, configuration'
 
-
-block styles
-	if NODE_ENV === 'dev'
-		link(rel='stylesheet' href=`css/documentation.css` type='text/css')
-
 block content
 	section.documentation
 		h1.

@@ -17,11 +17,7 @@ html(lang='en')
 
 		link(rel='icon' href=`images/favicon.ico?v=${CONSTANTS.version}`)
 		link(rel='apple-touch-icon-precomposed' href=`images/favicon-512.png?v=${CONSTANTS.version}`)
-		if NODE_ENV === 'prod'
-			link(rel='stylesheet' href=`css/main-${CONSTANTS.version}.css` type='text/css')
-		else
-			link(rel='stylesheet' href=`css/common.css` type='text/css')
-		block styles
+		link(rel='stylesheet' href=`css/main-${CONSTANTS.version}.css` type='text/css')
 
 	body
 		include includes/cookie-banner

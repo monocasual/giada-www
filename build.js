@@ -113,12 +113,8 @@ function copyStatic() {
 function compileCSS() {
     console.log(`Compile CSS`)
     FSE.mkdirsSync(`${BUILD_DIR}/css`)
-    if (process.env.NODE_ENV === 'prod') {
-        const files = GLOB.sync(`${SRC_DIR}/css/*.css`)
-        CONCAT(files, `${BUILD_DIR}/css/main-${PACKAGE.version}.css`)
-    } else {
-        FSE.copySync(`${SRC_DIR}/css/`, `${BUILD_DIR}/css/`)
-    }
+    const files = GLOB.sync(`${SRC_DIR}/css/*.css`)
+    CONCAT(files, `${BUILD_DIR}/css/main-${PACKAGE.version}.css`)
 }
 
 /* -------------------------------------------------------------------------- */

@@ -13,10 +13,6 @@ block metas
 	meta(name='twitter:description' content=`${CONSTANTS.description}`)
 	meta(name='twitter:image' content=`images/${CONSTANTS.social_image}`)
 
-block styles
-	if NODE_ENV === 'dev'
-		link(rel='stylesheet' href=`css/index.css` type='text/css')
-
 block content
 	section.index
 		div.intro
