@@ -26,23 +26,15 @@ block content
 		h2 Requirements
 
 		p.
-			We distribute Giada as 64-bit binary files for Windows, macOS and Linux. more specifically:
+			Giada is available on Windows, macOS and Linux. We provide binaries for Windows and macOS only. More specifically:
 
 		ul
 			li
-				p on Windows — Windows Vista or greater is required;
+				p on Windows, x64 — Windows Vista or greater is required;
 			li
-				p on macOS — macOS Sierra 10.14 or greater is required;
+				p on macOS, 64-bit Intel — macOS Sierra 10.14 or greater is required;
 			li
-				p.
-					on Linux — Giada is packaged as an #[a(href='https://appimage.org/') AppImage] and can run on many distributions (including Ubuntu, Fedora, openSUSE, CentOS, elementaryOS, Linux Mint, and others). What you need: 
-				ul
-					li 
-						p glibc version 2.23 or greater;
-					li
-						p libstdc++ version 3.4.21 or greater;
-					li
-						p JACK installed.
+				p on Linux — Giada is distributed as a #[a(href='https://flatpak.org/') Flatpak package] via the #[a(href='https://flathub.org/') Flathub App Store].
 		
 		p.
 			You can also build Giada from source. More information in the #[a(href='/documentation-compiling-from-source') Compiling from source] page.
@@ -55,12 +47,7 @@ block content
 			li
 				p on Windows and macOS — Double-click on the program icon to start Giada;
 			li
-				p.
-					on Linux — Mark the .AppImage file you have downloaded as #[em executable]. For example, on the command line:
-				p.code.
-					chmod +x Giada-1.0.0-x86_64.AppImage
-				p.
-					Now double-click on the .AppImage file to start Giada. 
+				p follow the instructions in the #[a(href='https://flathub.org/en/apps/com.giadamusic.Giada') Giada @ Flathub page].
 
 		h2 The configuration file
 
@@ -69,7 +56,7 @@ block content
 		ul
 			li
 				p.
-					Linux — #[span.code /home/(your_user)/.config/giada/giada.conf];
+					Linux — #[span.code /home/(your_user)/.config/Giada/giada.conf];
 			li
 				p.
 					macOS — #[span.code /Users/(your_user)/Library/Application Support/Giada/giada.conf];
@@ -82,7 +69,7 @@ block content
 		h2 Problems with the Linux version?
 
 		p.
-			The AppImage package that you can download from this website should just work out of the box. However for the absolute, best, top-notch experience you should also try binaries shipped by the package manager of your favorite distribution. Giada is available on #[a(href='https://packages.debian.org/search?keywords=giada&searchon=names&section=all') Debian], #[a(href='https://packages.ubuntu.com/search?section=all&arch=any&keywords=giada&searchon=names') Ubuntu], #[a(href='https://flathub.org/apps/com.giadamusic.Giada') Flathub] and many more.
+			The Flatpak package should just work out of the box. However for the absolute, best, top-notch experience you should also try binaries shipped by the package manager of your favorite distribution. Giada is available on #[a(href='https://packages.debian.org/search?keywords=giada&searchon=names&section=all') Debian], #[a(href='https://packages.ubuntu.com/search?section=all&arch=any&keywords=giada&searchon=names') Ubuntu] and many more.
 
 		h2 Problems with the macOS version?
 
