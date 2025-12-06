@@ -1,0 +1,31 @@
+extends ../base
+
+block metas-vars
+	- var title       = 'User Guide - Channels and scenes - '
+	- var description = ', documentation, user guide, channels and scenes'
+	- var keywords    = ', documentation, user guide, channels and scenes'
+
+block content
+	section.documentation
+		h1.
+			User guide<br>Channels and scenes.
+
+		img(src='images/docs/scenes.png' alt='Scenes buttons')
+
+		p.
+			In Giada, channels and #[strong scenes] go hand in hand. A #[strong scene] defines the channels content: actions — for MIDI and sample channels — and samples — for sample channels. For example, you can have a sample channel that contains sample a.wav in scene #1, and sample b.wav in scene #2. Or maybe a MIDI channel that plays certains notes in scene #1 and stays silent in scene #2.
+
+		p.
+			You can have up to 8 scenes and scene #1 is the default one. Scenes allow to add greater variety and richness to your live performances. By using multiple scenes you can build complex songs made of multiple parts: intro for scene #1, chorus for scene #2, ... and so on. Let's take a deeper look at what happens when you switch between the scenes:
+		
+		ul
+			li Sample channels only — change sample, pitch, sample range (begin/end points) and the sample offset value (the starting point);
+			li all kind of channels — change name and actions.
+		
+		p.
+			Switching between scenes also updates the Action Editor and the Sample Editor, so that they reflect the current scene content and allow you to edit it easily.
+
+		h2 Scenes and the main sequencer
+
+		p.
+			Scenes are connected to the main sequencer and the way you change scene depends on the sequencer status. When the main transport is stopped, you can easily switch between scenes by clicking on the corresponding scene button: the scene will change right away. When the sequencer is running, the scene you want to switch to becomes "the upcoming one" and its corresponding button starts blinking. The sequencer will automatically switch to the requested scene on the next first beat.
