@@ -103,8 +103,13 @@ function compileJs() {
 
 function copyStatic() {
     console.log(`Copy images`)
+
+    const imageFilter = (src, dest) => {
+        return PATH.extname(src) !== '.xcf' // Don't copy .xcf (Gimp) files
+    }
+
     FSE.mkdirsSync(`${BUILD_DIR}/images`)
-    FSE.copySync(`${SRC_DIR}/images`, `${BUILD_DIR}/images`)
+    FSE.copySync(`${SRC_DIR}/images`, `${BUILD_DIR}/images`, imageFilter)
 
     console.log(`Copy CNAME`)
     FSE.copySync(`${SRC_DIR}/CNAME`, `${BUILD_DIR}/CNAME`)
