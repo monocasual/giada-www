@@ -15,7 +15,7 @@ const RELEASE = require(`${DATA_DIR}/release.json`)
 
 const LINUX_PKG = `https://flathub.org/apps/com.giadamusic.Giada`
 const WINDOWS_PKG = `https://github.com/monocasual/giada/releases/download/${RELEASE.version}/giada-${RELEASE.version}-x86_64-windows.zip`
-const MACOS_PKG = `https://github.com/monocasual/giada/releases/download/${RELEASE.version}/giada-${RELEASE.version}-x86_64-macos.zip`
+const MACOS_PKG = `https://github.com/monocasual/giada/releases/download/${RELEASE.version}/giada-${RELEASE.version}-arm64-macos.zip`
 const SOURCE_PKG = `https://github.com/monocasual/giada/releases/download/${RELEASE.version}/giada-${RELEASE.version}-src.tar.gz`
 
 /* -------------------------------------------------------------------------- */
