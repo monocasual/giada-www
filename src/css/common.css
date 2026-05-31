@@ -98,6 +98,10 @@ code,
     overflow: auto;
 }
 
+p + ul {
+    margin-top: 1rem;
+}
+
 header {
     margin-bottom: 8rem;
     display: flex;
