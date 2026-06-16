@@ -180,6 +180,7 @@ section.index .block.download .secondary-container .changes .title {
 
 section.index .block.download .secondary-container .changes li {
     list-style: disc;
+    margin-bottom: 0.3em;
 }
 
 @media (min-width: 1024px) {
