@@ -15,40 +15,40 @@ block content
 		h2 Warnings
 
 		p.
-			Giada is in a constant stage of development and may lack of some functionalities which could make it hard to use. Please see the #[a(href='https://github.com/monocasual/giada/milestones') milestones] to understand the direction of development. Giada is obviously full of bugs, too. So you are welcome to join our #[a(href='https://github.com/monocasual/giada/discussions') forum] and submit any malfunction or suggestion.
+			Giada is under constant development and may still lack some features, which can make it difficult to use in certain situations. Please see the #[a(href='https://github.com/monocasual/giada/milestones') milestones] to understand the current direction of development. Giada is also full of bugs, so feel free to join our #[a(href='https://github.com/monocasual/giada/discussions') forum] and report any malfunction or suggestion.
 		p.
-			If you want to collaborate with this project, join us on #[a(href='https://github.com/monocasual/giada') GitHub].
+			Join us on #[a(href='https://github.com/monocasual/giada') GitHub] to share your thoughts and ideas, and to suggest any corrections.
 		
 		h2 Requirements
 
 		p.
-			Giada is available on Windows, macOS and Linux. We provide binaries for Windows and macOS only. More specifically:
+			Giada is available for Windows, macOS, and Linux. We provide binaries for Windows and macOS only. More specifically:
 
 		ul
 			li
-				p on Windows, x64 — Windows Vista or greater is required;
+				p on Windows, x64 — Windows Vista or later is required;
 			li
-				p on macOS, 64-bit Intel — macOS Sierra 10.14 or greater is required;
+				p on macOS, 64-bit arm64 — macOS 11.0 Big Sur or later is required;
 			li
-				p on Linux — Giada is distributed as a #[a(href='https://flatpak.org/') Flatpak package] via the #[a(href='https://flathub.org/') Flathub App Store].
+				p on Linux — Giada is distributed as a #[a(href='https://flatpak.org/') Flatpak package] via #[a(href='https://flathub.org/') Flathub].
 		
 		p.
-			You can also build Giada from source. More information in the #[a(href='/documentation-compiling-from-source') Compiling from source] page.
+			You can also build Giada from source. More information is available on the #[a(href='/documentation-compiling-from-source') Compiling from source] page.
 
 		h2 How to run Giada
 
 		ul
 			li
 				p.
-					on Windows and macOS — Go to the #[a(href='/index#download') Download area], grab the package for your operating system, unzip it if required. Then, double-click on the program icon to start Giada;
+					on Windows and macOS — Go to the #[a(href='/index#download') Download area], get the package for your operating system, and unzip it if necessary. Then double-click the program icon to start Giada;
 			li
 				p.
-					on Linux — follow the instructions in the #[a(href='https://flathub.org/en/apps/com.giadamusic.Giada') Giada @ Flathub page].
+					on Linux — follow the instructions on the #[a(href='https://flathub.org/en/apps/com.giadamusic.Giada') Giada on Flathub] page.
 
 		h2 The configuration file
 
 		p.
-			Giada saves its configuration in a file called #[span.code giada.conf], generated somewhere in your filesystem:
+			Giada saves its configuration in a file called #[span.code giada.conf], generated in the following location on your filesystem:
 		ul
 			li
 				p.
@@ -60,14 +60,14 @@ block content
 				p.
 					Windows — #[span.code C:\Users\(your_user)\AppData\Giada\giada.conf].
 		p.
-			If you accidentally delete or alter it, the default setup will be used. This file is restored the next time you quit the program.
+			If you accidentally delete or alter it, the default setup will be used. The file will be restored the next time you quit the program.
 
 		h2 Problems with the Linux version?
 
 		p.
-			The Flatpak package should just work out of the box. However for the absolute, best, top-notch experience you should also try binaries shipped by the package manager of your favorite distribution. Giada is available on #[a(href='https://packages.debian.org/search?keywords=giada&searchon=names&section=all') Debian], #[a(href='https://packages.ubuntu.com/search?section=all&arch=any&keywords=giada&searchon=names') Ubuntu] and many more.
+			The Flatpak package should work out of the box. However, for the absolute best experience, you may also want to try the binaries provided by your distribution's package manager. Giada is available on #[a(href='https://packages.debian.org/search?keywords=giada&searchon=names&section=all') Debian], #[a(href='https://packages.ubuntu.com/search?section=all&arch=any&keywords=giada&searchon=names') Ubuntu], and many more.
 
 		h2 Problems with the macOS version?
 
 		p.
-			The macOS package we currently provide is not signed, which makes the OS quite unhappy. So if Giada doesn't start when double-clicked, try to remove the "quarantine flag" by running #[a(href='https://apple.stackexchange.com/a/372208') these instructions]. Additionaly, macOS Gatekeeper might get in the way: follow #[a(href='https://disable-gatekeeper.github.io/') these instructions] to disable it.
+			The macOS package we currently provide is not signed, which may cause macOS to block it. If Giada doesn't start when double-clicked, try removing the "quarantine flag" by following #[a(href='https://apple.stackexchange.com/a/372208') these instructions]. Additionally, macOS Gatekeeper might get in the way: follow #[a(href='https://disable-gatekeeper.github.io/') these instructions] to disable it.
