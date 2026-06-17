@@ -8,84 +8,84 @@ block metas-vars
 block content
 	section.documentation
 		h1.
-			User guide<br>Channels and Samples.
+			User guide<br>Channels and samples.
 
 		img(src='images/docs/sample-channel.png' alt='Sample Channel')
 
 		p.
-			A #[strong Sample channel] contains one sample, which you can play manually or controlled by the main sequencer. Manually, the sample will play right away; sequenced, it will start on the sequencer first beat and will loop back on the last one.					
+			A #[strong sample channel] contains one sample, which you can play manually or control with the main sequencer. When played manually, the sample starts immediately. When controlled by the sequencer, it starts on the sequencer's first beat and loops back at the end.
 		p.
-			By clicking on the #[strong main button] #[img(src='images/docs/sample-button.png' alt='Main button' class='inline')] you will be able to load a new audio file as well as doing further operations. You can add a new channel by clicking on the button on top of each column on the main window, or by drag-and-dropping a file over the column itself.
+			Clicking the #[strong main button] #[img(src='images/docs/sample-button.png' alt='Main button' class='inline')] lets you load a new audio file and perform additional operations. You can add a new channel by clicking the button at the top of each column in the main window, or by dragging and dropping a file onto the column itself.
 
-		h2 Anatomy of a Sample channel
+		h2 Anatomy of a sample channel
 
 		p.
-			A Sample channel is made of several components. From left to right:
+			A sample channel is made up of several components. From left to right:
 
 		ul
 			li
 				p.
-					#[img(src='images/docs/play-button.png' alt='Play button' class='inline')] #[strong Play button] — starts and stops the channel (if loaded with a sample);
+					#[img(src='images/docs/play-button.png' alt='Play button' class='inline')] #[strong Play button] — starts and stops the channel (if a sample is loaded);
 			li
 				p.
 					#[img(src='images/docs/arm-button.png' alt='Arm button' class='inline')] #[strong Arm button] — arms the channel for recording;
 			li
 				p.
-					#[img(src='images/docs/status-box.png' alt='Status box' class='inline')] #[strong Status box] — reports the playback position of the running sample;
+					#[img(src='images/docs/status-box.png' alt='Status box' class='inline')] #[strong Status box] — shows the playback position of the currently playing sample;
 			li
 				p.
-					#[img(src='images/docs/sample-button.png' alt='Main button' class='inline')] #[strong Main button] — shows the sample name and allows many operations on it. More information in the paragraphs below;
+					#[img(src='images/docs/sample-button.png' alt='Main button' class='inline')] #[strong Main button] — shows the sample name and gives access to many operations. More information is provided in the paragraphs below;
 			li
 				p.
-					#[img(src='images/docs/read-recs-button.png' alt='Read actions button' class='inline')] #[strong Read actions button] — if enabled, actions recorded for this channel will be reproduced. The button is grayed out if the channel has no actions;
+					#[img(src='images/docs/read-recs-button.png' alt='Read actions button' class='inline')] #[strong Read actions button] — when enabled, recorded actions for this channel are played back. The button is grayed out if the channel has no actions;
 			li
 				p.
-					#[img(src='images/docs/mute-button.png' alt='Mute button' class='inline')] #[strong Mute button] — mutes the sample. 
+					#[img(src='images/docs/mute-button.png' alt='Mute button' class='inline')] #[strong Mute button] — mutes the sample; 
 			li
 				p.
-					#[img(src='images/docs/solo-button.png' alt='Mute button' class='inline')] #[strong Solo button] — solo mode. Only this channel will be audible;
+					#[img(src='images/docs/solo-button.png' alt='Mute button' class='inline')] #[strong Solo button] — enables solo mode. Only this channel will be audible;
 			li
 				p.
-					#[img(src='images/docs/fx-button.png' alt='FX button' class='inline')] #[strong FX button] — display the #[a(href='documentation-audio-plugins') plug-ins window];
+					#[img(src='images/docs/fx-button.png' alt='FX button' class='inline')] #[strong FX button] — displays the #[a(href='documentation-audio-plugins') plug-ins window];
 			li
 				p.
 					#[img(src='images/docs/volume-dial.png' alt='Volume dial' class='inline')] #[strong Volume dial] — controls the channel volume;
 			li
 				p.
-					#[img(src='images/docs/mode_loopa.png' alt='Mode box' class='inline')] #[strong Mode box] — sets the channel #[strong play mode]. More information in the paragraphs below.
+					#[img(src='images/docs/mode_loopa.png' alt='Mode box' class='inline')] #[strong Mode box] — sets the channel #[strong play mode]. More information is provided in the paragraphs below.
 
-		h2 The Sample Channel main button
+		h2 The sample channel main button
 
 		p.
-			Clicking on a Sample channel main button reveals a pop-up menu with several options available: 
+			Clicking a sample channel's main button opens a pop-up menu with several available options:
 
 		p
 			img(src='images/docs/channel-button-menu.png' alt="Sample channel button's menu")
 		ul
 			li
 				p.
-					#[strong Input monitor] — when enabled, it allows you to monitor (i.e. listen to) the audio input to an armed channel. This option can be set to on or off by default in the #[a(href='documentation-configuration') configuration window], "Behaviors" tab;
+					#[strong Input monitor] — when enabled, it lets you monitor (that is, listen to) the audio input of an armed channel. This option can be enabled or disabled by default in the #[a(href='documentation-configuration') configuration window], under the "Behaviors" tab;
 			li
 				p.
-					#[strong Overdub protection] — if enabled, the #[strong arm button] is disabled when the channel is not empty. This is useful to prevent unwanted overwrites of your audio recordings while live recording;
+					#[strong Overdub protection] — when enabled, the #[strong arm button] is disabled if the channel is not empty. This helps prevent unwanted overwriting of audio recordings during live recording;
 			li
 				p.
-					#[strong Load new sample] — replaces the current sample with a new one. Volume, actions, mode will be preserved;
+					#[strong Load new sample] — replaces the current sample with a new one. Volume, actions, and mode are preserved;
 			li
 				p.
-					#[strong Export sample to file] — writes the loaded sample to disk. This option is useful to export a single take without saving the entire project (more information in section #[a(href='documentation-save-load-export') Save, load, export]);
+					#[strong Export sample to file] — writes the loaded sample to disk. This option is useful when you want to export a single take without saving the entire project (more information in the #[a(href='documentation-save-load-export') Save, load, export] section);
 			li
 				p.
-					#[strong Set keyboard input] — binds keyboard buttons to this channel;
+					#[strong Set keyboard input] — binds keyboard keys to this channel;
 			li
 				p.
-					#[strong Setup MIDI input] — binds MIDI events to this channel, see #[a(href='documentation-midi-input-management') MIDI input management];					
+					#[strong Setup MIDI input] — binds MIDI events to this channel. See #[a(href='documentation-midi-input-management') MIDI input management];					
 			li
 				p.
-					#[strong Setup MIDI output] — enables MIDI output from this channel, see #[a(href='documentation-midi-output-management') MIDI output management];
+					#[strong Setup MIDI output] — enables MIDI output from this channel. See #[a(href='documentation-midi-output-management') MIDI output management];
 			li
 				p.
-					#[strong Edit routing] — allows to tweak some input and output properties such as panning, volume, ...;
+					#[strong Edit routing] — lets you adjust input and output properties such as panning and volume;
 			li
 				p.
 					#[strong Edit sample] — opens the #[a(href='documentation-sample-editor') Sample Editor];
@@ -94,24 +94,24 @@ block content
 					#[strong Edit actions] — opens the #[a(href='documentation-action-editor') Action Editor];
 			li
 				p.
-					#[strong Clear actions] — deletes recorded actions from the channel: key press/key release, volume or everything. The option is grayed out if there are no actions to delete;
+					#[strong Clear actions] — deletes recorded actions from the channel: key press/key release, volume, or everything. The option is grayed out if there are no actions to delete;
 			li
 				p.
 					#[strong Rename] — changes the channel name;
 			li
 				p.
-					#[strong Clone] — adds a new channel by making a full copy of the current one;
+					#[strong Clone] — adds a new channel by creating a full copy of the current one;
 			li
 				p.
-					#[strong Free] — discharges the sample and the recorded actions, if any. Volume and mode will be preserved.
+					#[strong Free] — unloads the sample and any recorded actions. Volume and mode are preserved.
 			li
 				p.
-					#[strong Delete] — removes the channel from the column. Actions and samples will be deleted as well.
+					#[strong Delete] — removes the channel from the column. Actions and samples are deleted as well.
 
 		h2 Channel statuses
 
 		p.
-			The #[strong status box] #[img(src='images/docs/status-box.png' alt='Status box' title='Status box' class='inline')] gives you information about the sample:
+			The #[strong status box] #[img(src='images/docs/status-box.png' alt='Status box' title='Status box' class='inline')] provides information about the sample:
 
 		ul
 			li
@@ -128,7 +128,7 @@ block content
 					#[img(src='images/docs/chanstatus_actionrec_on.png' alt='Chan status action recs on' title='Chan status action recs on' class='inline')] #[strong Action recording on] — the channel is ready to record actions;
 			li
 				p.
-					#[img(src='images/docs/chanstatus_inputrec_on.png' alt='Chan status input recs on' title='Chan status input recs on' class='inline')] #[strong Audio recording on] — the channel is recording something from the sound card.
+					#[img(src='images/docs/chanstatus_inputrec_on.png' alt='Chan status input recs on' title='Chan status input recs on' class='inline')] #[strong Audio recording on] — the channel is recording audio from the sound card.
 
 		h2 Play modes
 
@@ -136,22 +136,22 @@ block content
 			Play modes define the behavior of a sample channel and are divided into two families: #[strong loop] and #[strong one shot]. 
 
 		p.
-			Main features of #[strong loop modes]:
+			Main features of #[strong loop] modes:
 
 		ul
 			li 
 				p work only when the sequencer is running;
 			li 
-				p constrained to the sequencer boundaries;
+				p are constrained to the sequencer boundaries;
 			li
-				p you can't record keypress/keyrelease actions on them (but volume actions are allowed).
+				p you cannot record key press/key release actions for them (but volume actions are allowed).
 		p.
 			Main features of #[strong one shot] modes:
 		ul
 			li 
-				p independent from the sequencer;
+				p they are independent of the sequencer;
 			li 
-				p you can record actions on them.
+				p you can record actions for them.
 
 		table.table
 			tr
@@ -163,32 +163,32 @@ block content
 				td(rowspan=4) loop
 				td #[img(src='images/docs/mode_loopa.png' alt='Loop basic' title='Loop basic' class='inline')]
 				td loop basic
-				td The sample starts at beat 1 and will play continuously until its key is pressed
+				td The sample starts at beat 1 and plays continuously until its key is pressed again
 			tr
 				td #[img(src='images/docs/mode_loopb.png' alt='Loop once' title='Loop once' class='inline')]
 				td loop once
-				td The sample starts at beat 1 and will play until finished. Then, at the next first beat it starts again
+				td The sample starts at beat 1 and plays until it finishes. Then, on the next first beat, it starts again
 			tr
 				td #[img(src='images/docs/loop-once-bar.png' alt='Loop once bar' title='Loop once bar' class='inline')]
 				td loop once bar
-				td Similar to the previous mode, but the sample starts again also on the next first bar
+				td Similar to the previous mode, but the sample also starts again at the first beat of each new bar
 			tr
 				td #[img(src='images/docs/mode_loopf.png' alt='Loop repeat' title='Loop repeat' class='inline')]
 				td loop repeat
-				td The sample starts at beat 1 and will play continuously, rewinding itself at every bar
+				td The sample starts at beat 1 and plays continuously, rewinding itself at every bar
 			tr
 				td(rowspan=5) one shot
 				td #[img(src='images/docs/mode_loopc.png' title='One Shot basic' alt='One Shot basic' class='inline')]
 				td one shot basic
-				td The sample starts on key press, stops and rewinds on a second keypress
+				td The sample starts on key press, then stops and rewinds on a second key press
 			tr
 				td #[img(src='images/docs/one-shot-basic-pause.png' title='One Shot basic pause' alt='One Shot basic pause' class='inline')]
 				td one shot basic pause
-				td Like the previous mode, but the sample just pauses on a second keypress. Pressing the key again resumes play
+				td Similar to the previous mode, but the sample pauses on a second key press. Pressing the key again resumes playback
 			tr
 				td #[img(src='images/docs/mode_loopd.png' tile='One Shot press' alt='One Shot press' class='inline')]
 				td one shot press
-				td The sample plays as long as its key is pressed
+				td The sample plays for as long as its key is held down
 			tr
 				td #[img(src='images/docs/mode_loope.png' title='One Shot retrig' alt='One Shot retrig' class='inline')]
 				td one shot retrig
@@ -196,12 +196,12 @@ block content
 			tr
 				td #[img(src='images/docs/mode_loopg.png' title='One Shot endless' alt='One Shot endless' class='inline')]
 				td one shot endless
-				td The sample plays in loop forever; pressing its key stops it
+				td The sample loops forever; pressing its key stops it
 
 		h2 Keyboard interactions
 
 		p.
-			Sample channels are playable by clicking on the channel #[strong play button] #[img(src='images/docs/play-button.png' alt='Play button' class='inline')]. or by pressing the corresponding keyboard/MIDI button if bound. The following table shows the behavior of sample channels in #[strong loop] mode:
+			Sample channels can be played by clicking the channel #[strong play button] #[img(src='images/docs/play-button.png' alt='Play button' class='inline')] or by pressing the corresponding keyboard or MIDI button, if one is bound. The following table shows the behavior of sample channels in #[strong loop] mode:
 
 		table.table
 			tr
@@ -214,7 +214,7 @@ block content
 			tr
 				td #[span.code (key)]
 				td click on play button #[img(src='images/docs/play-button.png' alt='Play button' class='inline')]
-				td wait, then start or stop on next first beat
+				td wait, then start or stop on the next first beat
 			tr
 				td #[span.code shift + (key)]
 				td #[span.code shift] + click on play button #[img(src='images/docs/play-button.png' alt='Play button' class='inline')]
@@ -244,10 +244,9 @@ block content
 				td #[span.code shift + (key)]
 				td #[span.code shift] + click on play button
 				td click on read actions button #[img(src='images/docs/read-recs-button.png' alt='Read recordings button' class='inline')]
-				td immediate stop if channel has no actions, else start or stop reading actions
+				td immediate stop if channel has no actions, otherwise start or stop action playback
 			tr
 				td #[span.code control + (key)]
 				td click on mute button #[img(src='images/docs/mute-button.png' alt='Mute button' class='inline')]
 				td -
 				td mute
-
