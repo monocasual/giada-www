@@ -198,10 +198,10 @@ block content
 				td one shot endless
 				td The sample loops forever; pressing its key stops it
 
-		h2 Keyboard interactions
+		h2 Playing and controlling sample channels
 
 		p.
-			Sample channels can be played by clicking the channel #[strong play button] #[img(src='images/docs/play-button.png' alt='Play button' class='inline')] or by pressing the corresponding keyboard or MIDI button, if one is bound. The following table shows the behavior of sample channels in #[strong loop] mode:
+			Sample channels can be played by clicking the channel #[strong play button] #[img(src='images/docs/play-button.png' alt='Play button' class='inline')] or by pressing the corresponding keyboard or MIDI button, if one is bound. The following table shows the available interactions for sample channels, along with their effect in each #[strong play mode]:
 
 		table.table
 			tr
@@ -210,43 +210,32 @@ block content
 				th alt. event
 				th result
 			tr
-				td(rowspan='4') loop
-			tr
+				td(rowspan='3') loop
 				td #[span.code (key)]
 				td click on play button #[img(src='images/docs/play-button.png' alt='Play button' class='inline')]
-				td wait, then start or stop on the next first beat
+				td if stopped: wait, then start on the next first beat;<br>if playing: ending, then stop on the next first beat
 			tr
 				td #[span.code shift + (key)]
 				td #[span.code shift] + click on play button #[img(src='images/docs/play-button.png' alt='Play button' class='inline')]
-				td immediate stop. Also rewinds samples in "one shot basic pause" mode
+				td immediate stop
 			tr
 				td #[span.code control + (key)]
 				td click on mute button #[img(src='images/docs/mute-button.png' alt='Mute button' class='inline')]
 				td mute
-		p.
-			The following table shows the behavior of channels in #[strong one shot] mode:
-
-		table.table
-			tr
-				th mode
-				th event
-				th alt. event 1
-				th alt. event 2
-				th result
 			tr
 				td(rowspan='4') one shot
-			tr
 				td #[span.code (key)]
 				td click on play button #[img(src='images/docs/play-button.png' alt='Play button' class='inline')]
-				td -
-				td start
+				td toggle play
 			tr
 				td #[span.code shift + (key)]
-				td #[span.code shift] + click on play button
-				td click on read actions button #[img(src='images/docs/read-recs-button.png' alt='Read recordings button' class='inline')]
-				td immediate stop if channel has no actions, otherwise start or stop action playback
+				td #[span.code shift] + click on play button #[img(src='images/docs/play-button.png' alt='Play button' class='inline')]
+				td immediate stop
 			tr
 				td #[span.code control + (key)]
 				td click on mute button #[img(src='images/docs/mute-button.png' alt='Mute button' class='inline')]
-				td -
 				td mute
+			tr
+				td -
+				td click on read actions button #[img(src='images/docs/read-recs-button.png' alt='Read recordings button' class='inline')]
+				td toggle action playback
