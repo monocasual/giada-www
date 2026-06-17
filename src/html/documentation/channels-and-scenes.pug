@@ -13,19 +13,19 @@ block content
 		img(src='images/docs/scenes.png' alt='Scenes buttons')
 
 		p.
-			In Giada, channels and #[strong scenes] go hand in hand. A #[strong scene] defines the channels content: actions — for MIDI and sample channels — and samples — for sample channels. For example, you can have a sample channel that contains sample a.wav in scene #1, and sample b.wav in scene #2. Or maybe a MIDI channel that plays certains notes in scene #1 and stays silent in scene #2.
+			In Giada, channels and #[strong scenes] work closely together. A #[strong scene] defines the content of your channels: actions for MIDI and sample channels, and samples for sample channels. For example, a sample channel might contain #[span.code a.wav] in scene #1 and #[span.code b.wav] in scene #2. Likewise, a MIDI channel might play certain notes in scene #1 and remain silent in scene #2.
 
 		p.
-			You can have up to 8 scenes and scene #1 is the default one. Scenes allow to add greater variety and richness to your live performances. By using multiple scenes you can build complex songs made of multiple parts: intro for scene #1, chorus for scene #2, ... and so on. Let's take a deeper look at what happens when you switch between the scenes:
-		
+			You can have up to 8 scenes, and scene #1 is the default one. Scenes add variety and flexibility to your live performances. By using multiple scenes, you can build more complex songs made up of different parts, such as an intro in scene #1 and a chorus in scene #2. More specifically, switching scenes can affect:
+
 		ul
-			li Sample channels only — change sample, pitch, sample range (begin/end points) and the sample offset value (the starting point);
-			li all kind of channels — change name and actions.
+			li sample channels only — sample, pitch, sample range (start/end points), and sample offset (the playback starting point);
+			li all channel types — name and actions.
 		
 		p.
-			Switching between scenes also updates the Action Editor and the Sample Editor, so that they reflect the current scene content and allow you to edit it easily.
+			Switching between scenes also updates the Action Editor and the Sample Editor so that they reflect the content of the current scene and let you edit it more easily.
 
 		h2 Scenes and the main sequencer
 
 		p.
-			Scenes are connected to the main sequencer and the way you change scene depends on the sequencer status. When the main transport is stopped, you can easily switch between scenes by clicking on the corresponding scene button: the scene will change right away. When the sequencer is running, the scene you want to switch to becomes "the upcoming one" and its corresponding button starts blinking. The sequencer will automatically switch to the requested scene on the next first beat.
+			Scenes are connected to the main sequencer, and the way you switch scenes depends on the sequencer's status. When the main transport is stopped, you can switch scenes immediately by clicking the corresponding scene button. When the sequencer is running, the scene you select becomes the upcoming scene, and its button starts blinking. The sequencer then switches to the requested scene automatically on the next first beat. If needed, you can force an immediate scene change by clicking the scene button while holding #[span.code shift].
