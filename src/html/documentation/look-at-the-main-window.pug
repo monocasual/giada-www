@@ -14,34 +14,33 @@ block content
 			img(src='images/docs/main-window.png' alt='Main Window')
 
 		p.
-			The main window is the part of Giada where you will spend most of the time while live playing. The upper part contains the main menu and several tools for input/output, tempo management and global synchronization. The remaining space is for #[strong columns] and #[strong channels]. 
+			The main window is where you will spend most of your time when performing live with Giada. The upper section contains the main menu and several tools for audio input/output, tempo management, and global synchronization. The remaining space is dedicated to #[strong columns] and #[strong channels].
 		
 		p.
-			Don't worry if you don't understand the behavior of these elements right now; they will be covered more clearly in the next chapters. Let's take a quick glance at the several components that make up the main interface, starting from the main area.
+			Don't worry if the behavior of these elements is not clear yet — they will be explained in more detail in the next chapters. For now, let's take a quick look at the main components of the interface, starting with the central area.
 		
 		h2 Columns and channels
 
 		p.
-			Columns contain channels, which in turn hold audio samples or MIDI events. Channels are one of the building blocks of Giada and that's where the sound comes from — mostly. Their usage will be covered in #[a(href='/documentation-performing-1') Performing part 1], #[a(href='/documentation-performing-2') Performing part 2], #[a(href='/documentation-channels-and-samples') Channels and samples] and #[a(href='/documentation-channels-and-midi') Channels and MIDI] chapters.
+			Columns contain channels, which in turn hold audio samples or MIDI events. Channels are one of the fundamental building blocks of Giada, and they are where most of the sound comes from. Their usage is covered in the #[a(href='/documentation-performing-1') Performing part 1], #[a(href='/documentation-performing-2') Performing part 2], #[a(href='/documentation-channels-and-samples') Channels and samples], and #[a(href='/documentation-channels-and-midi') Channels and MIDI] chapters.
 		
 		p.
-			You can add as many channels and columns as you want. Columns are used to organize your project and arrange channels according to some logic. For example, you can group drum kits on column 1 and pads on column 2, while voice loops live in column 3. Each column contains a special channel, the column channel, that controls the audio and MIDI signals of all the channels that belong to that column.
+			You can add as many channels and columns as you like. Columns help you organize your project and arrange channels according to your workflow. For example, you might group drum kits in column 1, pads in column 2, and vocal loops in column 3. Each column contains a special channel — the column channel — that controls the audio and MIDI signals of all channels within that column.
 
 		h2 Main input and main output
 
 		p.
-			These tools take care of audio I/O: input on the left, ouput on the right. The circular knobs control the volume, the vertical bars are meters. Ranging from -60 to 0 dBFS, when a bar is completely full it means that you are recording or playing at the maximum level allowed. If you exceed this limit your sound starts to clip and the meter turns red.
+			These tools handle audio I/O: input on the left, output on the right. The circular knobs control the volume, while the vertical bars act as level meters. The meters range from -60 to 0 dBFS. When a bar is completely full, it means you are recording or playing at the maximum allowed level. If you go beyond this limit, the sound begins to clip and the meter turns red.
 		p.
-			The button located below the input meter is the #[strong stream linker] #[img(src='images/docs/stream-linker-button.png' alt='Stream Linker button' class='inline')]. If enabled, it copies the input audio straight to the output channel, in order to obtain a "hear what you're playing" functionality. The #[img(src='images/docs/fx-button.png' alt='FX' class='inline')] buttons are used to load audio plug-ins both for the input and the output channel. More information in the #[a(href='/documentation-audio-plugins') Audio Plugins] chapter.
+			The button below the input meter is the #[strong stream linker] #[img(src='images/docs/stream-linker-button.png' alt='Stream Linker button' class='inline')]. When enabled, it routes the input audio directly to the output channel, allowing you to hear what you are playing in real time. The #[img(src='images/docs/fx-button.png' alt='FX' class='inline')] buttons are used to load audio plug-ins for both the input and output channels. For more information, see the #[a(href='/documentation-audio-plugins') Audio Plugins] chapter.
 
 		h2 The sequencer and the main transport
 		
 		p.
-			#[strong The sequencer] is a central tool in Giada. It keeps your live performance in sync and is responsible for driving loops, samples and MIDI events. It is managed by the #[strong main transport], namely the #[strong play/stop] button that starts and stops the song and the #[strong rewind] button that quickly rewinds the sequencer to the first beat. 
+			#[strong The sequencer] is one of Giada's central tools. It keeps your live performance in sync and drives loops, samples, and MIDI events. It is controlled by the #[strong main transport], which includes the #[strong play/stop] button to start and stop the song and the #[strong rewind] button to quickly return the sequencer to the first beat.
 		
 		p.
-			The main transport features additional elements such as the recording buttons (second group from the left), used to 
-			toggle #[strong audio recording] and #[strong action recording]. More information in the #[a(href='/documentation-recording-actions') Recording Actions] and #[a(href='/documentation-live-sampling') Live sampling] chapters. The last button is the #[strong metronome], useful during a recording session.
+			The main transport also includes additional controls, such as the recording buttons (the second group from the left), which are used to toggle #[strong audio recording] and #[strong action recording]. For more information, see the #[a(href='/documentation-recording-actions') Recording Actions] and #[a(href='/documentation-live-sampling') Live sampling] chapters. The last button is the #[strong metronome], which is useful during recording sessions.
 
 		h2 Beats, bars, quantizer and BPM
 
@@ -49,5 +48,9 @@ block content
 			img(src='images/docs/beats-tools.png' alt='Beats tools')
 		
 		p.
-			A set of tools responsible for beats and tempo management. You can find them grouped in the top right area of the main window. From left to right, the #[strong Quantizer] aligns the samples on beats and on exact fractions of beats. It works only when the main sequencer is running. More information in the #[a(href='/documentation-performing-1') Performing part 1] chapter; The #[strong BPM button] changes the speed of your performance; the #[strong Beats/bars button] changes the number of beats and bars of the main sequencer; the #[strong Beat operators] (last two buttons on the right) dynamically shrink or expand the the total number of beats of the main sequencer.
+			This set of tools is responsible for beat and tempo management. You can find it grouped in the top-right area of the main window. From left to right, the #[strong Quantizer] aligns samples to beats and exact beat subdivisions. It works only when the main sequencer is running. For more information, see the #[a(href='/documentation-performing-1') Performing part 1] chapter. The #[strong BPM button] changes the speed of your performance; the #[strong Beats/bars button] changes the number of beats and bars in the main sequencer; and the #[strong Beat operators] (the last two buttons on the right) dynamically decrease or increase the total number of beats in the main sequencer.
 
+		h2 Scenes selector
+
+		p.
+			#[strong Scenes] let you store different channel contents within the same project. A scene can change the actions assigned to MIDI and sample channels, as well as the samples loaded in sample channels, making it easy to switch between different parts of a performance. This allows you to build more varied and dynamic songs. For more information, see the dedicated #[a(href='/documentation-channels-and-scenes') Channels and Scenes] chapter.
