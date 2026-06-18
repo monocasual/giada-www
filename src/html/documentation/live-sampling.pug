@@ -11,23 +11,23 @@ block content
 			User guide<br>Live sampling.
 
 		p.
-			Giada gives you the ability to record anything coming in from your soundcard thanks to its live sampler and the master input channel. Configure your device in the #[a(href='documentation-configuration') Configuration panel] first, then turn up the knob of the #[strong input volume] in the main window.
+			Giada lets you record anything coming from your sound card through its live sampler and the main input channel. First configure your device in the #[a(href='documentation-configuration') Configuration panel], then raise the #[strong input volume] knob in the main window.
 
 		h2 How to use the live sampler
 
 		p.
-			The live sampler works only with sample channels. Add at least one sample channel, then arm it with the channel #[strong arm button] #[img(src='images/docs/arm-button.png' alt='Arm button' class='inline')]. You can of course arm multiple channels. When you are ready, click on the #[strong audio recording button] #[img(src='images/docs/input-recording-button.png' alt='audio recording button' class='inline')] located on the main transport or press the #[span.code end] key to enable the sampler: channels with active input will turn #[em blue].
+			The live sampler works only with sample channels. Add at least one sample channel, then arm it using the channel #[strong arm button] #[img(src='images/docs/arm-button.png' alt='Arm button' class='inline')]. You can, of course, arm multiple channels. When you are ready, click the #[strong audio recording button] #[img(src='images/docs/input-recording-button.png' alt='audio recording button' class='inline')] in the main transport or press the #[span.code end] key to enable the sampler: channels with an active input turn #[em blue].
 		p.
-			The sequencer will start automatically, since recording audio with the sequencer turned off doesn't make sense. The sampler works in #[em overdub mode] by default: data coming from the soundcard is being continuously summed to the existing audio until the sampler is halted.
+			The sequencer starts automatically, since recording audio with the sequencer turned off would not make sense. By default, the sampler works in #[em overdub mode]: audio coming from the sound card is continuously added to the existing audio until the sampler is stopped.
 
 		h2 Live effects processor
 
 		p.
-			Arm the channel and check the #[strong input monitor] flag in channel drop-down menu. This way you will hear what you're actually playing, previously processed by the plugins stack (if any). If you don't enable the sampler (#[strong input recording button] #[img(src='images/docs/input-recording-button.png' alt='Input recording button' class='inline')] or #[span.code end] key), Giada won't record anything and turns itself into a live effects processor.
+			Arm the channel and enable the #[strong input monitor] option in the channel drop-down menu. This lets you hear what you are playing, processed through the plug-in stack, if any. If you do not enable the sampler (using the #[strong input recording button] #[img(src='images/docs/input-recording-button.png' alt='Input recording button' class='inline')] or the #[span.code end] key), Giada will not record anything and will instead work as a live effects processor.
 		p.
-			You can accomplish the same result by using the #[strong stream linker] #[img(src='images/docs/stream-linker-button.png' alt='Input to output linker' class='inline')], the button located right below the input meter in the main window. Enable it and you will be able to hear what you're playing.
+			You can achieve a similar result by using the #[strong stream linker] #[img(src='images/docs/stream-linker-button.png' alt='Input to output linker' class='inline')], the button located directly below the input meter in the main window. Enable it to hear what you are playing.
 
 		h2 Record on signal
 
 		p.
-			Pressing the audio recording button will also start the sequencer. Sometimes you want it to wait instead and start when the audio level in input reaches a certain threshold. This mode is called #[strong record on signal] and you can enable it by clicking on the #[strong record on signal button] #[img(src='images/docs/record-on-signal-button.png' alt='Record on signal button' class='inline')] located on the main transport. You can set the desired threshold level in the #[a(href='documentation-configuration') Configuration panel].
+			Pressing the audio recording button also starts the sequencer. In some cases, however, you may want it to wait and start only when the input audio level reaches a certain threshold. This mode is called #[strong record on signal], and you can enable it by clicking the #[strong record on signal button] #[img(src='images/docs/record-on-signal-button.png' alt='Record on signal button' class='inline')] in the main transport. You can set the desired threshold level in the #[a(href='documentation-configuration') Configuration panel].
