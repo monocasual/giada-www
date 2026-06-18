@@ -8,21 +8,21 @@ block metas-vars
 block content
 	section.documentation
 		h1.
-			User guide<br>Compiling from source.
+			User guide<br>Compiling from source
 
 		p.
-			Giada source code is hosted and mantained on #[a(href='https://github.com/monocasual/giada') GitHub]. It requires a C++20-compatible compiler, #[a(href='https://git-scm.com/') Git] and #[a(href='https://cmake.org/') CMake] already installed. This document is about setting up Giada #[em from the command line], but you can also configure and build it directly in your IDE. 
+			Giada's source code is hosted and maintained on #[a(href='https://github.com/monocasual/giada') GitHub]. Building it requires a C++20-compatible compiler, #[a(href='https://git-scm.com/') Git], and #[a(href='https://cmake.org/') CMake] to already be installed. This document focuses on setting up Giada #[em from the command line], but you can also configure and build it directly from your IDE.
 
 		h2 Grab the code
 
 		p.
-			First of all clone the remote repository on your machine:
+			First, clone the remote repository to your machine:
 
 		p.code.
 			git clone git@github.com:monocasual/giada.git
 		
 		p.
-			a new folder #[span.code giada/] will be created. Go inside and initialize the submodules (i.e. the dependencies):
+			A new folder named #[span.code giada/] will be created. Enter it and initialize the submodules, that is, the dependencies:
 		
 		pre.code.
 			git submodule update --init --recursive
@@ -42,7 +42,7 @@ block content
 			cmake -B build/ -S . 
 
 		p.
-			CMake will generate the proper project according to your environment: Makefile on Linux, Visual Studio solution on Windows, XCode project on macOS. When the script is done without errors, open the generated project with your IDE or run CMake from the command line to compile Giada. Command line example:
+			CMake generates the appropriate project for your environment: a Makefile on Linux, a Visual Studio solution on Windows, or an Xcode project on macOS. Once configuration completes without errors, open the generated project in your IDE or build Giada from the command line. For example:
 
 		pre.code.
 			cmake --build build/ 			
@@ -50,7 +50,7 @@ block content
 		h2 Dependencies
 
 		p.
-			Some dependencies are included as git submodules. However, Giada requires other external libraries to be installed on your system. Namely: 
+			Some dependencies are included as Git submodules. However, Giada also requires other external libraries to be installed on your system, namely:
 		ul
 			li 
 				p #[a(href='https://github.com/libsndfile/libsndfile') Libsndfile] — 1.2.0 or greater;
@@ -66,24 +66,24 @@ block content
 				p (optional, used for tests) #[a(href='https://github.com/catchorg/Catch2') Catch2] — 2.0 or greater.
 
 		p.
-			You can install those dependencies manually and invoke CMake as seen above. Another, easier way is to use <a href="https://vcpkg.io/en/">vcpkg</a> package manager in <a href="https://learn.microsoft.com/en-us/vcpkg/users/manifests">manifest mode</a>. This way all the dependencies will be automatically downloaded before building the app. You need to <a href="https://vcpkg.io/en/getting-started.html">install vcpkg</a> first and then run CMake as follows:
+			You can install these dependencies manually and invoke CMake as shown above. An easier alternative is to use the <a href="https://vcpkg.io/en/">vcpkg</a> package manager in <a href="https://learn.microsoft.com/en-us/vcpkg/users/manifests">manifest mode</a>. In that case, all dependencies are downloaded automatically before the application is built. You must <a href="https://vcpkg.io/en/getting-started.html">install vcpkg</a> first, then run CMake as follows:
 		
 		pre.code.
 			cmake -B [build-directory] -S . -DCMAKE_TOOLCHAIN_FILE=[path-to-vcpkg]\scripts\buildsystems\vcpkg.cmake
 		
 		p.
-			where #[span.code #{'[path-to-vcpkg]'}] is the location where vcpkg is installed in your system.
+			Here, #[span.code #{'[path-to-vcpkg]'}] is the location where vcpkg is installed on your system.
 
 		h2 Additional configuration parameters
 
 		p.
-			You can pass several parameters to CMake during the configuration stage as #[span.code -D&lt;parameter&gt;=&lt;value&gt;]. For example: 
+			You can pass several parameters to CMake during the configuration stage using the form #[span.code -D&lt;parameter&gt;=&lt;value&gt;]. For example:
 			
 		p.code.
 			cmake -B build/ -S . -DPARAMETER1=VALUE1 -DPARAMETER2=VALUE2
 		
 		p.
-			This is the list of all CMake parameters currently supported by Giada:
+			This is the list of CMake parameters currently supported by Giada:
 			
 		table.table
 			tr
@@ -96,7 +96,7 @@ block content
 				td #[span.code Debug], #[span.code Release]
 			tr
 				td #[span.code WITH_VST2]
-				td Enables support for VST2 plug-ins. Requires the now deprecated VST2.x SDK by Steinberg. Disabled by default.
+				td Enables support for VST2 plug-ins. Requires the now-deprecated VST2.x SDK by Steinberg. Disabled by default.
 				td #[span.code ON], #[span.code OFF]
 			
 			tr
@@ -106,7 +106,7 @@ block content
 			
 			tr
 				td #[span.code WITH_TESTS]
-				td Includes the test suite. Requires the Catch2 library installed. Disabled by default.
+				td Includes the test suite. Requires the Catch2 library to be installed. Disabled by default.
 				td #[span.code ON], #[span.code OFF]
 			
 			tr
@@ -127,7 +127,7 @@ block content
 		h2 Run the tests (optional)
 
 		p.
-			All unit tests in Giada are based on #[a(href='https://github.com/catchorg/Catch2') Catch2 automated test framework], which supports several command-line options. Please take a look at the #[a(href='https://github.com/catchorg/Catch2/blob/devel/docs/command-line.md') official documentation] to understand the gritty details. Giada must be configured with #[span.code -DWITH_TESTS=ON] first, while tests are run as following:
+			All unit tests in Giada are based on the #[a(href='https://github.com/catchorg/Catch2') Catch2] automated test framework, which supports several command-line options. Please refer to the #[a(href='https://github.com/catchorg/Catch2/blob/devel/docs/command-line.md') official documentation] for the full details. Giada must first be configured with #[span.code -DWITH_TESTS=ON], then tests can be run as follows:
 		
 		p.code.
-			./giada --run-tests [optional catch parameters]
+			./giada --run-tests [optional Catch2 parameters]
