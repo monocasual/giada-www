@@ -1,42 +1,21 @@
 extends ../base
 
 block metas-vars
-	- var title       = 'User Guide - Save, load, export - '
-	- var description = ', documentation, user guide, save, load, export'
-	- var keywords    = ', documentation, user guide, save, load, export'
+	- var title       = 'User Guide - Save and load projects - '
+	- var description = ', documentation, user guide, save, load'
+	- var keywords    = ', documentation, user guide, save, load'
 
 block content
 	section.documentation
 		h1.
-			User guide<br>Save, Load, Export
+			User guide<br>Save and load projects.
 
 		p.
-			Giada is able to generate two kinds of files: #[strong projects] and #[strong samples].
-
-		h2 Project
-
-		p.
-			A project is a folder called #[span.code (project name).gprj] that contains all the samples in use in your current song and a JSON-based file called #[span.code (project name).gptc] that stores the project information. You can save and load a project from the #[em file] option in the main menu.
+			Giada stores songs as #[strong projects]. A project is a folder named #[span.code (project name).gprj] that contains all the samples used in your current song, along with a JSON-based file called #[span.code (project name).gptc] that stores the project data. You can save and load a project from the #[em File] menu in the main menu bar.
 		
 		p.
-			Being a project a regular folder in your filesystem, you can browse it, add new content and edit the project file in case something is wrong (it shouldn't!). You can also get fancy and write the project file by hand or generate it with a script. Be careful not to delete any file in the folder, as you might end up with missing samples.
+			Because a project is just a regular folder in your file system, you can browse it, add new content, and even edit the project file if something goes wrong, although ideally that should never be necessary. You can also create the project file by hand or generate it with a script. Be careful not to delete any files from the folder, or you may end up with missing samples.
 		
 		p.
-			A project is portable: you can save it on your computer and move it to another one. Note that audio plug-ins will not be stored in a project: make sure the required plug-ins are installed also in the target system.
+			A project is portable: you can save it on one computer and move it to another. Note, however, that audio plug-ins are not stored inside the project, so make sure the required plug-ins are also installed on the target system.
 
-		h2 Samples
-
-		p.
-			Giada can export samples to file. This is useful for edited samples or recorded takes. At the moment only WAV format is supported. You can export the sample to file by clicking on any sample channel's main button and select #[em export sample to file...].
-
-		h2 Other interesting operations
-
-		p.
-			The #[em edit] option in the main menu offers some additional actions:
-		ul
-			li.
-				#[strong Clear all samples] — unloads all sample channels. Modes, volumes and plug-ins remain untouched;
-			li.
-				#[strong Clear all actions] — removes any type of action from sample and MIDI channels;
-			li.
-				#[strong Setup global MIDI input] — binds MIDI events to global parameters, see #[a(href='documentation-midi-input-management') MIDI input management].
