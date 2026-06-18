@@ -8,23 +8,23 @@ block metas-vars
 block content
 	section.documentation
 		h1.
-			User guide<br>MIDI output management.
+			User guide<br>MIDI output management
 
 		p.
-			Giada is able to output MIDI messages to the external world, both from #[strong sample channels] and, of course, #[strong MIDI channels], with some notable differences. More precisely, there are two kinds of messages: #[strong regular MIDI messages] and #[strong MIDI lightning messages].
+			Giada can send MIDI messages to the outside world from both #[strong sample channels] and, of course, #[strong MIDI channels], with some important differences. More precisely, there are two kinds of messages: #[strong regular MIDI messages] and #[strong MIDI lighting messages].
 		
-		h2 Regular messages vs lightning messages
+		h2 Regular messages vs MIDI lighting messages
 		
 		p.
-			#[strong Regular MIDI messages] correspond to MIDI events, namely all those events you record with your physical devices, or actions edited in the Action Editor. Obviously this kind of events can be sent only from #[strong MIDI channels]. On the other hand #[strong MIDI lightning messages] are special codes used to light up parts of external devices, such as buttons, keys, knobs and many other shimmering things. The latter type of messages can be outputted from #[strong sample channels] as well.
+			#[strong Regular MIDI messages] are standard MIDI events, namely the events you record with physical devices or edit in the Action Editor. This type of message can be sent only from #[strong MIDI channels]. #[strong MIDI lighting messages], on the other hand, are special codes used to light up parts of external devices, such as buttons, keys, knobs, and other illuminated controls. This second type of message can also be sent from #[strong sample channels].
 		p.
-			The following table shows what you can and cannot output from channels:
+			The following table shows what each type of channel can output:
 		
 		table.table
 			tr
 				td
 				td regular MIDI messages
-				td MIDI lightning messages
+				td MIDI lighting messages
 			tr
 				td Sample channel
 				td &#x2718;
@@ -37,7 +37,7 @@ block content
 		h2 Configuring the output
 		
 		p.
-			Click on the #[strong main button] of any channel and select #[em Setup MIDI output] from the menu, in order to configure how to output MIDI messages. A new window will pop up containing several tools.
+			Click the #[strong main button] of any channel and select #[em Setup MIDI output] from the menu to configure how MIDI messages are sent. A new window will open containing several tools.
 		
 		h3 Regular MIDI messages
 		
@@ -45,31 +45,31 @@ block content
 			#[img(src='images/docs/midi-output-config-regular.png' alt='MIDI output config tool, regular')] 
 			
 		p.
-			This kind of messages are managed by the tools shown in the picture above. If you check #[em enable MIDI output], MIDI messages will be sent outside Giada whenever an action occurs, through the MIDI channel specified with the drop-down menu on the right. With this technique you will be able to control external MIDI hardware or other software as well.
+			These messages are managed by the tools shown in the picture above. If you enable #[em MIDI output], MIDI messages are sent outside Giada whenever an action occurs, through the MIDI channel selected in the drop-down menu on the right. This allows you to control external MIDI hardware as well as other software.
 		
-		h3 MIDI lightning messages
+		h3 MIDI lighting messages
 		
 		p.
 			#[img(src='images/docs/midi-output-config-lightning.png' alt='MIDI output config tool, lightning')]
 		
 		p.
-			MIDI lightning requires key binding between the app and your physical device, so that whenever an event occurs, Giada sends a MIDI lightning message to the right part of your controller.
+			MIDI lighting requires a key binding between the application and your physical device, so that whenever an event occurs, Giada sends a MIDI lighting message to the correct part of your controller.
 		p.
-			You bind controller elements to the events through the MIDI learning tool shown on the left, which works in the same way of the MIDI input learning tool described in #[a(href='documentation-midi-input-management') MIDI input management].
+			You bind controller elements to events through the MIDI learning tool shown in the picture above, which works in the same way as the MIDI input learning tool described in #[a(href='documentation-midi-input-management') MIDI input management].
 		p.
-			Currently you can light up your device on the following events:
+			Currently, you can light up your device for the following events:
 		ul
 			li.
-				#[strong playing] events, including #[em start], #[em stop], #[em wait], #[em ending] statuses;
+				#[strong playing] events, including #[em start], #[em stop], #[em wait], and #[em ending] statuses;
 			li.
 				#[strong mute] events such as #[em mute on] and #[em mute off];
 			li.
 				#[strong solo] events such as #[em solo on] and #[em solo off].
 		
-		h2 How MIDI lightning works
+		h2 How MIDI lighting works
 		
 		p.
-			Giada needs to know what data to send when MIDI lightning occurs. Each hardware producer defines its own set of messages, so we introduce the concept of #[strong midimap files]. A midimap is a JSON-formatted text file where you define what kind of messages you want Giada to send. They reside in your configuration directory, or more precisely:
+			Giada needs to know what data to send when MIDI lighting occurs. Since each hardware manufacturer defines its own set of messages, Giada uses #[strong midimap files]. A midimap is a JSON-formatted text file that defines which messages Giada should send. These files are stored in your configuration directory, more precisely:
 		ul
 			li.
 				Linux — #[span.code /home/(your_user)/.config/giada/midimaps/];
@@ -78,14 +78,14 @@ block content
 			li.
 				Windows — #[span.code C:\Users\(your_user)\AppData\Giada\midimaps\].
 		p.
-			Giada will look into those directories on startup. If the files are valid midimap files they will be listed in the #[a(href='documentation-configuration') Configuration window], MIDI section. Pick up the minimap file you want to use in the dropdown menu and you are ready to go.
+			Giada looks in these directories at startup. If a file is a valid midimap, it will appear in the #[a(href='documentation-configuration') Configuration window], MIDI section. Select the midimap file you want to use from the drop-down menu and you are ready to go.
 		
 		h2 Anatomy of a midimap file
 		
 		p.
-			A midimap file follows this naming convention: #[span.code (brand)-(device).giadamap], lower-case text. For example if you own the #[a(href='http://www.akaipro.com/product/apc20') Akai APC20], the corresponding midimap file would be #[span.code akai-apc20.giadamap].
+			A midimap file follows this naming convention: #[span.code (brand)-(device).giadamap], using lowercase text. For example, if you own the #[a(href='http://www.akaipro.com/product/apc20') Akai APC20], the corresponding midimap file would be #[span.code akai-apc20.giadamap].
 		p.
-			Inside a midimap file you will find a collection of JSON objects. Each midimap command is made of two things: a #[em channel] and a #[em message]. The following is a complete midimap file, with placeholders:
+			Inside a midimap file you will find a collection of JSON objects. Each midimap command is made of two parts: a #[em channel] and a #[em message]. The following is a complete midimap file with placeholders:
 		pre.code.
 			{
 				"brand": "[text]",
@@ -139,18 +139,18 @@ block content
 			The first three elements are the #[em initializers]:
 		ul
 			li.
-				#[strong brand] — the producer name;
+				#[strong brand] — the manufacturer name;
 			li.
 				#[strong device] — the device name;
 			li.
-				#[strong init_commands] — a set of lightning messages sent on startup.
+				#[strong init_commands] — a set of lighting messages sent on startup.
 		p.
-			The remaining elements are the #[em events], defining what MIDI lighting message to send when each of them occur.
+			The remaining elements are the #[em events], which define which MIDI lighting message to send when each event occurs.
 		
-		h2 Writing a MIDI lightning message
+		h2 Writing a MIDI lighting message
 		
 		p.
-			A MIDI lightning message follows this structure:
+			A MIDI lighting message follows this structure:
 		pre.code.
 			{
 				"channel": [MIDI-channel],
@@ -158,14 +158,14 @@ block content
 			}
 				
 		p.
-			In details:
+			In detail:
 		ul
 			li.
-				#[strong channel] —the MIDI channel where to output to, in a numeric range of 0-15;
+				#[strong channel] — the MIDI channel to output to, in the numeric range 0-15;
 			li.
-				#[strong message] —the actual message to send, in hexadecimal form, 4 bytes long.
+				#[strong message] — the actual message to send, in hexadecimal form, 4 bytes long.
 		p.
-			The hexadecimal message contains a special placeholder for the note. Since each message is customized by the vendor, you have to specify where the byte for the note resides. The placeholder is defined as #[span.code nn]; Giada will replace it on the fly once the key has been configured and grabbed with the MIDI learning tool seen before. Below a couple of illustrative lightning messages:
+			The hexadecimal message contains a special placeholder for the note. Because each message format is vendor-specific, you must specify where the note byte appears. The placeholder is written as #[span.code nn]; Giada replaces it on the fly once the key has been configured and captured with the MIDI learning tool described earlier. Here are a couple of example lighting messages:
 		pre.code.
 			{
 				"channel": 0,               // MIDI channel 0
@@ -231,8 +231,7 @@ block content
 		h2 Where do I find midimaps?
 		
 		p.
-			We store the full list of midimap files on GitHub in the #[a(href='https://github.com/monocasual/giada-midimaps') giada-midimaps repository]. Download the zip archive and uncompress it in the midimap folders seen before.
+			We store the full list of midimap files on GitHub in the #[a(href='https://github.com/monocasual/giada-midimaps') giada-midimaps repository]. Download the ZIP archive and extract it into one of the midimap folders listed above.
 		
 		p.
-			Pull requests and file submissions are absolutely welcome and encouraged. If you have a MIDI controller whose midimap file is missing, feel free to add it to our collection!
-
+			Pull requests and file submissions are absolutely welcome. If your MIDI controller is missing a midimap file, feel free to add it to the collection.
