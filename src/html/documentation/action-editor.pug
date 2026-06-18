@@ -14,12 +14,12 @@ block content
 			#[img(src='images/docs/action-editor-window.png' alt='The action editor' title='The action editor')]
 		
 		p.
-			The #[strong action editor] is a tool that allows you to operate on actions. Here you can alter and modify the existing ones, as well as add new actions from scratch. It represents the actions of a channel and it's composed of several horizontal widgets, each of them containing a specific action type.
+			The #[strong action editor] is a tool for working with actions. Here you can edit existing actions as well as create new ones from scratch. It displays the actions of a channel and is composed of several horizontal widgets, each dedicated to a specific action type.
 
 		h2 General interactions
 
 		p.
-			All widgets work the same way: you manage them with the mouse and you add, remove or shift the actions by clicking on them.
+			All widgets work in the same way: you interact with them using the mouse, and you can add, remove, move, or resize actions directly.
 			
 		table.table
 			tr
@@ -39,7 +39,7 @@ block content
 				td.
 					#[span.code left click] + drag on action
 				td.
-					move the action or resize it
+					move or resize the action
 			tr
 				td.
 					#[span.code Ctrl] + mouse wheel scroll (Windows and Linux)<br>
@@ -48,17 +48,17 @@ block content
 					zoom in/out
 
 		p.
-			The #[strong zoom buttons] #[img.inline(src='images/docs/zoom-buttons.png' alt='Zoom buttons' title='Zoom buttons')] in the upper right corner of the window allow to magnify or reduce the view of all the widgets. The #[strong grid tool] #[img.inline(src='images/docs/giada-action-editor-snap-grid.png' alt='Grid tool' title='Grid tool')] shows a visual grid over the beat cells; the small check button on the right enables snapping.
+			The #[strong zoom buttons] #[img.inline(src='images/docs/zoom-buttons.png' alt='Zoom buttons' title='Zoom buttons')] in the upper-right corner of the window let you zoom in or out across all widgets. The #[strong grid tool] #[img.inline(src='images/docs/giada-action-editor-snap-grid.png' alt='Grid tool' title='Grid tool')] displays a visual grid over the beat cells, while the small check button on the right enables snapping.
 
 		h2 Available actions
 
 		p.
-			At the moment the action editor allows to manage the following action types:
+			At the moment, the action editor lets you manage the following action types:
 		
 		p
 			ul
 				li.
-					key press, key release, sample kill — through the #[strong start/stop] widget;
+					key press, key release, and sample kill — through the #[strong start/stop] widget;
 				li.
 					velocity — through the #[strong velocity] widget;
 				li.
@@ -69,37 +69,33 @@ block content
 		p.
 			#[img(src='images/docs/action-widget.png' title='Action widget' alt='Action widget')]
 		p.
-			The Start/stop widget works only for #[strong Sample channels] set in #[strong oneshot mode] (see #[a(href='documentation-channels-and-samples') Channels and Samples] chapter); if you open the editor for a Sample channel set in #[strong loop mode], the widget will be disabled. Actions are represented in different ways:
+			The Start/stop widget works only for #[strong sample channels] set to #[strong one shot] mode (see the #[a(href='documentation-channels-and-samples') Channels and samples] chapter). If you open the editor for a sample channel set to #[strong loop] mode, the widget is disabled. Actions are represented in different ways:
 		
 		ul
 			li
 				p.
-					#[strong Key press]	#[img.inline(src='images/docs/action-keypress.png' title='Action keypress' alt='Action keypress')] — a single key pressure, usually recorded live with #[span.code (key)];
+					#[strong Key press] #[img.inline(src='images/docs/action-keypress.png' title='Action keypress' alt='Action keypress')] — a single key press, usually recorded live with #[span.code (key)];
 			li
 				p.
 					#[strong Key release] #[img.inline(src='images/docs/action-keyrel.png' title='Action keyrel' alt='Action keyrel')] — a single key release;
 			li
 				p.
-					#[strong Stop sample] #[img.inline(src='images/docs/action-killchan.png' title='Action kill chan' alt='Action kill chan')] — a sample break, usually recorded live with #[span.code shift+(key)];
-			li
-				p.
-					#[strong Composite action] #[img.inline(src='images/docs/action-composite.png' title='Composite action' alt='Composite action')] — it represents the combination of a #[em key press] + #[em key release] and it's available only for channels set to #[strong oneshot press] mode #[img.inline(src='images/docs/mode_loopd.png' tile='Oneshot press' alt='Oneshot press')]. It shows the #[em duration] of the key pressure and you can resize it by dragging the edges.
-		
+					#[strong Stop sample] #[img.inline(src='images/docs/action-killchan.png' title='Action kill chan' alt='Action kill chan')] — a sample stop, usually recorded live with #[span.code shift + (key)];
 		p.
-			The #[strong action type selector] #[img.inline(src='images/docs/action-type.png' alt='Action type selector')], located on the top-left corner of the Action Editor window, changes the action type you would add by left-clicking on an empty area.
+			The #[strong action type selector] #[img.inline(src='images/docs/action-type.png' alt='Action type selector')], located in the top-left corner of the Action Editor window, changes the action type that is added when you left-click on an empty area.
 
 		h2 Velocity widget
 
 		p.
 			#[img(src='images/docs/velocity-widget.png' title='Velocity widget' alt='Velocity widget')] 
 		p.
-			Available for both #[strong Sample channels] and #[strong MIDI channels], the Velocity widget lets you change the overall volume of an action. On MIDI channels, values range from 0 (silent) to 127 (maximum loudness) to match the expected value range defined by the MIDI protocol. Each action has its corresponding point in the velocity widget.
+			Available for both #[strong sample channels] and #[strong MIDI channels], the Velocity widget lets you change the overall volume of an action. On MIDI channels, values range from 0 (silent) to 127 (maximum loudness) to match the value range defined by the MIDI protocol. Each action has a corresponding point in the velocity widget.
 
 		h2 Piano Roll widget
 
 		p.
 			#[img(src='images/docs/piano-roll-widget.png' title='Piano Roll widget' alt='Piano Roll widget')]
 		p.
-			Available only for #[strong MIDI channels], the Piano Roll widget handles MIDI notes. It represents the full set of 128 notes (0-127) with 11 octaves ranging from C-1 (or C0) to G9 (or G10).
+			Available only for #[strong MIDI channels], the Piano Roll widget handles MIDI notes. It represents the full set of 128 notes (0-127) across 11 octaves, ranging from C-1 (or C0) to G9 (or G10).
 		p.
-			The piano roll editor is able to cope with wrong MIDI events, such as two Note On next to each other. We call them #[strong orphaned MIDI events] and they look like an empty rectangle #[img.inline(src='images/docs/action-orphaned.png' alt='Orphaned MIDI event' title='Orphaned MIDI event')] with fixed width. You can't do much with an orphaned MIDI event, except for deleting it by right clicking on it. Useful to clean up a MIDI mess.
+			The piano roll editor can also handle invalid MIDI events, such as two Note On events placed next to each other. These are called #[strong orphaned MIDI events] and appear as an empty rectangle #[img.inline(src='images/docs/action-orphaned.png' alt='Orphaned MIDI event' title='Orphaned MIDI event')] with a fixed width. There is not much you can do with an orphaned MIDI event except delete it by right-clicking on it, which is useful for cleaning up a messy MIDI recording.
