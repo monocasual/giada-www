@@ -1,35 +1,36 @@
 <p>
-    This release introduces a major overhaul of Giada's timing and sequencing
-    engine, with a new tick-based internal timeline that improves musical
-    precision across editing and playback. It also improves plug-in and MIDI
-    workflow, adds CPU load monitoring to the main window and includes a broad
-    round of internal cleanup and UI polish.
+    This release introduces elastic time-stretching for sample channels, letting
+    users independently adjust playback speed and pitch, powered by the Rubber
+    Band audio library. The Sample Editor has been reworked accordingly with a
+    redesigned Pitch/Time panel, a new Playback Mode selector (Tape vs.
+    Elastic), a quick "Adjust..." menu for common pitch/time operations, and a
+    dedicated sample info window.
 </p>
 <ul>
     <li>
-        New tick-based audio rendering engine, improving consistency across
-        sequencing, playback and action editing;
+        Add elastic (time-stretching) playback mode for sample channels,
+        allowing tempo and pitch to be changed independently;
     </li>
     <li>
-        Rework the internal storage of actions, improving performance and
-        simplifying action handling;
+        Sample Editor: major UI rework, focusing on the pitch tools and audio
+        file info sections;
     </li>
     <li>
-        Allow plug-ins that generate MIDI to forward their output to subsequent
-        plug-ins;
-    </li>
-    <li>Improve transport and position reporting for plug-ins;</li>
-    <li>
-        Add CPU load meter in the main window, along with a new footer area with
-        extra information;
-    </li>
-    <li>Fix audio glitches while saving a project;</li>
-    <li>
-        Fix wrong sample range points computation when the system sample rate
-        changes;
+        Sample Editor: organize the sample-spreading actions (spread to bar,
+        spread to song) into a dedicated menu;
     </li>
     <li>
-        Include broader internal cleanup, refactoring, dependency updates and UI
-        polish.
+        Sample Editor: add "+1 Semitone" and "-1 Semitone" options to quickly
+        adjust sample pitch in semitone increments;
     </li>
+    <li>
+        Improve audio buffer performance and internal data handling by switching
+        to a more efficient memory layout;
+    </li>
+    <li>
+        CMake: add a new WITH_ASAN option (disabled by default) to build with
+        AddressSanitizer + UndefinedBehaviorSanitizer;
+    </li>
+    <li>Fix a crash that could occur when closing sub-windows;</li>
+    <li>Various minor internal optimizations and code cleanups.</li>
 </ul>
